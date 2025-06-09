@@ -228,30 +228,28 @@ public class HNAServicioGeneracionDatosArticulosImpl extends ServicioGeneracionD
 				}
 				
 				
-				BigDecimal precioTotalUnidadUMEtiqueta = dto.getPrecioTotal();
-				if(articuloPromocion != null) {
-					dto.setIdPromocion(articuloPromocion.getIdPromocion());
-					if(articuloPromocion.getPrecioTotal() != null) {
-						dto.setPrecioPromocion(new BigDecimal(articuloPromocion.getPrecioTotal().toString()));
-						precioTotalUnidadUMEtiqueta = dto.getPrecioPromocion();
-					}
-					
-					dto.setFechaFinPromocion(articuloPromocion.getFechaFin());
-					dto.setFechaInicioPromocion(articuloPromocion.getFechaInicio());
-					
-				}
+                                /** Corrección: usar precio base para cálculo €/kg */
+                                BigDecimal precioBase = articulo.getPrecioVenta();
+                                BigDecimal precioUMEtiqueta = null;
+                                if(unidadMedidaEtiqueta != null && precioBase != null) {
+                                        BigDecimal factorMarcaje = new BigDecimal(unidadMedidaEtiqueta.getFactor().toString());
+                                        precioUMEtiqueta = precioBase.divide(factorMarcaje, 2, RoundingMode.HALF_UP);
+                                }
+                                if(articuloPromocion != null) {
+                                        dto.setIdPromocion(articuloPromocion.getIdPromocion());
+                                        if(articuloPromocion.getPrecioTotal() != null) {
+                                                dto.setPrecioPromocion(new BigDecimal(articuloPromocion.getPrecioTotal().toString()));
+                                        }
+
+                                        dto.setFechaFinPromocion(articuloPromocion.getFechaFin());
+                                        dto.setFechaInicioPromocion(articuloPromocion.getFechaInicio());
+
+                                }
 				
-				
-				BigDecimal precioUMEtiqueta = null;
-				if(unidadMedidaEtiqueta != null && precioTotalUnidadUMEtiqueta != null && dto.getCantidadUMEtiqueta() != null) {
-					if(BigDecimalUtil.isIgualACero(dto.getCantidadUMEtiqueta())) {
-						precioUMEtiqueta = BigDecimal.ZERO;
-					}else {
-						precioUMEtiqueta = new BigDecimal(unidadMedidaEtiqueta.getFactor().toString()).multiply(precioTotalUnidadUMEtiqueta).divide(dto.getCantidadUMEtiqueta(), 2, RoundingMode.HALF_UP);
-					}
-					
-				}
-				dto.setPrecioUMEtiqueta(precioUMEtiqueta);
+                                if(unidadMedidaEtiqueta != null && dto.getCantidadUMEtiqueta() != null && BigDecimalUtil.isIgualACero(dto.getCantidadUMEtiqueta())) {
+                                        precioUMEtiqueta = BigDecimal.ZERO;
+                                }
+                                dto.setPrecioUMEtiqueta(precioUMEtiqueta);
 				dto.setUnidadesCaja(unidadesCaja);
 				
 				dto.setMapaPropiedadesDinamicas(construyeMapaPropiedades(datosSesion, key.getCodart()));

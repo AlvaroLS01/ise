@@ -25,8 +25,11 @@ import com.comerzzia.web.base.WebKeys;
 public class HNAEjecutarAccion extends EjecutarAccion {
 
 	
-	@Override
-	protected void comprobarVersion(HttpServletRequest request) throws SQLException, ClienteException, ClienteNotFoundException {
+        /**
+         * HNA-165: imprimir solo por cambio de versión de tarifa
+         */
+        @Override
+        protected void comprobarVersion(HttpServletRequest request) throws SQLException, ClienteException, ClienteNotFoundException {
 		HttpSession sesion = request.getSession();
 		DatosSesionBean datosSesion = (DatosSesionBean) sesion.getAttribute(WebKeys.DATOS_SESION);
 		java.sql.Connection connSql = Database.getConnection();
