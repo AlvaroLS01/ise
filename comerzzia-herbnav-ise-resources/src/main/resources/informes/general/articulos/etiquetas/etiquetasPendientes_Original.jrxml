@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Etiquetas" printOrder="Horizontal" pageWidth="91" pageHeight="73" whenNoDataType="AllSectionsNoDetail" columnWidth="84" leftMargin="5" rightMargin="2" topMargin="5" bottomMargin="2" whenResourceMissingType="Key" uuid="1c57d0ba-7e37-4989-8b60-63e36463c01c">
+	<property name="ireport.zoom" value="5.559917313492239"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CODEMP" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="codart" class="java.lang.String"/>
+	<field name="desart" class="java.lang.String"/>
+	<field name="desglose1" class="java.lang.String"/>
+	<field name="desglose2" class="java.lang.String"/>
+	<field name="precioVenta" class="java.math.BigDecimal"/>
+	<field name="desUMEtiqueta" class="java.lang.String"/>
+	<field name="precioUMEtiqueta" class="java.math.BigDecimal"/>
+	<field name="cantidadUMEtiqueta" class="java.math.BigDecimal"/>
+	<field name="ean" class="java.lang.String"/>
+	<field name="precioTotal" class="java.math.BigDecimal"/>
+	<field name="desmarca" class="java.lang.String"/>
+	<field name="codUMEtiqueta" class="java.lang.String"/>
+	<variable name="LABEL_FACTOR" class="java.lang.String">
+		<variableExpression><![CDATA[($F{precioUMEtiqueta}.doubleValue() > 0
+? $F{precioUMEtiqueta} : "") + "€/" + $F{codUMEtiqueta}]]></variableExpression>
+	</variable>
+	<variable name="FACTOR_SALE" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="66">
+			<textField>
+				<reportElement uuid="fc27cc45-0c83-44a8-b7bc-edccc46d5d71" x="0" y="0" width="84" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desart}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="405fea4d-6f90-4cc7-856e-04b2b055edee" x="0" y="15" width="84" height="9"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font fontName="Tahoma" size="6" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desmarca}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00 €" isBlankWhenNull="true">
+				<reportElement uuid="86a82b8e-6e07-4280-aaa6-b88d5451f942" x="0" y="24" width="84" height="26"/>
+				<box rightPadding="2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precioTotal}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="4299fe1c-98d5-4d38-ae28-0c619ca16c2a" x="43" y="50" width="41" height="16"/>
+				<box rightPadding="2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codart}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="6b43c6af-443c-4e08-bdc5-2855fff116c0" x="0" y="50" width="43" height="8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font fontName="Tahoma" size="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{LABEL_FACTOR}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="6b43c6af-443c-4e08-bdc5-2855fff116c0" x="0" y="58" width="43" height="8">
+					<printWhenExpression><![CDATA[$V{FACTOR_SALE} != 0]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font fontName="Tahoma" size="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{FACTOR_SALE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
