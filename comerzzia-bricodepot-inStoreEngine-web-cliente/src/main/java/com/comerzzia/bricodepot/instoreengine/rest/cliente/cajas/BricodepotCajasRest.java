@@ -28,7 +28,19 @@ import com.comerzzia.bricodepot.instoreengine.rest.path.BricodepotInStoreEngineW
 
 public class BricodepotCajasRest {
 
-	private static Logger log = Logger.getLogger(BricodepotCajasRest.class);
+        private static Logger log = Logger.getLogger(BricodepotCajasRest.class);
+
+        private static String safeReadEntity(Response r) {
+                try {
+                        if (r != null && r.hasEntity()) {
+                                String s = r.readEntity(String.class);
+                                return (s != null && s.length() > 2000) ? s.substring(0, 2000) + "...(truncated)" : s;
+                        }
+                }
+                catch (Exception ignore) {
+                }
+                return null;
+        }
 
 	public static void insertarApunte(ApunteRequestRest apunteRequest) throws RestHttpException, RestException {
 		log.info("insertarApunte() - Insertando apunte");
@@ -38,43 +50,50 @@ public class BricodepotCajasRest {
 		log.info("insertarApunte() - Importe: " + apunteRequest.getImporte());
 		log.info("insertarApunte() - Documento: " + apunteRequest.getDocumento());
 
-		try {
-			WebTarget target = ClientBuilder.getClient().target(BricodepotInStoreEngineWebservicesPath.servicio).path(BricodepotInStoreEngineWebservicesPath.servicioInsertarApunte);
+                try {
+                        WebTarget target = ClientBuilder.getClient().target(BricodepotInStoreEngineWebservicesPath.servicio).path(BricodepotInStoreEngineWebservicesPath.servicioInsertarApunte);
 
-			target = target.queryParam("apiKey", apunteRequest.getApiKey())
-					.queryParam("uidActividad", apunteRequest.getUidActividad())
-					.queryParam("codcaja", apunteRequest.getCodcaja())
-					.queryParam("codConcepto", apunteRequest.getCodConcepto())
-					.queryParam("importe", apunteRequest.getImporte()).queryParam("usuario", apunteRequest.getUsuario())
-					.queryParam("documento", apunteRequest.getDocumento());
+                        target = target.queryParam("apiKey", apunteRequest.getApiKey())
+                                        .queryParam("uidActividad", apunteRequest.getUidActividad())
+                                        .queryParam("codcaja", apunteRequest.getCodcaja())
+                                        .queryParam("codConcepto", apunteRequest.getCodConcepto())
+                                        .queryParam("importe", apunteRequest.getImporte()).queryParam("usuario", apunteRequest.getUsuario())
+                                        .queryParam("documento", apunteRequest.getDocumento());
 
-			log.info("insertarApunte() - URL de servicio rest en la que se realiza la petición: " + target.getUri());
+                        log.info("insertarApunte() - URL de servicio rest en la que se realiza la petición: " + target.getUri());
 
-			Response response = target.request().put(Entity.entity(new String(), MediaType.APPLICATION_XML));
-
-			if (!(response.getStatus() < 300)) {
-				throw new RestException(response.getStatusInfo().getStatusCode() + ": " + response.getStatusInfo().getReasonPhrase(), new Exception());
-			}
-		}
-		catch (BadRequestException e) {
-			throw RestHttpException.establecerException(e);
-		}
-		catch (WebApplicationException e) {
-			throw new RestHttpException(e.getResponse().getStatus(),
-			        "Se ha producido un error HTTP " + e.getResponse().getStatus() + ". Causa: " + e.getClass().getName() + " - " + e.getLocalizedMessage(), e);
-		}
-		catch (ProcessingException e) {
-			if (e.getCause() instanceof ConnectException) {
-				throw new RestConnectException("Se ha producido un error al conectar con el servidor", e);
-			}
-			else if (e.getCause() instanceof SocketTimeoutException) {
-				throw new RestTimeoutException("Se ha producido timeout al conectar con el servidor", e);
-			}
-			throw new RestException("Se ha producido un error realizando la petición. Causa: " + e.getCause().getClass().getName() + " - " + e.getLocalizedMessage(), e);
-		}
-		catch (Exception e) {
-			throw new RestException("Se ha producido un error realizando la petición. Causa: " + e.getCause().getClass().getName() + " - " + e.getLocalizedMessage(), e);
-		}
+                        try (Response response = target.request().put(Entity.entity("", MediaType.APPLICATION_XML))) {
+                                int status = response.getStatus();
+                                log.info("insertarApunte() - HTTP status: " + status);
+                                if (status >= 300) {
+                                        String reason = (response.getStatusInfo() != null) ? response.getStatusInfo().getReasonPhrase() : "";
+                                        String body = safeReadEntity(response);
+                                        throw new RestException(status + ": " + reason + (body != null ? " - " + body : ""), null);
+                                }
+                        }
+                }
+                catch (BadRequestException e) {
+                        throw RestHttpException.establecerException(e);
+                }
+                catch (WebApplicationException e) {
+                        int st = (e.getResponse() != null) ? e.getResponse().getStatus() : 500;
+                        throw new RestHttpException(st,
+                                "Se ha producido un error HTTP " + st + ". Causa: " + e.getClass().getName() + " - " + e.getLocalizedMessage(), e);
+                }
+                catch (ProcessingException e) {
+                        Throwable c = e.getCause();
+                        if (c instanceof ConnectException) {
+                                throw new RestConnectException("Se ha producido un error al conectar con el servidor", e);
+                        }
+                        else if (c instanceof SocketTimeoutException) {
+                                throw new RestTimeoutException("Se ha producido timeout al conectar con el servidor", e);
+                        }
+                        throw new RestException("Se ha producido un error realizando la petición. Causa: " + (c != null ? c.getClass().getName() : e.getClass().getName()) + " - " + e.getLocalizedMessage(), e);
+                }
+                catch (Exception e) {
+                        Throwable c = e.getCause();
+                        throw new RestException("Se ha producido un error realizando la petición. Causa: " + (c != null ? c.getClass().getName() : e.getClass().getName()) + " - " + e.getLocalizedMessage(), e);
+                }
 
 	}
 
@@ -86,39 +105,52 @@ public class BricodepotCajasRest {
 
 		List<CajasMovimientosDTO> listaCajasMovimientos = new ArrayList<>();
 		
-		CajasMovimientosResponse response;
-		try {
-			WebTarget target = ClientBuilder.getClient().target(BricodepotInStoreEngineWebservicesPath.servicio).path(BricodepotInStoreEngineWebservicesPath.servicioConsultarCajasMovimientos);
+                CajasMovimientosResponse response;
+                try {
+                        WebTarget target = ClientBuilder.getClient().target(BricodepotInStoreEngineWebservicesPath.servicio).path(BricodepotInStoreEngineWebservicesPath.servicioConsultarCajasMovimientos);
 
-			target = target.queryParam("apiKey", apunteRequest.getApiKey())
-					.queryParam("uidActividad", apunteRequest.getUidActividad())
-					.queryParam("codcaja", apunteRequest.getCodcaja())
-					.queryParam("codConcepto", apunteRequest.getCodConcepto());
+                        target = target.queryParam("apiKey", apunteRequest.getApiKey())
+                                        .queryParam("uidActividad", apunteRequest.getUidActividad())
+                                        .queryParam("codcaja", apunteRequest.getCodcaja())
+                                        .queryParam("codConcepto", apunteRequest.getCodConcepto());
 
-			log.info("consultarCajasMovimientos() - URL de servicio rest en la que se realiza la petición: " + target.getUri());
-			response = target.request().get(genericType).getValue();
-			
-			listaCajasMovimientos = response.getListaCajasMovimientos();
-		}
-		catch (BadRequestException e) {
-			throw RestHttpException.establecerException(e);
-		}
-		catch (WebApplicationException e) {
-			throw new RestHttpException(e.getResponse().getStatus(),
-			        "Se ha producido un error HTTP " + e.getResponse().getStatus() + ". Causa: " + e.getClass().getName() + " - " + e.getLocalizedMessage(), e);
-		}
-		catch (ProcessingException e) {
-			if (e.getCause() instanceof ConnectException) {
-				throw new RestConnectException("Se ha producido un error al conectar con el servidor", e);
-			}
-			else if (e.getCause() instanceof SocketTimeoutException) {
-				throw new RestTimeoutException("Se ha producido timeout al conectar con el servidor", e);
-			}
-			throw new RestException("Se ha producido un error realizando la petición. Causa: " + e.getCause().getClass().getName() + " - " + e.getLocalizedMessage(), e);
-		}
-		catch (Exception e) {
-			throw new RestException("Se ha producido un error realizando la petición. Causa: " + e.getCause().getClass().getName() + " - " + e.getLocalizedMessage(), e);
-		}
+                        log.info("consultarCajasMovimientos() - URL de servicio rest en la que se realiza la petición: " + target.getUri());
+                        try (Response r = target.request().get()) {
+                                int status = r.getStatus();
+                                log.info("consultarCajasMovimientos() - HTTP status: " + status);
+                                if (status >= 300) {
+                                        String reason = (r.getStatusInfo() != null) ? r.getStatusInfo().getReasonPhrase() : "";
+                                        String body = safeReadEntity(r);
+                                        log.error("consultarCajasMovimientos() - Error HTTP " + status + ": " + reason + (body != null ? " - " + body : ""));
+                                        throw new WebApplicationException("HTTP " + status + ": " + reason, status);
+                                }
+                                response = r.readEntity(genericType).getValue();
+                        }
+
+                        listaCajasMovimientos = response.getListaCajasMovimientos();
+                }
+                catch (BadRequestException e) {
+                        throw RestHttpException.establecerException(e);
+                }
+                catch (WebApplicationException e) {
+                        int st = (e.getResponse() != null) ? e.getResponse().getStatus() : 500;
+                        throw new RestHttpException(st,
+                                "Se ha producido un error HTTP " + st + ". Causa: " + e.getClass().getName() + " - " + e.getLocalizedMessage(), e);
+                }
+                catch (ProcessingException e) {
+                        Throwable c = e.getCause();
+                        if (c instanceof ConnectException) {
+                                throw new RestConnectException("Se ha producido un error al conectar con el servidor", e);
+                        }
+                        else if (c instanceof SocketTimeoutException) {
+                                throw new RestTimeoutException("Se ha producido timeout al conectar con el servidor", e);
+                        }
+                        throw new RestException("Se ha producido un error realizando la petición. Causa: " + (c != null ? c.getClass().getName() : e.getClass().getName()) + " - " + e.getLocalizedMessage(), e);
+                }
+                catch (Exception e) {
+                        Throwable c = e.getCause();
+                        throw new RestException("Se ha producido un error realizando la petición. Causa: " + (c != null ? c.getClass().getName() : e.getClass().getName()) + " - " + e.getLocalizedMessage(), e);
+                }
 
 		return listaCajasMovimientos;
 	}
