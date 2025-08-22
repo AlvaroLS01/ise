@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    ComerZZia 3.0
+
+    Copyright (c) 2008-2015 Comerzzia, S.L.  All Rights Reserved.
+
+    THIS WORK IS  SUBJECT  TO  SPAIN  AND  INTERNATIONAL  COPYRIGHT  LAWS  AND
+    TREATIES.   NO  PART  OF  THIS  WORK MAY BE  USED,  PRACTICED,  PERFORMED
+    COPIED, DISTRIBUTED, REVISED, MODIFIED, TRANSLATED,  ABRIDGED, CONDENSED,
+    EXPANDED,  COLLECTED,  COMPILED,  LINKED,  RECAST, TRANSFORMED OR ADAPTED
+    WITHOUT THE PRIOR WRITTEN CONSENT OF COMERZZIA, S.L. ANY USE OR EXPLOITATION
+    OF THIS WORK WITHOUT AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO
+    CRIMINAL AND CIVIL LIABILITY.
+
+    CONSULT THE END USER LICENSE AGREEMENT FOR INFORMATION ON ADDITIONAL
+    RESTRICTIONS.
+
+-->
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+        version="3.0">
+	<display-name>comerzzia-InStoreEngine</display-name>
+
+	<!-- <context-param> <param-name>org.mule.config</param-name> <param-value>C:/Java/apache-tomcat-7.0.56/webapps/comerzzia-inStoreEngine-web/WEB-INF/classes/comerzzia-esb1.xml</param-value> 
+		</context-param> -->
+	<!-- <context-param> <param-name>org.mule.app.config</param-name> <param-value>C:/Java/apache-tomcat-7.0.56/webapps/comerzzia-inStoreEngine-web/WEB-INF/classes/mule-app.properties</param-value> 
+		</context-param> -->
+		
+	<!-- Si se despliega con Tomcat y la conexión es por JNDI -->
+	<!-- <resource-ref> <description>Datasource</description> <res-ref-name>jdbc/COMERZZIA_DS</res-ref-name> 
+		<res-type>javax.sql.DataSource</res-type> <res-auth>Container</res-auth> 
+		</resource-ref> -->
+
+	<servlet>
+		<servlet-name>Jersey REST Service</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>com.comerzzia.bricodepot.inStoreEngine.web.RestService</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Jersey REST Service</servlet-name>
+		<url-pattern>/ws/*</url-pattern>
+	</servlet-mapping>
+
+	<context-param>
+		<param-name>resteasy.scan</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.scan.providers</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resteasy.scan.resources</param-name>
+		<param-value>false</param-value>
+	</context-param>  	
+	
+	<!-- Carga del contexto de Spring -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/comerzzia-*context.xml</param-value>
+	</context-param>
+	<listener>
+		<description>Spring Context Loader</description>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- <listener>
+		<description>Servlet listener that exposes the request to the current thread</description>
+		<display-name>RequestContextListener</display-name>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener> -->
+	<!-- Listener propios de la aplicacion -->
+	<listener>
+		<description>Carga de las screen definitions y las acciones ajax</description>
+		<listener-class>com.comerzzia.instoreengine.web.listeners.InStoreEngineInitServletContextListener</listener-class>
+	</listener>
+	<listener>
+		<description>Carga del procesador de documentos</description>
+		<listener-class>com.comerzzia.web.core.procesamiento.ProcesadorDatosListener</listener-class>
+	</listener>
+	<listener>
+		<description>Carga del Sincronizador de Tiendas</description>
+		<listener-class>com.comerzzia.web.core.sincronizacion.SincronizadorTiendasListener</listener-class>
+	</listener>
+	<listener>
+      <description>Carga de servicios personalizados</description>
+      <listener-class>com.comerzzia.bricodepot.inStoreEngine.IseInitServletContextListener</listener-class>
+  </listener>
+</web-app>

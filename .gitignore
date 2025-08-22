@@ -1,7 +1,9 @@
 **/.project
 **/.classpath
 **/.settings
-**/.vscode
 **/target/
 /.metadata/
 **/uid_pos.properties
+.mvn/
+/comerzzia-bricodepot-inStoreEngine-web-cliente/*.factorypath
+/comerzzia-bricodepot-inStoreEngine-web/*.factorypath

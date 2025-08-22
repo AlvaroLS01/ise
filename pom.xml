@@ -1,32 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.comerzzia.herbnav</groupId>
-	<artifactId>comerzzia-herbnav-ise</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>com.comerzzia.bricodepot.inStoreEngine</groupId>
+	<artifactId>comerzzia-bricodepot-inStoreEngine</artifactId>
+	<version>${revision}</version>
 	<packaging>pom</packaging>
 
-	<modules>
-		<module>comerzzia-herbnav-ise-resources</module>
-		<module>comerzzia-herbnav-ise-web</module>
-	</modules>
-
 	<properties>
+		<maven.test.skip>true</maven.test.skip>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<maven.test.skip>true</maven.test.skip>
-
-		<comerzzia.backoffice.version>4.8.1.230405</comerzzia.backoffice.version>
-		<czz.version>4.8.1.230517</czz.version>
-		<czz.ise.version>4.8.1.221028</czz.ise.version>
+		<revision>25-SNAPSHOT</revision>
+		<comerzzia.backoffice.version>4.8.1.220620</comerzzia.backoffice.version>
+		<comerzzia.backoffice.actualizadores>4.8.1.210326</comerzzia.backoffice.actualizadores>
+		<comerzzia.ise.version>4.8.1.220610</comerzzia.ise.version>
 	</properties>
 
 	<repositories>
 		<repository>
-			<id>comerzzia</id>
+			<id>artifactory</id>
 			<url>http://repo.comerzzia.com/artifactory/comerzzia/</url>
 		</repository>
 		<repository>
@@ -53,7 +46,7 @@
 			<name>vm-bugtrac.mpcorporacion.com-snapshots</name>
 			<url>http://software.tier1.es/artifactory/clientes.local</url>
 		</snapshotRepository>
-	</distributionManagement>
+	</distributionManagement>	
 
 	<dependencies>
 		<dependency>
@@ -62,65 +55,37 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<!-- produce conflictos al arrancar ISE con launcher -->
+            <!-- produce conflictos al arrancar ISE con launcher -->
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.13</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp.jstl</groupId>
-			<artifactId>jstl-api</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-		</dependency>        <!-- database libraries -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>        <!-- comerzzia dependences -->
-		<dependency>
-			<groupId>com.comerzzia.core</groupId>
-			<artifactId>omnichannel-engine-model</artifactId>
-			<scope>runtime</scope>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.comerzzia.omnichannel</groupId>
-			<artifactId>omnichannel-documentos</artifactId>
-			<scope>runtime</scope>
-		</dependency>        <!-- comerzzia ISE web modules -->
-		<dependency>
-			<groupId>com.comerzzia.instoreengine</groupId>
-			<artifactId>comerzzia-inStoreEngine-ui</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.comerzzia.instoreengine</groupId>
-			<artifactId>comerzzia-inStoreEngine-webservices</artifactId>
-			<scope>runtime</scope>
-		</dependency>        <!-- custom dependencies -->
-		<dependency>
-			<groupId>com.comerzzia</groupId>
-			<artifactId>comerzzia-core-web</artifactId>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.comerzzia</groupId>
-			<artifactId>comerzzia-core-servicios</artifactId>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.comerzzia</groupId>
-			<artifactId>comerzzia-core-model</artifactId>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -146,37 +111,37 @@
 			<dependency>
 				<groupId>com.comerzzia</groupId>
 				<artifactId>comerzzia-sincro-actualizadores</artifactId>
-				<version>${czz.ise.version}</version>
+				<version>${comerzzia.backoffice.actualizadores}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.comerzzia.instoreengine</groupId>
 				<artifactId>comerzzia-inStoreEngine-util</artifactId>
-				<version>${czz.ise.version}</version>
+				<version>${comerzzia.ise.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.comerzzia.instoreengine</groupId>
 				<artifactId>comerzzia-inStoreEngine-persistencia</artifactId>
-				<version>${czz.ise.version}</version>
+				<version>${comerzzia.ise.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.comerzzia.instoreengine</groupId>
 				<artifactId>comerzzia-inStoreEngine-servicios</artifactId>
-				<version>${czz.ise.version}</version>
+				<version>${comerzzia.ise.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.comerzzia.instoreengine</groupId>
 				<artifactId>comerzzia-inStoreEngine-trabajos</artifactId>
-				<version>${czz.ise.version}</version>
+				<version>${comerzzia.ise.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.comerzzia.instoreengine</groupId>
 				<artifactId>comerzzia-inStoreEngine-webservices</artifactId>
-				<version>${czz.ise.version}</version>
+				<version>${comerzzia.ise.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.comerzzia.instoreengine</groupId>
 				<artifactId>comerzzia-inStoreEngine-ui</artifactId>
-				<version>${czz.ise.version}</version>
+				<version>${comerzzia.ise.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -187,7 +152,6 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.3.2</version>
 					<configuration>
 						<encoding>${project.build.sourceEncoding}</encoding>
 						<source>${java.version}</source>
@@ -205,7 +169,6 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.4</version>
 					<configuration>
 						<archive>
 							<manifestEntries>
@@ -224,6 +187,9 @@
 					<artifactId>maven-war-plugin</artifactId>
 					<version>2.4</version>
 					<configuration>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
 						<archive>
 							<manifestEntries>
 								<Build-commit>${buildCommit}</Build-commit>
@@ -232,8 +198,8 @@
 								<Built-By>${buildUser}</Built-By>
 								<comerzzia-module>${project.artifactId}</comerzzia-module>
 								<comerzzia-module-version>${project.version}</comerzzia-module-version>
-								<Version>${czz.version}</Version>
-								<comerzzia-custom-version>herbnav-${project.version}</comerzzia-custom-version>
+								<Version>${comerzzia.backoffice.version}</Version>
+								<comerzzia-custom-version>${project.version}</comerzzia-custom-version>
 							</manifestEntries>
 						</archive>
 					</configuration>
@@ -241,31 +207,30 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8</version>
+					<version>2.7</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>flatten-maven-plugin</artifactId>
+					<version>1.2.7</version>
+					<executions>
+						<execution>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>flatten</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<updatePomFile>true</updatePomFile>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-		</plugins>
-
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*Mapper.xml</include>
-				</includes>
-			</resource>
-			<resource>
-				<targetPath>${project.build.outputDirectory}</targetPath>
-				<directory>src/main/resources</directory>
-			</resource>
-		</resources>
 	</build>
+  <modules>
+    <module>comerzzia-bricodepot-inStoreEngine-resources</module>
+    <module>comerzzia-bricodepot-inStoreEngine-web</module>
+    <module>comerzzia-bricodepot-inStoreEngine-web-cliente</module>
+  </modules>
 </project>
