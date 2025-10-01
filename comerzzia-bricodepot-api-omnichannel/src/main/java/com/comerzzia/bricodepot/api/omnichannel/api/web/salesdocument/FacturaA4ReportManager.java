@@ -14,6 +14,7 @@ import java.nio.file.StandardCopyOption;
 import java.nio.file.Paths;
 import java.text.Normalizer;
 import java.time.temporal.TemporalAccessor;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -52,16 +53,41 @@ class FacturaA4ReportManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FacturaA4ReportManager.class);
 
+    private static final String PLANTILLA_ES = "facturaA4";
+    private static final String PLANTILLA_PT = "facturaA4_PT";
+    private static final String PLANTILLA_CA = "facturaA4_CA";
+    private static final String PLANTILLA_ORIGINAL = "facturaA4_Original";
+    private static final String PLANTILLA_DEVOLUCION_PT = "facturaDevolucionA4_PT";
+
     private static final List<String> PLANTILLAS_VALIDAS = Arrays.asList(
-            "facturaA4",
-            "facturaA4_PT",
-            "facturaA4_CA",
-            "facturaA4_Original");
+            PLANTILLA_ES,
+            PLANTILLA_PT,
+            PLANTILLA_CA,
+            PLANTILLA_ORIGINAL,
+            PLANTILLA_DEVOLUCION_PT);
+
+    private static final Map<String, String> ALIAS_PLANTILLAS;
+    static {
+        Map<String, String> alias = new HashMap<>();
+        alias.put("facturaa4", PLANTILLA_ES);
+        alias.put("facturaa4_original", PLANTILLA_ORIGINAL);
+        alias.put("facturaa4_pt", PLANTILLA_PT);
+        alias.put("facturaa4_ca", PLANTILLA_CA);
+        alias.put("facturadevoluciona4_pt", PLANTILLA_DEVOLUCION_PT);
+        alias.put("facturadevoluciona4_pt_old", PLANTILLA_DEVOLUCION_PT);
+        alias.put("fs", PLANTILLA_ES);
+        alias.put("ft", PLANTILLA_ES);
+        alias.put("fr", PLANTILLA_ES);
+        alias.put("nc", PLANTILLA_ES);
+        ALIAS_PLANTILLAS = alias;
+    }
 
     private final ApplicationContext applicationContext;
     private final ObjectMapper mapeadorJson;
     private final PathMatchingResourcePatternResolver buscadorRecursos;
     private final String rutaInformesConfigurada;
+
+    private volatile Path directorioPlantillasSeleccionado;
 
     private volatile Path directorioSubinformesTemporal;
 
@@ -160,7 +186,7 @@ class FacturaA4ReportManager {
 
     private PlantillaFactura determinarPlantilla(Object ticketVentaAbono, String plantillaSolicitada) {
         if (plantillaSolicitada != null && !plantillaSolicitada.trim().isEmpty()) {
-            String plantillaNormalizada = plantillaSolicitada.trim();
+            String plantillaNormalizada = normalizarNombrePlantilla(plantillaSolicitada);
             if (!PLANTILLAS_VALIDAS.contains(plantillaNormalizada)) {
                 LOGGER.warn("Plantilla {} no reconocida. Se aplicará la plantilla por defecto.", plantillaNormalizada);
             } else {
@@ -175,20 +201,25 @@ class FacturaA4ReportManager {
                 "cabecera.tienda.pais",
                 "cabecera.pais"));
 
+        boolean esDevolucion = esDocumentoDevolucion(ticketVentaAbono);
+
         if ("PT".equalsIgnoreCase(codigoPais)) {
-            return construirPlantilla("facturaA4_PT");
+            if (esDevolucion) {
+                return construirPlantilla(PLANTILLA_DEVOLUCION_PT);
+            }
+            return construirPlantilla(PLANTILLA_PT);
         }
         if ("CA".equalsIgnoreCase(codigoPais)) {
-            return construirPlantilla("facturaA4_CA");
+            return construirPlantilla(PLANTILLA_CA);
         }
-        return construirPlantilla("facturaA4");
+        return construirPlantilla(PLANTILLA_ES);
     }
 
     private PlantillaFactura construirPlantilla(String nombrePlantilla) {
         int version = 1;
-        if ("facturaA4_PT".equals(nombrePlantilla)) {
+        if (PLANTILLA_PT.equals(nombrePlantilla) || PLANTILLA_DEVOLUCION_PT.equals(nombrePlantilla)) {
             version = 2;
-        } else if ("facturaA4_CA".equals(nombrePlantilla)) {
+        } else if (PLANTILLA_CA.equals(nombrePlantilla)) {
             version = 3;
         }
         return new PlantillaFactura(nombrePlantilla, version);
@@ -380,11 +411,7 @@ class FacturaA4ReportManager {
         InputStream flujo = null;
         try {
             if (rutaInformesConfigurada != null) {
-                Path rutaFisica = Paths.get(rutaInformesConfigurada, "ventas", "facturas",
-                        plantilla.getNombre() + ".jasper");
-                if (Files.exists(rutaFisica)) {
-                    flujo = Files.newInputStream(rutaFisica);
-                }
+                flujo = localizarPlantillaEnSistemaArchivos(plantilla);
             }
 
             if (flujo == null) {
@@ -412,10 +439,24 @@ class FacturaA4ReportManager {
     }
 
     private String resolverDirectorioSubinformes() {
+        if (directorioPlantillasSeleccionado != null && Files.exists(directorioPlantillasSeleccionado)) {
+            return directorioPlantillasSeleccionado.toAbsolutePath().toString() + File.separator;
+        }
         if (rutaInformesConfigurada != null) {
-            Path rutaFisica = Paths.get(rutaInformesConfigurada, "ventas", "facturas");
-            if (Files.exists(rutaFisica)) {
-                return rutaFisica.toAbsolutePath().toString() + File.separator;
+            try {
+                Path rutaBase = Paths.get(rutaInformesConfigurada);
+                List<Path> candidatos = Arrays.asList(
+                        rutaBase,
+                        rutaBase.resolve("ventas").resolve("facturas"),
+                        rutaBase.resolve("facturas"));
+                for (Path candidato : candidatos) {
+                    if (Files.exists(candidato)) {
+                        directorioPlantillasSeleccionado = candidato;
+                        return candidato.toAbsolutePath().toString() + File.separator;
+                    }
+                }
+            } catch (Exception excepcion) {
+                LOGGER.debug("No fue posible construir la ruta física de subinformes", excepcion);
             }
         }
         return obtenerDirectorioSubinformes().toString() + File.separator;
@@ -591,6 +632,49 @@ class FacturaA4ReportManager {
     private List<String> generarNombresMetodos(String propiedad) {
         String capitalizado = propiedad.substring(0, 1).toUpperCase(Locale.ROOT) + propiedad.substring(1);
         return Arrays.asList(propiedad, "get" + capitalizado, "is" + capitalizado, "has" + capitalizado);
+    }
+
+    private String normalizarNombrePlantilla(String plantillaSolicitada) {
+        if (plantillaSolicitada == null) {
+            return null;
+        }
+        String texto = plantillaSolicitada.trim();
+        if (texto.isEmpty()) {
+            return null;
+        }
+        String textoNormalizado = texto.replace(' ', '_');
+        String textoMinusculas = textoNormalizado.toLowerCase(Locale.ROOT);
+        if (textoMinusculas.endsWith(".jasper")) {
+            textoNormalizado = textoNormalizado.substring(0, textoNormalizado.length() - ".jasper".length());
+            textoMinusculas = textoNormalizado.toLowerCase(Locale.ROOT);
+        } else if (textoMinusculas.endsWith(".jrxml")) {
+            textoNormalizado = textoNormalizado.substring(0, textoNormalizado.length() - ".jrxml".length());
+            textoMinusculas = textoNormalizado.toLowerCase(Locale.ROOT);
+        }
+        textoMinusculas = textoMinusculas.replace('-', '_');
+        if (ALIAS_PLANTILLAS.containsKey(textoMinusculas)) {
+            return ALIAS_PLANTILLAS.get(textoMinusculas);
+        }
+        return textoNormalizado;
+    }
+
+    private InputStream localizarPlantillaEnSistemaArchivos(PlantillaFactura plantilla) {
+        try {
+            Path rutaBase = Paths.get(rutaInformesConfigurada);
+            List<Path> candidatos = new ArrayList<>();
+            candidatos.add(rutaBase.resolve(plantilla.getNombre() + ".jasper"));
+            candidatos.add(rutaBase.resolve("ventas").resolve("facturas").resolve(plantilla.getNombre() + ".jasper"));
+            candidatos.add(rutaBase.resolve("facturas").resolve(plantilla.getNombre() + ".jasper"));
+            for (Path candidato : candidatos) {
+                if (Files.exists(candidato)) {
+                    directorioPlantillasSeleccionado = candidato.getParent();
+                    return Files.newInputStream(candidato);
+                }
+            }
+        } catch (Exception excepcion) {
+            LOGGER.debug("No se pudo localizar la plantilla en el sistema de ficheros", excepcion);
+        }
+        return null;
     }
 
     private static final class PlantillaFactura {

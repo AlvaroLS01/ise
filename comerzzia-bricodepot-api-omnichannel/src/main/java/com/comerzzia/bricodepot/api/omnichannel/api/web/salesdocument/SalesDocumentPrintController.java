@@ -38,8 +38,10 @@ public class SalesDocumentPrintController {
             @RequestParam MultiValueMap<String, String> parametrosPeticion) {
 
         boolean esCopia = esParametroBooleanoActivo(parametrosPeticion.get("copy"));
-        String plantillaSolicitada = extraerValor(parametrosPeticion, "printTemplate");
+        String plantillaSolicitada = normalizarNombrePlantilla(extraerValor(parametrosPeticion, "printTemplate"));
         String nombreSalida = extraerValor(parametrosPeticion, "outputDocumentName");
+        String tipoContenidoSolicitado = normalizarTexto(extraerValor(parametrosPeticion, "mimeType"));
+        boolean enviarInline = esParametroBooleanoActivo(parametrosPeticion.get("inline"));
         Map<String, Object> parametrosPersonalizados = extraerParametrosPersonalizados(parametrosPeticion);
 
         Optional<SalesDocumentPrintResponse> respuesta = servicioImpresionDocumento.imprimirDocumento(
@@ -47,7 +49,8 @@ public class SalesDocumentPrintController {
                 esCopia,
                 plantillaSolicitada,
                 nombreSalida,
-                parametrosPersonalizados);
+                parametrosPersonalizados,
+                tipoContenidoSolicitado);
 
         if (!respuesta.isPresent()) {
             LOGGER.debug("No se encontró documento de venta con UID {}", identificadorDocumento);
@@ -56,10 +59,12 @@ public class SalesDocumentPrintController {
 
         SalesDocumentPrintResponse documento = respuesta.get();
         HttpHeaders cabeceras = new HttpHeaders();
-        cabeceras.setContentType(MediaType.APPLICATION_PDF);
-        cabeceras.setContentDisposition(ContentDisposition.builder("attachment")
+        cabeceras.setContentType(resolverMediaType(documento.getMimeType()));
+        ContentDisposition disposicionContenido = ContentDisposition
+                .builder(enviarInline ? "inline" : "attachment")
                 .filename(documento.getFileName())
-                .build());
+                .build();
+        cabeceras.setContentDisposition(disposicionContenido);
 
         return new ResponseEntity<>(documento, cabeceras, HttpStatus.OK);
     }
@@ -88,7 +93,9 @@ public class SalesDocumentPrintController {
                 return;
             }
             if ("copy".equalsIgnoreCase(clave) || "printTemplate".equalsIgnoreCase(clave)
-                    || "outputDocumentName".equalsIgnoreCase(clave)) {
+                    || "outputDocumentName".equalsIgnoreCase(clave)
+                    || "mimeType".equalsIgnoreCase(clave)
+                    || "inline".equalsIgnoreCase(clave)) {
                 return;
             }
             if (clave.startsWith("customParams.")) {
@@ -96,6 +103,14 @@ public class SalesDocumentPrintController {
                 if (!claveDestino.isEmpty() && valores != null && !valores.isEmpty()) {
                     parametrosPersonalizados.put(claveDestino, valores.get(0));
                 }
+                return;
+            }
+            if (clave.startsWith("customParams[") && clave.endsWith("]")) {
+                String claveDestino = clave.substring("customParams[".length(), clave.length() - 1);
+                if (!claveDestino.isEmpty() && valores != null && !valores.isEmpty()) {
+                    parametrosPersonalizados.put(claveDestino, valores.get(0));
+                }
+                return;
             }
         });
 
@@ -107,5 +122,38 @@ public class SalesDocumentPrintController {
         }
 
         return parametrosPersonalizados;
+    }
+
+    private MediaType resolverMediaType(String mimeType) {
+        if (mimeType == null || mimeType.trim().isEmpty()) {
+            return MediaType.APPLICATION_PDF;
+        }
+        try {
+            return MediaType.parseMediaType(mimeType);
+        } catch (IllegalArgumentException excepcion) {
+            LOGGER.warn("Tipo MIME {} no válido. Se utilizará application/pdf", mimeType);
+            return MediaType.APPLICATION_PDF;
+        }
+    }
+
+    private String normalizarNombrePlantilla(String plantillaSolicitada) {
+        if (plantillaSolicitada == null) {
+            return null;
+        }
+        String texto = plantillaSolicitada.trim();
+        if (texto.isEmpty()) {
+            return null;
+        }
+        String textoMinusculas = texto.toLowerCase(Locale.ROOT);
+        if (textoMinusculas.endsWith(".jasper")) {
+            texto = texto.substring(0, texto.length() - ".jasper".length());
+        } else if (textoMinusculas.endsWith(".jrxml")) {
+            texto = texto.substring(0, texto.length() - ".jrxml".length());
+        }
+        return texto;
+    }
+
+    private String normalizarTexto(String valor) {
+        return valor == null ? null : valor.trim();
     }
 }
