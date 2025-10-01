@@ -1,9 +1,5 @@
 package com.comerzzia.bricodepot.api.omnichannel.api.web.salesdocument;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -11,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +22,12 @@ public class SalesDocumentPrintController {
     private static final Logger LOGGER = LoggerFactory.getLogger(SalesDocumentPrintController.class);
 
     private final SalesDocumentPrintService servicioImpresionDocumento;
+    private final SalesDocumentPrintRequestMapper mapeadorPeticion;
 
-    public SalesDocumentPrintController(SalesDocumentPrintService servicioImpresionDocumento) {
+    public SalesDocumentPrintController(SalesDocumentPrintService servicioImpresionDocumento,
+            SalesDocumentPrintRequestMapper mapeadorPeticion) {
         this.servicioImpresionDocumento = servicioImpresionDocumento;
+        this.mapeadorPeticion = mapeadorPeticion;
     }
 
     @GetMapping("/{documentUid}/print")
@@ -37,20 +35,14 @@ public class SalesDocumentPrintController {
             @PathVariable("documentUid") String identificadorDocumento,
             @RequestParam MultiValueMap<String, String> parametrosPeticion) {
 
-        boolean esCopia = esParametroBooleanoActivo(parametrosPeticion.get("copy"));
-        String plantillaSolicitada = normalizarNombrePlantilla(extraerValor(parametrosPeticion, "printTemplate"));
-        String nombreSalida = extraerValor(parametrosPeticion, "outputDocumentName");
-        String tipoContenidoSolicitado = normalizarTexto(extraerValor(parametrosPeticion, "mimeType"));
-        boolean enviarInline = esParametroBooleanoActivo(parametrosPeticion.get("inline"));
-        Map<String, Object> parametrosPersonalizados = extraerParametrosPersonalizados(parametrosPeticion);
-
+        SalesDocumentPrintParameters parametros = mapeadorPeticion.map(parametrosPeticion);
         Optional<SalesDocumentPrintResponse> respuesta = servicioImpresionDocumento.imprimirDocumento(
                 identificadorDocumento,
-                esCopia,
-                plantillaSolicitada,
-                nombreSalida,
-                parametrosPersonalizados,
-                tipoContenidoSolicitado);
+                parametros.esCopia(),
+                parametros.getPlantillaSolicitada(),
+                parametros.getNombreSalida(),
+                parametros.getParametrosPersonalizados(),
+                parametros.getTipoContenido());
 
         if (!respuesta.isPresent()) {
             LOGGER.debug("No se encontró documento de venta con UID {}", identificadorDocumento);
@@ -59,101 +51,13 @@ public class SalesDocumentPrintController {
 
         SalesDocumentPrintResponse documento = respuesta.get();
         HttpHeaders cabeceras = new HttpHeaders();
-        cabeceras.setContentType(resolverMediaType(documento.getMimeType()));
+        cabeceras.setContentType(mapeadorPeticion.resolverMediaType(documento.getMimeType()));
         ContentDisposition disposicionContenido = ContentDisposition
-                .builder(enviarInline ? "inline" : "attachment")
+                .builder(parametros.esInline() ? "inline" : "attachment")
                 .filename(documento.getFileName())
                 .build();
         cabeceras.setContentDisposition(disposicionContenido);
 
         return new ResponseEntity<>(documento, cabeceras, HttpStatus.OK);
-    }
-
-    private boolean esParametroBooleanoActivo(List<String> valores) {
-        if (valores == null || valores.isEmpty()) {
-            return false;
-        }
-        String valor = valores.get(0);
-        return valor != null && valor.trim().toLowerCase(Locale.ROOT).equals("true");
-    }
-
-    private String extraerValor(MultiValueMap<String, String> parametros, String clave) {
-        List<String> valores = parametros.get(clave);
-        if (valores == null || valores.isEmpty()) {
-            return null;
-        }
-        return valores.get(0);
-    }
-
-    private Map<String, Object> extraerParametrosPersonalizados(MultiValueMap<String, String> parametros) {
-        Map<String, Object> parametrosPersonalizados = new HashMap<>();
-
-        parametros.forEach((clave, valores) -> {
-            if (clave == null) {
-                return;
-            }
-            if ("copy".equalsIgnoreCase(clave) || "printTemplate".equalsIgnoreCase(clave)
-                    || "outputDocumentName".equalsIgnoreCase(clave)
-                    || "mimeType".equalsIgnoreCase(clave)
-                    || "inline".equalsIgnoreCase(clave)) {
-                return;
-            }
-            if (clave.startsWith("customParams.")) {
-                String claveDestino = clave.substring("customParams.".length());
-                if (!claveDestino.isEmpty() && valores != null && !valores.isEmpty()) {
-                    parametrosPersonalizados.put(claveDestino, valores.get(0));
-                }
-                return;
-            }
-            if (clave.startsWith("customParams[") && clave.endsWith("]")) {
-                String claveDestino = clave.substring("customParams[".length(), clave.length() - 1);
-                if (!claveDestino.isEmpty() && valores != null && !valores.isEmpty()) {
-                    parametrosPersonalizados.put(claveDestino, valores.get(0));
-                }
-                return;
-            }
-        });
-
-        if (parametros.containsKey("customParams")) {
-            String valorPlano = extraerValor(parametros, "customParams");
-            if (valorPlano != null) {
-                parametrosPersonalizados.put("customParams", valorPlano);
-            }
-        }
-
-        return parametrosPersonalizados;
-    }
-
-    private MediaType resolverMediaType(String mimeType) {
-        if (mimeType == null || mimeType.trim().isEmpty()) {
-            return MediaType.APPLICATION_PDF;
-        }
-        try {
-            return MediaType.parseMediaType(mimeType);
-        } catch (IllegalArgumentException excepcion) {
-            LOGGER.warn("Tipo MIME {} no válido. Se utilizará application/pdf", mimeType);
-            return MediaType.APPLICATION_PDF;
-        }
-    }
-
-    private String normalizarNombrePlantilla(String plantillaSolicitada) {
-        if (plantillaSolicitada == null) {
-            return null;
-        }
-        String texto = plantillaSolicitada.trim();
-        if (texto.isEmpty()) {
-            return null;
-        }
-        String textoMinusculas = texto.toLowerCase(Locale.ROOT);
-        if (textoMinusculas.endsWith(".jasper")) {
-            texto = texto.substring(0, texto.length() - ".jasper".length());
-        } else if (textoMinusculas.endsWith(".jrxml")) {
-            texto = texto.substring(0, texto.length() - ".jrxml".length());
-        }
-        return texto;
-    }
-
-    private String normalizarTexto(String valor) {
-        return valor == null ? null : valor.trim();
     }
 }
