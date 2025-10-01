@@ -28,6 +28,7 @@ import javax.imageio.ImageIO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -148,7 +149,13 @@ class FacturaA4ReportManager {
 
         String[] nombresBeans = applicationContext.getBeanDefinitionNames();
         for (String nombreBean : nombresBeans) {
-            Object bean = applicationContext.getBean(nombreBean);
+            Object bean;
+            try {
+                bean = applicationContext.getBean(nombreBean);
+            } catch (BeansException | NoClassDefFoundError | LinkageError excepcion) {
+                LOGGER.trace("No se pudo inicializar el bean {} al localizar el ticket", nombreBean, excepcion);
+                continue;
+            }
             Optional<Object> ticket = intentarBuscarTicket(bean, uidNormalizado);
             if (ticket.isPresent()) {
                 LOGGER.debug("Ticket localizado usando el bean {}", bean.getClass().getName());
