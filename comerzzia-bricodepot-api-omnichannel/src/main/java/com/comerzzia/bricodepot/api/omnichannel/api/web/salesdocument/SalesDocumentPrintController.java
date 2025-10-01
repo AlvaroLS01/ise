@@ -60,9 +60,11 @@ public class SalesDocumentPrintController {
         SalesDocumentPrintResponse documento = respuesta.get();
         HttpHeaders cabeceras = new HttpHeaders();
         cabeceras.setContentType(resolverMediaType(documento.getMimeType()));
-        cabeceras.setContentDisposition((enviarInline ? ContentDisposition.inline() : ContentDisposition.attachment())
+        ContentDisposition disposicionContenido = ContentDisposition
+                .builder(enviarInline ? "inline" : "attachment")
                 .filename(documento.getFileName())
-                .build());
+                .build();
+        cabeceras.setContentDisposition(disposicionContenido);
 
         return new ResponseEntity<>(documento, cabeceras, HttpStatus.OK);
     }
