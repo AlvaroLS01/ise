@@ -24,8 +24,7 @@ public class SalesDocumentPrintService {
             boolean esCopia,
             String plantillaSolicitada,
             String nombreSalida,
-            Map<String, Object> parametrosPersonalizados,
-            String tipoContenidoSolicitado) {
+            Map<String, Object> parametrosPersonalizados) {
         try {
             Optional<FacturaPdfResultado> posibleFactura = gestorFactura.generarFactura(
                     identificadorDocumento,
@@ -40,12 +39,8 @@ public class SalesDocumentPrintService {
 
             FacturaPdfResultado factura = posibleFactura.get();
             String contenidoCodificado = Base64.getEncoder().encodeToString(factura.getContenidoPdf());
-            String tipoContenido = (tipoContenidoSolicitado == null || tipoContenidoSolicitado.trim().isEmpty())
-                    ? MIME_TYPE_PDF
-                    : tipoContenidoSolicitado.trim();
-
             SalesDocumentPrintResponse respuesta = new SalesDocumentPrintResponse(
-                    tipoContenido,
+                    MIME_TYPE_PDF,
                     factura.getNombreFichero(),
                     contenidoCodificado);
             return Optional.of(respuesta);
