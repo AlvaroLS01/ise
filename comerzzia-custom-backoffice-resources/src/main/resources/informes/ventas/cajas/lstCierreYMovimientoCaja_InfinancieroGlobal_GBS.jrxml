@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InfFinancieroGlobal" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c20c32fa-3634-421f-8456-905bc5c07c3d">
+	<property name="ireport.zoom" value="1.4641000000000053"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FECHA_DESDE" class="java.sql.Timestamp"/>
+	<parameter name="FECHA_HASTA" class="java.sql.Timestamp"/>
+	<parameter name="LOGO" class="java.io.InputStream"/>
+	<parameter name="COD_TIENDA_DESDE" class="java.lang.String"/>
+	<parameter name="COD_TIENDA_HASTA" class="java.lang.String"/>
+	<parameter name="CAJERO" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="DES_TIENDA_DESDE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="DES_TIENDA_HASTA" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT CAJA.VECES,
+       CAJA.CODMEDPAG,
+       CAJA.DESMEDPAG,
+       CAJA.IMPORTE,
+       CAJA.CODALM,
+       CAJA.DESALM,
+  (SELECT (SUM(DET.CARGO)) AS IMPORTE
+   FROM D_CAJA_DET_TBL DET INNER JOIN
+        D_CAJA_CAB_TBL CAB ON (CAB.UID_DIARIO_CAJA=DET.UID_DIARIO_CAJA) LEFT JOIN
+        D_MEDIOS_PAGO_TBL MED ON (MED.UID_ACTIVIDAD = DET.UID_ACTIVIDAD AND
+                                  MED.CODMEDPAG     = DET.CODMEDPAG)
+   WHERE DET.FECHA BETWEEN $P{FECHA_DESDE} AND $P{FECHA_HASTA}
+     AND (DET.CODCONCEPTO_MOV = '00'
+          OR DET.CODCONCEPTO_MOV = '01'
+          OR DET.CODCONCEPTO_MOV = '80')
+     AND DET.CODMEDPAG = CAJA.CODMEDPAG
+     AND CAB.CODCAJA !='80'
+     AND CAB.CODCAJA!='90'
+     AND (CODALM >= $P{COD_TIENDA_DESDE}
+          AND CODALM <= $P{COD_TIENDA_HASTA})
+   GROUP BY DET.CODMEDPAG,
+            MED.DESMEDPAG,
+            CODALM,
+            DESALM) AS APORTACIÓN,
+       IFNULL(
+                (SELECT (SUM(DET.CARGO) - SUM(DET.ABONO)) AS IMPORTE
+                 FROM D_CAJA_DET_TBL DET INNER JOIN
+                      D_CAJA_CAB_TBL CAB ON (CAB.UID_DIARIO_CAJA = DET.UID_DIARIO_CAJA) LEFT JOIN
+                      D_MEDIOS_PAGO_TBL MED ON (MED.UID_ACTIVIDAD = DET.UID_ACTIVIDAD AND
+                                                MED.CODMEDPAG     = DET.CODMEDPAG)
+                 WHERE DET.FECHA BETWEEN $P{FECHA_DESDE} AND $P{FECHA_HASTA}
+                   AND (CODALM >= $P{COD_TIENDA_DESDE}
+                        AND CODALM <= $P{COD_TIENDA_HASTA})
+                   AND (DET.CODCONCEPTO_MOV = '02'
+                        OR DET.CODCONCEPTO_MOV = '03')
+                   AND DET.CODMEDPAG = CAJA.CODMEDPAG
+                 GROUP BY DET.CODMEDPAG, MED.DESMEDPAG, CODALM, DESALM),0) AS RETIRADA,
+
+  (SELECT SUM(CARGO)
+   FROM D_CAJA_DET_TBL DET INNER JOIN
+        D_CAJA_CAB_TBL CAB ON (CAB.UID_DIARIO_CAJA = DET.UID_DIARIO_CAJA)
+   WHERE CODCONCEPTO_MOV = '81'
+     AND FECHA BETWEEN $P{FECHA_DESDE} AND $P{FECHA_HASTA}
+     AND (CODALM >= $P{COD_TIENDA_DESDE}
+          AND CODALM <= $P{COD_TIENDA_HASTA})
+     AND DET.CODMEDPAG = CAJA.CODMEDPAG) AS DESAPORTACION
+FROM
+  (SELECT (COUNT(*)) AS VECES,
+          DET.CODMEDPAG,
+          MED.DESMEDPAG,
+          (SUM(DET.CARGO) - SUM(DET.ABONO)) AS IMPORTE,
+          CAB.CODALM,
+          ALM.DESALM
+   FROM D_CAJA_DET_TBL DET LEFT JOIN
+        D_CAJA_CAB_TBL CAB ON (CAB.UID_ACTIVIDAD   = DET.UID_ACTIVIDAD AND
+                               CAB.UID_DIARIO_CAJA = DET.UID_DIARIO_CAJA AND
+                              ($P{CAJERO} IS NULL OR $P{CAJERO} IS NOT NULL AND CAB.CODCAJA = $P{CAJERO})) LEFT JOIN
+        D_MEDIOS_PAGO_TBL MED ON (MED.UID_ACTIVIDAD = DET.UID_ACTIVIDAD AND
+                                  MED.CODMEDPAG     = DET.CODMEDPAG) LEFT JOIN
+        D_ALMACENES_TBL ALM ON (ALM.UID_ACTIVIDAD = CAB.UID_ACTIVIDAD AND
+                                ALM.CODALM        = CAB.CODALM)
+   WHERE DET.FECHA BETWEEN $P{FECHA_DESDE} AND $P{FECHA_HASTA}
+     AND DET.CODCONCEPTO_MOV IS NULL
+   GROUP BY DET.CODMEDPAG,
+            MED.DESMEDPAG,
+            CAB.CODALM,
+            ALM.DESALM) CAJA
+ORDER BY CAJA.DESMEDPAG]]>
+	</queryString>
+	<field name="VECES" class="java.lang.Long"/>
+	<field name="CODMEDPAG" class="java.lang.String"/>
+	<field name="DESMEDPAG" class="java.lang.String"/>
+	<field name="IMPORTE" class="java.math.BigDecimal"/>
+	<field name="CODALM" class="java.lang.String"/>
+	<field name="DESALM" class="java.lang.String"/>
+	<field name="APORTACIÓN" class="java.math.BigDecimal"/>
+	<field name="RETIRADA" class="java.math.BigDecimal"/>
+	<field name="DESAPORTACION" class="java.math.BigDecimal"/>
+	<variable name="DIFERENCIA" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{IMPORTE}.add($F{APORTACIÓN}).subtract($F{RETIRADA}.abs()).subtract($F{DESAPORTACION})]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_CANTIDAD" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{VECES}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_IMPORTE" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_APORTACION" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{APORTACIÓN}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_RETIRADA" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{RETIRADA}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_DIFERENCIA" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$V{DIFERENCIA}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_DESAP" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{DESAPORTACION}]]></variableExpression>
+	</variable>
+	<group name="CAJA">
+		<groupExpression><![CDATA[$F{CODALM}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<staticText>
+					<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="149" y="20" width="51" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<box>
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CANTIDAD]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="0b66783e-c9fc-41dd-8161-25d2f864e2b2" mode="Opaque" x="200" y="20" width="70" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<box>
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[IMPORTE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="83f09931-870f-459c-9e0a-a470b742501b" mode="Opaque" x="270" y="20" width="70" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<box>
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[APORTACIÓN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="f86ba740-9167-4a67-89e0-1409a9ffa037" mode="Opaque" x="340" y="20" width="70" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<box>
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[RETIRADA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="f86ba740-9167-4a67-89e0-1409a9ffa037" mode="Opaque" x="410" y="20" width="72" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<box>
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL DESAPORTACIÓN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="49" y="20" width="100" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<box>
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[FORMA DE PAGO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="f86ba740-9167-4a67-89e0-1409a9ffa037" mode="Opaque" x="482" y="20" width="73" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<box>
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DIFERENCIA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="20" width="49" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<box>
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TIENDA]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="0cae951a-f293-40f3-ba5d-3bde10c08f4a" x="149" y="0" width="51" height="20"/>
+					<box rightPadding="3">
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_CANTIDAD}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="e8a14633-bd40-42da-8808-587a2e65c01d" x="200" y="0" width="70" height="20"/>
+					<box rightPadding="3">
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_IMPORTE}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="9c4b9abb-23af-498c-8a11-37062b751981" x="270" y="0" width="70" height="20"/>
+					<box rightPadding="3">
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_APORTACION}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="fe52fe06-9f9f-4b37-bfa5-09e517c8b3dd" x="340" y="0" width="70" height="20"/>
+					<box rightPadding="3">
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_RETIRADA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="8da86e7b-1ad4-4aae-81fb-e480dafe313d" x="410" y="0" width="72" height="20"/>
+					<box rightPadding="3">
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_DESAP}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="0" width="149" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<box>
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL]]></text>
+				</staticText>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="5c5217d2-bba0-4cf4-8ed1-de01600909c9" x="482" y="0" width="73" height="20"/>
+					<box rightPadding="3">
+						<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_DIFERENCIA}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="2ab6a806-6339-47f8-91bd-e0cce75c0599" x="72" y="49" width="138" height="20"/>
+				<box leftPadding="3" rightPadding="0">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_DESDE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="202c97b6-4bea-4522-8a36-46e6a98cfc6d" x="72" y="69" width="138" height="20"/>
+				<box leftPadding="3" rightPadding="0">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_HASTA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="49" width="72" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha desde: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="69" width="72" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha hasta: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Transparent" x="0" y="0" width="340" height="28" forecolor="#000000" backcolor="#81ACBB"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Informe Financiero Global]]></text>
+			</staticText>
+			<image onErrorType="Blank">
+				<reportElement uuid="88baef63-a36e-405c-87fa-be4b7a6fb42d" x="482" y="0" width="73" height="50"/>
+				<imageExpression><![CDATA[$P{LOGO}]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy HH:mm:ss" isBlankWhenNull="true">
+				<reportElement uuid="7189c3e8-5a60-4ef4-af9b-bab98efd570f" x="410" y="50" width="145" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="89" width="72" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Almacén desde: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="109" width="72" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Almacén hasta:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="2ab6a806-6339-47f8-91bd-e0cce75c0599" x="72" y="89" width="138" height="20"/>
+				<box leftPadding="4">
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{COD_TIENDA_DESDE} != null?
+    $P{COD_TIENDA_DESDE} : "TODOS")]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="202c97b6-4bea-4522-8a36-46e6a98cfc6d" x="72" y="109" width="138" height="20"/>
+				<box leftPadding="4">
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{COD_TIENDA_HASTA} != null?
+    $P{COD_TIENDA_HASTA} : "TODOS")]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="90f26321-55ca-471c-949a-456d85765bf6" x="149" y="0" width="51" height="20"/>
+				<box rightPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VECES}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="4c442ece-249d-461d-9d42-62f6140f449c" x="200" y="0" width="70" height="20"/>
+				<box rightPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{IMPORTE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="d436e4c3-8af3-4415-bc66-61d3fcbc0c60" x="270" y="0" width="70" height="20"/>
+				<box rightPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{APORTACIÓN}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="7aa71d83-b514-49fa-9ff5-3f9ffc2230d5" x="340" y="0" width="70" height="20"/>
+				<box rightPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RETIRADA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="d50a0e7f-8606-48aa-beb9-70175c096fb5" x="410" y="0" width="72" height="20"/>
+				<box rightPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESAPORTACION}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="112540a8-ff09-485a-bc08-351181f86bba" x="49" y="0" width="100" height="20"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESMEDPAG}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="b2c3ca64-4330-49e8-8289-21176631c6f7" x="482" y="0" width="73" height="20"/>
+				<box rightPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{DIFERENCIA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="112540a8-ff09-485a-bc08-351181f86bba" x="0" y="0" width="49" height="20"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODALM}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

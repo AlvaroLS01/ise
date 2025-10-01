@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bricodepot.backoffice.persistence.pagos.mediospago.MediosPagosMapper">
+  <resultMap id="BaseResultMap" type="com.comerzzia.bricodepot.backoffice.persistence.pagos.mediospago.MediosPago">
+        <id property="uidActividad" column="UID_ACTIVIDAD" jdbcType="VARCHAR"/>
+        <result property="importeTotal" column="IMPORTE_TOTAL" jdbcType="NUMERIC"/>
+        <result property="codMedioPago" column="CODMEDPAG" jdbcType="VARCHAR"/>
+        <result property="desMedioPago" column="DESMEDPAG" jdbcType="VARCHAR"/>
+  </resultMap>
+  <select id="getMediosPago" resultMap="BaseResultMap">
+        SELECT PAG.UID_ACTIVIDAD, PAG.IMPORTE AS IMPORTE_TOTAL, MEDPAG.CODMEDPAG, MEDPAG.DESMEDPAG
+        FROM D_CLIE_ALBARANES_CAB_TBL CAB
+        INNER JOIN D_CLIE_ALBARANES_PAG_TBL PAG ON (PAG.UID_ACTIVIDAD = CAB.UID_ACTIVIDAD AND PAG.ID_CLIE_ALBARAN = CAB.ID_CLIE_ALBARAN)
+        INNER JOIN D_MEDIOS_PAGO_VEN_TBL MEDPAGVEN ON (MEDPAGVEN.UID_ACTIVIDAD = PAG.UID_ACTIVIDAD AND MEDPAGVEN.ID_MEDPAG_VEN = PAG.ID_MEDPAG_VEN)
+        INNER JOIN D_MEDIOS_PAGO_TBL MEDPAG ON (MEDPAG.UID_ACTIVIDAD = PAG.UID_ACTIVIDAD AND MEDPAG.CODMEDPAG = MEDPAGVEN.CODMEDPAG)
+        WHERE CAB.UID_ACTIVIDAD = #{uidActividad} AND CAB.UID_TICKET = #{uidTicket}
+        ORDER BY MEDPAG.CODMEDPAG;
+    </select>
+</mapper>

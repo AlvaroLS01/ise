@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubInfEventosAuditoria_Linea" pageWidth="3020" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="3020" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="6266a7ac-dd52-4772-b077-03c40cffc743">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#999999"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#999999"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#999999"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#999999"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 2" uuid="b0fd2696-48f0-4457-96f1-ea65d667657c"/>
+	<field name="uidInstancia" class="java.lang.String"/>
+	<field name="uidActividad" class="java.lang.String"/>
+	<field name="uidTicketAuditoria" class="java.lang.String"/>
+	<field name="idTicketAuditoria" class="java.lang.Long"/>
+	<field name="codigoAlmacen" class="java.lang.String"/>
+	<field name="almacen" class="com.comerzzia.model.general.almacenes.AlmacenBean"/>
+	<field name="fecha" class="java.util.Date"/>
+	<field name="tipoEvento" class="java.lang.String"/>
+	<field name="descripcionEvento" class="java.lang.String"/>
+	<field name="idUsuario" class="java.lang.Long"/>
+	<field name="nombreUsuario" class="java.lang.String"/>
+	<field name="idUsuarioSupervisor" class="java.lang.Long"/>
+	<field name="nombreUsuarioSupervisor" class="java.lang.String"/>
+	<field name="uidTicketVenta" class="java.lang.String"/>
+	<field name="codigoArticulo" class="java.lang.String"/>
+	<field name="descripcionArticulo" class="java.lang.String"/>
+	<field name="cantidadArticulo" class="java.math.BigDecimal"/>
+	<field name="precioOriginal" class="java.math.BigDecimal"/>
+	<field name="precioAplicado" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement uuid="48e3b7b3-819d-41c3-b2dd-01457f35987c" x="0" y="0" width="201" height="20"/>
+				<textElement/>
+				<text><![CDATA[uidInstancia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="732cec24-ab52-4a70-b496-399e63f567ce" x="201" y="0" width="214" height="20"/>
+				<textElement/>
+				<text><![CDATA[uidActividad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4559843f-2de9-43f8-bb45-59118b1b8972" x="415" y="0" width="237" height="20"/>
+				<textElement/>
+				<text><![CDATA[uidTicketAuditoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4e5f51ed-2b83-48c4-9be6-7abf7fb5d182" x="652" y="0" width="119" height="20"/>
+				<textElement/>
+				<text><![CDATA[codigoAlmacen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="90bbb8f7-6913-46f4-9e31-7afb0ba9e896" x="771" y="0" width="190" height="20"/>
+				<textElement/>
+				<text><![CDATA[almacen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3c79a2fc-8820-4eaa-99a6-5a5bfd8d4d26" x="961" y="0" width="171" height="20"/>
+				<textElement/>
+				<text><![CDATA[fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9054f233-2656-430f-a888-103492418bcb" x="1132" y="0" width="171" height="20"/>
+				<textElement/>
+				<text><![CDATA[tipoEvento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6706e359-2762-42c7-9e21-6c0440e165b7" x="1303" y="0" width="219" height="20"/>
+				<textElement/>
+				<text><![CDATA[descripcionEvento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8b196b0-cf4d-4950-9d76-51a2be8e13f0" x="1522" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[idUsuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a12e7270-7f2e-4ccc-9e41-6c39cff8dd8c" x="1622" y="0" width="171" height="20"/>
+				<textElement/>
+				<text><![CDATA[nombreUsuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3d0eb276-c34f-4226-b1a9-d4aae3b519b1" x="1793" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[idUsuarioSupervisor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8c42ec49-ea5a-48d9-a434-3c83bbfb09d6" x="1893" y="0" width="169" height="20"/>
+				<textElement/>
+				<text><![CDATA[nombreUsuarioSupervisor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="80dd1411-d1b5-4b07-8f0c-52e85966acf5" x="2062" y="0" width="272" height="20"/>
+				<textElement/>
+				<text><![CDATA[uidTicketVenta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5cc11ef5-bf24-4676-88d8-f6480de7e24f" x="2334" y="0" width="144" height="20"/>
+				<textElement/>
+				<text><![CDATA[codigoArticulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="af144c33-3508-4bef-8d5d-1aebf068ebea" x="2478" y="0" width="241" height="20"/>
+				<textElement/>
+				<text><![CDATA[descripcionArticulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="37940d20-96c7-4295-ab14-180bea0679cb" x="2719" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[cantidadArticulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="899da08b-60a5-46c4-86cd-2edfda6be037" x="2819" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[precioOriginal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5dff6288-7b36-41a2-9a84-e0b13ca52352" x="2919" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[precioAplicado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9d72e97d-1385-47a4-bbed-392449b82981" x="0" y="0" width="201" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{uidInstancia}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="6d0249f8-f895-4a6b-89ef-0b6c776dc469" x="201" y="0" width="214" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{uidActividad}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e04a804d-7bcf-43a6-aa1a-cb9a4a066aec" x="415" y="0" width="237" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{uidTicketAuditoria}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="65ec365b-29e7-4b3a-b9b1-922d510ed0a6" x="652" y="0" width="119" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{codigoAlmacen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e4a358a4-2cc3-4f47-9e72-8edc982ea912" x="771" y="0" width="190" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{almacen}.getDesAlm()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="0d579e1c-58a5-4d21-8643-2caf6f54c39c" x="961" y="0" width="171" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy HH:mm").format($F{fecha})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="0f32eda0-02b4-42c8-8c61-b0d8ca9723a7" x="1132" y="0" width="171" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tipoEvento}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="bafc4b04-4098-42a2-8883-9344a7b83c49" x="1303" y="0" width="219" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{descripcionEvento}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e62747ea-23ba-4c48-abfe-f24c76f31db7" x="1522" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{idUsuario}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="732d7178-74bf-4377-85f1-bad759cb9412" x="1622" y="0" width="171" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombreUsuario}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d3620f43-2bcb-454c-9053-b745246a6673" x="1793" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{idUsuarioSupervisor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="45411ebd-5fab-4ae6-b831-b68bcb4906a8" x="1893" y="0" width="169" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombreUsuarioSupervisor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="43d22beb-9fad-4acc-bb9a-eeff51edb265" x="2062" y="0" width="272" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{uidTicketVenta}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f26afb0a-c545-472d-af83-d6799128bca4" x="2334" y="0" width="144" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{codigoArticulo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="4bade9c8-37d8-4ae4-be65-952056eb66cc" x="2478" y="0" width="241" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{descripcionArticulo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0;-###0" isBlankWhenNull="true">
+				<reportElement uuid="def65064-51a7-4ffc-8156-0733d41eef8f" x="2719" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{cantidadArticulo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement uuid="5bb7dc04-9529-40db-a69d-ec76dffc0d72" x="2819" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{precioOriginal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement uuid="1024f9d9-0657-4cdd-932c-fa4f8703ecc5" x="2919" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{precioAplicado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

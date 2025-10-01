@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.comerzzia.bricodepot.backoffice.persistence.facturas.BricodepotFacturasMapper" >
+<resultMap id="BaseResultMap" type="com.comerzzia.bricodepot.backoffice.persistence.facturas.BricodepotFacturasBean" >
+    <id column="uid_actividad" property="uidActividad" jdbcType="VARCHAR" />
+    <result column="codalm" property="codalm" jdbcType="VARCHAR" />
+    <result column="codcaja" property="codcaja" jdbcType="VARCHAR" />
+    <result column="usuario" property="usuario" jdbcType="VARCHAR" />
+    <result column="fecha" property="fecha" jdbcType="DATE" />
+    <result column="id_tipo_documento" property="idTipoDoc" jdbcType="BIGINT" />
+    <result column="referencia_cliente" property="referenciaCliente" jdbcType="VARCHAR" />
+    <result column="cif" property="cif" jdbcType="VARCHAR" />
+    <result column="descli" property="descli" jdbcType="VARCHAR" />
+    <result column="total" property="importeTotal" jdbcType="DECIMAL" />
+    <result column="uid_ticket" property="uidTicket" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  
+  <sql id="Base_Column_List" >
+    A.uid_actividad, A.codalm, A.codcaja, A.usuario, A.fecha, A.id_tipo_documento, A.referencia_cliente, A.cif, A.descli, A.total,A.uid_ticket
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.comerzzia.bricodepot.backoffice.persistence.facturas.BricodepotFacturasExample" >
+    select distinct
+    <include refid="Base_Column_List" />
+    from d_clie_albaranes_cab_tbl A
+    <if test="filtroByCodart != null" >
+    left join d_clie_albaranes_det_tbl B on (A.uid_actividad = B.uid_actividad AND A.id_clie_albaran = B.id_clie_albaran)
+    </if> 
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    
+  </select>
+  
+</mapper>

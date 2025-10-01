@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="facturaA4_subInfTarjetas" pageWidth="290" pageHeight="802" columnWidth="290" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a4b2edb7-1577-4bd4-959c-9266cce0cfd5">
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="92"/>
+	<property name="ireport.y" value="0"/>
+	<field name="tarjeta" class="java.lang.String">
+		<fieldDescription><![CDATA[tarjeta]]></fieldDescription>
+	</field>
+	<field name="comercio" class="java.lang.String">
+		<fieldDescription><![CDATA[comercio]]></fieldDescription>
+	</field>
+	<field name="terminal" class="java.lang.String">
+		<fieldDescription><![CDATA[terminal]]></fieldDescription>
+	</field>
+	<field name="AID" class="java.lang.String">
+		<fieldDescription><![CDATA[AID]]></fieldDescription>
+	</field>
+	<field name="tipoLectura" class="java.lang.String">
+		<fieldDescription><![CDATA[tipoLectura]]></fieldDescription>
+	</field>
+	<field name="codAutorizacion" class="java.lang.String">
+		<fieldDescription><![CDATA[codAutorizacion]]></fieldDescription>
+	</field>
+	<field name="ARC" class="java.lang.String">
+		<fieldDescription><![CDATA[ARC]]></fieldDescription>
+	</field>
+	<field name="applicationLabel" class="java.lang.String">
+		<fieldDescription><![CDATA[applicationLabel]]></fieldDescription>
+	</field>
+	<field name="marcaTarjeta" class="java.lang.String">
+		<fieldDescription><![CDATA[marcaTarjeta]]></fieldDescription>
+	</field>
+	<field name="fechaTransaccion" class="java.lang.String">
+		<fieldDescription><![CDATA[fechaTransaccion]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="50">
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="0" y="0" width="85" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Autorización Tarjeta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="0" y="11" width="40" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tarjeta:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="0" y="22" width="40" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[AID:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="0" y="33" width="57" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Autenticación:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="9a599732-c431-447b-9cd8-228976841172" x="130" y="3" width="1" height="44"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="40" y="11" width="89" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tarjeta}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="41" y="22" width="89" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AID}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="57" y="33" width="72" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipoLectura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="140" y="14" width="49" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Autorizacion: ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="189" y="14" width="42" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codAutorizacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="224" y="14" width="24" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ARC: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="140" y="25" width="49" height="11">
+					<printWhenExpression><![CDATA[$F{tarjeta} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Label:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="140" y="36" width="49" height="11">
+					<printWhenExpression><![CDATA[$F{tarjeta} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Visa:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="248" y="14" width="42" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ARC}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="189" y="25" width="66" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{applicationLabel}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="189" y="36" width="66" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marcaTarjeta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="140" y="3" width="39" height="11">
+					<printWhenExpression><![CDATA[$F{tarjeta} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[COM. PE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="213" y="3" width="32" height="11">
+					<printWhenExpression><![CDATA[$F{tarjeta} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[TER.PE:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="179" y="3" width="32" height="11">
+					<printWhenExpression><![CDATA[$F{tarjeta} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{comercio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="245" y="3" width="32" height="11">
+					<printWhenExpression><![CDATA[$F{tarjeta} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{terminal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

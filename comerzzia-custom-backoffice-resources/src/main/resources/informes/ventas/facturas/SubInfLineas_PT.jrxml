@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Sub_Lineas" pageWidth="545" pageHeight="555" orientation="Landscape" columnWidth="545" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" uuid="04f4dc3b-f2a6-4a35-8590-9b93b0024224">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="411"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[".//"]]></defaultValueExpression>
+	</parameter>
+	<field name="cantidad" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[cantidad]]></fieldDescription>
+	</field>
+	<field name="desart" class="java.lang.String">
+		<fieldDescription><![CDATA[desArticulo]]></fieldDescription>
+	</field>
+	<field name="descuento" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[descuento]]></fieldDescription>
+	</field>
+	<field name="importe_linea" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[importeTotalConDto]]></fieldDescription>
+	</field>
+	<field name="precio" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[precioSinDto]]></fieldDescription>
+	</field>
+	<field name="fieldNumerosSerie" class="java.util.List">
+		<fieldDescription><![CDATA[numerosSerie]]></fieldDescription>
+	</field>
+	<field name="codart" class="java.lang.String">
+		<fieldDescription><![CDATA[codArticulo]]></fieldDescription>
+	</field>
+	<field name="precioTotalSinDto" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[precioTotalSinDto]]></fieldDescription>
+	</field>
+	<field name="codImp" class="java.lang.String">
+		<fieldDescription><![CDATA[codImp]]></fieldDescription>
+	</field>
+	<field name="precioTotalConDto" class="java.math.BigDecimal"/>
+	<field name="precioTarifaOrigen" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[precioTarifaOrigen]]></fieldDescription>
+	</field>
+	<field name="desglose2" class="java.lang.String"/>
+	<field name="precioTotalTarifaOrigen" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[precioTotalTarifaOrigen]]></fieldDescription>
+	</field>
+	<field name="importeConDto" class="java.math.BigDecimal"/>
+	<pageHeader>
+		<band height="49">
+			<staticText>
+				<reportElement uuid="f39ccab5-eadc-4c3c-b830-42f867861287" x="1" y="37" width="75" height="11"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="eb152e15-796b-4861-ba7f-8e58f2c5ad03" x="76" y="37" width="117" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Artigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f39ccab5-eadc-4c3c-b830-42f867861287" x="193" y="37" width="38" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Qtd.]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="bb0d5750-42f8-4f2e-b957-d4c194f934a9" x="1" y="48" width="544" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="5abb1112-d027-44dc-921f-c7c0431773e1" x="522" y="37" width="22" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5abb1112-d027-44dc-921f-c7c0431773e1" x="488" y="37" width="35" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Linha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e58fe4c0-4a50-4ef2-904b-3a5968bf9195" x="448" y="37" width="41" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IVA Linha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5abb1112-d027-44dc-921f-c7c0431773e1" x="326" y="37" width="40" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Desconto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5abb1112-d027-44dc-921f-c7c0431773e1" x="272" y="37" width="55" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[% Desconto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a505ecce-6935-4964-9985-7d4b71414f72" x="231" y="32" width="42" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Preço Unitario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a505ecce-6935-4964-9985-7d4b71414f72" x="366" y="37" width="41" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Preço Apli.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a505ecce-6935-4964-9985-7d4b71414f72" x="407" y="32" width="41" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Preço sem impostos]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="32">
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="193" y="0" width="38" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5e0f513b-39ee-4549-bbe4-8c4e3bad09b1" x="76" y="0" width="117" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desart}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="d249be82-33cd-4111-89dd-5bc77874b740" x="488" y="0" width="35" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importe_linea}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement uuid="cc42af31-8c9f-4fd9-abe2-3ecdf2c95881" x="56" y="13" width="488" height="16" isRemoveLineWhenBlank="true"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{fieldNumerosSerie})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "SubInfNumerosSerie.jasper"]]></subreportExpression>
+			</subreport>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="1" y="0" width="75" height="13"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codart}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="d02a2729-21ac-446c-81fd-3cb7e044ea45" x="231" y="0" width="42" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precioTotalTarifaOrigen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="758bbbd9-a8f1-479b-ae82-18a0a4192834" x="366" y="0" width="41" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precioTotalConDto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="758bbbd9-a8f1-479b-ae82-18a0a4192834" x="448" y="0" width="41" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desglose2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="758bbbd9-a8f1-479b-ae82-18a0a4192834" x="326" y="0" width="40" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{precioTotalSinDto}.multiply($F{descuento})).divide(new BigDecimal(100))]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="758bbbd9-a8f1-479b-ae82-18a0a4192834" x="272" y="0" width="55" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descuento}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="758bbbd9-a8f1-479b-ae82-18a0a4192834" x="407" y="0" width="41" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importeConDto}.divide($F{cantidad},2)]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="d249be82-33cd-4111-89dd-5bc77874b740" x="522" y="0" width="22" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codImp} + "%"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

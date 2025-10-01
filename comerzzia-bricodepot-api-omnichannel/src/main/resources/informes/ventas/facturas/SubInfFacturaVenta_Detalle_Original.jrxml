@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Albaranes_Factura" pageWidth="595" pageHeight="845" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="comerzzia.i18n.cmz" whenResourceMissingType="Key" uuid="ed9afe95-ed13-4831-a289-edd4f8b6d316">
+	<property name="ireport.zoom" value="1.3310000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID_FACTURA_REP" class="java.math.BigDecimal"/>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     CABECERA.ID_CLIE_ALBARAN AS ID_CLIE_ALBARAN,
+     CABECERA.CODEMP AS CODEMP,
+     CABECERA.PERIODO AS PERIODO,
+     CABECERA.CODSERIE AS CODSERIE,
+     CABECERA.NUMALB AS NUMALB,
+     CABECERA.FECHA AS FECHA,
+     CABECERA.REFERENCIA_CLIENTE AS REFERENCIA_CLIENTE,
+     CABECERA.PERSONA_CONTACTO AS PERSONA_CONTACTO,
+     CABECERA.BASE AS BASE,
+     CABECERA.IMPUESTOS AS IMPUESTOS,
+     CABECERA.TOTAL AS TOTAL,
+     CABECERA.OBSERVACIONES AS OBSERVACIONES,
+     DETALLE.CODART AS CODART,
+     DETALLE.LINEA AS LINEA,
+     DETALLE.DESGLOSE1 AS DESGLOSE1,
+     DETALLE.DESGLOSE2 AS DESGLOSE2,
+     DETALLE.DESART AS DESART,
+     DETALLE.DESCRIPCION_AMPLIADA AS DESCRIPCION_AMPLIADA,
+     DETALLE.UNIDAD_MEDIDA AS UNIDAD_MEDIDA,
+     DETALLE.CANTIDAD_MEDIDA AS CANTIDAD_MEDIDA,
+     DETALLE.CANTIDAD AS CANTIDAD,
+     DETALLE.PRECIO AS PRECIO,
+     DETALLE.DESCUENTO AS DESCUENTO,
+     DETALLE.IMPORTE AS IMPORTE_LINEA,
+     CABECERA.ID_FACTURA_REP AS CABECERA_ID_FACTURA_REP
+FROM
+     D_CLIE_ALBARANES_DET_TBL DETALLE RIGHT OUTER JOIN D_CLIE_ALBARANES_CAB_TBL CABECERA ON DETALLE.UID_ACTIVIDAD = CABECERA.UID_ACTIVIDAD AND DETALLE.ID_CLIE_ALBARAN = CABECERA.ID_CLIE_ALBARAN
+WHERE CABECERA.UID_ACTIVIDAD = $P{UID_ACTIVIDAD} AND
+    CABECERA.ID_FACTURA_REP = $P{ID_FACTURA_REP}]]>
+	</queryString>
+	<field name="ID_CLIE_ALBARAN" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CODEMP" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PERIODO" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CODSERIE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NUMALB" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FECHA" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="REFERENCIA_CLIENTE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PERSONA_CONTACTO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BASE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IMPUESTOS" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TOTAL" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OBSERVACIONES" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CODART" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LINEA" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DESGLOSE1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DESGLOSE2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DESART" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DESCRIPCION_AMPLIADA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="UNIDAD_MEDIDA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CANTIDAD_MEDIDA" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CANTIDAD" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PRECIO" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DESCUENTO" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IMPORTE_LINEA" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CABECERA_ID_FACTURA_REP" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="txtDOCUMENTO" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[$F{PERIODO}.toString().concat("/").concat($F{CODSERIE}).concat("-").concat($F{NUMALB}.toString())]]></variableExpression>
+	</variable>
+	<group name="ID_DOCUMENTO" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{ID_CLIE_ALBARAN}]]></groupExpression>
+		<groupHeader>
+			<band height="21">
+				<textField evaluationTime="Group" evaluationGroup="ID_DOCUMENTO">
+					<reportElement uuid="4e9d70a2-f7fb-43ef-bddf-7d760bc20b0e" x="1" y="8" width="230" height="12"/>
+					<textElement>
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$R{Albarán:} + " " + $V{txtDOCUMENTO}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="16">
+				<textField evaluationTime="Group" evaluationGroup="ID_DOCUMENTO" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="6e60dc54-d747-46a6-b394-7f0c349d482f" x="0" y="0" width="530" height="14"/>
+					<box>
+						<topPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{BASE}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band height="12">
+			<textField>
+				<reportElement uuid="f12b5591-83bf-44ef-9967-a7961e2cf159" positionType="FixRelativeToBottom" mode="Opaque" x="1" y="1" width="321" height="11" backcolor="#CCCCCC"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{ARTICULO / DESCRIPCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="32fdff7e-baa0-4833-913c-f17c6eb38ff2" mode="Opaque" x="356" y="1" width="42" height="11" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{UDs.}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="849e7d8a-75f2-44f1-9def-206d4d74a7b5" mode="Opaque" x="397" y="1" width="42" height="11" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PRECIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="481cedc1-db0d-4cbe-a653-4318c6363e5a" mode="Opaque" x="438" y="1" width="25" height="11" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DTO.}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e6871613-e4f4-421f-9cff-a447175b083f" mode="Opaque" x="463" y="1" width="68" height="11" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{IMPORTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1b36d0ff-a30d-4ef9-9bef-3d41fe997708" mode="Opaque" x="297" y="1" width="40" height="11" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{UM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d91f582d-c63f-442c-9067-88eaf93e4a0c" mode="Opaque" x="336" y="1" width="21" height="11" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{CM}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="14">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ce98490c-7880-407f-9943-f243874cbd36" x="0" y="2" width="20" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LINEA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="7a014b26-bf76-4597-bf8d-0aea3fa931e3" x="19" y="2" width="63" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODART}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="cb6b23b1-46a3-4c85-b154-0ab216cab82f" x="81" y="2" width="125" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESART}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="470f5361-153f-4b36-b710-ecf227b52fd2" x="206" y="2" width="44" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESGLOSE1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="18111b02-8a65-46fe-ae80-7ff3ac679ed9" x="250" y="2" width="45" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESGLOSE2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="26a447f9-5fd8-478d-97e9-bf6cf83d6ead" x="355" y="2" width="42" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CANTIDAD}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="31c26598-794a-4077-8517-b349bbd80f69" x="396" y="2" width="42" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PRECIO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="bb42ec05-bd15-4073-8dc2-689eeae00ff1" x="462" y="2" width="68" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{IMPORTE_LINEA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="7b1891fc-5c1d-4e4f-85c2-3599443a44b4" x="437" y="2" width="25" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCUENTO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="f656d41b-7b75-4aed-af02-d0d17adf4a33" x="298" y="2" width="38" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{UNIDAD_MEDIDA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="deac3470-2602-4239-9059-f9e0bc25c63a" x="336" y="2" width="21" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CANTIDAD_MEDIDA}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="11">
+			<printWhenExpression><![CDATA[($F{DESCRIPCION_AMPLIADA}.equals( "" ) ? Boolean.FALSE : Boolean.TRUE )]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="e3bb2115-f7e7-4a32-a358-8a7977e18e7c" x="82" y="0" width="265" height="10" isRemoveLineWhenBlank="true"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCRIPCION_AMPLIADA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+</jasperReport>

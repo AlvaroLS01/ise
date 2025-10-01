@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazMapper" >
+  <resultMap id="BaseResultMap" type="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazBean" >
+    <id column="UID_ACTIVIDAD" property="uidActividad" jdbcType="VARCHAR" />
+    <id column="UID_ERROR" property="uidError" jdbcType="VARCHAR" />
+    <result column="ID_CLASE" property="idClase" jdbcType="VARCHAR" />
+    <result column="ID_OBJETO" property="idObjeto" jdbcType="VARCHAR" />
+    <result column="FECHA_INICIO" property="fechaInicio" jdbcType="TIMESTAMP" />
+    <result column="ULTIMO_ERROR" property="ultimoError" jdbcType="TIMESTAMP" />
+    <result column="ULTIMO_DOCUMENTO" property="ultimoDocumento" jdbcType="VARCHAR" />
+    <result column="ULTIMO_MENSAJE" property="ultimoMensaje" jdbcType="VARCHAR" />
+    <result column="FECHA_FIN" property="fechaFin" jdbcType="TIMESTAMP" />
+    <result column="TIENDAS_IMPLICADAS" property="tiendasImplicadas" jdbcType="DECIMAL" />
+    <result column="ULTIMO_MENSAJE_TRAZA" property="ultimoMensajeTraza" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    UID_ACTIVIDAD, UID_ERROR, ID_CLASE, ID_OBJETO, FECHA_INICIO, ULTIMO_ERROR, ULTIMO_DOCUMENTO, 
+    ULTIMO_MENSAJE, FECHA_FIN, TIENDAS_IMPLICADAS, ULTIMO_MENSAJE_TRAZA
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_INTERFACES_ERR_CAB_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from X_INTERFACES_ERR_CAB_TBL
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_ERROR = #{uidError,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazExample" >
+    delete from X_INTERFACES_ERR_CAB_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazBean" >
+    insert into X_INTERFACES_ERR_CAB_TBL (UID_ACTIVIDAD, UID_ERROR, ID_CLASE, 
+      ID_OBJETO, FECHA_INICIO, ULTIMO_ERROR, 
+      ULTIMO_DOCUMENTO, ULTIMO_MENSAJE, FECHA_FIN, 
+      TIENDAS_IMPLICADAS, ULTIMO_MENSAJE_TRAZA)
+    values (#{uidActividad,jdbcType=VARCHAR}, #{uidError,jdbcType=VARCHAR}, #{idClase,jdbcType=VARCHAR}, 
+      #{idObjeto,jdbcType=VARCHAR}, #{fechaInicio,jdbcType=TIMESTAMP}, #{ultimoError,jdbcType=TIMESTAMP}, 
+      #{ultimoDocumento,jdbcType=VARCHAR}, #{ultimoMensaje,jdbcType=VARCHAR}, #{fechaFin,jdbcType=TIMESTAMP}, 
+      #{tiendasImplicadas,jdbcType=DECIMAL}, #{ultimoMensajeTraza,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazBean" >
+    insert into X_INTERFACES_ERR_CAB_TBL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uidActividad != null" >
+        UID_ACTIVIDAD,
+      </if>
+      <if test="uidError != null" >
+        UID_ERROR,
+      </if>
+      <if test="idClase != null" >
+        ID_CLASE,
+      </if>
+      <if test="idObjeto != null" >
+        ID_OBJETO,
+      </if>
+      <if test="fechaInicio != null" >
+        FECHA_INICIO,
+      </if>
+      <if test="ultimoError != null" >
+        ULTIMO_ERROR,
+      </if>
+      <if test="ultimoDocumento != null" >
+        ULTIMO_DOCUMENTO,
+      </if>
+      <if test="ultimoMensaje != null" >
+        ULTIMO_MENSAJE,
+      </if>
+      <if test="fechaFin != null" >
+        FECHA_FIN,
+      </if>
+      <if test="tiendasImplicadas != null" >
+        TIENDAS_IMPLICADAS,
+      </if>
+      <if test="ultimoMensajeTraza != null" >
+        ULTIMO_MENSAJE_TRAZA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uidActividad != null" >
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="uidError != null" >
+        #{uidError,jdbcType=VARCHAR},
+      </if>
+      <if test="idClase != null" >
+        #{idClase,jdbcType=VARCHAR},
+      </if>
+      <if test="idObjeto != null" >
+        #{idObjeto,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaInicio != null" >
+        #{fechaInicio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ultimoError != null" >
+        #{ultimoError,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ultimoDocumento != null" >
+        #{ultimoDocumento,jdbcType=VARCHAR},
+      </if>
+      <if test="ultimoMensaje != null" >
+        #{ultimoMensaje,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaFin != null" >
+        #{fechaFin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tiendasImplicadas != null" >
+        #{tiendasImplicadas,jdbcType=DECIMAL},
+      </if>
+      <if test="ultimoMensajeTraza != null" >
+        #{ultimoMensajeTraza,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazExample" resultType="java.lang.Integer" >
+    select count(*) from X_INTERFACES_ERR_CAB_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+	<select id="selectIdClase" resultType="string" >
+	        SELECT distinct ID_CLASE 
+	        FROM X_INTERFACES_ERR_CAB_TBL
+	        WHERE  UID_ACTIVIDAD = #{uidActividad, jdbcType=VARCHAR}
+	</select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update X_INTERFACES_ERR_CAB_TBL
+    <set >
+      <if test="record.uidActividad != null" >
+        UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uidError != null" >
+        UID_ERROR = #{record.uidError,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idClase != null" >
+        ID_CLASE = #{record.idClase,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idObjeto != null" >
+        ID_OBJETO = #{record.idObjeto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fechaInicio != null" >
+        FECHA_INICIO = #{record.fechaInicio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ultimoError != null" >
+        ULTIMO_ERROR = #{record.ultimoError,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ultimoDocumento != null" >
+        ULTIMO_DOCUMENTO = #{record.ultimoDocumento,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ultimoMensaje != null" >
+        ULTIMO_MENSAJE = #{record.ultimoMensaje,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fechaFin != null" >
+        FECHA_FIN = #{record.fechaFin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.tiendasImplicadas != null" >
+        TIENDAS_IMPLICADAS = #{record.tiendasImplicadas,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ultimoMensajeTraza != null" >
+        ULTIMO_MENSAJE_TRAZA = #{record.ultimoMensajeTraza,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update X_INTERFACES_ERR_CAB_TBL
+    set UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      UID_ERROR = #{record.uidError,jdbcType=VARCHAR},
+      ID_CLASE = #{record.idClase,jdbcType=VARCHAR},
+      ID_OBJETO = #{record.idObjeto,jdbcType=VARCHAR},
+      FECHA_INICIO = #{record.fechaInicio,jdbcType=TIMESTAMP},
+      ULTIMO_ERROR = #{record.ultimoError,jdbcType=TIMESTAMP},
+      ULTIMO_DOCUMENTO = #{record.ultimoDocumento,jdbcType=VARCHAR},
+      ULTIMO_MENSAJE = #{record.ultimoMensaje,jdbcType=VARCHAR},
+      FECHA_FIN = #{record.fechaFin,jdbcType=TIMESTAMP},
+      TIENDAS_IMPLICADAS = #{record.tiendasImplicadas,jdbcType=DECIMAL},
+      ULTIMO_MENSAJE_TRAZA = #{record.ultimoMensajeTraza,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazBean" >
+    update X_INTERFACES_ERR_CAB_TBL
+    <set >
+      <if test="idClase != null" >
+        ID_CLASE = #{idClase,jdbcType=VARCHAR},
+      </if>
+      <if test="idObjeto != null" >
+        ID_OBJETO = #{idObjeto,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaInicio != null" >
+        FECHA_INICIO = #{fechaInicio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ultimoError != null" >
+        ULTIMO_ERROR = #{ultimoError,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ultimoDocumento != null" >
+        ULTIMO_DOCUMENTO = #{ultimoDocumento,jdbcType=VARCHAR},
+      </if>
+      <if test="ultimoMensaje != null" >
+        ULTIMO_MENSAJE = #{ultimoMensaje,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaFin != null" >
+        FECHA_FIN = #{fechaFin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tiendasImplicadas != null" >
+        TIENDAS_IMPLICADAS = #{tiendasImplicadas,jdbcType=DECIMAL},
+      </if>
+      <if test="ultimoMensajeTraza != null" >
+        ULTIMO_MENSAJE_TRAZA = #{ultimoMensajeTraza,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_ERROR = #{uidError,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazBean" >
+    update X_INTERFACES_ERR_CAB_TBL
+    set ID_CLASE = #{idClase,jdbcType=VARCHAR},
+      ID_OBJETO = #{idObjeto,jdbcType=VARCHAR},
+      FECHA_INICIO = #{fechaInicio,jdbcType=TIMESTAMP},
+      ULTIMO_ERROR = #{ultimoError,jdbcType=TIMESTAMP},
+      ULTIMO_DOCUMENTO = #{ultimoDocumento,jdbcType=VARCHAR},
+      ULTIMO_MENSAJE = #{ultimoMensaje,jdbcType=VARCHAR},
+      FECHA_FIN = #{fechaFin,jdbcType=TIMESTAMP},
+      TIENDAS_IMPLICADAS = #{tiendasImplicadas,jdbcType=DECIMAL},
+      ULTIMO_MENSAJE_TRAZA = #{ultimoMensajeTraza,jdbcType=VARCHAR}
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_ERROR = #{uidError,jdbcType=VARCHAR}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_INTERFACES_ERR_CAB_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+   <delete id="deleteByPrimaryKeyCab" parameterType="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazKey" >
+    delete from X_INTERFACES_ERR_CAB_TBL
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_ERROR = #{uidError,jdbcType=VARCHAR}
+  </delete>
+  
+  <delete id="deleteByPrimaryKeyDet" parameterType="com.comerzzia.bricodepot.backoffice.persistence.erroresinterfaces.ErrorInterfazKey" >
+    delete from X_INTERFACES_ERR_DET_TBL
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_ERROR = #{uidError,jdbcType=VARCHAR}
+  </delete>
+  
+  
+  <insert id="copiaHistoricoDet">
+  	INSERT INTO x_interfaces_err_det_his_tbl
+  	(SELECT * FROM  x_interfaces_err_det_tbl
+  	WHERE UID_ACTIVIDAD = #{uidActividad}
+  	AND UID_ERROR = #{uidError})
+  </insert>
+  
+  <insert id="copiaHistoricoCab">
+  	INSERT INTO x_interfaces_err_cab_his_tbl
+  	(SELECT * FROM  x_interfaces_err_cab_tbl
+  	WHERE UID_ACTIVIDAD = #{uidActividad}
+  	AND UID_ERROR = #{uidError})
+  </insert>
+  
+</mapper>

@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InfBolsas_Prosegur" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="c20c32fa-3634-421f-8456-905bc5c07c3d">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FECHA_DESDE" class="java.sql.Timestamp"/>
+	<parameter name="FECHA_HASTA" class="java.sql.Timestamp"/>
+	<parameter name="LOGO" class="java.io.InputStream"/>
+	<parameter name="CODALMACEN_DESDE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT  MOV.UID_ACTIVIDAD,
+	MOV.UID_DIARIO_CAJA,
+	MOV.LINEA_91 AS BOLSA,
+	MOV.LINEA_90 AS ESTUCHE,
+	MOV.DOCUMENTO,
+	MOV.FECHA_BOLSA,
+	MOV.IMPORTE AS ABONO,
+	MOV.USUARIO,
+	DET_90.DOCUMENTO AS DOCUMENTO_ESTUCHE,
+ 	DET_90.FECHA AS FECHA_ESTUCHE,
+ 	DET_90.CARGO,
+ 	DET_90.USUARIO AS USUARIO_ESTUCHE
+FROM
+	X_MOVIMIENTOS_RETIRADAS_BANCO_TBL MOV INNER JOIN
+	D_CAJA_DET_TBL DET_90 ON (DET_90.UID_ACTIVIDAD = MOV.UID_ACTIVIDAD AND DET_90.UID_DIARIO_CAJA = MOV.UID_DIARIO_CAJA AND DET_90.LINEA = MOV.LINEA_90) INNER JOIN
+	D_CAJA_CAB_TBL CAB ON (CAB.UID_ACTIVIDAD = DET_90.UID_ACTIVIDAD AND CAB.UID_DIARIO_CAJA = DET_90.UID_DIARIO_CAJA)
+WHERE MOV.FECHA_BOLSA BETWEEN $P{FECHA_DESDE} AND $P{FECHA_HASTA} AND
+ CAB.CODALM = $P{CODALMACEN_DESDE} AND MOV.UID_ACTIVIDAD = $P{UID_ACTIVIDAD}
+ and DET_90.codconcepto_mov in (90,91)
+ORDER BY DET_90.FECHA DESC]]>
+	</queryString>
+	<field name="UID_ACTIVIDAD" class="java.lang.String"/>
+	<field name="UID_DIARIO_CAJA" class="java.lang.String"/>
+	<field name="BOLSA" class="java.lang.Integer"/>
+	<field name="ESTUCHE" class="java.lang.Integer"/>
+	<field name="DOCUMENTO" class="java.lang.String"/>
+	<field name="FECHA_BOLSA" class="java.sql.Timestamp"/>
+	<field name="ABONO" class="java.math.BigDecimal"/>
+	<field name="USUARIO" class="java.lang.String"/>
+	<field name="DOCUMENTO_ESTUCHE" class="java.lang.String"/>
+	<field name="FECHA_ESTUCHE" class="java.sql.Timestamp"/>
+	<field name="CARGO" class="java.math.BigDecimal"/>
+	<field name="USUARIO_ESTUCHE" class="java.lang.String"/>
+	<group name="UID_DIARIO_CAJA" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{BOLSA}]]></groupExpression>
+		<groupHeader>
+			<band height="47">
+				<staticText>
+					<reportElement uuid="4f314d38-afc0-4fac-9c4e-92b3c8c62d56" mode="Opaque" x="276" y="27" width="55" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nº Estuche]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="5fbe51c9-d787-4d57-a079-0ad4e7eef332" mode="Opaque" x="421" y="27" width="76" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Operador Estuche]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="4c41f712-0f69-4742-be59-fc999dca230e" mode="Opaque" x="331" y="27" width="90" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha Estuche]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="815beb58-b2f0-4edd-85fd-be084990ab64" mode="Opaque" x="497" y="27" width="55" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Importe Estuche]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="37f472c4-450c-4195-af79-2b82f3918826" mode="Opaque" x="0" y="27" width="55" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nº Bolsa]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="6c8d2408-f637-4050-9fc4-05caf52cac7f" mode="Opaque" x="55" y="27" width="90" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha Bolsa]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="1488c2f9-2ca2-4a66-bc25-d64cae51732d" mode="Opaque" x="145" y="27" width="76" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Operador Bolsa]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="a09c8a6e-47d9-43a7-a11b-2abb5573fa34" mode="Opaque" x="221" y="27" width="55" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Importe Bolsa]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="97">
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Transparent" x="0" y="0" width="396" height="20" forecolor="#000000" backcolor="#81ACBB"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Informe de Bolsas]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH:mm:ss" isBlankWhenNull="true">
+				<reportElement uuid="b96fa5d5-68e2-4a46-87d5-6ec6843f04bb" x="455" y="49" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image onErrorType="Blank">
+				<reportElement uuid="2863f48e-c3af-4053-a93c-eec311511a03" x="482" y="0" width="73" height="50"/>
+				<imageExpression><![CDATA[$P{LOGO}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="45">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="2ab6a806-6339-47f8-91bd-e0cce75c0599" x="62" y="0" width="189" height="20"/>
+				<box leftPadding="3" rightPadding="0">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_DESDE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="202c97b6-4bea-4522-8a36-46e6a98cfc6d" x="62" y="20" width="189" height="20"/>
+				<box leftPadding="3" rightPadding="0">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_HASTA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="0" width="62" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha desde: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="20" width="62" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha hasta: ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20">
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="62cd8cc7-4266-4253-9308-4fdcfddaa512" x="497" y="0" width="55" height="20"/>
+				<box leftPadding="0" rightPadding="5">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CARGO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="82bc9097-e03f-4005-8fe3-e5ffc38a9f85" x="276" y="0" width="55" height="20"/>
+				<box leftPadding="0" rightPadding="5">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DOCUMENTO_ESTUCHE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="052f6f05-1816-4b08-b28a-70853e010626" x="421" y="0" width="76" height="20"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{USUARIO_ESTUCHE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm:ss" isBlankWhenNull="true">
+				<reportElement uuid="45f1fe6d-cb9b-4544-a6b7-67f419a10003" x="331" y="0" width="90" height="20"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA_ESTUCHE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f85ed4cc-c852-4511-9b33-64c837f751be" isPrintRepeatedValues="false" x="0" y="0" width="55" height="20" printWhenGroupChanges="UID_DIARIO_CAJA"/>
+				<box leftPadding="0" rightPadding="5">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DOCUMENTO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="550ec185-4e25-4444-a567-d3327879b5de" isPrintRepeatedValues="false" x="221" y="0" width="55" height="20" printWhenGroupChanges="UID_DIARIO_CAJA"/>
+				<box leftPadding="0" rightPadding="5">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ABONO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm:ss" isBlankWhenNull="true">
+				<reportElement uuid="87482d78-406c-44c8-b119-b25058330fd6" isPrintRepeatedValues="false" x="55" y="0" width="90" height="20" printWhenGroupChanges="UID_DIARIO_CAJA"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA_BOLSA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d8d6f24b-1fbe-4470-b330-d6e812e1b79f" isPrintRepeatedValues="false" x="145" y="0" width="76" height="20" printWhenGroupChanges="UID_DIARIO_CAJA"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{USUARIO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="41">
+			<textField evaluationTime="Report" isBlankWhenNull="true">
+				<reportElement uuid="6c889346-9450-4400-91ad-1432f837a67b" x="517" y="16" width="38" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2722b496-87db-4273-a4ef-5b70ad0a0ee1" x="500" y="16" width="17" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="6070edd2-3298-483e-a6f1-a17559f2c465" x="480" y="16" width="20" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="51ecfa4e-2bc1-49cf-8c58-979fc2a839c2" x="458" y="16" width="22" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Pág.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

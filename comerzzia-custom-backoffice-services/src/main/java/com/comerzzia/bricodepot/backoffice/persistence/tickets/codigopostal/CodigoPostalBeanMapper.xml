@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bricodepot.backoffice.persistence.tickets.codigopostal.CodigoPostalBeanMapper">
+  <resultMap id="BaseResultMap" type="com.comerzzia.bricodepot.backoffice.persistence.tickets.codigopostal.CodigoPostalBeanKey">
+    <id column="UID_ACTIVIDAD" jdbcType="VARCHAR" property="uidActividad" />
+    <id column="ID_CLIE_ALBARAN" jdbcType="BIGINT" property="idClieAlbaran" />
+    <id column="CODIGO_POSTAL" jdbcType="VARCHAR" property="codigoPostal" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    UID_ACTIVIDAD, ID_CLIE_ALBARAN, CODIGO_POSTAL
+  </sql>
+  <select id="selectByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.codigopostal.CodigoPostalBeanExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_clie_albaranes_cab_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.codigopostal.CodigoPostalBeanKey">
+    delete from x_clie_albaranes_cab_tbl
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and ID_CLIE_ALBARAN = #{idClieAlbaran,jdbcType=BIGINT}
+      and CODIGO_POSTAL = #{codigoPostal,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.codigopostal.CodigoPostalBeanExample">
+    delete from x_clie_albaranes_cab_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.codigopostal.CodigoPostalBeanKey">
+    insert into x_clie_albaranes_cab_tbl (UID_ACTIVIDAD, ID_CLIE_ALBARAN, CODIGO_POSTAL
+      )
+    values (#{uidActividad,jdbcType=VARCHAR}, #{idClieAlbaran,jdbcType=BIGINT}, #{codigoPostal,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.codigopostal.CodigoPostalBeanKey">
+    insert into x_clie_albaranes_cab_tbl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        UID_ACTIVIDAD,
+      </if>
+      <if test="idClieAlbaran != null">
+        ID_CLIE_ALBARAN,
+      </if>
+      <if test="codigoPostal != null">
+        CODIGO_POSTAL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="idClieAlbaran != null">
+        #{idClieAlbaran,jdbcType=BIGINT},
+      </if>
+      <if test="codigoPostal != null">
+        #{codigoPostal,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.codigopostal.CodigoPostalBeanExample" resultType="java.lang.Long">
+    select count(*) from x_clie_albaranes_cab_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update x_clie_albaranes_cab_tbl
+    <set>
+      <if test="record.uidActividad != null">
+        UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idClieAlbaran != null">
+        ID_CLIE_ALBARAN = #{record.idClieAlbaran,jdbcType=BIGINT},
+      </if>
+      <if test="record.codigoPostal != null">
+        CODIGO_POSTAL = #{record.codigoPostal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update x_clie_albaranes_cab_tbl
+    set UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      ID_CLIE_ALBARAN = #{record.idClieAlbaran,jdbcType=BIGINT},
+      CODIGO_POSTAL = #{record.codigoPostal,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.codigopostal.CodigoPostalBeanExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_clie_albaranes_cab_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

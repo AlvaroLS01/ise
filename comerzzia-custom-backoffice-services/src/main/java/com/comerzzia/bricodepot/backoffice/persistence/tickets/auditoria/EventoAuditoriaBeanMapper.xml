@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bricodepot.backoffice.persistence.tickets.auditoria.EventoAuditoriaBeanMapper">
+  <resultMap id="BaseResultMap" type="com.comerzzia.bricodepot.backoffice.persistence.tickets.auditoria.EventoAuditoriaBean">
+    <id column="UID_INSTANCIA" jdbcType="VARCHAR" property="uidInstancia" />
+    <id column="UID_ACTIVIDAD" jdbcType="VARCHAR" property="uidActividad" />
+    <id column="UID_TICKET_AUDITORIA" jdbcType="VARCHAR" property="uidTicketAuditoria" />
+    <result column="ID_TICKET_AUDITORIA" jdbcType="BIGINT" property="idTicketAuditoria" />
+    <result column="CODALM" jdbcType="VARCHAR" property="codigoAlmacen" />
+    <result column="FECHA" jdbcType="TIMESTAMP" property="fecha" />
+    <result column="TIPO_EVENTO" jdbcType="VARCHAR" property="tipoEvento" />
+    <result column="DESCRIPCION_EVENTO" jdbcType="VARCHAR" property="descripcionEvento" />
+    <result column="ID_USUARIO" jdbcType="BIGINT" property="idUsuario" />
+    <result column="DES_USUARIO" jdbcType="VARCHAR" property="nombreUsuario" />
+    <result column="PROCEDE" jdbcType="VARCHAR" property="procede" typeHandler="com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler" />
+    <result column="ID_USUARIO_SUPERVISOR" jdbcType="BIGINT" property="idUsuarioSupervisor" />
+    <result column="DES_USUARIO_SUPERVISOR" jdbcType="VARCHAR" property="nombreUsuarioSupervisor" />
+    <result column="UID_TICKET_VENTA" jdbcType="VARCHAR" property="uidTicketVenta" />
+    <result column="ID_TICKET_VENTA" jdbcType="BIGINT" property="idTicketVenta" />
+    <result column="CODART" jdbcType="VARCHAR" property="codigoArticulo" />
+    <result column="DESART" jdbcType="VARCHAR" property="descripcionArticulo" />
+    <result column="CANART" jdbcType="DECIMAL" property="cantidadArticulo" />
+    <result column="PRECIO_ORIGINAL" jdbcType="DECIMAL" property="precioOriginal" />
+    <result column="PRECIO_APLICADO" jdbcType="DECIMAL" property="precioAplicado" />
+    <result column="LINEA_REFERENCIA" jdbcType="INTEGER" property="lineaReferencia" />
+    <association property="almacen" select="selectAlmacenByEvento" column="{uidActividad=UID_ACTIVIDAD,codAlm=CODALM}" javaType="com.comerzzia.model.general.almacenes.AlmacenBean"/>
+    <association property="ticketVenta" select="selectTicketVentaByEvento" column="{uidActividad=UID_ACTIVIDAD,uidTicketVenta=UID_TICKET_VENTA}" javaType="com.comerzzia.core.model.ventas.tickets.TicketBean"/>
+  </resultMap>
+  
+  <resultMap id="AlmacenBaseResultMap" type="com.comerzzia.model.general.almacenes.AlmacenBean">
+    <result column="UID_ACTIVIDAD" jdbcType="VARCHAR" property="uidActividad" />
+    <result column="CODALM" jdbcType="VARCHAR" property="codAlm" />
+    <result column="DESALM" jdbcType="VARCHAR" property="desAlm" />
+    <result column="DOMICILIO" jdbcType="VARCHAR" property="domicilio" />
+    <result column="POBLACION" jdbcType="VARCHAR" property="poblacion" />
+    <result column="PROVINCIA" jdbcType="VARCHAR" property="provincia" />
+    <result column="CP" jdbcType="VARCHAR" property="cp" />
+    <result column="TELEFONO1" jdbcType="VARCHAR" property="telefono1" />
+    <result column="TELEFONO2" jdbcType="VARCHAR" property="telefono2" />
+    <result column="FAX" jdbcType="VARCHAR" property="fax" />
+    <result column="PERSONA_CONTACTO" jdbcType="VARCHAR" property="personaContacto" />
+    <result column="CODEMP" jdbcType="VARCHAR" property="codEmp" />
+    <result column="DESEMP" jdbcType="VARCHAR" property="desEmp" />
+    <result column="CODCLI" jdbcType="VARCHAR" property="codCliente" />
+    <result column="DESCLI" jdbcType="VARCHAR" property="desCliente" />
+    <result column="ACTIVO" jdbcType="CHAR" property="activo" />
+    <result column="CODALM_PADRE" jdbcType="VARCHAR" property="codalmPadre" />
+    <result column="DESALM_PADRE" jdbcType="VARCHAR" property="desalmPadre" />
+    <result column="CODALM_LOGISTICO" jdbcType="VARCHAR" property="codalmLogistico" />
+    <result column="DESALM_LOGISTICO" jdbcType="VARCHAR" property="desalmLogistico" />
+    <result column="CODALM_TRANSITO" jdbcType="VARCHAR" property="codalmTransito" />
+    <result column="DESALM_TRANSITO" jdbcType="VARCHAR" property="desalmTransito" />
+  </resultMap>
+  
+  <resultMap id="TicketBaseResultMap" type="com.comerzzia.core.model.ventas.tickets.TicketBean" >
+    <id column="UID_ACTIVIDAD" property="uidActividad" jdbcType="VARCHAR" />
+    <id column="UID_TICKET" property="uidTicket" jdbcType="VARCHAR" />
+    <result column="CODALM" property="codAlmacen" jdbcType="VARCHAR" />
+    <result column="ID_TICKET" property="idTicket" jdbcType="DECIMAL" />
+    <result column="FECHA" property="fecha" jdbcType="TIMESTAMP" />
+    <result column="PROCESADO" property="procesado" jdbcType="CHAR" />
+    <result column="FECHA_PROCESO" property="fechaProceso" jdbcType="TIMESTAMP" />
+    <result column="MENSAJE_PROCESO" property="mensajeProceso" jdbcType="VARCHAR" />
+    <result column="CODCAJA" property="codCaja" jdbcType="VARCHAR" />
+    <result column="ID_TIPO_DOCUMENTO" property="idTipoDocumento" jdbcType="DECIMAL" />
+    <result column="COD_TICKET" property="codTicket" jdbcType="VARCHAR" />
+    <result column="FIRMA" property="firma" jdbcType="VARCHAR" />
+    <result column="SERIE_TICKET" property="serieTicket" jdbcType="VARCHAR" />
+    <result column="LOCATOR_ID" property="locatorId" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+            <foreach collection="criteria.procedeCriteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler} and #{criterion.secondValue,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+            <foreach collection="criteria.procedeCriteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler} and #{criterion.secondValue,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    UID_INSTANCIA, UID_ACTIVIDAD, UID_TICKET_AUDITORIA, ID_TICKET_AUDITORIA, CODALM, 
+    FECHA, TIPO_EVENTO, DESCRIPCION_EVENTO, ID_USUARIO, DES_USUARIO, PROCEDE, ID_USUARIO_SUPERVISOR, 
+    DES_USUARIO_SUPERVISOR, UID_TICKET_VENTA, ID_TICKET_VENTA, CODART, DESART, CANART, 
+    PRECIO_ORIGINAL, PRECIO_APLICADO, LINEA_REFERENCIA
+  </sql>
+  <select id="selectByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.auditoria.EventoAuditoriaBeanExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_auditorias_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.auditoria.EventoAuditoriaBeanKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from x_auditorias_tbl
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_TICKET_AUDITORIA = #{uidTicketAuditoria,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.auditoria.EventoAuditoriaBeanKey">
+    delete from x_auditorias_tbl
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_TICKET_AUDITORIA = #{uidTicketAuditoria,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.auditoria.EventoAuditoriaBeanExample">
+    delete from x_auditorias_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.auditoria.EventoAuditoriaBean">
+    insert into x_auditorias_tbl (UID_INSTANCIA, UID_ACTIVIDAD, UID_TICKET_AUDITORIA, 
+      ID_TICKET_AUDITORIA, CODALM, FECHA, 
+      TIPO_EVENTO, DESCRIPCION_EVENTO, ID_USUARIO, 
+      DES_USUARIO, PROCEDE, 
+      ID_USUARIO_SUPERVISOR, DES_USUARIO_SUPERVISOR, 
+      UID_TICKET_VENTA, ID_TICKET_VENTA, CODART, 
+      DESART, CANART, 
+      PRECIO_ORIGINAL, PRECIO_APLICADO, LINEA_REFERENCIA
+      )
+    values (#{uidInstancia,jdbcType=VARCHAR}, #{uidActividad,jdbcType=VARCHAR}, #{uidTicketAuditoria,jdbcType=VARCHAR}, 
+      #{idTicketAuditoria,jdbcType=BIGINT}, #{codigoAlmacen,jdbcType=VARCHAR}, #{fecha,jdbcType=TIMESTAMP}, 
+      #{tipoEvento,jdbcType=VARCHAR}, #{descripcionEvento,jdbcType=VARCHAR}, #{idUsuario,jdbcType=BIGINT}, 
+      #{nombreUsuario,jdbcType=VARCHAR}, #{procede,jdbcType=VARCHAR,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}, 
+      #{idUsuarioSupervisor,jdbcType=BIGINT}, #{nombreUsuarioSupervisor,jdbcType=VARCHAR}, 
+      #{uidTicketVenta,jdbcType=VARCHAR}, #{idTicketVenta,jdbcType=BIGINT}, #{codigoArticulo,jdbcType=VARCHAR}, 
+      #{descripcionArticulo,jdbcType=VARCHAR}, #{cantidadArticulo,jdbcType=DECIMAL}, 
+      #{precioOriginal,jdbcType=DECIMAL}, #{precioAplicado,jdbcType=DECIMAL}, #{lineaReferencia,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.auditoria.EventoAuditoriaBean">
+    insert into x_auditorias_tbl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uidInstancia != null">
+        UID_INSTANCIA,
+      </if>
+      <if test="uidActividad != null">
+        UID_ACTIVIDAD,
+      </if>
+      <if test="uidTicketAuditoria != null">
+        UID_TICKET_AUDITORIA,
+      </if>
+      <if test="idTicketAuditoria != null">
+        ID_TICKET_AUDITORIA,
+      </if>
+      <if test="codigoAlmacen != null">
+        CODALM,
+      </if>
+      <if test="fecha != null">
+        FECHA,
+      </if>
+      <if test="tipoEvento != null">
+        TIPO_EVENTO,
+      </if>
+      <if test="descripcionEvento != null">
+        DESCRIPCION_EVENTO,
+      </if>
+      <if test="idUsuario != null">
+        ID_USUARIO,
+      </if>
+      <if test="nombreUsuario != null">
+        DES_USUARIO,
+      </if>
+      <if test="procede != null">
+        PROCEDE,
+      </if>
+      <if test="idUsuarioSupervisor != null">
+        ID_USUARIO_SUPERVISOR,
+      </if>
+      <if test="nombreUsuarioSupervisor != null">
+        DES_USUARIO_SUPERVISOR,
+      </if>
+      <if test="uidTicketVenta != null">
+        UID_TICKET_VENTA,
+      </if>
+      <if test="idTicketVenta != null">
+        ID_TICKET_VENTA,
+      </if>
+      <if test="codigoArticulo != null">
+        CODART,
+      </if>
+      <if test="descripcionArticulo != null">
+        DESART,
+      </if>
+      <if test="cantidadArticulo != null">
+        CANART,
+      </if>
+      <if test="precioOriginal != null">
+        PRECIO_ORIGINAL,
+      </if>
+      <if test="precioAplicado != null">
+        PRECIO_APLICADO,
+      </if>
+      <if test="lineaReferencia != null">
+        LINEA_REFERENCIA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uidInstancia != null">
+        #{uidInstancia,jdbcType=VARCHAR},
+      </if>
+      <if test="uidActividad != null">
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="uidTicketAuditoria != null">
+        #{uidTicketAuditoria,jdbcType=VARCHAR},
+      </if>
+      <if test="idTicketAuditoria != null">
+        #{idTicketAuditoria,jdbcType=BIGINT},
+      </if>
+      <if test="codigoAlmacen != null">
+        #{codigoAlmacen,jdbcType=VARCHAR},
+      </if>
+      <if test="fecha != null">
+        #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tipoEvento != null">
+        #{tipoEvento,jdbcType=VARCHAR},
+      </if>
+      <if test="descripcionEvento != null">
+        #{descripcionEvento,jdbcType=VARCHAR},
+      </if>
+      <if test="idUsuario != null">
+        #{idUsuario,jdbcType=BIGINT},
+      </if>
+      <if test="nombreUsuario != null">
+        #{nombreUsuario,jdbcType=VARCHAR},
+      </if>
+      <if test="procede != null">
+        #{procede,jdbcType=VARCHAR,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler},
+      </if>
+      <if test="idUsuarioSupervisor != null">
+        #{idUsuarioSupervisor,jdbcType=BIGINT},
+      </if>
+      <if test="nombreUsuarioSupervisor != null">
+        #{nombreUsuarioSupervisor,jdbcType=VARCHAR},
+      </if>
+      <if test="uidTicketVenta != null">
+        #{uidTicketVenta,jdbcType=VARCHAR},
+      </if>
+      <if test="idTicketVenta != null">
+        #{idTicketVenta,jdbcType=BIGINT},
+      </if>
+      <if test="codigoArticulo != null">
+        #{codigoArticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="descripcionArticulo != null">
+        #{descripcionArticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="cantidadArticulo != null">
+        #{cantidadArticulo,jdbcType=DECIMAL},
+      </if>
+      <if test="precioOriginal != null">
+        #{precioOriginal,jdbcType=DECIMAL},
+      </if>
+      <if test="precioAplicado != null">
+        #{precioAplicado,jdbcType=DECIMAL},
+      </if>
+      <if test="lineaReferencia != null">
+        #{lineaReferencia,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.auditoria.EventoAuditoriaBeanExample" resultType="java.lang.Long">
+    select count(*) from x_auditorias_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update x_auditorias_tbl
+    <set>
+      <if test="row.uidInstancia != null">
+        UID_INSTANCIA = #{row.uidInstancia,jdbcType=VARCHAR},
+      </if>
+      <if test="row.uidActividad != null">
+        UID_ACTIVIDAD = #{row.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="row.uidTicketAuditoria != null">
+        UID_TICKET_AUDITORIA = #{row.uidTicketAuditoria,jdbcType=VARCHAR},
+      </if>
+      <if test="row.idTicketAuditoria != null">
+        ID_TICKET_AUDITORIA = #{row.idTicketAuditoria,jdbcType=BIGINT},
+      </if>
+      <if test="row.codigoAlmacen != null">
+        CODALM = #{row.codigoAlmacen,jdbcType=VARCHAR},
+      </if>
+      <if test="row.fecha != null">
+        FECHA = #{row.fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.tipoEvento != null">
+        TIPO_EVENTO = #{row.tipoEvento,jdbcType=VARCHAR},
+      </if>
+      <if test="row.descripcionEvento != null">
+        DESCRIPCION_EVENTO = #{row.descripcionEvento,jdbcType=VARCHAR},
+      </if>
+      <if test="row.idUsuario != null">
+        ID_USUARIO = #{row.idUsuario,jdbcType=BIGINT},
+      </if>
+      <if test="row.nombreUsuario != null">
+        DES_USUARIO = #{row.nombreUsuario,jdbcType=VARCHAR},
+      </if>
+      <if test="row.procede != null">
+        PROCEDE = #{row.procede,jdbcType=VARCHAR,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler},
+      </if>
+      <if test="row.idUsuarioSupervisor != null">
+        ID_USUARIO_SUPERVISOR = #{row.idUsuarioSupervisor,jdbcType=BIGINT},
+      </if>
+      <if test="row.nombreUsuarioSupervisor != null">
+        DES_USUARIO_SUPERVISOR = #{row.nombreUsuarioSupervisor,jdbcType=VARCHAR},
+      </if>
+      <if test="row.uidTicketVenta != null">
+        UID_TICKET_VENTA = #{row.uidTicketVenta,jdbcType=VARCHAR},
+      </if>
+      <if test="row.idTicketVenta != null">
+        ID_TICKET_VENTA = #{row.idTicketVenta,jdbcType=BIGINT},
+      </if>
+      <if test="row.codigoArticulo != null">
+        CODART = #{row.codigoArticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="row.descripcionArticulo != null">
+        DESART = #{row.descripcionArticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="row.cantidadArticulo != null">
+        CANART = #{row.cantidadArticulo,jdbcType=DECIMAL},
+      </if>
+      <if test="row.precioOriginal != null">
+        PRECIO_ORIGINAL = #{row.precioOriginal,jdbcType=DECIMAL},
+      </if>
+      <if test="row.precioAplicado != null">
+        PRECIO_APLICADO = #{row.precioAplicado,jdbcType=DECIMAL},
+      </if>
+      <if test="row.lineaReferencia != null">
+        LINEA_REFERENCIA = #{row.lineaReferencia,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update x_auditorias_tbl
+    set UID_INSTANCIA = #{row.uidInstancia,jdbcType=VARCHAR},
+      UID_ACTIVIDAD = #{row.uidActividad,jdbcType=VARCHAR},
+      UID_TICKET_AUDITORIA = #{row.uidTicketAuditoria,jdbcType=VARCHAR},
+      ID_TICKET_AUDITORIA = #{row.idTicketAuditoria,jdbcType=BIGINT},
+      CODALM = #{row.codigoAlmacen,jdbcType=VARCHAR},
+      FECHA = #{row.fecha,jdbcType=TIMESTAMP},
+      TIPO_EVENTO = #{row.tipoEvento,jdbcType=VARCHAR},
+      DESCRIPCION_EVENTO = #{row.descripcionEvento,jdbcType=VARCHAR},
+      ID_USUARIO = #{row.idUsuario,jdbcType=BIGINT},
+      DES_USUARIO = #{row.nombreUsuario,jdbcType=VARCHAR},
+      PROCEDE = #{row.procede,jdbcType=VARCHAR,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler},
+      ID_USUARIO_SUPERVISOR = #{row.idUsuarioSupervisor,jdbcType=BIGINT},
+      DES_USUARIO_SUPERVISOR = #{row.nombreUsuarioSupervisor,jdbcType=VARCHAR},
+      UID_TICKET_VENTA = #{row.uidTicketVenta,jdbcType=VARCHAR},
+      ID_TICKET_VENTA = #{row.idTicketVenta,jdbcType=BIGINT},
+      CODART = #{row.codigoArticulo,jdbcType=VARCHAR},
+      DESART = #{row.descripcionArticulo,jdbcType=VARCHAR},
+      CANART = #{row.cantidadArticulo,jdbcType=DECIMAL},
+      PRECIO_ORIGINAL = #{row.precioOriginal,jdbcType=DECIMAL},
+      PRECIO_APLICADO = #{row.precioAplicado,jdbcType=DECIMAL},
+      LINEA_REFERENCIA = #{row.lineaReferencia,jdbcType=INTEGER}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.auditoria.EventoAuditoriaBean">
+    update x_auditorias_tbl
+    <set>
+      <if test="idTicketAuditoria != null">
+        ID_TICKET_AUDITORIA = #{idTicketAuditoria,jdbcType=BIGINT},
+      </if>
+      <if test="codigoAlmacen != null">
+        CODALM = #{codigoAlmacen,jdbcType=VARCHAR},
+      </if>
+      <if test="fecha != null">
+        FECHA = #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tipoEvento != null">
+        TIPO_EVENTO = #{tipoEvento,jdbcType=VARCHAR},
+      </if>
+      <if test="descripcionEvento != null">
+        DESCRIPCION_EVENTO = #{descripcionEvento,jdbcType=VARCHAR},
+      </if>
+      <if test="idUsuario != null">
+        ID_USUARIO = #{idUsuario,jdbcType=BIGINT},
+      </if>
+      <if test="nombreUsuario != null">
+        DES_USUARIO = #{nombreUsuario,jdbcType=VARCHAR},
+      </if>
+      <if test="procede != null">
+        PROCEDE = #{procede,jdbcType=VARCHAR,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler},
+      </if>
+      <if test="idUsuarioSupervisor != null">
+        ID_USUARIO_SUPERVISOR = #{idUsuarioSupervisor,jdbcType=BIGINT},
+      </if>
+      <if test="nombreUsuarioSupervisor != null">
+        DES_USUARIO_SUPERVISOR = #{nombreUsuarioSupervisor,jdbcType=VARCHAR},
+      </if>
+      <if test="uidTicketVenta != null">
+        UID_TICKET_VENTA = #{uidTicketVenta,jdbcType=VARCHAR},
+      </if>
+      <if test="idTicketVenta != null">
+        ID_TICKET_VENTA = #{idTicketVenta,jdbcType=BIGINT},
+      </if>
+      <if test="codigoArticulo != null">
+        CODART = #{codigoArticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="descripcionArticulo != null">
+        DESART = #{descripcionArticulo,jdbcType=VARCHAR},
+      </if>
+      <if test="cantidadArticulo != null">
+        CANART = #{cantidadArticulo,jdbcType=DECIMAL},
+      </if>
+      <if test="precioOriginal != null">
+        PRECIO_ORIGINAL = #{precioOriginal,jdbcType=DECIMAL},
+      </if>
+      <if test="precioAplicado != null">
+        PRECIO_APLICADO = #{precioAplicado,jdbcType=DECIMAL},
+      </if>
+      <if test="lineaReferencia != null">
+        LINEA_REFERENCIA = #{lineaReferencia,jdbcType=INTEGER},
+      </if>
+    </set>
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_TICKET_AUDITORIA = #{uidTicketAuditoria,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.auditoria.EventoAuditoriaBean">
+    update x_auditorias_tbl
+    set ID_TICKET_AUDITORIA = #{idTicketAuditoria,jdbcType=BIGINT},
+      CODALM = #{codigoAlmacen,jdbcType=VARCHAR},
+      FECHA = #{fecha,jdbcType=TIMESTAMP},
+      TIPO_EVENTO = #{tipoEvento,jdbcType=VARCHAR},
+      DESCRIPCION_EVENTO = #{descripcionEvento,jdbcType=VARCHAR},
+      ID_USUARIO = #{idUsuario,jdbcType=BIGINT},
+      DES_USUARIO = #{nombreUsuario,jdbcType=VARCHAR},
+      PROCEDE = #{procede,jdbcType=VARCHAR,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler},
+      ID_USUARIO_SUPERVISOR = #{idUsuarioSupervisor,jdbcType=BIGINT},
+      DES_USUARIO_SUPERVISOR = #{nombreUsuarioSupervisor,jdbcType=VARCHAR},
+      UID_TICKET_VENTA = #{uidTicketVenta,jdbcType=VARCHAR},
+      ID_TICKET_VENTA = #{idTicketVenta,jdbcType=BIGINT},
+      CODART = #{codigoArticulo,jdbcType=VARCHAR},
+      DESART = #{descripcionArticulo,jdbcType=VARCHAR},
+      CANART = #{cantidadArticulo,jdbcType=DECIMAL},
+      PRECIO_ORIGINAL = #{precioOriginal,jdbcType=DECIMAL},
+      PRECIO_APLICADO = #{precioAplicado,jdbcType=DECIMAL},
+      LINEA_REFERENCIA = #{lineaReferencia,jdbcType=INTEGER}
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_TICKET_AUDITORIA = #{uidTicketAuditoria,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.comerzzia.bricodepot.backoffice.persistence.tickets.auditoria.EventoAuditoriaBeanExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_auditorias_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+   <select id="selectAlmacenByEvento" parameterType="map" resultMap="AlmacenBaseResultMap" >
+  	select 
+	CODALM, DESALM, DOMICILIO, POBLACION, PROVINCIA, CP, TELEFONO1, TELEFONO2, 
+    FAX, PERSONA_CONTACTO, CODEMP, DESEMP, CODCLI, DESCLI, ACTIVO, CODALM_PADRE, DESALM_PADRE, 
+    CODALM_LOGISTICO, DESALM_LOGISTICO, CODALM_TRANSITO, DESALM_TRANSITO
+	from d_almacenes
+ 	where UID_ACTIVIDAD=#{uidActividad} and CODALM=#{codAlm}
+  </select>
+  <select id="selectTicketVentaByEvento" parameterType="map" resultMap="TicketBaseResultMap" >
+  	select 
+	UID_ACTIVIDAD, UID_TICKET, CODALM, ID_TICKET, FECHA, PROCESADO, FECHA_PROCESO, MENSAJE_PROCESO, 
+    CODCAJA, ID_TIPO_DOCUMENTO, COD_TICKET, FIRMA, SERIE_TICKET, LOCATOR_ID
+	from d_tickets
+ 	where UID_ACTIVIDAD=#{uidActividad} and UID_TICKET=#{uidTicketVenta}
+  </select>
+  
+</mapper>

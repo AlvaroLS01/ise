@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>comerzzia-admin</display-name>
+
+	<session-config>
+		<session-timeout>480</session-timeout>
+	</session-config>
+
+	<!-- spring context initialization -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/comerzzia-*context.xml</param-value>
+	</context-param>
+	<listener>
+		<description>Spring Context Loader</description>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- listeners for background services -->
+
+	<listener>
+		<description>Documents processor</description>
+		<listener-class>com.comerzzia.web.core.procesamiento.ProcesadorDatosListener</listener-class>
+	</listener>
+	<listener>
+		<description>Stores synchronizer</description>
+		<listener-class>com.comerzzia.web.core.sincronizacion.SincronizadorTiendasListener</listener-class>
+	</listener>
+	<listener>
+        <description>Carga de las screen definitions y las acciones ajax</description>
+        <listener-class>com.comerzzia.bricodepot.backoffice.admin.AdminInitServletContextListener</listener-class>
+    </listener>
+</web-app>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bricodepot.backoffice.persistence.usuarios.x.UsuarioXMapper">
+  <resultMap id="BaseResultMap" type="com.comerzzia.bricodepot.backoffice.persistence.usuarios.x.UsuarioX">
+    <id column="UID_INSTANCIA" jdbcType="VARCHAR" property="uidInstancia" />
+    <id column="ID_USUARIO" jdbcType="BIGINT" property="idUsuario" />
+    <result column="ULTIMO_CAMBIO" jdbcType="TIMESTAMP" property="ultimoCambio" />
+    <result column="INTENTOS_LOGIN_FALLIDOS" jdbcType="BIGINT" property="intentosLoginFallidos" />
+    <result column="CAMBIOS_CLAVE" jdbcType="BIGINT" property="cambiosClave" />
+    <result column="BLOQUEADO" jdbcType="CHAR" property="bloqueado" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    UID_INSTANCIA, ID_USUARIO, ULTIMO_CAMBIO, INTENTOS_LOGIN_FALLIDOS, CAMBIOS_CLAVE, 
+    BLOQUEADO
+  </sql>
+  <select id="selectByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.usuarios.x.UsuarioXExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_usuarios_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.comerzzia.bricodepot.backoffice.persistence.usuarios.x.UsuarioXKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from x_usuarios_tbl
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and ID_USUARIO = #{idUsuario,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bricodepot.backoffice.persistence.usuarios.x.UsuarioXKey">
+    delete from x_usuarios_tbl
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and ID_USUARIO = #{idUsuario,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.usuarios.x.UsuarioXExample">
+    delete from x_usuarios_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bricodepot.backoffice.persistence.usuarios.x.UsuarioX">
+    insert into x_usuarios_tbl (UID_INSTANCIA, ID_USUARIO, ULTIMO_CAMBIO, 
+      INTENTOS_LOGIN_FALLIDOS, CAMBIOS_CLAVE, BLOQUEADO
+      )
+    values (#{uidInstancia,jdbcType=VARCHAR}, #{idUsuario,jdbcType=BIGINT}, #{ultimoCambio,jdbcType=TIMESTAMP}, 
+      #{intentosLoginFallidos,jdbcType=BIGINT}, #{cambiosClave,jdbcType=BIGINT}, #{bloqueado,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bricodepot.backoffice.persistence.usuarios.x.UsuarioX">
+    insert into x_usuarios_tbl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uidInstancia != null">
+        UID_INSTANCIA,
+      </if>
+      <if test="idUsuario != null">
+        ID_USUARIO,
+      </if>
+      <if test="ultimoCambio != null">
+        ULTIMO_CAMBIO,
+      </if>
+      <if test="intentosLoginFallidos != null">
+        INTENTOS_LOGIN_FALLIDOS,
+      </if>
+      <if test="cambiosClave != null">
+        CAMBIOS_CLAVE,
+      </if>
+      <if test="bloqueado != null">
+        BLOQUEADO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uidInstancia != null">
+        #{uidInstancia,jdbcType=VARCHAR},
+      </if>
+      <if test="idUsuario != null">
+        #{idUsuario,jdbcType=BIGINT},
+      </if>
+      <if test="ultimoCambio != null">
+        #{ultimoCambio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="intentosLoginFallidos != null">
+        #{intentosLoginFallidos,jdbcType=BIGINT},
+      </if>
+      <if test="cambiosClave != null">
+        #{cambiosClave,jdbcType=BIGINT},
+      </if>
+      <if test="bloqueado != null">
+        #{bloqueado,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.usuarios.x.UsuarioXExample" resultType="java.lang.Long">
+    select count(*) from x_usuarios_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update x_usuarios_tbl
+    <set>
+      <if test="row.uidInstancia != null">
+        UID_INSTANCIA = #{row.uidInstancia,jdbcType=VARCHAR},
+      </if>
+      <if test="row.idUsuario != null">
+        ID_USUARIO = #{row.idUsuario,jdbcType=BIGINT},
+      </if>
+      <if test="row.ultimoCambio != null">
+        ULTIMO_CAMBIO = #{row.ultimoCambio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.intentosLoginFallidos != null">
+        INTENTOS_LOGIN_FALLIDOS = #{row.intentosLoginFallidos,jdbcType=BIGINT},
+      </if>
+      <if test="row.cambiosClave != null">
+        CAMBIOS_CLAVE = #{row.cambiosClave,jdbcType=BIGINT},
+      </if>
+      <if test="row.bloqueado != null">
+        BLOQUEADO = #{row.bloqueado,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update x_usuarios_tbl
+    set UID_INSTANCIA = #{row.uidInstancia,jdbcType=VARCHAR},
+      ID_USUARIO = #{row.idUsuario,jdbcType=BIGINT},
+      ULTIMO_CAMBIO = #{row.ultimoCambio,jdbcType=TIMESTAMP},
+      INTENTOS_LOGIN_FALLIDOS = #{row.intentosLoginFallidos,jdbcType=BIGINT},
+      CAMBIOS_CLAVE = #{row.cambiosClave,jdbcType=BIGINT},
+      BLOQUEADO = #{row.bloqueado,jdbcType=CHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bricodepot.backoffice.persistence.usuarios.x.UsuarioX">
+    update x_usuarios_tbl
+    <set>
+      <if test="ultimoCambio != null">
+        ULTIMO_CAMBIO = #{ultimoCambio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="intentosLoginFallidos != null">
+        INTENTOS_LOGIN_FALLIDOS = #{intentosLoginFallidos,jdbcType=BIGINT},
+      </if>
+      <if test="cambiosClave != null">
+        CAMBIOS_CLAVE = #{cambiosClave,jdbcType=BIGINT},
+      </if>
+      <if test="bloqueado != null">
+        BLOQUEADO = #{bloqueado,jdbcType=CHAR},
+      </if>
+    </set>
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and ID_USUARIO = #{idUsuario,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bricodepot.backoffice.persistence.usuarios.x.UsuarioX">
+    update x_usuarios_tbl
+    set ULTIMO_CAMBIO = #{ultimoCambio,jdbcType=TIMESTAMP},
+      INTENTOS_LOGIN_FALLIDOS = #{intentosLoginFallidos,jdbcType=BIGINT},
+      CAMBIOS_CLAVE = #{cambiosClave,jdbcType=BIGINT},
+      BLOQUEADO = #{bloqueado,jdbcType=CHAR}
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and ID_USUARIO = #{idUsuario,jdbcType=BIGINT}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.comerzzia.bricodepot.backoffice.persistence.usuarios.x.UsuarioXExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_usuarios_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

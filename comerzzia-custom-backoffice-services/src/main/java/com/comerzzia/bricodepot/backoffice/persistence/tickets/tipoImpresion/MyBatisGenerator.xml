@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    ComerZZia 3.0
+
+    Copyright (c) 2008-2015 Comerzzia, S.L.  All Rights Reserved.
+
+    THIS WORK IS  SUBJECT  TO  SPAIN  AND  INTERNATIONAL  COPYRIGHT  LAWS  AND
+    TREATIES.   NO  PART  OF  THIS  WORK MAY BE  USED,  PRACTICED,  PERFORMED
+    COPIED, DISTRIBUTED, REVISED, MODIFIED, TRANSLATED,  ABRIDGED, CONDENSED,
+    EXPANDED,  COLLECTED,  COMPILED,  LINKED,  RECAST, TRANSFORMED OR ADAPTED
+    WITHOUT THE PRIOR WRITTEN CONSENT OF COMERZZIA, S.L. ANY USE OR EXPLOITATION
+    OF THIS WORK WITHOUT AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO
+    CRIMINAL AND CIVIL LIABILITY.
+
+    CONSULT THE END USER LICENSE AGREEMENT FOR INFORMATION ON ADDITIONAL
+    RESTRICTIONS.
+
+-->
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+  
+<generatorConfiguration>
+	<classPathEntry location="C:\java\servers\wildfly-11.0.0.Final\modules\system\layers\base\com\mysql\main\mysql-connector-java-5.1.45-bin.jar" />
+	<context id="Comerzzia" targetRuntime="MyBatis3">
+	
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+<!-- 		<plugin type="org.mybatis.generator.plugins.ScrollInsensitivePlugin"/> -->
+<!-- 		<plugin type="org.mybatis.generator.plugins.ViewPlugin"/> -->
+	
+		<commentGenerator>
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>	
+	    
+	    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+	        connectionURL="jdbc:mysql://172.16.102.35:33062/czz_bricodepot"
+	        userId="czz_bricodepot"
+	        password="czz_bricodepot">
+	    </jdbcConnection>
+	    
+	    
+	    <javaModelGenerator targetPackage="com.comerzzia.bricodepot.backoffice.persistence.tickets.tipoImpresion" targetProject="comerzzia-custom-backoffice-services/src/main/java">
+	      <property name="enableSubPackages" value="false" />
+	      <property name="trimStrings" value="true" />
+	    </javaModelGenerator>
+	    
+	    <sqlMapGenerator targetPackage="com.comerzzia.bricodepot.backoffice.persistence.tickets.tipoImpresion"  targetProject="comerzzia-custom-backoffice-services/src/main/java">
+	      <property name="enableSubPackages" value="false" />
+	    </sqlMapGenerator>
+	
+	    <javaClientGenerator type="XMLMAPPER" targetPackage="com.comerzzia.bricodepot.backoffice.persistence.tickets.tipoImpresion"  targetProject="comerzzia-custom-backoffice-services/src/main/java">
+	      <property name="enableSubPackages" value="false" />
+	    </javaClientGenerator>
+	
+	    <table tableName="x_tickets_tipo_impresion_tbl" domainObjectName="TicketTipoImpresion">
+	    </table>
+	</context>
+</generatorConfiguration>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lstSituacionVentas_Comprobante_MedioPago" pageWidth="555" pageHeight="802" columnWidth="515" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" uuid="8c4fb9a2-a994-4b75-9484-c9e441e49374">
+	<property name="ireport.zoom" value="1.7715610000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="FECHA" class="java.util.Date"/>
+	<parameter name="CODALM" class="java.lang.String"/>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT  SUM(CARGO - ABONO) AS MOVIMIENTO, DET.CODMEDPAG, DESMEDPAG FROM D_CAJA_CAB_TBL CAB
+INNER JOIN D_CAJA_DET_TBL DET
+ON (CAB.UID_ACTIVIDAD = DET.UID_ACTIVIDAD AND CAB.UID_DIARIO_CAJA = DET.UID_DIARIO_CAJA)
+INNER JOIN D_MEDIOS_PAGO_TBL MP ON (DET.UID_ACTIVIDAD = MP.UID_ACTIVIDAD AND DET.CODMEDPAG = MP.CODMEDPAG)
+WHERE CAB.UID_ACTIVIDAD = $P{UID_ACTIVIDAD} AND CAST(FECHA AS DATE) = $P{FECHA} AND CAB.CODALM = $P{CODALM} AND DOCUMENTO IS NOT NULL
+GROUP BY DET.CODMEDPAG, DESMEDPAG]]>
+	</queryString>
+	<field name="MOVIMIENTO" class="java.math.BigDecimal"/>
+	<field name="CODMEDPAG" class="java.lang.String"/>
+	<field name="DESMEDPAG" class="java.lang.String"/>
+	<group name="CODMEDPAG">
+		<groupExpression><![CDATA[$F{CODMEDPAG}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="17">
+			<staticText>
+				<reportElement uuid="0c1cc53b-9cca-4fa5-b9e5-1ea142ce4ce1" x="140" y="4" width="100" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Total movimientos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0b1c86a4-d749-48bc-b1a9-831945d1cd39" x="20" y="4" width="100" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Medio de pago]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="87f9920e-29e5-442e-be37-611003916b3d" positionType="FixRelativeToBottom" x="0" y="16" width="270" height="1"/>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="78d41656-acea-4e60-8664-3c70c5bd2f27" x="160" y="1" width="100" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MOVIMIENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7ef748a8-1160-4040-95a0-a7957c78f820" x="32" y="1" width="100" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESMEDPAG}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

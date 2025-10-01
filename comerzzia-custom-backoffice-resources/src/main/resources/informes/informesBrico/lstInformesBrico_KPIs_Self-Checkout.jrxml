@@ -1,0 +1,2696 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lstInformesBrico_KPIs_Self-Checkout" pageWidth="1500" pageHeight="1190" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="1460" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="95f7e48b-baf3-4e10-bea6-82d947ca73b1">
+	<property name="ireport.zoom" value="0.6830134553650717"/>
+	<property name="ireport.x" value="10"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="FECHA_DESDE" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FECHA_HASTA" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COD_TIENDA_DESDE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COD_TIENDA_HASTA" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CAJA_DESDE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CAJA_HASTA" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LOGO" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CODEMP" class="java.lang.String"/>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+	VEN.UID_ACTIVIDAD ,
+	CAST(VEN.FECHA AS DATE) AS FECHA ,
+	VEN.CODALM ,
+	ALM.DESALM ,
+	VEN.CODCAJA ,
+	CAST(VEN.CODCAJA AS UNSIGNED) AS NUM_CAJA ,
+	VEN.CODEMP ,
+	EMP.DESEMP ,
+	SUM(VEN.NUM_TICKETS) AS NUM_TICKETS,
+	SUM(VEN.UNIDADES_ARTICULOS) AS UNIDADES_ARTICULOS,
+	SUM(VEN.IMPORTE_TOTAL) AS IMPORTE_TOTAL,
+	SUM(VEN.CESTA_MEDIA_CANTIDAD) AS CESTA_MEDIA_CANTIDAD,
+	SUM(VEN.CESTA_MEDIA_IMPORTE) AS CESTA_MEDIA_IMPORTE,
+	SUM(VEN.N_VENTAS_AUTONOMAS) AS N_VENTAS_AUTONOMAS,
+	SUM(VEN.N_VENTAS_FIDELIZADO) AS N_VENTAS_FIDELIZADO,
+	SUM(VEN.N_VENTAS_TARJETA) AS N_VENTAS_TARJETA,
+	SUM(VEN.N_VENTAS_TARJ_REGALO) AS N_VENTAS_TARJ_REGALO,
+	SUM(VEN.N_VENTAS_TARJ_MANUAL) AS N_VENTAS_TARJ_MANUAL,
+	SUM(VEN.N_VENTAS_EFECTIVO) AS N_VENTAS_EFECTIVO,
+	SUM(VEN.N_VENTAS_TRANSFERENCIA) AS N_VENTAS_TRANSFERENCIA,
+	SUM(VEN.N_VENTAS_VALE) AS N_VENTAS_VALE,
+	SUM(VEN.N_VENTAS_CLIENTE_CUENTA) AS N_VENTAS_CLIENTE_CUENTA,
+	SUM(VEN.N_VENTAS_ECOMMERCE) AS N_VENTAS_ECOMMERCE,
+	SUM(VEN.N_VENTAS_FINANCIACION_ES) AS N_VENTAS_FINANCIACION_ES,
+	SUM(VEN.N_VENTAS_FINANCIACION_PT) AS N_VENTAS_FINANCIACION_PT,
+    CAST((SELECT SUM(NUM_TICKETS) FROM X_VENTAS_ACUM_SCO_TBL WHERE CODALM = VEN.CODALM AND FECHA = VEN.FECHA) AS SIGNED) AS TOTAL_NUM_TICKETS,
+    CAST((SELECT SUM(N_VENTAS_TARJETA + N_VENTAS_TARJ_REGALO + N_VENTAS_TARJ_MANUAL + N_VENTAS_EFECTIVO + N_VENTAS_TRANSFERENCIA + N_VENTAS_VALE + N_VENTAS_CLIENTE_CUENTA + N_VENTAS_ECOMMERCE + N_VENTAS_FINANCIACION_ES + N_VENTAS_FINANCIACION_PT) FROM X_VENTAS_ACUM_SCO_TBL WHERE CODALM = VEN.CODALM AND FECHA = VEN.FECHA AND CODCAJA = VEN.CODCAJA) AS SIGNED) AS TOTAL_N_VENTAS_MEDIOS_PAGO
+
+FROM
+	X_VENTAS_ACUM_SCO_TBL VEN INNER JOIN
+	D_ALMACENES_TBL ALM ON (ALM.UID_ACTIVIDAD = VEN.UID_ACTIVIDAD AND
+							ALM.CODALM = VEN.CODALM) INNER JOIN
+	D_EMPRESAS_TBL EMP ON (EMP.UID_ACTIVIDAD = VEN.UID_ACTIVIDAD AND
+						   EMP.CODEMP = VEN.CODEMP)
+WHERE
+	CAST(VEN.FECHA AS DATE) BETWEEN CAST($P{FECHA_DESDE} AS DATE) AND CAST($P{FECHA_HASTA} AS DATE)
+	AND (VEN.CODALM >= $P{COD_TIENDA_DESDE} OR $P{COD_TIENDA_DESDE} is null)
+ 	AND (VEN.CODALM <= $P{COD_TIENDA_HASTA} OR $P{COD_TIENDA_HASTA} is null)
+	AND (VEN.UID_ACTIVIDAD = $P{UID_ACTIVIDAD} OR $P{UID_ACTIVIDAD} IS NULL)
+	AND (VEN.CODCAJA >= $P{CAJA_DESDE} OR $P{CAJA_DESDE} is null)
+	AND (VEN.CODCAJA <= $P{CAJA_HASTA} OR $P{CAJA_HASTA} is null)
+GROUP BY VEN.CODEMP, VEN.CODALM, VEN.CODCAJA, CAST(VEN.FECHA AS DATE)
+ORDER BY VEN.CODEMP, VEN.CODALM, VEN.FECHA, VEN.CODCAJA]]>
+	</queryString>
+	<field name="UID_ACTIVIDAD" class="java.lang.String"/>
+	<field name="FECHA" class="java.sql.Date"/>
+	<field name="CODALM" class="java.lang.String"/>
+	<field name="DESALM" class="java.lang.String"/>
+	<field name="CODCAJA" class="java.lang.String"/>
+	<field name="NUM_CAJA" class="java.math.BigInteger"/>
+	<field name="CODEMP" class="java.lang.String"/>
+	<field name="DESEMP" class="java.lang.String"/>
+	<field name="NUM_TICKETS" class="java.lang.Integer"/>
+	<field name="UNIDADES_ARTICULOS" class="java.math.BigDecimal"/>
+	<field name="IMPORTE_TOTAL" class="java.math.BigDecimal"/>
+	<field name="CESTA_MEDIA_CANTIDAD" class="java.math.BigDecimal"/>
+	<field name="CESTA_MEDIA_IMPORTE" class="java.math.BigDecimal"/>
+	<field name="N_VENTAS_AUTONOMAS" class="java.math.BigDecimal"/>
+	<field name="N_VENTAS_FIDELIZADO" class="java.math.BigDecimal"/>
+	<field name="N_VENTAS_TARJETA" class="java.math.BigDecimal"/>
+	<field name="N_VENTAS_TARJ_REGALO" class="java.math.BigDecimal"/>
+	<field name="N_VENTAS_TARJ_MANUAL" class="java.math.BigDecimal"/>
+	<field name="N_VENTAS_EFECTIVO" class="java.math.BigDecimal"/>
+	<field name="N_VENTAS_TRANSFERENCIA" class="java.math.BigDecimal"/>
+	<field name="N_VENTAS_VALE" class="java.math.BigDecimal"/>
+	<field name="N_VENTAS_CLIENTE_CUENTA" class="java.math.BigDecimal"/>
+	<field name="N_VENTAS_ECOMMERCE" class="java.math.BigDecimal"/>
+	<field name="N_VENTAS_FINANCIACION_ES" class="java.math.BigDecimal"/>
+	<field name="N_VENTAS_FINANCIACION_PT" class="java.math.BigDecimal"/>
+	<field name="TOTAL_NUM_TICKETS" class="java.lang.Long"/>
+	<field name="TOTAL_N_VENTAS_MEDIOS_PAGO" class="java.lang.Long"/>
+	<variable name="TASA_USO" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{TOTAL_NUM_TICKETS} != 0 ?
+($F{NUM_TICKETS}.doubleValue() *100)/$F{TOTAL_NUM_TICKETS}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="VENTAS_AUTONOMAS" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{NUM_TICKETS} != 0 ?
+($F{N_VENTAS_AUTONOMAS}.doubleValue() *100)/$F{NUM_TICKETS}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="BRICOCLUB" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{NUM_TICKETS} != 0 ?
+($F{N_VENTAS_FIDELIZADO}.doubleValue() *100)/$F{NUM_TICKETS}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TARJETA" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{TOTAL_N_VENTAS_MEDIOS_PAGO} != 0 ?
+($F{N_VENTAS_TARJETA}.doubleValue() *100)/$F{TOTAL_N_VENTAS_MEDIOS_PAGO}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="GIFTCARD" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{TOTAL_N_VENTAS_MEDIOS_PAGO} != 0 ?
+($F{N_VENTAS_TARJ_REGALO}.doubleValue() *100)/$F{TOTAL_N_VENTAS_MEDIOS_PAGO}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TARJMANUAL" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{TOTAL_N_VENTAS_MEDIOS_PAGO} != 0 ?
+($F{N_VENTAS_TARJ_MANUAL}.doubleValue() *100)/$F{TOTAL_N_VENTAS_MEDIOS_PAGO}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="EFECTIVO" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{TOTAL_N_VENTAS_MEDIOS_PAGO} != 0 ?
+($F{N_VENTAS_EFECTIVO}.doubleValue() *100)/$F{TOTAL_N_VENTAS_MEDIOS_PAGO}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TRANSFERENCIA" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{TOTAL_N_VENTAS_MEDIOS_PAGO} != 0 ?
+($F{N_VENTAS_TRANSFERENCIA}.doubleValue() *100)/$F{TOTAL_N_VENTAS_MEDIOS_PAGO}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="VALE" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{TOTAL_N_VENTAS_MEDIOS_PAGO} != 0 ?
+($F{N_VENTAS_VALE}.doubleValue() *100)/$F{TOTAL_N_VENTAS_MEDIOS_PAGO}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="ACUENTA" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{TOTAL_N_VENTAS_MEDIOS_PAGO} != 0 ?
+($F{N_VENTAS_CLIENTE_CUENTA}.doubleValue() *100)/$F{TOTAL_N_VENTAS_MEDIOS_PAGO}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="ECOMMERCE" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{TOTAL_N_VENTAS_MEDIOS_PAGO} != 0 ?
+($F{N_VENTAS_ECOMMERCE}.doubleValue() *100)/$F{TOTAL_N_VENTAS_MEDIOS_PAGO}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="COFIDIS" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{TOTAL_N_VENTAS_MEDIOS_PAGO} != 0 ?
+($F{N_VENTAS_FINANCIACION_ES}.doubleValue() *100)/$F{TOTAL_N_VENTAS_MEDIOS_PAGO}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="FINCONSUM" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{TOTAL_N_VENTAS_MEDIOS_PAGO} != 0 ?
+($F{N_VENTAS_FINANCIACION_PT}.doubleValue() *100)/$F{TOTAL_N_VENTAS_MEDIOS_PAGO}.doubleValue() :
+0)]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{NUM_TICKETS}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_BRICOCLUB" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_FIDELIZADO}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_TARJETA" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_TARJETA}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_GIFTCARD" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_TARJ_REGALO}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_TARJMANUAL" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_TARJ_MANUAL}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_EFECTIVO" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_EFECTIVO}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_TRANSFER" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_TRANSFERENCIA}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_VALE" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_VALE}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_ACUENTA" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_CLIENTE_CUENTA}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_ECOMMERCE" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_ECOMMERCE}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_COFIDIS" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_FINANCIACION_ES}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_FINCONSUM" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_FINANCIACION_PT}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMP" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{NUM_TICKETS}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_BRICOCLUB" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_FIDELIZADO}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_TARJETA" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_TARJETA}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_GIFTCARD" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_TARJ_REGALO}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_TARJMANUAL" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_TARJ_MANUAL}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_EFECTIVO" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_EFECTIVO}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_TRANSFER" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_TRANSFERENCIA}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_VALE" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_VALE}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_ACUENTA" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_CLIENTE_CUENTA}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_ECOMMERCE" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_ECOMMERCE}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_COFIDIS" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_FINANCIACION_ES}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_FINCONSUM" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_FINANCIACION_PT}]]></variableExpression>
+	</variable>
+	<variable name="NUM_TICKETS_POR_TIENDAYCAJA" class="java.lang.Double" resetType="Group" resetGroup="CODCAJA">
+		<variableExpression><![CDATA[$F{NUM_TICKETS}]]></variableExpression>
+	</variable>
+	<variable name="NUM_TICKETS_POR_TIENDA" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{NUM_TICKETS}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_VENTAS" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE_TOTAL}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_ARTICULOS" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{UNIDADES_ARTICULOS}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_CESTA_MEDIA_CANTIDAD" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{CESTA_MEDIA_CANTIDAD}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_CESTA_MEDIA_IMPORTE" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{CESTA_MEDIA_IMPORTE}]]></variableExpression>
+	</variable>
+	<variable name="CESTA_MEDIA_CANTIDAD" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{SUM_TIENDA_ARTICULOS} / $V{SUM_EMP}]]></variableExpression>
+	</variable>
+	<variable name="CESTA_MEDIA_IMPORTE" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{SUM_TIENDA_VENTAS} / $V{SUM_EMP}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_TOTAL_PAGOS" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM">
+		<variableExpression><![CDATA[$V{SUM_TIENDA_TARJETA} + $V{SUM_TIENDA_GIFTCARD} + $V{SUM_TIENDA_TARJMANUAL} +
+$V{SUM_TIENDA_EFECTIVO} + $V{SUM_TIENDA_TRANSFER} + $V{SUM_TIENDA_VALE} +
+$V{SUM_TIENDA_ACUENTA} + $V{SUM_TIENDA_ECOMMERCE} + $V{SUM_TIENDA_COFIDIS} +
+$V{SUM_TIENDA_FINCONSUM}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_TOTAL_PAGOS" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP">
+		<variableExpression><![CDATA[$V{SUM_EMPRESA_TARJETA} + $V{SUM_EMPRESA_GIFTCARD} + $V{SUM_EMPRESA_TARJMANUAL} +
+$V{SUM_EMPRESA_EFECTIVO} + $V{SUM_EMPRESA_TRANSFER} + $V{SUM_EMPRESA_VALE} +
+$V{SUM_EMPRESA_ACUENTA} + $V{SUM_EMPRESA_ECOMMERCE} + $V{SUM_EMPRESA_COFIDIS} +
+$V{SUM_EMPRESA_FINCONSUM}]]></variableExpression>
+	</variable>
+	<variable name="SUM_TIENDA_VENTAS_AUTONOMAS" class="java.lang.Double" resetType="Group" resetGroup="GR_CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_AUTONOMAS}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_VENTAS_AUTONOMAS" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{N_VENTAS_AUTONOMAS}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_ARTICULOS" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{UNIDADES_ARTICULOS}]]></variableExpression>
+	</variable>
+	<variable name="SUM_EMPRESA_VENTAS" class="java.lang.Double" resetType="Group" resetGroup="GR_CODEMP" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE_TOTAL}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_TIENDA_EFECTIVO" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_TIENDA_TOTAL_PAGOS} != 0 ?
+($V{SUM_TIENDA_EFECTIVO}*100)/ $V{SUM_TIENDA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_TIENDA_BRICOCLUB" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_TIENDA} != 0 ?
+($V{SUM_TIENDA_BRICOCLUB}*100)/ $V{SUM_TIENDA} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_TIENDA_TARJETA" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_TIENDA_TOTAL_PAGOS} != 0 ?
+($V{SUM_TIENDA_TARJETA}*100)/ $V{SUM_TIENDA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_TIENDA_GIFTCARD" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_TIENDA_TOTAL_PAGOS} != 0 ?
+($V{SUM_TIENDA_GIFTCARD}*100)/ $V{SUM_TIENDA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_TIENDA_TARJMANUAL" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_TIENDA_TOTAL_PAGOS} != 0 ?
+($V{SUM_TIENDA_TARJMANUAL}*100)/ $V{SUM_TIENDA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_TIENDA_TRANSFER" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_TIENDA_TOTAL_PAGOS} != 0 ?
+($V{SUM_TIENDA_TRANSFER}*100)/ $V{SUM_TIENDA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_TIENDA_VALE" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_TIENDA_TOTAL_PAGOS} != 0 ?
+($V{SUM_TIENDA_VALE}*100)/ $V{SUM_TIENDA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_TIENDA_ACUENTA" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_TIENDA_TOTAL_PAGOS} != 0 ?
+($V{SUM_TIENDA_ACUENTA}*100)/ $V{SUM_TIENDA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_TIENDA_ECOMMERCE" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_TIENDA_TOTAL_PAGOS} != 0 ?
+($V{SUM_TIENDA_ECOMMERCE}*100)/ $V{SUM_TIENDA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_TIENDA_COFIDIS" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_TIENDA_TOTAL_PAGOS} != 0 ?
+($V{SUM_TIENDA_COFIDIS}*100)/ $V{SUM_TIENDA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_TIENDA_FINCONSUM" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_TIENDA_TOTAL_PAGOS} != 0 ?
+($V{SUM_TIENDA_FINCONSUM}*100)/ $V{SUM_TIENDA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_TIENDA_VENTAS_AUTONOMAS" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_TIENDA} != 0 ?
+($V{SUM_TIENDA_VENTAS_AUTONOMAS}*100)/ $V{SUM_TIENDA} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_EMPRESA_BRICOCLUB" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_EMP} != 0 ?
+($V{SUM_EMPRESA_BRICOCLUB}*100)/ $V{SUM_EMP} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_EMPRESA_TARJETA" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_EMPRESA_TOTAL_PAGOS} != 0 ?
+($V{SUM_EMPRESA_TARJETA}*100)/ $V{SUM_EMPRESA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_EMPRESA_GIFTCARD" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_EMPRESA_TOTAL_PAGOS} != 0 ?
+($V{SUM_EMPRESA_GIFTCARD}*100)/ $V{SUM_EMPRESA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_EMPRESA_TARJMANUAL" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_EMPRESA_TOTAL_PAGOS} != 0 ?
+($V{SUM_EMPRESA_TARJMANUAL}*100)/ $V{SUM_EMPRESA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_EMPRESA_EFECTIVO" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_EMPRESA_TOTAL_PAGOS} != 0 ?
+($V{SUM_EMPRESA_EFECTIVO}*100)/ $V{SUM_EMPRESA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_EMPRESA_TRANSFER" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_EMPRESA_TOTAL_PAGOS} != 0 ?
+($V{SUM_EMPRESA_TRANSFER}*100)/ $V{SUM_EMPRESA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_EMPRESA_VALE" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_EMPRESA_TOTAL_PAGOS} != 0 ?
+($V{SUM_EMPRESA_VALE}*100)/ $V{SUM_EMPRESA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_EMPRESA_ACUENTA" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_EMPRESA_TOTAL_PAGOS} != 0 ?
+($V{SUM_EMPRESA_ACUENTA}*100)/ $V{SUM_EMPRESA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_EMPRESA_ECOMMERCE" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_EMPRESA_TOTAL_PAGOS} != 0 ?
+($V{SUM_EMPRESA_ECOMMERCE}*100)/ $V{SUM_EMPRESA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_EMPRESA_COFIDIS" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_EMPRESA_TOTAL_PAGOS} != 0 ?
+($V{SUM_EMPRESA_COFIDIS}*100)/ $V{SUM_EMPRESA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_EMPRESA_FINCONSUM" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_EMPRESA_TOTAL_PAGOS} != 0 ?
+($V{SUM_EMPRESA_FINCONSUM}*100)/ $V{SUM_EMPRESA_TOTAL_PAGOS} :
+0)]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_EMPRESA_VENTAS_AUTONOMAS" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{SUM_EMP} != 0 ?
+($V{SUM_EMPRESA_VENTAS_AUTONOMAS}*100)/ $V{SUM_EMP} :
+0)]]></variableExpression>
+	</variable>
+	<group name="GR_CODEMP" footerPosition="CollateAtBottom">
+		<groupExpression><![CDATA[$F{CODEMP}]]></groupExpression>
+		<groupHeader>
+			<band height="36">
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement uuid="05d76290-34b0-4652-b643-04fedd29d8a2" mode="Transparent" x="0" y="0" width="1381" height="36" forecolor="#000000" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="Tahoma" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CODEMP} +" - "+ $F{DESEMP}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="131">
+				<staticText>
+					<reportElement uuid="ba5c4dc6-dec6-46a2-b957-f3c2e2127a9a" mode="Opaque" x="0" y="0" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="64" y="0" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tienda]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="128" y="0" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Caja]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="192" y="0" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tickets]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="256" y="0" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Articulos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="320" y="0" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cesta media (cantidad)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="384" y="0" width="81" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cesta media (€)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="525" y="0" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tasa uso (%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="589" y="0" width="69" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ventas autónomas (%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="658" y="0" width="69" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Brico Club (Loyalty) (%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="727" y="0" width="69" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tarjeta, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="796" y="0" width="69" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Giftcard, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="865" y="0" width="72" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tarjeta manual, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="937" y="0" width="72" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Efectivo, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1009" y="0" width="72" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Transferencia, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1081" y="0" width="72" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Vale, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1153" y="0" width="76" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cliente a cuenta, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1229" y="0" width="76" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ecommerce, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1305" y="0" width="76" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[ES Financiacion, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1381" y="0" width="79" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PT Financiacion, tasa de uso(%)]]></text>
+				</staticText>
+				<textField pattern="" isBlankWhenNull="true">
+					<reportElement uuid="202c97b6-4bea-4522-8a36-46e6a98cfc6d" x="64" y="90" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{COD_TIENDA_HASTA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="true">
+					<reportElement uuid="202c97b6-4bea-4522-8a36-46e6a98cfc6d" x="64" y="50" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{COD_TIENDA_DESDE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="46c0ce03-95ef-4754-823a-941b25493f47" x="0" y="70" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+					<text><![CDATA[Hasta]]></text>
+				</staticText>
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="2ab6a806-6339-47f8-91bd-e0cce75c0599" x="0" y="50" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{FECHA_DESDE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="392ea33d-31a3-423f-921a-07ccdcc4a58e" x="0" y="30" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+					<text><![CDATA[Desde]]></text>
+				</staticText>
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="202c97b6-4bea-4522-8a36-46e6a98cfc6d" x="0" y="90" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{FECHA_HASTA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="392ea33d-31a3-423f-921a-07ccdcc4a58e" x="64" y="30" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+					<text><![CDATA[Desde]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="46c0ce03-95ef-4754-823a-941b25493f47" x="64" y="70" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+					<text><![CDATA[Hasta]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="6b2583e3-213e-471f-9a4e-f44098e3dabf" x="192" y="30" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SUM_EMP}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="658" y="30" width="69" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_EMPRESA_BRICOCLUB}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="384" y="30" width="81" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SUM_EMPRESA_VENTAS} / $V{SUM_EMP}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="320" y="30" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SUM_EMPRESA_ARTICULOS} / $V{SUM_EMP}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="525" y="30" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="589" y="30" width="69" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_EMPRESA_VENTAS_AUTONOMAS}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="128" y="30" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="256" y="30" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SUM_EMPRESA_ARTICULOS}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="1381" y="30" width="79" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_EMPRESA_FINCONSUM}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="937" y="30" width="72" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_EMPRESA_EFECTIVO}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="1081" y="30" width="72" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_EMPRESA_VALE}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="796" y="30" width="69" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_EMPRESA_GIFTCARD}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="1009" y="30" width="72" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_EMPRESA_TRANSFER}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="1153" y="30" width="76" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_EMPRESA_ACUENTA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="1229" y="30" width="76" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_EMPRESA_ECOMMERCE}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="865" y="30" width="72" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_EMPRESA_TARJMANUAL}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="1305" y="30" width="76" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_EMPRESA_COFIDIS}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="727" y="30" width="69" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_EMPRESA_TARJETA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="465" y="0" width="60" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ventas]]></text>
+				</staticText>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="465" y="30" width="60" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SUM_EMPRESA_VENTAS}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="GR_CODALM" isStartNewPage="true" footerPosition="CollateAtBottom" keepTogether="true">
+		<groupExpression><![CDATA[$F{CODALM}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<staticText>
+					<reportElement uuid="ba5c4dc6-dec6-46a2-b957-f3c2e2127a9a" mode="Opaque" x="0" y="20" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="64" y="20" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tienda]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="128" y="20" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Caja]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="192" y="20" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tickets]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="256" y="20" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Articulos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="320" y="20" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cesta media (cantidad)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="384" y="20" width="81" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cesta media (€)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="525" y="20" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tasa uso (%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="589" y="20" width="69" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ventas autónomas (%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="658" y="20" width="69" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Brico Club (Loyalty) (%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="727" y="20" width="69" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tarjeta, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="796" y="20" width="69" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Giftcard, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="865" y="20" width="72" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tarjeta manual, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="937" y="20" width="72" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Efectivo, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1009" y="20" width="72" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Transferencia, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1081" y="20" width="72" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Vale, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1153" y="20" width="76" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cliente a cuenta, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1229" y="20" width="76" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ecommerce, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1305" y="20" width="76" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[ES Financiacion, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1381" y="20" width="79" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PT Financiacion, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="465" y="20" width="60" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ventas]]></text>
+				</staticText>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement uuid="05d76290-34b0-4652-b643-04fedd29d8a2" mode="Transparent" x="0" y="0" width="1381" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CODALM} +" - "+ $F{DESALM}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="135">
+				<staticText>
+					<reportElement uuid="ba5c4dc6-dec6-46a2-b957-f3c2e2127a9a" mode="Opaque" x="0" y="16" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="64" y="16" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tienda]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="128" y="16" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Caja]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="192" y="16" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tickets]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="256" y="16" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Articulos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="320" y="16" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cesta media (cantidad)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="384" y="16" width="81" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cesta media (€)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="525" y="16" width="64" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tasa uso (%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="589" y="16" width="69" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ventas autónomas (%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="658" y="16" width="69" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Brico Club (Loyalty) (%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="727" y="16" width="69" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tarjeta, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="796" y="16" width="69" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Giftcard, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="865" y="16" width="72" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tarjeta manual, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="937" y="16" width="72" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Efectivo, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1009" y="16" width="72" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Transferencia, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1081" y="16" width="72" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Vale, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1153" y="16" width="76" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cliente a cuenta, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1229" y="16" width="76" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ecommerce, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1305" y="16" width="76" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[ES Financiacion, tasa de uso(%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="1381" y="16" width="79" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PT Financiacion, tasa de uso(%)]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="f9369bd4-0e91-4f7b-961c-a4226c7ed21e" x="64" y="46" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CODALM}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="658" y="46" width="69" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_TIENDA_BRICOCLUB}]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="2ab6a806-6339-47f8-91bd-e0cce75c0599" x="0" y="66" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{FECHA_DESDE}]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="202c97b6-4bea-4522-8a36-46e6a98cfc6d" x="0" y="106" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{FECHA_HASTA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="44e4ab53-271c-430d-b27f-f979acff41ee" x="0" y="46" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+					<text><![CDATA[Desde]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="cbcf3626-5506-4061-8223-8edc97126d72" x="0" y="86" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+					<text><![CDATA[Hasta]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="192" y="46" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SUM_TIENDA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="727" y="46" width="69" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_TIENDA_TARJETA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="796" y="46" width="69" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_TIENDA_GIFTCARD}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="865" y="46" width="72" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_TIENDA_TARJMANUAL}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="937" y="46" width="72" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_TIENDA_EFECTIVO}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="1081" y="46" width="72" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_TIENDA_VALE}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="1009" y="46" width="72" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_TIENDA_TRANSFER}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="1229" y="46" width="76" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_TIENDA_ECOMMERCE}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="1153" y="46" width="76" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_TIENDA_ACUENTA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="1381" y="46" width="79" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_TIENDA_FINCONSUM}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="1305" y="46" width="76" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_TIENDA_COFIDIS}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="256" y="46" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SUM_TIENDA_ARTICULOS}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="320" y="46" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SUM_TIENDA_ARTICULOS} / $V{SUM_TIENDA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="384" y="46" width="81" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SUM_TIENDA_VENTAS} / $V{SUM_TIENDA}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="525" y="46" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="589" y="46" width="69" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_TIENDA_VENTAS_AUTONOMAS}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="128" y="46" width="64" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="9821b452-b519-4736-966c-90c97ca585ba" mode="Opaque" x="465" y="16" width="60" height="30" forecolor="#000000" backcolor="#84999D"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ventas]]></text>
+				</staticText>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="e4aa3543-1b19-4d0b-92ee-49d536592f89" x="465" y="46" width="60" height="20"/>
+					<box>
+						<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SUM_TIENDA_VENTAS}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="CODCAJA">
+		<groupExpression><![CDATA[$F{CODCAJA}]]></groupExpression>
+	</group>
+	<title>
+		<band height="179" splitType="Stretch">
+			<image onErrorType="Blank">
+				<reportElement uuid="a34ab180-0541-4cab-bae8-973c802c5d41" x="1364" y="0" width="94" height="67"/>
+				<imageExpression><![CDATA[$P{LOGO}]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy HH:mm:ss" isBlankWhenNull="true">
+				<reportElement uuid="3da5f2d7-bd7b-49c9-9a96-4e2061db7aa4" x="1358" y="67" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="202c97b6-4bea-4522-8a36-46e6a98cfc6d" x="64" y="67" width="128" height="20"/>
+				<box leftPadding="3" rightPadding="0">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_HASTA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="87" width="64" height="20" forecolor="#000000" backcolor="#84999D"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tienda desde:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Transparent" x="0" y="0" width="406" height="30" forecolor="#000000" backcolor="#81ACBB"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.0" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.0" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Informe KPIs SELF-CHECKOUT]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="2ab6a806-6339-47f8-91bd-e0cce75c0599" x="64" y="47" width="128" height="20"/>
+				<box leftPadding="3" rightPadding="0">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_DESDE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="67" width="64" height="20" forecolor="#000000" backcolor="#84999D"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha hasta: ]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="202c97b6-4bea-4522-8a36-46e6a98cfc6d" x="64" y="87" width="128" height="20"/>
+				<box leftPadding="3" rightPadding="0">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{COD_TIENDA_DESDE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="47" width="64" height="20" forecolor="#000000" backcolor="#84999D"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha desde: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="107" width="64" height="20" forecolor="#000000" backcolor="#84999D"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tienda hasta:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="202c97b6-4bea-4522-8a36-46e6a98cfc6d" x="64" y="107" width="128" height="20"/>
+				<box leftPadding="3" rightPadding="0">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{COD_TIENDA_HASTA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="127" width="64" height="20" forecolor="#000000" backcolor="#84999D"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Caja desde:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="202c97b6-4bea-4522-8a36-46e6a98cfc6d" x="64" y="147" width="128" height="20"/>
+				<box leftPadding="3" rightPadding="0">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAJA_HASTA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="87a74c96-de7c-45b5-943f-7a74d70509e1" mode="Opaque" x="0" y="147" width="64" height="20" forecolor="#000000" backcolor="#84999D"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Caja hasta:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="202c97b6-4bea-4522-8a36-46e6a98cfc6d" x="64" y="127" width="128" height="20"/>
+				<box leftPadding="3" rightPadding="0">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAJA_DESDE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="3da5f2d7-bd7b-49c9-9a96-4e2061db7aa4" x="1315" y="87" width="143" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{JASPER_REPORT}.getName() + ".jrxml"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{NUM_CAJA}.intValue() < 20 ||
+$F{NUM_CAJA}.intValue() > 30]]></printWhenExpression>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="fc2cc49f-c312-45b2-8c75-a1e1cba746f4" key="" x="0" y="0" width="64" height="20" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f9369bd4-0e91-4f7b-961c-a4226c7ed21e" x="64" y="0" width="64" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODALM}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="1df2781a-9936-4db6-bb51-4a56df56d03d" x="128" y="0" width="64" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODCAJA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="e3efc25f-901e-43ce-9f37-30d8e84df560" x="256" y="0" width="64" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{UNIDADES_ARTICULOS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="0794328c-9010-4da1-bae4-e2676b527749" x="192" y="0" width="64" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUM_TICKETS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="8ae5f9b4-6e89-4d57-8e94-7a69e452005f" x="525" y="0" width="64" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TASA_USO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="32ddd153-9468-46e7-933c-634e23d38672" x="589" y="0" width="69" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{VENTAS_AUTONOMAS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" x="658" y="0" width="69" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{BRICOCLUB}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="9e158e99-7412-4cb2-a388-035278e0649a" x="727" y="0" width="69" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TARJETA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="65e63212-fb1f-4ef4-9faf-a1873afbdce9" x="796" y="0" width="69" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{GIFTCARD}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="f0bab142-01a9-40b4-a1e4-62c0256c2ee0" x="865" y="0" width="72" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TARJMANUAL}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="f307ab1a-20a0-4b6a-bcf8-00f990a930b6" x="937" y="0" width="72" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{EFECTIVO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="1718cff4-6732-49a1-9a22-727e0518a397" x="1009" y="0" width="72" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TRANSFERENCIA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="f94c2b3a-43d3-4441-85b2-eef4653e462d" x="1081" y="0" width="72" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{VALE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="5a5046d6-8aee-4383-951a-b12a62b92245" x="1153" y="0" width="76" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{ACUENTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="75af97a0-d9be-4520-9782-585e1447ed5c" x="1229" y="0" width="76" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{ECOMMERCE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="ed6d8f95-ee59-4bac-8a0c-df78a7ae8484" x="1305" y="0" width="76" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COFIDIS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="28b2303a-746f-41ed-9c61-53f04984889a" x="1381" y="0" width="79" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{FINCONSUM}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="f7ee3872-74eb-4357-a5bf-878e72a90052" mode="Transparent" x="320" y="0" width="64" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CESTA_MEDIA_CANTIDAD}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="9624901b-0be6-48dc-9da0-83e727548318" mode="Transparent" x="384" y="0" width="81" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineStyle="Dotted"/>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CESTA_MEDIA_IMPORTE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="3594bbe6-3e69-4c57-9e39-c14dd1f964bd" mode="Transparent" x="465" y="0" width="60" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{IMPORTE_TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="20">
+			<printWhenExpression><![CDATA[$F{NUM_CAJA}.intValue() >= 20 &&
+$F{NUM_CAJA}.intValue() <= 30]]></printWhenExpression>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="fc2cc49f-c312-45b2-8c75-a1e1cba746f4" key="" mode="Opaque" x="0" y="0" width="64" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f9369bd4-0e91-4f7b-961c-a4226c7ed21e" mode="Opaque" x="64" y="0" width="64" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODALM}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="1df2781a-9936-4db6-bb51-4a56df56d03d" mode="Opaque" x="128" y="0" width="64" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODCAJA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="e3efc25f-901e-43ce-9f37-30d8e84df560" mode="Opaque" x="256" y="0" width="64" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{UNIDADES_ARTICULOS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="0794328c-9010-4da1-bae4-e2676b527749" mode="Opaque" x="192" y="0" width="64" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUM_TICKETS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="8ae5f9b4-6e89-4d57-8e94-7a69e452005f" mode="Opaque" x="525" y="0" width="64" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TASA_USO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="32ddd153-9468-46e7-933c-634e23d38672" mode="Opaque" x="589" y="0" width="69" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{VENTAS_AUTONOMAS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="ef8ebf13-a0ee-45fe-9817-6da9fbd5e149" mode="Opaque" x="658" y="0" width="69" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{BRICOCLUB}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="9e158e99-7412-4cb2-a388-035278e0649a" mode="Opaque" x="727" y="0" width="69" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TARJETA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="65e63212-fb1f-4ef4-9faf-a1873afbdce9" mode="Opaque" x="796" y="0" width="69" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{GIFTCARD}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="f0bab142-01a9-40b4-a1e4-62c0256c2ee0" mode="Opaque" x="865" y="0" width="72" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TARJMANUAL}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="f307ab1a-20a0-4b6a-bcf8-00f990a930b6" mode="Opaque" x="937" y="0" width="72" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{EFECTIVO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="1718cff4-6732-49a1-9a22-727e0518a397" mode="Opaque" x="1009" y="0" width="72" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TRANSFERENCIA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="f94c2b3a-43d3-4441-85b2-eef4653e462d" mode="Opaque" x="1081" y="0" width="72" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{VALE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="5a5046d6-8aee-4383-951a-b12a62b92245" mode="Opaque" x="1153" y="0" width="76" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{ACUENTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="75af97a0-d9be-4520-9782-585e1447ed5c" mode="Opaque" x="1229" y="0" width="76" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{ECOMMERCE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="ed6d8f95-ee59-4bac-8a0c-df78a7ae8484" mode="Opaque" x="1305" y="0" width="76" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COFIDIS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="28b2303a-746f-41ed-9c61-53f04984889a" mode="Opaque" x="1381" y="0" width="79" height="20" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{FINCONSUM}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="f7ee3872-74eb-4357-a5bf-878e72a90052" mode="Opaque" x="320" y="0" width="64" height="20" forecolor="#000000" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CESTA_MEDIA_CANTIDAD}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="9624901b-0be6-48dc-9da0-83e727548318" mode="Opaque" x="384" y="0" width="81" height="20" forecolor="#000000" backcolor="#FFFF66"/>
+				<box>
+					<pen lineStyle="Dotted"/>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CESTA_MEDIA_IMPORTE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="3594bbe6-3e69-4c57-9e39-c14dd1f964bd" mode="Opaque" x="465" y="0" width="60" height="20" forecolor="#000000" backcolor="#FFFF66"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineStyle="Dotted" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{IMPORTE_TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

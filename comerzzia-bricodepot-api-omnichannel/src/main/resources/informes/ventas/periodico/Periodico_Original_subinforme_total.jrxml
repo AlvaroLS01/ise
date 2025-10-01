@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubinformeListadoVentas" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Key" uuid="46c469fb-7f40-45e7-9fcf-566073dabbf3">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="PCODALM" class="java.lang.String"/>
+	<parameter name="PFECHA_APERTURA" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PHASTA_TIPODOCUMENTO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PDESDE_TIPODOCUMENTO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PHASTA_FECHA" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PDESDE_CODCAJA" class="java.lang.String"/>
+	<parameter name="PHASTA_CODCAJA" class="java.lang.String"/>
+	<parameter name="PDESALM" class="java.lang.String"/>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+
+    COUNT(*) TICKETS,
+    SUM(CANTIDAD) CANTIDAD,
+    SUM(BASE) BASE,
+    SUM(IMPUESTOS) IMPUESTOS,
+    SUM(TOTAL) TOTAL
+FROM
+(    SELECT
+
+            CAB.SERIE_ALBARAN, CAB.NUMALB,
+            SUM(DET.CANTIDAD) CANTIDAD,
+            CAB.BASE BASE,
+            CAB.IMPUESTOS IMPUESTOS,
+            CAB.TOTAL TOTAL
+
+    FROM D_CLIE_ALBARANES_CAB CAB
+    INNER JOIN D_CLIE_ALBARANES_DET DET
+    ON CAB.UID_ACTIVIDAD = DET.UID_ACTIVIDAD
+    AND CAB.ID_CLIE_ALBARAN = DET.ID_CLIE_ALBARAN
+    INNER JOIN D_TIPOS_DOCUMENTOS_TBL DOC
+    ON DOC.UID_ACTIVIDAD = CAB.UID_ACTIVIDAD
+    AND DOC.ID_TIPO_DOCUMENTO = CAB.ID_TIPO_DOCUMENTO
+
+
+
+    WHERE CAB.UID_ACTIVIDAD = $P{UID_ACTIVIDAD}
+    AND CAB.CODALM = $P{PCODALM}
+    AND CAB.FECHA BETWEEN $P{PFECHA_APERTURA} AND $P{PHASTA_FECHA}
+    AND CAB.CODCAJA BETWEEN $P{PDESDE_CODCAJA} AND $P{PHASTA_CODCAJA}
+    AND DOC.CODTIPODOCUMENTO BETWEEN $P{PDESDE_TIPODOCUMENTO} AND $P{PHASTA_TIPODOCUMENTO}
+
+    GROUP BY CAB.SERIE_ALBARAN, CAB.PERIODO, CAB.NUMALB, CAB.BASE,
+            CAB.IMPUESTOS, CAB.TOTAL
+) CONSULTAS]]>
+	</queryString>
+	<field name="TICKETS" class="java.math.BigDecimal"/>
+	<field name="CANTIDAD" class="java.math.BigDecimal"/>
+	<field name="BASE" class="java.math.BigDecimal"/>
+	<field name="IMPUESTOS" class="java.math.BigDecimal"/>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<variable name="RETURN_DIAS" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="RETURN_TICKETS" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{TICKETS}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="RETURN_CANTIDAD" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{CANTIDAD}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="RETURN_BASE" class="java.math.BigDecimal"/>
+	<variable name="RETURN_IMPUESTOS" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{IMPUESTOS}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="RETURN_TOTAL" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{TOTAL}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="TT_RETURN_TICKETS" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{TICKETS}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="DIAS_APERTURA" class="java.lang.Long">
+		<variableExpression><![CDATA[(($P{PHASTA_FECHA}.getTime() - $P{PFECHA_APERTURA}.getTime()) / (24 * 60 * 60 * 1000) + 1)]]></variableExpression>
+	</variable>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField pattern="#,##0">
+				<reportElement uuid="c7c61dfa-6dc6-4920-931a-19d7246e4c47" x="547" y="0" width="34" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CANTIDAD}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="a98c7265-efc5-432f-8c25-b15b272addad" x="581" y="0" width="66" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BASE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="97de058b-d180-4ae3-9a2f-4ba8ffbe10e0" x="284" y="0" width="44" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[' ' + $R{DIAS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="97de058b-d180-4ae3-9a2f-4ba8ffbe10e0" x="316" y="0" width="28" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKETS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="380db162-7571-4ae3-8498-6457ffcd6704" x="247" y="0" width="37" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{DIAS_APERTURA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="a98c7265-efc5-432f-8c25-b15b272addad" x="647" y="0" width="66" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{IMPUESTOS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="a98c7265-efc5-432f-8c25-b15b272addad" x="713" y="0" width="77" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="97de058b-d180-4ae3-9a2f-4ba8ffbe10e0" x="344" y="0" width="45" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[' ' + $R{tickets}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c138e2f7-2281-4b39-8136-ba0c5bb4e1fe" x="6" y="0" width="241" height="14" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{TOTAL} + ' ' + $P{PCODALM} + '-' + $P{PDESALM} + '/' + $R{F. INICIO CONTABLE-FIN PERIODO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

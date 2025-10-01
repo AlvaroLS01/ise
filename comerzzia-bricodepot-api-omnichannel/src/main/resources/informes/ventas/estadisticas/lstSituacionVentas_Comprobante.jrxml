@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lstSituacionVentas_Comprobante" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="comerzzia.i18n.cmz" whenResourceMissingType="Key" uuid="1acae32e-73cc-4187-a1f7-4e4f60424c0d">
+	<property name="ireport.zoom" value="1.6500000000000004"/>
+	<property name="ireport.x" value="37"/>
+	<property name="ireport.y" value="3"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="FECHA_DESDE" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new java.util.Date()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FECHA_HASTA" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.util.Date()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TIENDA_DESDE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TIENDA_HASTA" class="java.lang.String">
+		<defaultValueExpression><![CDATA["ZZZZZZZZZZZ"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[".//"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODEMP" class="java.lang.String"/>
+	<parameter name="DESEMP" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT CAB.CODALM, ALM.DESALM, CAB.CODCAJA, TIC.ID_TICKET AS DOCUMENTO, DOCUMENTO AS DOCUMENTO_FORMATEADO,
+       TIC.ID_TIPO_DOCUMENTO,TIP.DESTIPODOCUMENTO,TIP.ID_CONTADOR, CAST(DET.FECHA AS DATE) AS FECHA, (CARGO - ABONO) AS MOVIMIENTO
+FROM D_CAJA_CAB_TBL CAB
+INNER JOIN D_ALMACENES_TBL ALM ON (ALM.UID_ACTIVIDAD = CAB.UID_ACTIVIDAD AND ALM.CODALM = CAB.CODALM)
+INNER JOIN D_CAJA_DET_TBL DET
+ON (CAB.UID_ACTIVIDAD = DET.UID_ACTIVIDAD AND CAB.UID_DIARIO_CAJA = DET.UID_DIARIO_CAJA)
+INNER JOIN D_TICKETS_TBL TIC ON (DET.UID_ACTIVIDAD = TIC.UID_ACTIVIDAD AND DET.ID_DOCUMENTO = TIC.UID_TICKET)
+INNER JOIN D_TIPOS_DOCUMENTOS_TBL TIP ON (TIC.UID_ACTIVIDAD = TIP.UID_ACTIVIDAD AND TIC.ID_TIPO_DOCUMENTO = TIP.ID_TIPO_DOCUMENTO)
+WHERE DET.UID_ACTIVIDAD = $P{UID_ACTIVIDAD}
+	AND  CODEMP= $P{CODEMP}
+	AND  CAST(DET.FECHA AS DATE) >= $P{FECHA_DESDE}
+	AND  CAST(DET.FECHA AS DATE) <= $P{FECHA_HASTA}
+	AND  CAB.CODALM >= $P{TIENDA_DESDE}
+	AND  CAB.CODALM <= $P{TIENDA_HASTA}
+	AND DOCUMENTO IS NOT NULL
+ORDER BY
+     DET.FECHA ASC, CAB.CODALM ASC, CAB.CODCAJA ASC]]>
+	</queryString>
+	<field name="CODALM" class="java.lang.String"/>
+	<field name="DESALM" class="java.lang.String"/>
+	<field name="CODCAJA" class="java.lang.String"/>
+	<field name="DOCUMENTO" class="java.math.BigDecimal"/>
+	<field name="DOCUMENTO_FORMATEADO" class="java.lang.String"/>
+	<field name="ID_TIPO_DOCUMENTO" class="java.math.BigDecimal"/>
+	<field name="DESTIPODOCUMENTO" class="java.lang.String"/>
+	<field name="ID_CONTADOR" class="java.lang.String"/>
+	<field name="FECHA" class="java.sql.Timestamp"/>
+	<field name="MOVIMIENTO" class="java.math.BigDecimal"/>
+	<variable name="NUMERO_TRANSACCIONES_CAJA" class="java.math.BigDecimal" resetType="Group" resetGroup="CODCAJA" calculation="Count">
+		<variableExpression><![CDATA[$F{DOCUMENTO}]]></variableExpression>
+		<initialValueExpression><![CDATA[BigDecimal.ZERO]]></initialValueExpression>
+	</variable>
+	<variable name="VALOR_VENTA_CAJA" class="java.math.BigDecimal" resetType="Group" resetGroup="CODCAJA" calculation="Sum">
+		<variableExpression><![CDATA[$F{MOVIMIENTO}]]></variableExpression>
+		<initialValueExpression><![CDATA[BigDecimal.ZERO]]></initialValueExpression>
+	</variable>
+	<variable name="NUMERO_TRANSACCIONES_TIENDA" class="java.math.BigDecimal" resetType="Group" resetGroup="CODALM" calculation="Count">
+		<variableExpression><![CDATA[$F{DOCUMENTO}]]></variableExpression>
+		<initialValueExpression><![CDATA[BigDecimal.ZERO]]></initialValueExpression>
+	</variable>
+	<variable name="VALOR_VENTA_TIENDA" class="java.math.BigDecimal" resetType="Group" resetGroup="CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{MOVIMIENTO}]]></variableExpression>
+		<initialValueExpression><![CDATA[BigDecimal.ZERO]]></initialValueExpression>
+	</variable>
+	<variable name="TRANS_INICIAL" class="java.math.BigDecimal" resetType="Group" resetGroup="CODALM" calculation="Lowest">
+		<variableExpression><![CDATA[$F{DOCUMENTO}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="TRANS_FINAL" class="java.math.BigDecimal" resetType="Group" resetGroup="CODALM" calculation="Highest">
+		<variableExpression><![CDATA[$F{DOCUMENTO}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="DOCUMENTO_1" class="java.math.BigDecimal" resetType="Group" resetGroup="CODALM" calculation="Highest">
+		<variableExpression><![CDATA[$F{DOCUMENTO}]]></variableExpression>
+	</variable>
+	<variable name="DOCUMENTO_2" class="java.math.BigDecimal" resetType="Group" resetGroup="CODALM" calculation="Lowest">
+		<variableExpression><![CDATA[$F{DOCUMENTO}]]></variableExpression>
+	</variable>
+	<group name="FECHA" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{FECHA}]]></groupExpression>
+		<groupHeader>
+			<band height="14">
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="b5d7488a-b412-4b8c-acfa-4b908183e55b" x="54" y="0" width="58" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="c461851e-7652-464c-bdb3-a3d7ff6408bd" x="0" y="0" width="51" height="10"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$R{FECHA: }]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="CODALM" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{CODALM}]]></groupExpression>
+		<groupHeader>
+			<band height="46">
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="2f8282ca-7d53-4d78-b240-f6e0115361f3" x="0" y="0" width="104" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{CODALM}!=null &&  $F{DESALM}!=null ? $F{CODALM}+" / "+$F{DESALM} : "" )]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CODALM" isBlankWhenNull="true">
+					<reportElement uuid="208c7df8-4716-4388-9647-0f53df324ccf" x="209" y="0" width="27" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{NUMERO_TRANSACCIONES_TIENDA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CODALM" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="78e89b5b-e894-4923-a389-fff6f98af121" x="313" y="0" width="82" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_VENTA_TIENDA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="06705b25-f46e-4ab7-af40-9a1683116617" x="110" y="0" width="99" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Número de transacciones:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="06705b25-f46e-4ab7-af40-9a1683116617" x="240" y="0" width="74" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Valor venta tienda:]]></text>
+				</staticText>
+				<subreport>
+					<reportElement uuid="a303b5d6-d85f-447d-87f9-33991039a686" x="2" y="22" width="272" height="20"/>
+					<subreportParameter name="UID_ACTIVIDAD">
+						<subreportParameterExpression><![CDATA[$P{UID_ACTIVIDAD}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="FECHA">
+						<subreportParameterExpression><![CDATA[$F{FECHA}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="CODALM">
+						<subreportParameterExpression><![CDATA[$F{CODALM}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lstSituacionVentas_Comprobante_ContadorMinMax.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+			<band height="30">
+				<subreport>
+					<reportElement uuid="0dd3fc7c-d8fb-4966-99cc-dd50837097fc" x="2" y="3" width="272" height="20"/>
+					<subreportParameter name="UID_ACTIVIDAD">
+						<subreportParameterExpression><![CDATA[$P{UID_ACTIVIDAD}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="FECHA">
+						<subreportParameterExpression><![CDATA[$F{FECHA}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="CODALM">
+						<subreportParameterExpression><![CDATA[$F{CODALM}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "SubInforme_Comprobante.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+			<band height="38">
+				<subreport>
+					<reportElement uuid="ef36b8a8-7d74-43e7-8d31-ba4b0aec5d5b" x="2" y="2" width="272" height="21"/>
+					<subreportParameter name="UID_ACTIVIDAD">
+						<subreportParameterExpression><![CDATA[$P{UID_ACTIVIDAD}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="FECHA">
+						<subreportParameterExpression><![CDATA[$F{FECHA}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="CODALM">
+						<subreportParameterExpression><![CDATA[$F{CODALM}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "lstSituacionVentas_Comprobante_MedioPago.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="45"/>
+		</groupFooter>
+	</group>
+	<group name="CODCAJA">
+		<groupExpression><![CDATA[$F{CODCAJA}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="12">
+				<staticText>
+					<reportElement uuid="06705b25-f46e-4ab7-af40-9a1683116617" x="23" y="0" width="27" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Caja]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="06705b25-f46e-4ab7-af40-9a1683116617" x="123" y="0" width="87" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nº Transacciones caja]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="06705b25-f46e-4ab7-af40-9a1683116617" x="239" y="0" width="87" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Valor venta caja]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="07e16053-6f0a-400d-9ed8-2de67a3d6cd6" x="0" y="11" width="475" height="1"/>
+				</line>
+				<staticText>
+					<reportElement uuid="06705b25-f46e-4ab7-af40-9a1683116617" x="366" y="1" width="87" height="11"/>
+					<textElement textAlignment="Center">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Serial]]></text>
+				</staticText>
+			</band>
+			<band height="12">
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="c7751547-6a30-462d-8227-e912adf415ee" x="0" y="0" width="100" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CODCAJA}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="a6f44976-fa54-4c47-8417-be8275611c89" x="125" y="0" width="97" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{NUMERO_TRANSACCIONES_CAJA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="44ba09ad-a1c3-4618-89d3-03d440e5217b" x="237" y="0" width="100" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{VALOR_VENTA_CAJA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="true">
+					<reportElement uuid="44ba09ad-a1c3-4618-89d3-03d440e5217b" x="353" y="1" width="129" height="11"/>
+					<textElement textAlignment="Center">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{CODALM}.equals("001")?
+    ( $F{CODCAJA}.equals("00") ? "4623526" :
+      ( $F{CODCAJA}.equals("01") ? "4376337" : "Caja No Config" ) ) :
+    ( $F{CODALM}.equals("333")?
+        ( $F{CODCAJA}.equals("00") ? "6874754" :
+            "999999" )
+        : "caja no config" ) )]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="74" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2dd967b3-c817-441a-84f2-6f3e30c8ef41" x="112" y="0" width="39" height="12"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CODEMP}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="58804810-3f81-40c1-b04d-104d492486a9" x="167" y="42" width="69" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="05dc0b02-8e9f-446a-8a06-7c8cac26528e" x="70" y="42" width="69" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_DESDE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="70c45190-1447-410c-936a-973ffe1f5f61" x="70" y="54" width="34" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TIENDA_DESDE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="6a37b22b-725d-4278-8d34-e7185bc2c89f" x="151" y="0" width="302" height="12"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DESEMP}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement uuid="0cf52a75-1a60-43ba-bac3-8fd8bbb6c100" x="0" y="14" width="60" height="14"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="b7999d2b-50e7-4b9e-b3c7-461622a6522f" x="0" y="0" width="80" height="14"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1a50a671-b11f-41ac-acd2-a76fa4a92d33" x="167" y="54" width="100" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TIENDA_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="88915dd3-e8ee-4205-93cf-8f0cdc6ae952" x="130" y="42" width="42" height="10"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{HASTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b9d1b8e1-4a32-490c-91a5-b79aca12f25e" x="2" y="42" width="58" height="10"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE FECHA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="88915dd3-e8ee-4205-93cf-8f0cdc6ae952" x="2" y="54" width="68" height="10"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE TIENDA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="88915dd3-e8ee-4205-93cf-8f0cdc6ae952" x="130" y="54" width="42" height="10"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{HASTA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement uuid="0144291e-a54c-408c-94f6-3e6c4864ae39" key="textField" x="602" y="0" width="170" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{Página} +" "+ $V{PAGE_NUMBER} +" "+ $R{de}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="59ae0ae0-80fe-4e2f-a57c-de92f97f2f71" key="textField" x="772" y="0" width="30" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

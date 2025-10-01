@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubInforme_Comprobante" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" resourceBundle="comerzzia.i18n.cmz" whenResourceMissingType="Key" uuid="3115fc72-2fc7-465f-851e-8d63f2fcdc11">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="FECHA" class="java.util.Date"/>
+	<parameter name="CODALM" class="java.lang.String"/>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT PORCENTAJE, ART.CODFAM, DESFAM, SUM(TOTAL) AS TOTAL
+FROM D_CLIE_ALBARANES_CAB_TBL CAB
+INNER JOIN  D_CLIE_ALBARANES_DET_TBL DET
+ON (DET.UID_ACTIVIDAD = CAB.UID_ACTIVIDAD AND DET.ID_CLIE_ALBARAN = CAB.ID_CLIE_ALBARAN)
+INNER JOIN D_IMP_PORCENTAJES_TBL POR
+ON (DET.UID_ACTIVIDAD = POR.UID_ACTIVIDAD AND CAB.ID_GRUPO_IMPUESTOS = POR.ID_GRUPO_IMPUESTOS AND CAB.ID_TRAT_IMPUESTOS = POR.ID_TRAT_IMPUESTOS AND DET.CODIMP = POR.CODIMP)
+INNER JOIN D_ARTICULOS_TBL ART ON (DET.UID_ACTIVIDAD = ART.UID_ACTIVIDAD AND DET.CODART = ART.CODART)
+LEFT JOIN D_FAMILIAS_TBL FAM ON (ART.CODFAM = FAM.CODFAM AND ART.UID_ACTIVIDAD = FAM.UID_ACTIVIDAD)
+WHERE CAB.UID_ACTIVIDAD = $P{UID_ACTIVIDAD}
+AND CAST(CAB.FECHA AS DATE)=$P{FECHA}
+AND CODALM=$P{CODALM}
+GROUP BY CAST(CAB.FECHA AS DATE), CODALM, PORCENTAJE, ART.CODFAM, DESFAM
+ORDER BY PORCENTAJE ASC]]>
+	</queryString>
+	<field name="PORCENTAJE" class="java.lang.Number"/>
+	<field name="CODFAM" class="java.lang.String"/>
+	<field name="DESFAM" class="java.lang.String"/>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<group name="CODFAM">
+		<groupExpression><![CDATA[$F{CODFAM}]]></groupExpression>
+		<groupHeader>
+			<band height="12">
+				<textField evaluationTime="Group" evaluationGroup="CODFAM" isBlankWhenNull="true">
+					<reportElement uuid="070b4662-0f74-4b34-ac33-9cac74124821" x="50" y="0" width="259" height="11">
+						<printWhenExpression><![CDATA[$F{CODFAM} != null]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CODFAM}+" / "+$F{DESFAM}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="87f9920e-29e5-442e-be37-611003916b3d" positionType="FixRelativeToBottom" x="0" y="11" width="270" height="1"/>
+				</line>
+				<textField>
+					<reportElement uuid="c461851e-7652-464c-bdb3-a3d7ff6408bd" x="0" y="0" width="50" height="10"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$R{Familia: }]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField>
+				<reportElement uuid="76a0bbc6-76ec-43ae-927d-610e982a0913" x="32" y="0" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Porcentaje: "+new java.text.DecimalFormat("0.00").format($F{PORCENTAJE})+ " %"]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="6c4cbba7-d277-4678-9c30-768a2bd684db" x="171" y="0" width="94" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="6c4cbba7-d277-4678-9c30-768a2bd684db" x="132" y="0" width="39" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total:"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

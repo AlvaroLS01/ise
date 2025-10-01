@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lstSituacionVentas_Comprobante_ContadorMinMax" pageWidth="555" pageHeight="802" columnWidth="515" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" uuid="317f8f60-dc7c-414d-9b95-d151eca4f841">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="FECHA" class="java.util.Date"/>
+	<parameter name="CODALM" class="java.lang.String"/>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT CAB.CODALM,  MIN(TIC.ID_TICKET) AS DOCUMENTO_MINIMO, MAX(TIC.ID_TICKET) AS DOCUMENTO_MAXIMO, TIC.ID_TIPO_DOCUMENTO, TIP.DESTIPODOCUMENTO, TIP.ID_CONTADOR
+FROM D_CAJA_CAB_TBL CAB
+INNER JOIN D_ALMACENES_TBL ALM
+	ON (ALM.UID_ACTIVIDAD = CAB.UID_ACTIVIDAD AND ALM.CODALM = CAB.CODALM)
+INNER JOIN D_CAJA_DET_TBL DET
+	ON (CAB.UID_ACTIVIDAD = DET.UID_ACTIVIDAD AND CAB.UID_DIARIO_CAJA = DET.UID_DIARIO_CAJA)
+INNER JOIN D_TICKETS_TBL TIC
+	ON (DET.UID_ACTIVIDAD = TIC.UID_ACTIVIDAD AND DET.ID_DOCUMENTO = TIC.UID_TICKET)
+INNER JOIN D_TIPOS_DOCUMENTOS_TBL TIP
+	ON (TIC.UID_ACTIVIDAD = TIP.UID_ACTIVIDAD AND TIC.ID_TIPO_DOCUMENTO = TIP.ID_TIPO_DOCUMENTO)
+WHERE CAB.UID_ACTIVIDAD = $P{UID_ACTIVIDAD} AND CAST(DET.FECHA AS DATE) = $P{FECHA} AND CAB.CODALM = $P{CODALM} AND
+DOCUMENTO IS NOT NULL
+GROUP BY CAB.CODALM, TIC.ID_TIPO_DOCUMENTO, TIP.DESTIPODOCUMENTO, TIP.ID_CONTADOR
+ORDER BY CAB.CODALM ASC]]>
+	</queryString>
+	<field name="CODALM" class="java.lang.String"/>
+	<field name="DOCUMENTO_MINIMO" class="java.math.BigDecimal"/>
+	<field name="DOCUMENTO_MAXIMO" class="java.math.BigDecimal"/>
+	<field name="ID_TIPO_DOCUMENTO" class="java.math.BigDecimal"/>
+	<field name="DESTIPODOCUMENTO" class="java.lang.String"/>
+	<field name="ID_CONTADOR" class="java.lang.String"/>
+	<group name="ID_CONTADOR">
+		<groupExpression><![CDATA[$F{ID_CONTADOR}]]></groupExpression>
+	</group>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2a7b882b-ae9d-417e-9e4e-8e9b945103fc" x="20" y="4" width="100" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Tipo documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="26320132-f4fe-4ccd-acc8-1cd5df567d8b" x="124" y="4" width="106" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Transacción inicial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="21977957-cb13-4081-8482-02dc635efb9e" x="234" y="4" width="106" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Transacción final]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="4658a785-5cb0-4304-bd47-d6fdd6198946" x="2" y="16" width="320" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement uuid="87c56ebc-ba37-465d-bfdd-1bceb0ed3f67" x="32" y="0" width="100" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESTIPODOCUMENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="56baa1d6-82f8-417b-b725-ebfd208e93c3" x="143" y="0" width="100" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DOCUMENTO_MINIMO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d7ffdd23-bde0-4162-8b00-c10428546581" x="252" y="0" width="100" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DOCUMENTO_MAXIMO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

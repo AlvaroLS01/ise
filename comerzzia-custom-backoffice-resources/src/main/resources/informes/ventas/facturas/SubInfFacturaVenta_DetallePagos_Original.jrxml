@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="infAlbaranVenta_DetalleFormasPago" pageWidth="300" pageHeight="842" columnWidth="300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" resourceBundle="comerzzia.i18n.cmz" whenResourceMissingType="Key" uuid="b5e55495-6c7f-4826-9929-e6507cd4d98c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID_FACTURA_REP" class="java.math.BigDecimal"/>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     MEDIOS_PAGO_VEN.DESMEDPAG_VEN AS DESMEDPAG,
+     COBROS_VEN.FECHA_VENCIMIENTO AS COBROS_VEN_FECHA_VENCIMIENTO,
+     COBROS_VEN.IMPORTE AS COBROS_VEN_IMPORTE,
+     FACTURAS_PAG.IMPORTE AS FACTURAS_PAG_IMPORTE
+FROM
+	D_FACTURAS_REP_PAG_TBL FACTURAS_PAG
+	INNER JOIN D_FACTURAS_REP_CAB_TBL CABECERA
+		ON FACTURAS_PAG.UID_ACTIVIDAD = CABECERA.UID_ACTIVIDAD AND FACTURAS_PAG.ID_FACTURA_REP = CABECERA.ID_FACTURA_REP
+     	INNER JOIN D_CLIENTES_TBL CLIENTES
+		ON CABECERA.UID_ACTIVIDAD = CLIENTES.UID_ACTIVIDAD AND CABECERA.CODCLI = CLIENTES.CODCLI
+     	LEFT OUTER JOIN D_COBROS_VEN_TBL COBROS_VEN
+		ON CABECERA.UID_ACTIVIDAD = COBROS_VEN.UID_ACTIVIDAD AND CABECERA.ID_VENCIMIENTO_ENLACE = COBROS_VEN.ID_VENCIMIENTO_ENLACE
+     	LEFT OUTER JOIN D_MEDIOS_PAGO_VEN_TBL MEDIOS_PAGO_VEN
+		ON FACTURAS_PAG.UID_ACTIVIDAD = MEDIOS_PAGO_VEN.UID_ACTIVIDAD AND FACTURAS_PAG.ID_MEDPAG_VEN = MEDIOS_PAGO_VEN.ID_MEDPAG_VEN
+
+WHERE 	CABECERA.UID_ACTIVIDAD = $P{UID_ACTIVIDAD}
+	AND CABECERA.ID_FACTURA_REP = $P{ID_FACTURA_REP}]]>
+	</queryString>
+	<field name="DESMEDPAG" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="COBROS_VEN_FECHA_VENCIMIENTO" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="COBROS_VEN_IMPORTE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FACTURAS_PAG_IMPORTE" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="IMPORTE" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="13">
+			<textField>
+				<reportElement uuid="12618df8-34b9-4c83-8489-30bd5785bc92" mode="Opaque" x="4" y="2" width="221" height="11" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{FORMA DE PAGO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="12">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="7fc97cd8-cc9e-40d5-bf3a-d7f9d1c71b9e" x="4" y="0" width="107" height="12"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESMEDPAG}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="c23daf5e-6b09-4bb5-948f-7773633f22f1" x="171" y="0" width="54" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COBROS_VEN_FECHA_VENCIMIENTO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="42607260-d313-4521-aeb2-80f52d80dbf5" x="111" y="0" width="60" height="12"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COBROS_VEN_IMPORTE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="55e2b675-9949-4aff-b4a2-0769effc7d09" x="111" y="0" width="60" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FACTURAS_PAG_IMPORTE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

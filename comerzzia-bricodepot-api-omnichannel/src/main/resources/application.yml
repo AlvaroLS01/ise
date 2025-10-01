@@ -1,0 +1,33 @@
+server:
+    port: 8080    
+    servlet:
+        contextPath: /api/v2/omnichannel
+
+spring:  
+    main:
+        allow-bean-definition-overriding: true
+    application:
+        name: "comerzzia api v2 custom"
+    messages:
+        basename: i18n/messages,i18n/custom-messages
+    jackson:
+       serialization:
+          FAIL_ON_EMPTY_BEANS: false
+        
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      base-path: "/manage"        
+      exposure:
+        include: "*"
+                  
+logging:
+    level:
+        ROOT: INFO        
+        com.comerzzia.api: DEBUG
+        com.comerzzia.bricodepot: DEBUG
+        com.comerzzia.custom.api: DEBUG
+        org.mybatis: INFO
+        org.springframework : INFO

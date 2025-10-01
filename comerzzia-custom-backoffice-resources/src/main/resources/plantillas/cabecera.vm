@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset="UTF-8" http-equiv="content-type" />
+	
+	#if(!$!{ESTILO})
+		<style type="text/css">
+		.bodyP {
+			  width: 99%;
+			  background-color: #ffffff;
+			  font-size: 12px;
+			  font-family: Arial,Tahoma,Helvetica,sans-serif;
+			}
+		.logo {				
+				background-color: #ffffff;				
+		}
+		.pGenerico{
+			font-size: 14px;			
+		}
+		.divMensaje {
+			border: 1px solid #d4d4d4;
+		}
+		.pGracias {
+			font-size: 14px;
+		}	
+		.h1ConfirmacionPedido{
+			background-color: #ebebeb;
+			border-bottom:1px solid #d4d4d4;
+			border-top:1px solid #d4d4d4;
+			color:#000000;
+			font-size: 1.2em;
+		}
+		.h2ConfirmacionPedido{
+			 
+			color: #000000; 			
+			font-size: 14px;   
+			font-weight:bold; 
+			border:1px solid #d4d4d4;
+			
+		}			
+		.tableConfirmacionPedido{			
+			border: 1px solid #d4d4d4;
+			border-bottom: 1px solid #c3c3c3;
+		}
+		.theadConfirmacionPedido{
+			background: none repeat scroll 0 0 #D1D6DC;
+		}
+		.thConfirmacionPedido{
+			background-color: #000000;
+			border-bottom: 1px solid #d4d4d4; 
+			font-size: 12px; 			 
+			color: #ffffff;			
+		}
+		.tdConfirmacionPedido{
+			border-bottom: 3px solid #fff;
+			background: #f2f2f2;
+			border-bottom: 1px solid #d4d4d4;
+		}
+		.tdImporteConfirmacionPedido{			
+			background: #f2f2f2;
+			border-bottom: 1px solid #d4d4d4;
+		}
+		.divPromocionesSupConfirmacionPedido{			
+			border:1px solid #edecec; 
+		}
+		.divPromocionesInfConfirmacionPedido{
+			font-size:1.2em; 
+			color:#000000; 			
+		}
+		.tablePromocionesConfirmacionPedido{			
+			border: 1px solid #c3c3c3;
+			border-bottom: 1px solid #c3c3c3;
+		}
+		.divPuntosSupConfirmacionPedido{
+			border:1px solid #d4d4d4;
+		}
+		.divPuntosLbConfirmacionPedido{
+			font-size:1.2em; 
+			color:#000000; 
+		}
+		.divPuntosMedConfirmacionPedido{
+			background-color: #ffffff; 
+			border:1px solid #d4d4d4;			 
+			font-size: 12px; 			
+		}
+		.divPuntosInfConfirmacionPedido{
+			font-size: 1.2em;
+		}
+		.spanPuntosConfirmacionPedido{
+			color:#000000; 
+			font-weight:bold;
+		}
+		.spanLbImporteConfirmacionPedido{
+			color:#000000; 
+			font-weight:bold; 
+			font-size:0.8em
+		}
+		.spanLbImporteTotalConfirmacionPedido{
+			color:#000000; 
+			font-weight:bold; 
+			font-size:0.7em
+		}
+		.spanImporteConfirmacionPedido6{
+			font-size:0.6em;
+		}
+		.spanImporteConfirmacionPedido7{
+			font-size:0.7em;
+		}
+		.spanImporteConfirmacionPedido8{
+			font-size:0.8em;
+		}
+		.divGraciasConfirmacionPedido{
+			 
+			background-color:#d4d4d4;
+		}
+		.pGraciasConfirmacionPedido{
+			font-size: 20px; 
+			color: #000000; 			
+		}
+		.pPie{
+			font-size: 14px; 			
+			background-color: #000000; 			
+			color:white;
+		}
+		</style>
+		#else
+		<style type="text/css">
+		.bodyPfood {
+			  width: 99%;
+			  background-color: #ffffff;
+			  font-size: 12px;
+			  font-family: Arial,Tahoma,Helvetica,sans-serif;
+			}		
+		.logofood {				
+			background-color: #7db041;			
+		}
+		.pGenericofood{
+			font-size: 14px;
+		}
+		.divMensajefood {
+			border: 1px solid #d4d4d4;
+		}
+		.pGraciasfood {
+			font-size: 14px;
+		}
+		.h1ConfirmacionPedidofood{
+			background-color: #ebebeb;			
+			border-bottom:1px solid #dedede;
+			border-top:1px solid #c3c3c3;
+			color:#699530;
+			ont-size: 1.2em;
+		}
+		.h2ConfirmacionPedidofood{			
+			color: #7DB041; 
+			font-size: 14px;   
+			font-weight:bold;
+			border:1px solid #d8d8d8;			
+		}
+		.tableConfirmacionPedidofood{			
+			border: 1px solid #c3c3c3;
+			border-bottom: 1px solid #c3c3c3;			
+		}
+		.theadConfirmacionPedidofood{
+			background: none repeat scroll 0 0 #D1D6DC;
+		}
+		.thConfirmacionPedidofood{
+			background-color: #7DB041;
+			border-bottom: 1px solid #CCCCCC;
+			font-size: 12px;			
+			color: #ffffff;
+		}
+		.tdConfirmacionPedidofood{			
+			border-bottom: 3px solid #fff;			
+			background: #f2f2f2;
+			border-bottom: 1px solid #ccc7c7;
+		}
+		.tdImporteConfirmacionPedidofood{			
+			background: #f2f2f2;
+			border-bottom: 1px solid #ccc7c7;
+		}
+		.divPromocionesSupConfirmacionPedidofood{
+			border:1px solid #edecec; 
+		}
+		.divPromocionesInfConfirmacionPedidofood{
+			font-size:1.2em; 
+			color:#7DB041; 
+		}
+		.tablePromocionesConfirmacionPedidofood{			
+			border: 1px solid #c3c3c3;
+			border-bottom: 1px solid #c3c3c3;			
+		}
+		.divPuntosSupConfirmacionPedidofood{			 
+			border:1px solid #edecec; 			
+		}
+		.divPuntosLbConfirmacionPedidofood{
+			font-size:1.2em; 
+			color:#7DB041; 
+		}
+		.divPuntosMedConfirmacionPedidofood{
+			background-color: #ffffff; 
+			border:1px solid #E1E1E1;			
+			font-size: 12px;
+		}
+		.divPuntosInfConfirmacionPedidofood{			 
+			font-size: 1.2em; 			
+		}		
+		.spanPuntosConfirmacionPedidofood{
+			color:#7DB041; 
+			font-weight:bold;
+		}
+		.spanLbImporteConfirmacionPedidofood{
+			color:#7DB041; 
+			font-weight:bold; 
+			font-size:0.8em
+		}
+		.spanLbImporteTotalConfirmacionPedidofood{
+			color:#7DB041; 
+			font-weight:bold; 
+			font-size:0.7em
+		}
+		.spanImporteConfirmacionPedido6food{
+			font-size:0.6em;
+		}
+		.spanImporteConfirmacionPedido7food{
+			font-size:0.7em;
+		}
+		.spanImporteConfirmacionPedido8food{
+			font-size:0.8em;
+		}
+		.divGraciasConfirmacionPedidofood{
+			background-color:#d4d4d4;
+		}
+		.pGraciasConfirmacionPedidofood{
+			font-size: 20px; 
+			color: #7DB041; 
+		}
+		.pPiefood{
+			font-size: 14px;  
+			background-color: #7DB041; 
+			color:white;
+		}
+
+		</style>
+		#end
+</head>
+
+<body class="bodyP$!{ESTILO}">
+
+	<div class="logo$!{ESTILO}" style="margin-bottom: 10px;padding-top:15px;padding-bottom:15px;padding-left:15px;width:100%;box-sizing: border-box;">
+		<img src="$!{ESTILO_LOGO_URL}" alt="$!empresa.getDesEmp()">
+	</div>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd"
+     default-lazy-init="true">
+      
+    <!-- this beans must be initialized in lazy-init=false -->  
+    <bean id="AppInfo" class="com.comerzzia.core.util.config.AppInfo" lazy-init="false"/>
+    
+    <!-- database version control -->
+    <bean class="com.comerzzia.core.util.db.CheckDatabase"/>
+    
+    <!-- services scan -->
+    <context:component-scan base-package="com.comerzzia.core.servicios" />
+    <context:component-scan base-package="com.comerzzia.servicios" />
+    <context:component-scan base-package="com.comerzzia.bricodepot.backoffice.services" />
+    
+    <!-- scan for mappers and let them be autowired -->
+    <mybatis:scan base-package="com.comerzzia.core.persistencia,com.comerzzia.persistencia,com.comerzzia.bricodepot.backoffice.persistence" />
+    
+    <tx:annotation-driven />
+</beans>

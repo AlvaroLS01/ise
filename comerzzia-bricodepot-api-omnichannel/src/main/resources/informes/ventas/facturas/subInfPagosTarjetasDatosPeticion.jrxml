@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="facturaA4_subInfTarjetas" pageWidth="170" pageHeight="802" columnWidth="170" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a4b2edb7-1577-4bd4-959c-9266cce0cfd5">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="idTransaccion" class="java.lang.String">
+		<fieldDescription><![CDATA[idTransaccion]]></fieldDescription>
+	</field>
+	<field name="idDocumento" class="java.lang.Long">
+		<fieldDescription><![CDATA[idDocumento]]></fieldDescription>
+	</field>
+	<field name="idDocumentoOrigen" class="java.lang.String">
+		<fieldDescription><![CDATA[idDocumentoOrigen]]></fieldDescription>
+	</field>
+	<field name="fechaDocumentoOrigen" class="java.lang.String">
+		<fieldDescription><![CDATA[fechaDocumentoOrigen]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="50">
+			<line>
+				<reportElement uuid="9a599732-c431-447b-9cd8-228976841172" x="0" y="3" width="1" height="44"/>
+			</line>
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="13" y="3" width="49" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="13" y="14" width="71" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ID DOCUMENTO:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="62" y="3" width="54" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaDocumentoOrigen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="84" y="14" width="32" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idDocumento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dc1c25db-74a9-4c7f-81dd-84761fb0d5ad" x="13" y="25" width="49" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ticket P.E:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b08ee430-bde7-4c91-a8d3-ceec2bac13e3" x="62" y="25" width="94" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idTransaccion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

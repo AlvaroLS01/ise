@@ -1,1 +1,0 @@
-# comerzzia inStoreEngine resources

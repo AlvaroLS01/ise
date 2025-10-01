@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InfFinancieroCajero_subreport1" pageWidth="201" pageHeight="802" columnWidth="201" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e64c56e5-cade-40b2-bfe2-aeddec4ffd5c">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<parameter name="POPERARIO" class="java.lang.String"/>
+	<parameter name="PFECHA_DESDE" class="java.util.Date"/>
+	<parameter name="PFECHA_HASTA" class="java.util.Date"/>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select COUNT(*),
+       SUM(DET.IMPORTE_TOTAL), CAB.USUARIO
+from d_clie_albaranes_det_tbl DET LEFT JOIN
+     d_clie_albaranes_cab_tbl CAB ON (CAB.uid_actividad = DET.uid_actividad AND
+                                      CAB.id_clie_albaran = DET.id_clie_albaran)
+where DET.CODART = 'ABC1234567' AND
+      DET.UID_ACTIVIDAD = $P{UID_ACTIVIDAD} AND
+      CAB.USUARIO = $P{POPERARIO} AND
+      DET.FECHA BETWEEN $P{PFECHA_DESDE} AND $P{PFECHA_HASTA}
+GROUP BY CAB.USUARIO]]>
+	</queryString>
+	<field name="COUNT(*)" class="java.lang.Long"/>
+	<field name="SUM(DET.IMPORTE_TOTAL)" class="java.math.BigDecimal"/>
+	<field name="USUARIO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="7ebafc09-317b-4eba-94c9-5e5259e9d034" mode="Opaque" x="0" y="1" width="100" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECUENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="54114e4d-6267-46b7-b2cb-3865347dc59c" mode="Opaque" x="100" y="1" width="100" height="20" forecolor="#FFFFFF" backcolor="#84999D"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement uuid="39f8f65c-6a69-46e1-b11c-00726153fb1c" x="0" y="1" width="100" height="20"/>
+				<box rightPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COUNT(*)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3cd87114-840c-422c-b87d-da077badea7c" x="100" y="1" width="100" height="20"/>
+				<box rightPadding="3">
+					<pen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<topPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(DET.IMPORTE_TOTAL)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

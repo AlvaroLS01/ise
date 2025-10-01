@@ -1,3 +1,1 @@
-# ISE 
-
-InStoreEngine Project
+# Backoffice Brico Depot

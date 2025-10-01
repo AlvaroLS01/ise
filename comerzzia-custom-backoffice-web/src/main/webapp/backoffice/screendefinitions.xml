@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<screens>
+	<screen name="inicio" page="/inicioBackoffice" />
+
+    <!-- IFrame de Subida de Fotos de Artículos -->
+    <screen name="uploadFoto" page="backoffice/general/articulos/mantenimiento/jsp/uploadFoto.jsp" />
+    
+    <!-- Sincronizador de Tiendas -->
+    <screen name="sincronizador" page="/sincronizacion?accion=leerFormulario" />
+    
+    <!-- Cajas -->
+    <screen name="monitor.cajas" page="/cajas?accion=leerFormulario" />
+    
+    <!-- Anular promoción -->
+    <screen name="anular.promocion" page="/promociones?accion=leerFormulario" />
+    
+    <!-- Copiar promoción -->
+    <screen name="copiar.promocion" page="/promociones?accion=leerFormulario" />
+   
+    <!-- Modificar id de tracking -->
+    <screen name="modificar.tracking.albaran.venta" page="backoffice/ventas/albaranes/mantenimiento/jsp/tracking.jsp" />
+    
+    <screen name="consultar.calendario.servicio" page="/calendariosServicios?accion=consultarDisponibilidad" />
+    
+    <!-- Ver observaciones de entrada de expedición -->
+    <screen name="ver.observaciones.expedicion" page="backoffice/ventas/expediciones/buscar/jsp/observaciones.jsp"/>
+</screens>

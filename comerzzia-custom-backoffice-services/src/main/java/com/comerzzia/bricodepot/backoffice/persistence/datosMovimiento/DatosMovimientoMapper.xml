@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bricodepot.backoffice.persistence.datosMovimiento.DatosMovimientoMapper">
+  
+  <resultMap id="BaseResultMap" type="com.comerzzia.bricodepot.backoffice.persistence.datosMovimiento.DatosMovimiento">
+    <id column="uid_actividad" jdbcType="VARCHAR" property="uidActividad" />
+    <id column="uid_diario_caja" jdbcType="VARCHAR" property="uidDiarioCaja" />
+    <result column="codalm" jdbcType="VARCHAR" property="codalm" />
+    <result column="codcaja" jdbcType="VARCHAR" property="codcaja" />
+    <result column="fecha_apertura" jdbcType="TIMESTAMP" property="fechaApertura" />
+    <result column="fecha_cierre" jdbcType="TIMESTAMP" property="fechaCierre" />
+    <result column="fecha_envio" jdbcType="TIMESTAMP" property="fechaEnvio" />
+    <result column="usuario" jdbcType="VARCHAR" property="usuario" />
+    <result column="usuario_cierre" jdbcType="VARCHAR" property="usuarioCierre" />
+    <result column="codconcepto_mov" jdbcType="VARCHAR" property="codConceptoMov" />
+    <result column="fecha_contable" jdbcType="TIMESTAMP" property="fechaContable" />
+  </resultMap>
+  
+  <select id="consultarUidDiarioCaja" resultType="java.lang.String">
+   SELECT dcct.uid_diario_caja
+	FROM d_caja_cab_tbl dcct
+	INNER JOIN d_caja_det_tbl dcdt ON (dcct.uid_actividad = dcdt.uid_actividad AND dcct.uid_diario_caja = dcdt.uid_diario_caja)
+	WHERE dcct.uid_actividad = dcdt.uid_actividad
+	AND dcct.codalm = #{codAlm,jdbcType=VARCHAR}
+	AND dcct.fecha_envio = #{fecha, jdbcType=DATE}
+	AND dcdt.codconcepto_mov = '92'
+  </select>
+    
+</mapper>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="retiradaBanco" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="545" leftMargin="25" rightMargin="25" topMargin="25" bottomMargin="25" uuid="646eef7a-0257-407e-a8ea-957b2a7de73b">
+	<property name="ireport.zoom" value="1.8150000000000135"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[".//"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FECHAULTMOV" class="java.lang.String"/>
+	<parameter name="CODALMACEN_DESDE" class="java.lang.String"/>
+	<parameter name="DESALMACEN" class="java.lang.String"/>
+	<parameter name="LISTAMOV" class="java.util.List"/>
+	<parameter name="SUMCARGO" class="java.lang.String"/>
+	<parameter name="USUARIO" class="java.lang.String"/>
+	<parameter name="FECHAACTUAL" class="java.lang.String"/>
+	<parameter name="CODALMACEN" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<title>
+		<band height="154" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="54c5dd73-a748-4f71-a471-aad46806e5ce" x="68" y="20" width="142" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{USUARIO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5b1d6ff5-8680-4e3b-a09e-abade92ee391" x="0" y="20" width="68" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Usuario]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="654dd4bc-2733-4448-bd60-b9694b6d7cec" x="391" y="20" width="154" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHAULTMOV}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fc565ca8-7715-462c-944d-4e3705f9cb09" x="259" y="20" width="132" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha última retirada]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f16a0255-7448-4f49-ab4e-3779308f84d1" x="391" y="40" width="154" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SUMCARGO} +"€"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fbf20533-aabf-45f2-b0d6-4d66db5fa7f6" x="259" y="40" width="132" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total a retirar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5d142012-0ac7-402c-9a1c-1f14fa3b1ae3" x="259" y="0" width="132" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha actual]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="82f49a3b-babd-45f7-b84d-a446b0ecd192" x="391" y="0" width="154" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHAACTUAL}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="cf05a600-e391-4617-81f5-8f66bda5cb14" x="68" y="0" width="142" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CODALMACEN} + " - " + $P{DESALMACEN}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4d2b076a-d864-4880-b8f5-ae41dbf2ffa2" x="0" y="0" width="68" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tienda]]></text>
+			</staticText>
+			<subreport>
+				<reportElement uuid="654c5427-6a43-4661-8284-862a31cdc6b0" x="0" y="114" width="545" height="40"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{LISTAMOV})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "detallesMovimiento.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+</jasperReport>

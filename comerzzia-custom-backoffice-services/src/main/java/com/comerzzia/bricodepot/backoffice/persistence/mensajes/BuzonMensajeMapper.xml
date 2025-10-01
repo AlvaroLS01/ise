@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bricodepot.backoffice.persistence.mensajes.BuzonMensajeMapper">
+  <resultMap id="BaseResultMap" type="com.comerzzia.bricodepot.backoffice.persistence.mensajes.BuzonMensaje">
+    <id column="UID_ACTIVIDAD" jdbcType="VARCHAR" property="uidActividad" />
+    <id column="UID_SERVICIO" jdbcType="VARCHAR" property="uidServicio" />
+    <result column="ID_BUZON" jdbcType="DECIMAL" property="idBuzon" />
+    <result column="UID_MENSAJE" jdbcType="VARCHAR" property="uidMensaje" />
+    <result column="UID_TICKET_NOTIFICACION" jdbcType="VARCHAR" property="uidTicketNotificacion" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    UID_ACTIVIDAD, UID_SERVICIO, ID_BUZON, UID_MENSAJE, UID_TICKET_NOTIFICACION
+  </sql>
+  <select id="selectByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.mensajes.BuzonMensajeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_servicio_buzones_msg_enl_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.comerzzia.bricodepot.backoffice.persistence.mensajes.BuzonMensajeKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from x_servicio_buzones_msg_enl_tbl
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_SERVICIO = #{uidServicio,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bricodepot.backoffice.persistence.mensajes.BuzonMensajeKey">
+    delete from x_servicio_buzones_msg_enl_tbl
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_SERVICIO = #{uidServicio,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.mensajes.BuzonMensajeExample">
+    delete from x_servicio_buzones_msg_enl_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bricodepot.backoffice.persistence.mensajes.BuzonMensaje">
+    insert into x_servicio_buzones_msg_enl_tbl (UID_ACTIVIDAD, UID_SERVICIO, ID_BUZON, 
+      UID_MENSAJE, UID_TICKET_NOTIFICACION)
+    values (#{uidActividad,jdbcType=VARCHAR}, #{uidServicio,jdbcType=VARCHAR}, #{idBuzon,jdbcType=DECIMAL}, 
+      #{uidMensaje,jdbcType=VARCHAR}, #{uidTicketNotificacion,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bricodepot.backoffice.persistence.mensajes.BuzonMensaje">
+    insert into x_servicio_buzones_msg_enl_tbl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        UID_ACTIVIDAD,
+      </if>
+      <if test="uidServicio != null">
+        UID_SERVICIO,
+      </if>
+      <if test="idBuzon != null">
+        ID_BUZON,
+      </if>
+      <if test="uidMensaje != null">
+        UID_MENSAJE,
+      </if>
+      <if test="uidTicketNotificacion != null">
+        UID_TICKET_NOTIFICACION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="uidServicio != null">
+        #{uidServicio,jdbcType=VARCHAR},
+      </if>
+      <if test="idBuzon != null">
+        #{idBuzon,jdbcType=DECIMAL},
+      </if>
+      <if test="uidMensaje != null">
+        #{uidMensaje,jdbcType=VARCHAR},
+      </if>
+      <if test="uidTicketNotificacion != null">
+        #{uidTicketNotificacion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bricodepot.backoffice.persistence.mensajes.BuzonMensajeExample" resultType="java.lang.Long">
+    select count(*) from x_servicio_buzones_msg_enl_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update x_servicio_buzones_msg_enl_tbl
+    <set>
+      <if test="row.uidActividad != null">
+        UID_ACTIVIDAD = #{row.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="row.uidServicio != null">
+        UID_SERVICIO = #{row.uidServicio,jdbcType=VARCHAR},
+      </if>
+      <if test="row.idBuzon != null">
+        ID_BUZON = #{row.idBuzon,jdbcType=DECIMAL},
+      </if>
+      <if test="row.uidMensaje != null">
+        UID_MENSAJE = #{row.uidMensaje,jdbcType=VARCHAR},
+      </if>
+      <if test="row.uidTicketNotificacion != null">
+        UID_TICKET_NOTIFICACION = #{row.uidTicketNotificacion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update x_servicio_buzones_msg_enl_tbl
+    set UID_ACTIVIDAD = #{row.uidActividad,jdbcType=VARCHAR},
+      UID_SERVICIO = #{row.uidServicio,jdbcType=VARCHAR},
+      ID_BUZON = #{row.idBuzon,jdbcType=DECIMAL},
+      UID_MENSAJE = #{row.uidMensaje,jdbcType=VARCHAR},
+      UID_TICKET_NOTIFICACION = #{row.uidTicketNotificacion,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bricodepot.backoffice.persistence.mensajes.BuzonMensaje">
+    update x_servicio_buzones_msg_enl_tbl
+    <set>
+      <if test="idBuzon != null">
+        ID_BUZON = #{idBuzon,jdbcType=DECIMAL},
+      </if>
+      <if test="uidMensaje != null">
+        UID_MENSAJE = #{uidMensaje,jdbcType=VARCHAR},
+      </if>
+      <if test="uidTicketNotificacion != null">
+        UID_TICKET_NOTIFICACION = #{uidTicketNotificacion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_SERVICIO = #{uidServicio,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bricodepot.backoffice.persistence.mensajes.BuzonMensaje">
+    update x_servicio_buzones_msg_enl_tbl
+    set ID_BUZON = #{idBuzon,jdbcType=DECIMAL},
+      UID_MENSAJE = #{uidMensaje,jdbcType=VARCHAR},
+      UID_TICKET_NOTIFICACION = #{uidTicketNotificacion,jdbcType=VARCHAR}
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_SERVICIO = #{uidServicio,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.comerzzia.bricodepot.backoffice.persistence.mensajes.BuzonMensajeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_servicio_buzones_msg_enl_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

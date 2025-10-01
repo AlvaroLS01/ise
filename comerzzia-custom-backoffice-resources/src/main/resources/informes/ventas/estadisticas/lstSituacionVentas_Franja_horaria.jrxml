@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lstSituacionClientes_Original" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Key" uuid="4c3d518a-ff23-4a75-86d6-010d6f05cc66">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CODEMP" class="java.lang.String"/>
+	<parameter name="DESEMP" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CODCLI_DESDE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODCLI_HASTA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["ZZZZZZZZZZ"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FECHA_DESDE" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new java.util.Date()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FECHA_HASTA" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new java.util.Date()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODART_DESDE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODART_HASTA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["ZZZZZZZZZZZ"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODFAM_DESDE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODFAM_HASTA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["ZZZZZZ"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String"/>
+	<parameter name="CODCONALM_DESDE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODCONALM_HASTA" class="java.lang.String">
+		<defaultValueExpression><![CDATA["ZZZZ"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODALM_DESDE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODALM_HASTA" class="java.lang.String">
+		<defaultValueExpression><![CDATA["ZZZZ"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="HORA_DESDE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="HORA_HASTA" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[SELECT CAB_ALB.CODEMP,CAB_ALB.CODALM,HORA, ALM.DESALM,SUM(DET_ALB.IMPORTE_TOTAL * (-1*CON.OPERACION_ALMACEN)) AS TOTAL, SUM(DET_ALB.IMPORTE * (-1*CON.OPERACION_ALMACEN)) AS IMPORTE
+FROM D_CLIE_ALBARANES_CAB_TBL CAB_ALB
+LEFT JOIN D_CLIE_ALBARANES_DET_TBL DET_ALB ON(DET_ALB.UID_ACTIVIDAD = CAB_ALB.UID_ACTIVIDAD AND DET_ALB.ID_CLIE_ALBARAN = CAB_ALB.ID_CLIE_ALBARAN)
+LEFT JOIN D_ARTICULOS_TBL ART ON (DET_ALB.UID_ACTIVIDAD = ART.UID_ACTIVIDAD AND DET_ALB.CODART = ART.CODART)
+LEFT  JOIN D_FAMILIAS_TBL FAM ON (ART.UID_ACTIVIDAD = FAM.UID_ACTIVIDAD AND ART.CODFAM = FAM.CODFAM)
+LEFT JOIN D_CLIENTES_TBL CLI ON (CAB_ALB.UID_ACTIVIDAD = CLI.UID_ACTIVIDAD  AND CAB_ALB.CODCLI = CLI.CODCLI)
+LEFT JOIN D_ALMACENES_TBL ALM ON (CAB_ALB.UID_ACTIVIDAD = ALM.UID_ACTIVIDAD AND CAB_ALB.CODALM = ALM.CODALM)
+ INNER JOIN D_ALMACENES_CONCEPTOS_TBL CON ON (CON.UID_ACTIVIDAD = CAB_ALB.UID_ACTIVIDAD AND CON.CODAPLICACION = CAB_ALB.CODAPLICACION AND CON.CODCONALM = CAB_ALB.CODCONALM)
+WHERE CAST(CAB_ALB.FECHA AS DATE) >= $P{FECHA_DESDE} AND
+      CAST(CAB_ALB.FECHA AS DATE) <= $P{FECHA_HASTA} AND
+      CAB_ALB.HORA >= $P{HORA_DESDE} AND
+      CAB_ALB.HORA <= $P{HORA_HASTA} AND
+      CAB_ALB.UID_ACTIVIDAD = $P{UID_ACTIVIDAD} AND
+      CAB_ALB.CODEMP = $P{CODEMP} AND
+      CAB_ALB.CODCLI >= $P{CODCLI_DESDE} AND
+      CAB_ALB.CODCLI<= $P{CODCLI_HASTA} AND
+      CAB_ALB.CODCONALM >= $P{CODCONALM_DESDE} AND
+      CAB_ALB.CODCONALM <= $P{CODCONALM_HASTA} AND
+      DET_ALB.CODART>= $P{CODART_DESDE} AND
+      DET_ALB.CODART<= $P{CODART_HASTA} AND
+	  (FAM.CODFAM >= $P{CODFAM_DESDE} AND FAM.CODFAM <= $P{CODFAM_HASTA}
+	  OR ('0' = $P{CODFAM_DESDE} AND 'ZZZZ' = $P{CODFAM_HASTA} AND FAM.CODFAM IS NULL)) AND
+      ALM.CODALM >= $P{CODALM_DESDE} AND
+      ALM.CODALM <= $P{CODALM_HASTA} AND
+      CAB_ALB.CODAPLICACION = 'VENT'
+  GROUP BY CAB_ALB.CODEMP,CAB_ALB.CODALM, ALM.DESALM, CAB_ALB.HORA
+  ORDER BY CAB_ALB.CODALM,CAB_ALB.HORA]]>
+	</queryString>
+	<field name="CODEMP" class="java.lang.String"/>
+	<field name="CODALM" class="java.lang.String"/>
+	<field name="HORA" class="java.lang.String"/>
+	<field name="DESALM" class="java.lang.String"/>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<field name="IMPORTE" class="java.math.BigDecimal"/>
+	<variable name="TOTAL_HORA" class="java.math.BigDecimal" resetType="Group" resetGroup="FRANJA_HORARIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{TOTAL}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_VENTA_TIENDA" class="java.math.BigDecimal" resetType="Group" resetGroup="CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{TOTAL}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_HORA_SIN_IMP" class="java.math.BigDecimal" resetType="Group" resetGroup="FRANJA_HORARIA" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_VENTA_TIENDA_SIN_IMP" class="java.math.BigDecimal" resetType="Group" resetGroup="CODALM" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE}]]></variableExpression>
+	</variable>
+	<group name="CODEMP">
+		<groupExpression><![CDATA[$F{CODEMP}]]></groupExpression>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="CODALM">
+		<groupExpression><![CDATA[$F{CODALM}]]></groupExpression>
+		<groupHeader>
+			<band height="54">
+				<line>
+					<reportElement uuid="60e6f214-8a48-4266-949f-3583f44ddff0" x="0" y="11" width="802" height="1"/>
+				</line>
+				<textField>
+					<reportElement uuid="ffe4f3e9-1f6f-4105-9431-ecd8db84af67" x="0" y="0" width="802" height="11"/>
+					<textElement>
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$R{TIENDA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="84c20ed5-8c3d-4712-a87c-0ad70de2e02e" positionType="FixRelativeToBottom" x="586" y="33" width="83" height="11" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[%]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="976e2383-49eb-49e4-8c5d-0a7906c20c9b" x="0" y="13" width="81" height="13"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CODALM}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="d4e430be-af0e-41de-919e-e7ef43bc16bd" x="81" y="13" width="372" height="13"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{DESALM}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="976e2383-49eb-49e4-8c5d-0a7906c20c9b" x="81" y="33" width="165" height="11"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$R{FRANJA HORARIA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="829f58fa-c485-40cf-8bf1-869b68cfaebb" x="416" y="33" width="170" height="11"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$R{VOL.VENTA CON IMPUESTOS}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="829f58fa-c485-40cf-8bf1-869b68cfaebb" x="246" y="33" width="170" height="11"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$R{VOL.VENTA SIN IMPUESTOS}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="21">
+				<textField>
+					<reportElement uuid="c81999af-d0b8-4641-b742-efb30aac680d" x="81" y="8" width="165" height="13"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$R{TOTAL:}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="c81999af-d0b8-4641-b742-efb30aac680d" x="416" y="8" width="170" height="13"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_VENTA_TIENDA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="c81999af-d0b8-4641-b742-efb30aac680d" x="586" y="8" width="83" height="13"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[($V{TOTAL_VENTA_TIENDA} != null && $V{TOTAL_VENTA_TIENDA}.doubleValue() != Double.valueOf(0.0)) ? $V{TOTAL_VENTA_TIENDA}.multiply(new BigDecimal(100)).divide($V{TOTAL_VENTA_TIENDA_SIN_IMP}, 2, RoundingMode.HALF_UP).abs().subtract(new BigDecimal(100)) : BigDecimal.ZERO]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="c81999af-d0b8-4641-b742-efb30aac680d" x="246" y="8" width="170" height="13"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_VENTA_TIENDA_SIN_IMP}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="FRANJA_HORARIA">
+		<groupExpression><![CDATA[$F{HORA}.substring(0,2)]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="51d895f3-ae5d-4442-949d-1c7aae32c5e6" x="81" y="0" width="165" height="12"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{HORA}.substring(0,2)+":00 -"+
+((new Integer ($F{HORA}.substring(0,2))+1)>9?
+(new Integer ($F{HORA}.substring(0,2))+1)+":00":
+"0"+(new Integer ($F{HORA}.substring(0,2))+1)+":00")]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Auto" pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="9230bcca-752f-4f66-b2f4-d9073b0ade51" x="416" y="0" width="170" height="12"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_HORA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Auto" pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="80ce2e4b-2aa0-43ed-8819-7919460357b5" x="586" y="0" width="83" height="12"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_HORA_SIN_IMP}.compareTo(BigDecimal.ZERO) > 0 ? $V{TOTAL_HORA}.multiply(new BigDecimal(100)).divide($V{TOTAL_HORA_SIN_IMP}, 2, RoundingMode.HALF_UP).abs().subtract(new BigDecimal(100)) : BigDecimal.ZERO]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Auto" pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="9230bcca-752f-4f66-b2f4-d9073b0ade51" x="246" y="0" width="170" height="12"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_HORA_SIN_IMP}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="103">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ed81fde0-abf7-429f-9594-3b0ff0cae482" x="0" y="36" width="453" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE CLIENTE} +" " + $P{CODCLI_DESDE} +" "+ $R{HASTA} +" " + $P{CODCLI_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="d5fa7c2d-c81f-4869-b188-89012da1f7c7" x="196" y="56" width="257" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="9bb41293-a98f-427c-bc7f-1aaef7f73f38" x="81" y="56" width="72" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_DESDE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3beb772d-716d-4a49-a5c6-507670a88bd3" x="0" y="46" width="453" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE ARTÍCULO} +" " + $P{CODART_DESDE} +" "+ $R{HASTA} +" "+ $P{CODART_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement uuid="39eb514a-9c2f-48bb-9a6e-dceecabd3fc7" x="0" y="12" width="81" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="490cd8e7-88ba-4255-9193-ac2c1e0071dc" x="81" y="0" width="72" height="12"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CODEMP}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e695a924-8cec-4391-b035-04b9b3f9e306" x="153" y="0" width="300" height="12"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DESEMP}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="3356cd64-8b6a-4744-9911-2078fd224d27" x="0" y="0" width="81" height="12"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5e3b8f27-25fa-4a0f-921b-4bdb0729df3d" x="0" y="76" width="453" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE FAMILIA}+" " + $P{CODFAM_DESDE} +" "+ $R{HASTA} +" "+ $P{CODFAM_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="4ead7531-eeb4-4d4a-9556-b2b157a73529" x="0" y="87" width="453" height="11"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE CONCEPTO DE ALMACÉN} +" " + $P{CODCONALM_DESDE} +" "+ $R{HASTA} +" "+ $P{CODCONALM_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="75885874-cdaf-45cd-ab58-794cf9a894e4" x="0" y="56" width="81" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE FECHA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6a344739-316a-42c6-b202-179963433f64" x="453" y="0" width="349" height="12"/>
+				<textElement>
+					<font fontName="Tahoma" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{Evaluación de franjas horarias - Volumen de VENTAS }]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3db0a8d6-73b3-4a31-a61a-e1ba0036ee8f" x="453" y="12" width="349" height="24"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{Relación de ventas realizadas en el intervalo indicado.Muestra el total de ventas por franjas horarias y porcentaje correspondiente entre el intervalo de fechas indicado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="94d8903a-cb76-44bc-b3a7-f392a95e93b6" x="153" y="56" width="43" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{HASTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="9bb41293-a98f-427c-bc7f-1aaef7f73f38" x="81" y="66" width="72" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HORA_DESDE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="75885874-cdaf-45cd-ab58-794cf9a894e4" x="0" y="66" width="81" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE HORA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="94d8903a-cb76-44bc-b3a7-f392a95e93b6" x="153" y="66" width="43" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{HASTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="d5fa7c2d-c81f-4869-b188-89012da1f7c7" x="196" y="66" width="257" height="10"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HORA_HASTA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="13"/>
+	</pageFooter>
+	<summary>
+		<band height="33">
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement uuid="5e22237c-eb2d-49fc-bd90-49c2778e287a" key="textField" x="246" y="11" width="423" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{Página} +" "+ $V{PAGE_NUMBER} +" "+ $R{de}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="a8d26c32-117b-463c-95a2-bd9bba8c94ff" key="textField" x="669" y="11" width="96" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

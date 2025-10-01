@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lstSituacionVentas_Familia" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Key" uuid="7d9380e4-561c-400f-9c49-9a5e2e83801c">
+	<property name="ireport.zoom" value="0.9330147604194671"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.chart.pie.ignore.duplicated.key" value="true"/>
+	<parameter name="CODEMP" class="java.lang.String"/>
+	<parameter name="DESEMP" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CODCLI_DESDE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODCLI_HASTA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["ZZZZZZZZZZ"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FECHA_DESDE" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new java.util.Date()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FECHA_HASTA" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.util.Date()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODART_DESDE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODART_HASTA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["ZZZZZZZZZZZ"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODFAM_DESDE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODFAM_HASTA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["ZZZZZZ"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="UID_ACTIVIDAD" class="java.lang.String"/>
+	<parameter name="CODCONALM_DESDE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODCONALM_HASTA" class="java.lang.String">
+		<defaultValueExpression><![CDATA["ZZZZ"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODALM_DESDE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODALM_HASTA" class="java.lang.String">
+		<defaultValueExpression><![CDATA["ZZZZ"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     CAB.CODEMP
+   , CLI.CODCLI
+   , CLI.DESCLI
+   , CLI.TELEFONO1
+   , CLI.TELEFONO2
+   , CLI.FAX
+   , CAB.PERIODO
+   , CAB.CODSERIE
+   , CAB.NUMALB
+   , CAB.FECHA
+   , CAB.OBSERVACIONES
+   , CAB.PERSONA_CONTACTO
+   , CAB.USUARIO
+   , CAB.CODALM
+   , CAB.ID_CLIE_ALBARAN
+   , CAB.ID_GRUPO_IMPUESTOS
+   , CAB.ID_TRAT_IMPUESTOS
+   , CAB.TOTAL
+   , CAB.BASE
+   , CAB.IMPUESTOS
+   , DET.LINEA
+   , DET.CODART
+   , DET.DESART
+   , DET.DESGLOSE1
+   , DET.DESGLOSE2
+   , DET.DESCRIPCION_AMPLIADA
+   , DET.UNIDAD_MEDIDA
+   , DET.CANTIDAD_MEDIDA
+   , DET.CANTIDAD
+   , DET.PRECIO
+   , DET.DESCUENTO
+   , DET.IMPORTE * (-1*CON.OPERACION_ALMACEN) AS IMPORTE_LINEA
+   , DET.IMPORTE_TOTAL * (-1*CON.OPERACION_ALMACEN) AS IMPORTE_TOTAL_LINEA
+   , DET.PRECIO_COSTO
+   , DET.CANTIDAD*DET.PRECIO_COSTO * (-1*CON.OPERACION_ALMACEN) AS IMPORTE_COSTO
+   , FAM.CODFAM
+   , FAM.DESFAM
+   , CASE WHEN CAB.ID_FACTURA_REP IS NULL THEN DET.IMPORTE ELSE 0 END  AS IMPORTE_PDTE_FACTURACION
+   , CASE WHEN CAB.ID_FACTURA_REP IS NOT NULL THEN DET.IMPORTE ELSE 0 END AS IMPORTE_FACTURADO
+   , CASE WHEN DET.CANTIDAD<0 THEN ABS(DET.IMPORTE)ELSE 0 END AS IMPORTE_ABONADO
+   , CASE WHEN DET.TIPO_LINEA = 'N' THEN DET.CANTIDAD ELSE 0 END AS UNIDADES_VENDIDAS
+   , FAC.PERIODO AS PERIODO_FAC
+   , FAC.CODSERIE AS CODSERIE_FAC
+   , FAC.NUMFAC
+FROM D_CLIE_ALBARANES_DET_TBL DET
+	INNER JOIN D_CLIE_ALBARANES_CAB_TBL CAB ON DET.UID_ACTIVIDAD = CAB.UID_ACTIVIDAD AND DET.ID_CLIE_ALBARAN = CAB.ID_CLIE_ALBARAN
+	INNER JOIN D_ARTICULOS_TBL ART ON DET.UID_ACTIVIDAD = ART.UID_ACTIVIDAD AND DET.CODART = ART.CODART
+	LEFT OUTER JOIN D_FAMILIAS_TBL FAM ON ART.UID_ACTIVIDAD = FAM.UID_ACTIVIDAD AND ART.CODFAM = FAM.CODFAM
+	INNER JOIN D_CLIENTES_TBL CLI ON CAB.UID_ACTIVIDAD = CLI.UID_ACTIVIDAD AND CAB.CODCLI = CLI.CODCLI
+	LEFT OUTER JOIN D_FACTURAS_REP_CAB_TBL FAC ON CAB.UID_ACTIVIDAD = FAC.UID_ACTIVIDAD AND CAB.ID_FACTURA_REP = FAC.ID_FACTURA_REP
+	 INNER JOIN D_ALMACENES_CONCEPTOS_TBL CON ON (CON.UID_ACTIVIDAD = CAB.UID_ACTIVIDAD AND CON.CODAPLICACION = CAB.CODAPLICACION AND CON.CODCONALM = CAB.CODCONALM)
+
+WHERE CAB.UID_ACTIVIDAD = $P{UID_ACTIVIDAD}
+      AND CAB.CODEMP = $P{CODEMP}
+      AND CLI.CODCLI >= $P{CODCLI_DESDE}
+      AND CLI.CODCLI<= $P{CODCLI_HASTA}
+      AND CAB.CODCONALM >= $P{CODCONALM_DESDE}
+      AND CAB.CODCONALM <= $P{CODCONALM_HASTA}
+      AND CAST(CAB.FECHA AS DATE) >= $P{FECHA_DESDE}
+      AND CAST(CAB.FECHA AS DATE) <= $P{FECHA_HASTA}
+      AND DET.CODART>= $P{CODART_DESDE}
+      AND DET.CODART <= $P{CODART_HASTA}
+      AND FAM.CODFAM >= $P{CODFAM_DESDE}
+      AND FAM.CODFAM<= $P{CODFAM_HASTA}
+      AND CAB.CODALM >= $P{CODALM_DESDE}
+      AND CAB.CODALM <= $P{CODALM_HASTA}
+
+ORDER BY CAB.CODEMP
+       , FAM.CODFAM]]>
+	</queryString>
+	<field name="CODEMP" class="java.lang.String"/>
+	<field name="CODCLI" class="java.lang.String"/>
+	<field name="DESCLI" class="java.lang.String"/>
+	<field name="TELEFONO1" class="java.lang.String"/>
+	<field name="TELEFONO2" class="java.lang.String"/>
+	<field name="FAX" class="java.lang.String"/>
+	<field name="PERIODO" class="java.math.BigDecimal"/>
+	<field name="CODSERIE" class="java.lang.String"/>
+	<field name="NUMALB" class="java.math.BigDecimal"/>
+	<field name="FECHA" class="java.sql.Timestamp"/>
+	<field name="OBSERVACIONES" class="java.lang.String"/>
+	<field name="PERSONA_CONTACTO" class="java.lang.String"/>
+	<field name="USUARIO" class="java.lang.String"/>
+	<field name="CODALM" class="java.lang.String"/>
+	<field name="ID_CLIE_ALBARAN" class="java.math.BigDecimal"/>
+	<field name="ID_GRUPO_IMPUESTOS" class="java.math.BigDecimal"/>
+	<field name="ID_TRAT_IMPUESTOS" class="java.math.BigDecimal"/>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<field name="BASE" class="java.math.BigDecimal"/>
+	<field name="IMPUESTOS" class="java.math.BigDecimal"/>
+	<field name="LINEA" class="java.math.BigDecimal"/>
+	<field name="CODART" class="java.lang.String"/>
+	<field name="DESART" class="java.lang.String"/>
+	<field name="DESGLOSE1" class="java.lang.String"/>
+	<field name="DESGLOSE2" class="java.lang.String"/>
+	<field name="DESCRIPCION_AMPLIADA" class="java.lang.String"/>
+	<field name="UNIDAD_MEDIDA" class="java.lang.String"/>
+	<field name="CANTIDAD_MEDIDA" class="java.math.BigDecimal"/>
+	<field name="CANTIDAD" class="java.math.BigDecimal"/>
+	<field name="PRECIO" class="java.math.BigDecimal"/>
+	<field name="DESCUENTO" class="java.math.BigDecimal"/>
+	<field name="IMPORTE_LINEA" class="java.math.BigDecimal"/>
+	<field name="IMPORTE_TOTAL_LINEA" class="java.math.BigDecimal"/>
+	<field name="PRECIO_COSTO" class="java.math.BigDecimal"/>
+	<field name="IMPORTE_COSTO" class="java.math.BigDecimal"/>
+	<field name="CODFAM" class="java.lang.String"/>
+	<field name="DESFAM" class="java.lang.String"/>
+	<field name="IMPORTE_PDTE_FACTURACION" class="java.math.BigDecimal"/>
+	<field name="IMPORTE_FACTURADO" class="java.math.BigDecimal"/>
+	<field name="IMPORTE_ABONADO" class="java.math.BigDecimal"/>
+	<field name="UNIDADES_VENDIDAS" class="java.math.BigDecimal"/>
+	<field name="PERIODO_FAC" class="java.math.BigDecimal"/>
+	<field name="CODSERIE_FAC" class="java.lang.String"/>
+	<field name="NUMFAC" class="java.math.BigDecimal"/>
+	<variable name="TOTAL_VENTAS" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE_LINEA}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_COSTO" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE_COSTO}]]></variableExpression>
+	</variable>
+	<variable name="ID_CLIE_ALBARAN_COUNT" class="java.lang.Integer" resetType="Group" resetGroup="CODFAM" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{ID_CLIE_ALBARAN}]]></variableExpression>
+	</variable>
+	<variable name="CODART_COUNT_FAMILIA" class="java.lang.Integer" resetType="Group" resetGroup="CODFAM" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{CODART}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_VENTA_FAMILIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CODFAM" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE_LINEA}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_COSTE_FAMILIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CODFAM" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE_COSTO}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_MARGEN_FAMILIA" class="java.math.BigDecimal" resetType="Group" resetGroup="CODFAM" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE_LINEA}.subtract($F{IMPORTE_COSTO} )]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_MARGEN_PROVEEDOR" class="java.math.BigDecimal" resetType="Group" resetGroup="CODFAM" calculation="Sum">
+		<variableExpression><![CDATA[$V{TOTAL_MARGEN_FAMILIA}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_MARGEN" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE_LINEA}.subtract($F{IMPORTE_COSTO} )]]></variableExpression>
+	</variable>
+	<variable name="%MARGEN_FAMILIA" class="java.lang.Double">
+		<variableExpression><![CDATA[($V{TOTAL_VENTA_FAMILIA}.doubleValue() != 0.0
+    ? new Double(100 - ($V{TOTAL_COSTE_FAMILIA}.doubleValue() * 100 / $V{TOTAL_VENTA_FAMILIA}.doubleValue()))
+    : 0.0)]]></variableExpression>
+	</variable>
+	<variable name="%MARGEN" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{TOTAL_VENTAS}.doubleValue() != 0.0 ? new Double(
+100 - ($V{TOTAL_COSTO}.doubleValue() * 100 / $V{TOTAL_VENTAS}.doubleValue())
+) : 0.0]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_VENTA_FAMILIA_CON_IMP" class="java.math.BigDecimal" resetType="Group" resetGroup="CODFAM" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE_TOTAL_LINEA}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_VENTAS_CON_IMP" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{IMPORTE_TOTAL_LINEA}]]></variableExpression>
+	</variable>
+	<group name="CODEMP">
+		<groupExpression><![CDATA[$F{CODEMP}]]></groupExpression>
+		<groupFooter>
+			<band height="20">
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="aa44ddc8-563b-4b10-b9b1-2057de7899b6" x="429" y="0" width="86" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_VENTAS}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="47bd93d3-f635-4116-a017-289ba6527048" x="560" y="0" width="85" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_COSTO}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="0df26585-5efc-4b0b-82dd-b981dbf8c1d7" x="645" y="0" width="75" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_MARGEN}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="b6c3281b-f698-4ded-83cf-dd95a018512e" x="720" y="0" width="82" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{%MARGEN}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="aa44ddc8-563b-4b10-b9b1-2057de7899b6" x="335" y="0" width="94" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_VENTAS_CON_IMP}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="CODFAM">
+		<groupExpression><![CDATA[$F{CODFAM}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="d9a6f1aa-a1f3-4f27-9d6a-c7f4d852e9b3" x="0" y="0" width="215" height="15"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CODFAM} != null ? ($F{CODFAM}+"-"+$F{DESFAM}):""]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Auto" pattern="#,##0;-#,##0" isBlankWhenNull="true">
+					<reportElement uuid="5b7d1fb6-ff51-4251-ba08-ee0cb9d62a17" x="215" y="0" width="60" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{ID_CLIE_ALBARAN_COUNT}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Auto" isBlankWhenNull="true">
+					<reportElement uuid="33c6480b-376b-490b-bf6b-1ddaf793a5e7" x="275" y="0" width="60" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{CODART_COUNT_FAMILIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CODFAM" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="dfb5285e-4a90-482f-b605-4afba9e285d4" x="429" y="0" width="86" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_VENTA_FAMILIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Auto" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="fefe2c12-06cd-4a25-adf6-79b7dfd49dad" x="515" y="0" width="45" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[($V{TOTAL_VENTAS}.compareTo(BigDecimal.ZERO) > 0
+     ? $V{TOTAL_VENTA_FAMILIA}.multiply(new BigDecimal(100)).divide($V{TOTAL_VENTAS}, 3, RoundingMode.HALF_UP)
+     : BigDecimal.ZERO)]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Auto" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="2803e504-8eab-4cb9-a207-5008fc01a158" x="560" y="0" width="85" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_COSTE_FAMILIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Auto" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="7d19b933-b62f-4649-af07-1c17b5fc33e6" x="645" y="0" width="75" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_MARGEN_FAMILIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CODFAM" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="54088d38-83ac-4441-a750-5a607b4ec00e" x="720" y="0" width="82" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{%MARGEN_FAMILIA}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="CODFAM" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="dfb5285e-4a90-482f-b605-4afba9e285d4" x="335" y="0" width="94" height="15"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_VENTA_FAMILIA_CON_IMP}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="135">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ced80163-f2b5-46df-8b23-0f935cce5fa4" x="0" y="45" width="429" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE CLIENTE} + " " + $P{CODCLI_DESDE} + " " + $R{HASTA} + " " + $P{CODCLI_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1c2093e1-a537-4552-9a3d-24182e5e3ab5" x="429" y="15" width="373" height="30"/>
+				<textElement textAlignment="Right" markup="none">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{Relación de ventas realizadas en el intervalo indicado. Muestra porcentajes sobre el total de operaciones, volumen de ventas y margen de la operación.}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d45be9bf-b7b5-41ee-b27d-0489320cb94d" x="0" y="60" width="429" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE ARTÍCULO} + " " + $P{CODART_DESDE} + " " + $R{HASTA} + " " + $P{CODART_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement uuid="81477b68-e6b2-464e-9790-7fceb3465a3a" x="0" y="15" width="80" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="3288a384-f426-457e-b07f-645af5f7e32d" x="80" y="0" width="40" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CODEMP}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="58a812dd-31e4-46de-ad62-651ab3839ee2" x="120" y="0" width="309" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DESEMP}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="17d986ff-17fb-4c5f-9a48-4468a169cf59" x="0" y="0" width="80" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a6457749-b8f3-4981-9f76-b498bd1bc125" x="0" y="90" width="429" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE FAMILIA} + " " + $P{CODFAM_DESDE} + " " + $R{HASTA} + " " + $P{CODFAM_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="eaa97f5d-6e5a-4b72-823b-765f3df97e3f" x="429" y="0" width="373" height="15"/>
+				<textElement textAlignment="Right" markup="none">
+					<font fontName="Tahoma" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{Evaluación de FAMILIAS - Volumen de VENTAS / MARGEN}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="910736cd-2c82-49c5-84d0-26ef579c86e9" x="0" y="105" width="429" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE CONCEPTO DE ALMACÉN} +" " + $P{CODCONALM_DESDE} + " "+$R{HASTA} +" "+ $P{CODCONALM_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="78e51d65-4e7b-4bf7-97b9-b34a4fcc4ca1" x="0" y="120" width="429" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE ALMACÉN} +" " + $P{CODALM_DESDE} + " "+$R{HASTA} +" "+ $P{CODALM_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="d5fa7c2d-c81f-4869-b188-89012da1f7c7" x="215" y="75" width="214" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_HASTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="75885874-cdaf-45cd-ab58-794cf9a894e4" x="0" y="75" width="80" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{DESDE FECHA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="9bb41293-a98f-427c-bc7f-1aaef7f73f38" x="80" y="75" width="74" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_DESDE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="94d8903a-cb76-44bc-b3a7-f392a95e93b6" x="154" y="75" width="61" height="15"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{HASTA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20">
+			<printWhenExpression><![CDATA[$P{REPORT_DATA_SOURCE}.next()]]></printWhenExpression>
+			<textField>
+				<reportElement uuid="f11a1a76-49b0-4856-b3fb-84b3e96ddeb6" positionType="FixRelativeToBottom" mode="Opaque" x="0" y="0" width="215" height="15" backcolor="#FFFFFF"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{FAMILIA/ DESCRIPCIÓN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6367f70d-5f52-476d-bb22-73a884d54263" positionType="FixRelativeToBottom" mode="Opaque" x="429" y="0" width="86" height="15" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{VOL. VENTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4d657426-170a-4b46-a003-5f8d5e7ccb77" positionType="FixRelativeToBottom" x="645" y="0" width="75" height="15" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{MARGEN}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="83eb8c79-cbc1-4832-abb5-3c05040a5100" positionType="FixRelativeToBottom" mode="Opaque" x="720" y="0" width="82" height="11" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[%MARGEN]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="8465fcf1-b96d-4352-bc3e-cb90a6fff406" positionType="FixRelativeToBottom" mode="Opaque" x="215" y="0" width="60" height="15" backcolor="#FFFFFF"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{Nº OPERAC.}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9a53f15f-9238-4293-8e39-46bc2c552385" positionType="FixRelativeToBottom" mode="Opaque" x="515" y="0" width="45" height="15" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[%VENTA]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="8e7e4508-ae8a-4cc2-bfba-3ea6da397fa3" positionType="FixRelativeToBottom" x="275" y="0" width="60" height="15" backcolor="#FFFFFF"/>
+				<textElement markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{REFERENCIAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="695aafa7-a5a9-47b1-8949-3782f09c9cd8" positionType="FixRelativeToBottom" mode="Opaque" x="560" y="0" width="85" height="15" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{COSTE VENTA}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="9b5893c5-d1ad-411a-87a6-ba18cbbe736a" x="0" y="16" width="802" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="6367f70d-5f52-476d-bb22-73a884d54263" positionType="FixRelativeToBottom" mode="Opaque" x="335" y="0" width="94" height="15" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" markup="none">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{VOL. VENTA IMP}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="27">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="86c34971-7c08-4e4d-ba30-bc7ecfe168f4" key="textField" x="560" y="0" width="212" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{Página} +" "+ $V{PAGE_NUMBER} +" "+ $R{de} +" "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="true">
+				<reportElement uuid="266d9f69-4336-43c2-8c0b-bb63d77f41b1" x="772" y="0" width="30" height="12"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="423">
+			<pie3DChart>
+				<chart isShowLegend="false">
+					<reportElement uuid="974bb51d-56e6-4ed2-9f45-9d0570c7a78e" x="0" y="0" width="802" height="410" isPrintWhenDetailOverflows="true"/>
+					<chartTitle>
+						<font size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+						<titleExpression><![CDATA[$R{Volumen Ventas}]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle>
+						<font size="12"/>
+					</chartSubtitle>
+					<chartLegend>
+						<font size="7"/>
+					</chartLegend>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{CODFAM} + "-" + $F{DESFAM}]]></keyExpression>
+					<valueExpression><![CDATA[$V{TOTAL_VENTA_FAMILIA}]]></valueExpression>
+					<labelExpression><![CDATA[$F{DESFAM} + " / " + $V{TOTAL_VENTA_FAMILIA}]]></labelExpression>
+				</pieDataset>
+				<pie3DPlot isCircular="false" legendLabelFormat="({1})">
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="42"/>
+	</summary>
+</jasperReport>

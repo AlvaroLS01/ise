@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<screens>
+	<screen name="inicio" page="/inicioAdmin" />
+	
+    <!-- Sincronizador de Tiendas -->
+    <screen name="sincronizador" page="/sincronizacion?accion=leerFormulario" />
+    
+    <!-- Cajas -->
+    <screen name="monitor.cajas" page="/cajas?accion=leerFormulario" />
+    
+	<screen name="catalogIndexation" page="backoffice/sitios/mantenimiento/jsp/catalogIndexationParams.jsp"/>
+	
+    <!-- Ver pantalla de errores de interfaces -->
+    <screen name="ver.traza.error" page="admin/erroresinterfaces/buscar/jsp/traza.jsp" />
+    
+</screens>
