@@ -52,11 +52,18 @@ class FacturaA4ReportManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FacturaA4ReportManager.class);
 
+    private static final String PLANTILLA_ES = "facturaA4";
+    private static final String PLANTILLA_PT = "facturaA4_PT";
+    private static final String PLANTILLA_CA = "facturaA4_CA";
+    private static final String PLANTILLA_ORIGINAL = "facturaA4_Original";
+    private static final String PLANTILLA_DEVOLUCION_PT = "facturaDevolucionA4_PT";
+
     private static final List<String> PLANTILLAS_VALIDAS = Arrays.asList(
-            "facturaA4",
-            "facturaA4_PT",
-            "facturaA4_CA",
-            "facturaA4_Original");
+            PLANTILLA_ES,
+            PLANTILLA_PT,
+            PLANTILLA_CA,
+            PLANTILLA_ORIGINAL,
+            PLANTILLA_DEVOLUCION_PT);
 
     private final ApplicationContext applicationContext;
     private final ObjectMapper mapeadorJson;
@@ -175,20 +182,25 @@ class FacturaA4ReportManager {
                 "cabecera.tienda.pais",
                 "cabecera.pais"));
 
+        boolean esDevolucion = esDocumentoDevolucion(ticketVentaAbono);
+
         if ("PT".equalsIgnoreCase(codigoPais)) {
-            return construirPlantilla("facturaA4_PT");
+            if (esDevolucion) {
+                return construirPlantilla(PLANTILLA_DEVOLUCION_PT);
+            }
+            return construirPlantilla(PLANTILLA_PT);
         }
         if ("CA".equalsIgnoreCase(codigoPais)) {
-            return construirPlantilla("facturaA4_CA");
+            return construirPlantilla(PLANTILLA_CA);
         }
-        return construirPlantilla("facturaA4");
+        return construirPlantilla(PLANTILLA_ES);
     }
 
     private PlantillaFactura construirPlantilla(String nombrePlantilla) {
         int version = 1;
-        if ("facturaA4_PT".equals(nombrePlantilla)) {
+        if (PLANTILLA_PT.equals(nombrePlantilla) || PLANTILLA_DEVOLUCION_PT.equals(nombrePlantilla)) {
             version = 2;
-        } else if ("facturaA4_CA".equals(nombrePlantilla)) {
+        } else if (PLANTILLA_CA.equals(nombrePlantilla)) {
             version = 3;
         }
         return new PlantillaFactura(nombrePlantilla, version);
