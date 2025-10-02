@@ -18,6 +18,7 @@
 
     <context:component-scan base-package="com.comerzzia.api" />
     <context:component-scan base-package="com.comerzzia.bricodepot.api" />
+    <context:component-scan base-package="com.comerzzia.bricodepot.backoffice.services" />
     <context:component-scan base-package="com.comerzzia.core.servicios" />
     <context:component-scan base-package="com.comerzzia.core.basketcalculator" />
     <context:component-scan base-package="com.comerzzia.omnichannel.service" />     
