@@ -22,13 +22,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
 import org.springframework.util.InvalidMimeTypeException;
 
 import com.comerzzia.bricodepot.api.omnichannel.api.web.salesdocument.SalesDocumentPrintResponse;
 import com.comerzzia.bricodepot.api.omnichannel.api.web.salesdocument.SalesDocumentPrintService;
 
-@Component
 @Path("/salesdocument")
 public class SalesDocumentResource {
 
