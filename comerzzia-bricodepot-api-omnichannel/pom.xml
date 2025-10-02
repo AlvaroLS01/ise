@@ -18,13 +18,15 @@
 		<version>2.1.4.RELEASE</version>
 	</parent>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
+        <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>1.8</java.version>
 
-		<junit-version>4.12</junit-version>
-		<spring.version>5.1.6.RELEASE</spring.version>
-		<swagger-version>2.0.1</swagger-version>
+                <junit-version>4.12</junit-version>
+                <spring.version>5.1.6.RELEASE</spring.version>
+                <swagger-version>2.0.1</swagger-version>
+
+                <comerzzia.custom.backoffice.version>25-SNAPSHOT</comerzzia.custom.backoffice.version>
 
 		<comerzzia.core.version>4.8.1-SNAPSHOT</comerzzia.core.version>
 		<comerzzia.pos.version>4.8.1-SNAPSHOT</comerzzia.pos.version>
@@ -137,12 +139,22 @@
 			<artifactId>comerzzia-omnichannel-services</artifactId>
 			<version>4.8-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>com.comerzzia.api.omnichannel</groupId>
-			<artifactId>comerzzia-api-omnichannel-web</artifactId>
-			<version>2.0-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
+                <dependency>
+                        <groupId>com.comerzzia.api.omnichannel</groupId>
+                        <artifactId>comerzzia-api-omnichannel-web</artifactId>
+                        <version>2.0-SNAPSHOT</version>
+                </dependency>
+                <dependency>
+                        <groupId>com.comerzzia.bricodepot</groupId>
+                        <artifactId>comerzzia-custom-backoffice-services</artifactId>
+                        <version>${comerzzia.custom.backoffice.version}</version>
+                </dependency>
+                <dependency>
+                        <groupId>com.comerzzia.bricodepot</groupId>
+                        <artifactId>comerzzia-custom-backoffice-resources</artifactId>
+                        <version>${comerzzia.custom.backoffice.version}</version>
+                </dependency>
+        </dependencies>
 
 	<build>
 		<plugins>
