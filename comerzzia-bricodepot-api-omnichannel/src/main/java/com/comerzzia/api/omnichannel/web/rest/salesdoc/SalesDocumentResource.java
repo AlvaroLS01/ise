@@ -1,5 +1,6 @@
 package com.comerzzia.api.omnichannel.web.rest.salesdoc;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -47,11 +48,13 @@ public class SalesDocumentResource {
 
     @GET
     @Path("/{documentUid}/print")
-    @Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+    @Produces({ javax.ws.rs.core.MediaType.APPLICATION_JSON, javax.ws.rs.core.MediaType.APPLICATION_OCTET_STREAM,
+            "application/pdf" })
     public Response printSaleDocumentByUid(@PathParam("documentUid") String identificadorDocumento,
             @Context UriInfo informacionUri,
             @Context HttpServletRequest peticion,
-            @Context HttpServletResponse respuesta) {
+            @Context HttpServletResponse respuesta,
+            @Context javax.ws.rs.core.HttpHeaders cabeceras) {
 
         MultivaluedMap<String, String> parametros = informacionUri.getQueryParameters(true);
         boolean esCopia = esParametroBooleanoActivo(parametros.get(PARAM_COPY));
@@ -81,10 +84,45 @@ public class SalesDocumentResource {
                 .filename(documento.getFileName())
                 .build();
 
+        if (debeResponderComoBinario(cabeceras, tipoCabecera)) {
+            byte[] contenido = Base64.getDecoder().decode(documento.getContent());
+            return Response.ok(contenido)
+                    .type(tipoCabecera.toString())
+                    .header(HttpHeaders.CONTENT_DISPOSITION, disposicion.toString())
+                    .build();
+        }
+
         return Response.ok(documento)
-                .header(HttpHeaders.CONTENT_TYPE, tipoCabecera.toString())
+                .type(javax.ws.rs.core.MediaType.APPLICATION_JSON)
                 .header(HttpHeaders.CONTENT_DISPOSITION, disposicion.toString())
                 .build();
+    }
+
+    private boolean debeResponderComoBinario(javax.ws.rs.core.HttpHeaders cabeceras,
+            MediaType tipoCabecera) {
+        if (cabeceras == null) {
+            return false;
+        }
+
+        List<javax.ws.rs.core.MediaType> aceptables = cabeceras.getAcceptableMediaTypes();
+        if (aceptables == null || aceptables.isEmpty()) {
+            return false;
+        }
+
+        javax.ws.rs.core.MediaType tipoPreferido = javax.ws.rs.core.MediaType.valueOf(tipoCabecera.toString());
+        for (javax.ws.rs.core.MediaType mediaType : aceptables) {
+            if (mediaType.isWildcardType() && mediaType.isWildcardSubtype()) {
+                continue;
+            }
+            if (mediaType.isCompatible(javax.ws.rs.core.MediaType.APPLICATION_JSON_TYPE)) {
+                return false;
+            }
+            if (mediaType.isCompatible(tipoPreferido)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private boolean esParametroBooleanoActivo(List<String> valores) {
