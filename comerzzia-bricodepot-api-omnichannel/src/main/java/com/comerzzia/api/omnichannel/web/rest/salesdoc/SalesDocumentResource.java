@@ -1,4 +1,4 @@
-package com.comerzzia.bricodepot.api.omnichannel.api.web.salesdocument;
+package com.comerzzia.api.omnichannel.web.rest.salesdoc;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,26 +6,33 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.util.InvalidMimeTypeException;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/salesdocument")
-public class SalesDocumentPrintController {
+import com.comerzzia.bricodepot.api.omnichannel.api.web.salesdocument.SalesDocumentPrintResponse;
+import com.comerzzia.bricodepot.api.omnichannel.api.web.salesdocument.SalesDocumentPrintService;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SalesDocumentPrintController.class);
+@Component
+@Path("/salesdocument")
+public class SalesDocumentResource {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(SalesDocumentResource.class);
 
     private static final String PARAM_COPY = "copy";
     private static final String PARAM_INLINE = "inline";
@@ -36,23 +43,27 @@ public class SalesDocumentPrintController {
 
     private final SalesDocumentPrintService servicioImpresionDocumento;
 
-    public SalesDocumentPrintController(SalesDocumentPrintService servicioImpresionDocumento) {
+    public SalesDocumentResource(SalesDocumentPrintService servicioImpresionDocumento) {
         this.servicioImpresionDocumento = servicioImpresionDocumento;
     }
 
-    @GetMapping("/{documentUid}/print")
-    public ResponseEntity<SalesDocumentPrintResponse> imprimirDocumento(
-            @PathVariable("documentUid") String identificadorDocumento,
-            @RequestParam MultiValueMap<String, String> parametrosPeticion) {
+    @GET
+    @Path("/{documentUid}/print")
+    @Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+    public Response printSaleDocumentByUid(@PathParam("documentUid") String identificadorDocumento,
+            @Context UriInfo informacionUri,
+            @Context HttpServletRequest peticion,
+            @Context HttpServletResponse respuesta) {
 
-        boolean esCopia = esParametroBooleanoActivo(parametrosPeticion.get(PARAM_COPY));
-        boolean esInline = esParametroBooleanoActivo(parametrosPeticion.get(PARAM_INLINE));
-        String plantillaSolicitada = extraerValor(parametrosPeticion, PARAM_TEMPLATE);
-        String nombreSalida = extraerValor(parametrosPeticion, PARAM_OUTPUT_NAME);
-        String tipoContenidoSolicitado = extraerValor(parametrosPeticion, PARAM_MIME);
-        Map<String, Object> parametrosPersonalizados = extraerParametrosPersonalizados(parametrosPeticion);
+        MultivaluedMap<String, String> parametros = informacionUri.getQueryParameters(true);
+        boolean esCopia = esParametroBooleanoActivo(parametros.get(PARAM_COPY));
+        boolean esInline = esParametroBooleanoActivo(parametros.get(PARAM_INLINE));
+        String plantillaSolicitada = extraerValor(parametros, PARAM_TEMPLATE);
+        String nombreSalida = extraerValor(parametros, PARAM_OUTPUT_NAME);
+        String tipoContenidoSolicitado = extraerValor(parametros, PARAM_MIME);
+        Map<String, Object> parametrosPersonalizados = extraerParametrosPersonalizados(parametros);
 
-        Optional<SalesDocumentPrintResponse> respuesta = servicioImpresionDocumento.imprimirDocumento(
+        Optional<SalesDocumentPrintResponse> posibleDocumento = servicioImpresionDocumento.imprimirDocumento(
                 identificadorDocumento,
                 esCopia,
                 plantillaSolicitada,
@@ -60,21 +71,22 @@ public class SalesDocumentPrintController {
                 parametrosPersonalizados,
                 tipoContenidoSolicitado);
 
-        if (!respuesta.isPresent()) {
+        if (!posibleDocumento.isPresent()) {
             LOGGER.debug("No se encontró documento de venta con UID {}", identificadorDocumento);
-            return ResponseEntity.ok().body(null);
+            return Response.ok().build();
         }
 
-        SalesDocumentPrintResponse documento = respuesta.get();
-        HttpHeaders cabeceras = new HttpHeaders();
-        cabeceras.setContentType(resolverMediaType(documento.getMimeType()));
+        SalesDocumentPrintResponse documento = posibleDocumento.get();
+        MediaType tipoCabecera = resolverMediaType(documento.getMimeType());
         ContentDisposition disposicion = ContentDisposition
                 .builder(esInline ? "inline" : "attachment")
                 .filename(documento.getFileName())
                 .build();
-        cabeceras.setContentDisposition(disposicion);
 
-        return new ResponseEntity<>(documento, cabeceras, HttpStatus.OK);
+        return Response.ok(documento)
+                .header(HttpHeaders.CONTENT_TYPE, tipoCabecera.toString())
+                .header(HttpHeaders.CONTENT_DISPOSITION, disposicion.toString())
+                .build();
     }
 
     private boolean esParametroBooleanoActivo(List<String> valores) {
@@ -85,7 +97,7 @@ public class SalesDocumentPrintController {
         return valor != null && valor.trim().toLowerCase(Locale.ROOT).equals("true");
     }
 
-    private String extraerValor(MultiValueMap<String, String> parametros, String clave) {
+    private String extraerValor(MultivaluedMap<String, String> parametros, String clave) {
         List<String> valores = parametros.get(clave);
         if (valores == null || valores.isEmpty()) {
             return null;
@@ -93,12 +105,14 @@ public class SalesDocumentPrintController {
         return valores.get(0);
     }
 
-    private Map<String, Object> extraerParametrosPersonalizados(MultiValueMap<String, String> parametros) {
+    private Map<String, Object> extraerParametrosPersonalizados(MultivaluedMap<String, String> parametros) {
         Map<String, Object> parametrosPersonalizados = new HashMap<>();
 
-        parametros.forEach((clave, valores) -> {
+        for (Map.Entry<String, List<String>> entrada : parametros.entrySet()) {
+            String clave = entrada.getKey();
+            List<String> valores = entrada.getValue();
             if (clave == null) {
-                return;
+                continue;
             }
 
             if (PARAM_COPY.equalsIgnoreCase(clave)
@@ -106,7 +120,7 @@ public class SalesDocumentPrintController {
                     || PARAM_OUTPUT_NAME.equalsIgnoreCase(clave)
                     || PARAM_INLINE.equalsIgnoreCase(clave)
                     || PARAM_MIME.equalsIgnoreCase(clave)) {
-                return;
+                continue;
             }
 
             if (clave.startsWith(PARAM_CUSTOM + ".")) {
@@ -114,7 +128,7 @@ public class SalesDocumentPrintController {
                 if (!claveDestino.isEmpty() && valores != null && !valores.isEmpty()) {
                     parametrosPersonalizados.put(claveDestino, valores.get(0));
                 }
-                return;
+                continue;
             }
 
             if (clave.startsWith(PARAM_CUSTOM + "[") && clave.endsWith("]")) {
@@ -123,7 +137,7 @@ public class SalesDocumentPrintController {
                     parametrosPersonalizados.put(claveDestino, valores.get(0));
                 }
             }
-        });
+        }
 
         if (parametros.containsKey(PARAM_CUSTOM)) {
             String valorPlano = extraerValor(parametros, PARAM_CUSTOM);
