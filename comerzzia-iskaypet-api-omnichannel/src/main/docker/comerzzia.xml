@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<comerzzia:configuracion xmlns:comerzzia="http://www.comerzzia.com/xml/ns/" entorno="Produccion" fecha="12/03/2015" version="3.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.comerzzia.com/xml/ns/comerzzia_3_0.xsd">
+	<comerzziaHome></comerzziaHome>
+	<version>ComerZZia Enterprise Edition</version>
+	<!-- Se puede definir el Datasource desde el que se obtendrán los datos de la conexión o establecer los datos directamente -->
+	<BaseDatos>
+		<!--  <Datasource>java:/jdbc/COMERZZIA_DS</Datasource> -->
+		<url>@@COMERZZIA_DB_URL@@</url>
+		<!--
+			Driver MySQL: com.mysql.jdbc.Driver
+			Driver Oracle: oracle.jdbc.OracleDriver
+		-->
+		<driver-class>@@COMERZZIA_DB_CLASS@@</driver-class>
+		<usuario>@@COMERZZIA_DB_USER@@</usuario>
+		<password>@@COMERZZIA_DB_PASS@@</password>
+		<!--
+			El valor del tag debe ser la ruta absoluta a la carpeta en la que se encuentran los scripts. Se puede definir la ruta relativa
+			a la definida por la variable ${COMERZZIA_HOME}
+		-->
+		<RutaBaseScripts>${COMERZZIA_HOME}/scripts/bbdd/</RutaBaseScripts>
+	</BaseDatos>
+	<!-- Indica cual será el menú por defecto que se cargará para el usuario en caso de no tener ninguno establecido-->
+	<Menu>API</Menu>
+	<!-- Aplicación -->
+    <Aplicacion>API</Aplicacion>
+	<!-- Ruta base para los informes -->
+	<Informes>
+		<!--
+			El valor del tag debe ser la ruta absoluta a la carpeta en la que se encuentran los scripts. Se puede definir la ruta relativa
+			a la definida por la variable ${COMERZZIA_HOME}
+		-->
+		<RutaBase>${COMERZZIA_HOME}/informes/</RutaBase>
+	</Informes>
+	<PlantillasImportacion>
+		<!--
+			El valor del tag debe ser la ruta absoluta a la carpeta en la que se encuentran las plantillas de importación. Se puede definir la ruta relativa
+			a la definida por la variable ${COMERZZIA_HOME}
+		-->
+		<RutaBase>${COMERZZIA_HOME}/plantillas_importacion/</RutaBase>
+	</PlantillasImportacion>
+	<!-- Ruta hasta la documentación -->
+	<Documentacion>
+		<UrlDocumentacion>http://www.comerzzia.es/portal/web/guest/clientes/documentacion/</UrlDocumentacion>
+	</Documentacion>
+	<Integracion>
+		<!--
+			El valor del tag debe ser la ruta absoluta a la carpeta en la que se encuentran los scripts. Se puede definir la ruta relativa
+			a la definida por la variable ${COMERZZIA_HOME}
+		-->
+    	<RutaBaseTrabajosKettle>${COMERZZIA_HOME}/trabajosKettle/</RutaBaseTrabajosKettle>
+    </Integracion>
+	<!-- Ruta hasta el instalador de TPV -->
+	<TPV>
+		<!--
+			El valor del tag debe ser la ruta absoluta a la carpeta en la que se encuentran los scripts. Se puede definir la ruta relativa
+			a la definida por la variable ${COMERZZIA_HOME}
+		-->
+		<RutaBaseInstalador>${COMERZZIA_HOME}/ComerZZiaTPV-2.2.0-Setup.exe</RutaBaseInstalador>
+	</TPV>
+	<!-- opcional: clase proveedores de esb-->
+	<proveedorESB>com.comerzzia.web.esb.MuleLifeCycleProvider</proveedorESB>
+	<!-- opcional: contextos esb que se cargarán -->
+	<ESBcontextos>
+		<arranqueAutomatico>N</arranqueAutomatico>
+		<default/>
+		<notificaciones/>
+		<notificaciones-nonfood/>
+	</ESBcontextos>
+	<Plantillas>
+		<!--
+			El valor del tag debe ser la ruta absoluta a la carpeta en la que se encuentran los scripts. Se puede definir la ruta relativa
+			a la definida por la variable ${COMERZZIA_HOME}
+		-->
+		<RutaBase>${COMERZZIA_HOME}/plantillas/</RutaBase>
+	</Plantillas>
+</comerzzia:configuracion>

@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-        <groupId>com.comerzzia.bricodepot.api.omnichannel</groupId>
-        <artifactId>comerzzia-bricodepot-api-omnichannel</artifactId>
+	<groupId>com.comerzzia.iskaypet.api.omnichannel</groupId>
+	<artifactId>comerzzia-iskaypet-api-omnichannel</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-        <name>comerzzia-bricodepot-api-omnichannel</name>
+	<name>comerzzia-iskaypet-api-omnichannel</name>
 	<description>comerzzia API V2 custom project</description>
 
 	<parent>

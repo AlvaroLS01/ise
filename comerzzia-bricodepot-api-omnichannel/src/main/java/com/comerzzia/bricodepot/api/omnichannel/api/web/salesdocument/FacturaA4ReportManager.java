@@ -152,7 +152,7 @@ class FacturaA4ReportManager {
             Object bean;
             try {
                 bean = applicationContext.getBean(nombreBean);
-            } catch (BeansException | NoClassDefFoundError | LinkageError excepcion) {
+            } catch (BeansException | LinkageError excepcion) {
                 LOGGER.trace("No se pudo inicializar el bean {} al localizar el ticket", nombreBean, excepcion);
                 continue;
             }

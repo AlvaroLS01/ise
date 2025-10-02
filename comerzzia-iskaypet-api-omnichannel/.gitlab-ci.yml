@@ -1,0 +1,67 @@
+stages:
+  - build-artifacts
+  - build-containers
+  - deploy
+  
+image: maven:3.6-jdk-8-slim
+
+variables:
+  GIT_SUBMODULE_STRATEGY: normal
+  DOCKER_IMAGE: $DEVELOP_REGISTRY_SERVER/$CLIENT/comerzzia/api/v2/omnichannel:$CI_COMMIT_REF_NAME
+  DOCKER_IMAGE_AWS: $AWS_REGISTRY_SERVER/clients/iskaypet/comerzzia/api/v2/omnichannel:$CI_COMMIT_REF_NAME
+  MAVEN_OPTS: "-Djava.awt.headless=true -Dmaven.repo.local=.m2/repository -DbuildTimestamp=${CI_COMMIT_TIMESTAMP} -DbuildNumber=${CI_PIPELINE_ID} -DbuildCommit=${CI_COMMIT_SHA} -DbuildUser=${GITLAB_USER_LOGIN}"   
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode --errors --fail-at-end --show-version"
+  K8S_WORKLOAD: api-v2
+  K8S_NAMESPACE: iskaypet
+
+  
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+  - .m2/repository
+  
+build_maven:
+  stage: build-artifacts
+  only:
+  - branches
+  - tags
+  script:
+  - mvn $MAVEN_CLI_OPTS package -DskipTests
+  artifacts:
+    paths:
+    - target/*.war
+    expire_in: 1 hour 
+    
+build_containers:
+  stage: build-containers
+#  when: manual  
+  dependencies:
+  - build_maven
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+  ### create kaniko credentials file
+  - cp "$KANIKO_SECRET" /kaniko/.docker/config.json
+  ### login ecr iskaypet
+  - echo "{\"credHelpers\":{\"$AWS_REGISTRY_SERVER\":\"ecr-login\"}" >> /kaniko/.docker/config.json
+  ### backoffice build
+  - echo Building image $DOCKER_IMAGE y $DOCKER_IMAGE_AWS
+  - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/src/main/docker/Dockerfile --destination $DOCKER_IMAGE --destination $DOCKER_IMAGE_AWS
+
+
+ 
+### Automatic deploy to Kubernetes using Rancher
+#deploy_containers:
+#  stage: deploy
+#  variables:
+#    DOCKER_AUTH_CONFIG: "{\"auths\":{\"$TR1_REGISTRY_SERVER\":{\"auth\":\"$TR1_REGISTRY_TOKEN\"}}}"
+#  only:
+#  - develop
+#  dependencies:
+#  - build_containers
+#  image: $TR1_REGISTRY_SERVER/contrib/rancher-cli-k8s
+#  script:
+#    - rancher login $RANCHER_SERVER --token $RANCHER_TOKEN --context $RANCHER_PROJECT
+#    - rancher kubectl patch deployment $K8S_WORKLOAD -n $K8S_NAMESPACE -p '{"spec":{"template":{"metadata":{"labels":{"date":"'`date +'%s'`'", "vcs-commit":"'$CI_COMMIT_SHA'" }}}}}'
+

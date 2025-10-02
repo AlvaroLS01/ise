@@ -1,0 +1,12 @@
+﻿${AnsiColor.BLUE}
+
+                                        _                        _                       _    ____ ___   ____    ___  
+   ___ ___  _ __ ___   ___ _ __ _______(_) __ _    ___ _   _ ___| |_ ___  _ __ ___      / \  |  _ \_ _| |___ \  / _ \ 
+  / __/ _ \| '_ ` _ \ / _ \ '__|_  /_  / |/ _` |  / __| | | / __| __/ _ \| '_ ` _ \    / _ \ | |_) | |    __) || | | |
+ | (_| (_) | | | | | |  __/ |   / / / /| | (_| | | (__| |_| \__ \ || (_) | | | | | |  / ___ \|  __/| |   / __/ | |_| |
+  \___\___/|_| |_| |_|\___|_|  /___/___|_|\__,_|  \___|\__,_|___/\__\___/|_| |_| |_| /_/   \_\_|  |___| |_____(_)___/ 
+                                                                                                                      
+BANNER SOURCE: http://patorjk.com/software/taag/#p=display&f=Standard&t=comerzzia%20custom%20API%202.0
+
+${AnsiColor.BRIGHT_BLUE}:: comerzzia 🤓  :: Running Spring Boot ${spring-boot.version} ::
+:: http://www.comerzzia.com ::${AnsiColor.DEFAULT}
