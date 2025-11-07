@@ -1,0 +1,58 @@
+#if (${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()})
+    <linea> <texto style ="1" size="39" align="center">***************************************</texto> </linea>
+	<linea> <texto style ="1" size="39" align="center">PREUVE D'ACTIVATION/RECHARGE DE LA CARTE CADEAU</texto> </linea>
+	<linea> <texto style ="1" size="39" align="center">EXEMPLAIRE POUR LE CLIENT</texto> </linea>
+	<linea> <texto style ="1" size="39" align="center">***************************************</texto> </linea>
+	
+	#set( $imprimirDatosFacturacion =  $ticket.getCabecera().getCliente().getDatosFactura())
+    #parse("./plantillas/datos_cabecera_FR.xml")
+
+    <linea line-size="4"><texto style="1">Date/heure       Document                 Vendeur</texto> </linea>	
+	<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>	
+	<linea line-size="4">
+		<texto size="17" align="left">${ticket.getCabecera().getFechaAsLocale()}</texto>
+		#if (${ticket.getCabecera().getCodTicket()})
+			<texto size="22" align="left">${ticket.getCabecera().getCodTicket()}</texto>
+		#else
+		    <!-- Entrega a cuenta en un apartado utilizando una tarjeta regalo/abono -->
+			#if (${apartado.getIdApartado()})
+				#set ($tamano = ${apartado.getIdApartado().toString().length()})
+				#set ($cbApartado = ${apartado.getIdApartado().toString()})
+				#foreach ($cuenta in [12..$tamano])
+				   #set ($cbApartado = "0" + $cbApartado)
+				#end			
+				<texto size="22" align="left">${cbApartado}</texto>
+			#end
+		#end
+		<texto size="16" align="left">${ticket.getCajero().getUsuario()}</texto>
+	</linea>
+
+    #if($esCopia)
+	   <linea> <texto> </texto> </linea>	
+       <linea> <texto size="40" align="center" style="1">***** CE DOCUMENT EST UNE COPIE *****</texto> </linea>
+	   <linea> <texto> </texto> </linea>
+    #end
+
+	<linea><texto>---------------------------------------</texto></linea>
+	<linea> <texto style ="1" size="39" align="left">N. Carte:	${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()}</texto> </linea>
+	<linea> 
+		<texto style ="1" size="26" align="left">Solde avant recharge:</texto>
+		<texto size="13" align="right">${ticket.getCabecera().getTarjetaRegalo().getSaldoAnteriorAsString()}</texto> 
+	</linea>
+	<linea>
+		<texto style ="1" size="8" align="left">Recharge:</texto>
+		<texto size="31" align="right">${ticket.getTotales().getTotalAPagarAsString()}</texto>
+	</linea>
+	<linea> 
+		<texto style ="1" size="17" align="left">Solde disponible:</texto>
+		<texto size="22" align="right">${ticket.getCabecera().getTarjetaRegalo().getSaldoTotalAsString()}</texto> 
+	</linea>
+	<linea><texto style ="1" size="39" align="left">OP:${ticket.getCabecera().getTarjetaRegalo().getUidTransaccion()}</texto></linea>
+	
+	<codbar align="center" tipo-leyenda="0" >${ticket.getCabecera().getLocalizador()}</codbar>		
+	
+	<linea> <texto> </texto> </linea>
+	<linea> <texto> </texto> </linea>
+	<linea> <texto> </texto> </linea>
+	<corte></corte>
+#end

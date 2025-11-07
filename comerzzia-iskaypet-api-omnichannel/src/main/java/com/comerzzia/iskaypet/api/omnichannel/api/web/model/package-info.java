@@ -1,1 +1,0 @@
-package com.comerzzia.iskaypet.api.omnichannel.api.web.model;

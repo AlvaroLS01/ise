@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.articulosNoAptos.ArticuloNoAptoMapper" >
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.articulosNoAptos.ArticuloNoAptoBean" >
+    <id column="UID_ACTIVIDAD" property="uidActividad" jdbcType="VARCHAR" />
+    <id column="CODART" property="codart" jdbcType="VARCHAR" />
+    <result column="APTO" property="apto" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    UID_ACTIVIDAD, CODART, APTO
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.articulosNoAptos.ArticuloNoAptoExample" resultSetType="SCROLL_INSENSITIVE" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_ARTICULOS_NO_APTOS_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.articulosNoAptos.ArticuloNoAptoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from X_ARTICULOS_NO_APTOS_TBL
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and CODART = #{codart,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.articulosNoAptos.ArticuloNoAptoKey" >
+    delete from X_ARTICULOS_NO_APTOS_TBL
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and CODART = #{codart,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.articulosNoAptos.ArticuloNoAptoExample" >
+    delete from X_ARTICULOS_NO_APTOS_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.articulosNoAptos.ArticuloNoAptoBean" >
+    insert into X_ARTICULOS_NO_APTOS_TBL (UID_ACTIVIDAD, CODART, APTO
+      )
+    values (#{uidActividad,jdbcType=VARCHAR}, #{codart,jdbcType=VARCHAR}, #{apto,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.articulosNoAptos.ArticuloNoAptoBean" >
+    insert into X_ARTICULOS_NO_APTOS_TBL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uidActividad != null" >
+        UID_ACTIVIDAD,
+      </if>
+      <if test="codart != null" >
+        CODART,
+      </if>
+      <if test="apto != null" >
+        APTO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uidActividad != null" >
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="codart != null" >
+        #{codart,jdbcType=VARCHAR},
+      </if>
+      <if test="apto != null" >
+        #{apto,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.articulosNoAptos.ArticuloNoAptoExample" resultType="java.lang.Integer" >
+    select count(*) from X_ARTICULOS_NO_APTOS_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update X_ARTICULOS_NO_APTOS_TBL
+    <set >
+      <if test="record.uidActividad != null" >
+        UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codart != null" >
+        CODART = #{record.codart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apto != null" >
+        APTO = #{record.apto,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update X_ARTICULOS_NO_APTOS_TBL
+    set UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      CODART = #{record.codart,jdbcType=VARCHAR},
+      APTO = #{record.apto,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.articulosNoAptos.ArticuloNoAptoBean" >
+    update X_ARTICULOS_NO_APTOS_TBL
+    <set >
+      <if test="apto != null" >
+        APTO = #{apto,jdbcType=CHAR},
+      </if>
+    </set>
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and CODART = #{codart,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.articulosNoAptos.ArticuloNoAptoBean" >
+    update X_ARTICULOS_NO_APTOS_TBL
+    set APTO = #{apto,jdbcType=CHAR}
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and CODART = #{codart,jdbcType=VARCHAR}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.articulosNoAptos.ArticuloNoAptoExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_ARTICULOS_NO_APTOS_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

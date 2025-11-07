@@ -1,0 +1,582 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-05 11:26+0100\n"
+"PO-Revision-Date: 2022-03-21 12:47+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/comun/tarjeta/ByLCodigoTarjetaController.java:89
+msgid "Lea o escriba el código de barras de la tarjeta"
+msgstr "Чтение или запись штрихкода карты"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/comun/tarjeta/ByLCodigoTarjetaController.java:161
+msgid "No se ha podido leer la tarjeta."
+msgstr "Не удалось считать карту."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/fidelizacion/busqueda/ByLBusquedaFidelizadoController.java:64
+msgid "Es necesario rellenar al menos uno de los campos de búsqueda"
+msgstr "Заполните хотя бы одно поле поиска"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/fidelizacion/busqueda/ByLBusquedaFidelizadoController.java:71
+msgid "Debe rellenar un criterio más para ejecutar la búsqueda de cliente"
+msgstr "Введите еще один критерий для поиска клиента"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/fidelizacion/busqueda/ByLBusquedaFidelizadoController.java:152
+msgid ""
+"No se ha encontrado ningún fidelizado con los datos introducidos\n"
+"¿Desea realizar el Alta del Cliente?"
+msgstr ""
+"Не найдено участников программы лояльности с такими данными. "
+"Зарегистрировать клиента?"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/fidelizacion/busqueda/ByLBusquedaFidelizadoController.java:171
+msgid "El Fidelizado no dispone de una tarjeta"
+msgstr "У участника программы лояльности нет карты"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/fidelizacion/busqueda/ByLBusquedaFidelizadoController.java:200
+msgid ""
+"Ha ocurrido un error durante la petición a la central, consulte con el "
+"administrador"
+msgstr ""
+"Ошибка при отправке запроса в главный офис. Обратитесь к администратору"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/fidelizacion/busqueda/ByLBusquedaFidelizadoController.java:214
+msgid "No se ha configurado el fidelizado genérico en este TPV"
+msgstr "На этом POS-терминале не настроен общий участник программы лояльности"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/fidelizacion/ByLFidelizacion.java:228
+msgid "El número de tarjeta no es válido"
+msgstr "Недопустимый номер карты"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/fidelizacion/ByLFidelizacion.java:251
+msgid "Búsqueda de clientes"
+msgstr "Поиск клиентов"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/fidelizacion/seleccion/ByLSeleccionFidelizadoController.java:115
+msgid "Selección de Cliente"
+msgstr "Выбор клиента"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/giftcard/ByLGiftCard.java:141
+#: com/comerzzia/bimbaylola/pos/dispositivo/giftcard/ByLGiftCard.java:163
+msgid "El usuario canceló la operación"
+msgstr "Операция отменена пользователем"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/giftcard/ByLGiftCard.java:213
+#: com/comerzzia/bimbaylola/pos/dispositivo/giftcard/ByLGiftCard.java:332
+msgid "La tarjeta indicada no existe."
+msgstr "Указанная карта не существует."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/giftcard/ByLGiftCard.java:218
+msgid "No se puede establecer conexión con el servidor."
+msgstr "Не удается установить соединение с сервером."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/giftcard/ByLGiftCard.java:249
+#: com/comerzzia/bimbaylola/pos/dispositivo/giftcard/ByLGiftCard.java:258
+msgid "Lo sentimos, ha ocurrido un error en la petición"
+msgstr "К сожалению, в запросе произошла ошибка "
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/giftcard/ByLGiftCard.java:252
+msgid "No se ha podido conectar con el servidor"
+msgstr "Не удается подключиться к серверу"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/giftcard/ByLGiftCard.java:255
+msgid "El servidor ha tardado demasiado tiempo en responder"
+msgstr "Время ожидания сервера превышено"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/giftcard/ByLGiftCard.java:261
+msgid "Lo sentimos, ha ocurrido un error."
+msgstr "Произошла ошибка."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/giftcard/ByLGiftCard.java:681
+msgid "Lea o escriba el código de barras de la tarjeta de regalo"
+msgstr "Чтение или запись штрихкода подарочной карты"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:100
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/spark130f/gui/ConfiguracionSpark130FController.java:74
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/gui/ConfiguracionAxisController.java:111
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/conexflow/gui/ConfiguracionConexFlowController.java:142
+msgid "Debe rellenar todos los campos."
+msgstr "Заполните все поля."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:111
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:149
+msgid "Se ha producido un error realizando el SetUp."
+msgstr "Ошибка при выполнении настройки."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:134
+msgid ""
+"Se ha realizado el SetUp correctamente. Por favor, acepte los cambios y "
+"reinicie la aplicación."
+msgstr ""
+"Настройка успешно выполнена. Подтвердите изменения и перезапустите "
+"приложение."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:138
+msgid "No se ha podido realizar el SetUp."
+msgstr "Не удается выполнить настройку."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:156
+msgid "Ha seleccionado la opción Exportación, ¿desea continuar?"
+msgstr "Выбрана функция экспорта. Продолжить?"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:161
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:205
+msgid "Se ha producido un error realizando el ExportData."
+msgstr "Произошла ошибка при экспорте данных."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:191
+msgid "Se ha realizado el ExportData correctamente"
+msgstr "Данные успешно экспортированы"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:194
+msgid "No se ha podido realizar el ExportData."
+msgstr "Не удается экспортировать данные."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:216
+msgid "StorageInfo copiado al portapapeles"
+msgstr "Сведения о хранилище скопированы в буфер обмена"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:249
+#, fuzzy
+msgid "Se ha realizado el AutoTest correctamente"
+msgstr "Данные успешно экспортированы"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:252
+#, fuzzy
+msgid "Ha ocurrido un error al realizar el AutoTest."
+msgstr "Ошибка при выполнении настройки."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/epsontm30/gui/ConfiguracionTM30Controller.java:263
+#, fuzzy
+msgid "Se ha producido un error realizando el AutoTest."
+msgstr "Ошибка при выполнении настройки."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/fiscal/polonia/PoloniaFiscalPrinter.java:159
+msgid ""
+"No se puede proceder a la impresión fiscal. Contacte con el administrador."
+msgstr ""
+"Ошибка при отправке запроса в главный офис. Обратитесь к администратору"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/fiscal/polonia/PoloniaFiscalPrinter.java:632
+#: com/comerzzia/bimbaylola/pos/dispositivo/impresora/spark130f/Spark130F.java:107
+msgid "imprimirTexto() - Argumento inválido: Alineamiento ["
+msgstr "Печать Текста () - Неверный параметр Выравнивание ["
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:90
+msgid "Iniciamos la acción para solicitar una devoluciónen Adyen Cloud..."
+msgstr "Инициировано действие: запрос на возврат в Adyen Cloud..."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:120
+msgid ""
+"Error al realizar la DEVOLUCIÓN en el dispositivo Adyen en modo Cloud: \n"
+"- "
+msgstr ""
+"Ошибка при выполнении ВОЗВРАТА на устройстве Adyen в облачном режиме: - "
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:126
+msgid "Finalizada la acción para solicitar una devolución en Adyen Cloud"
+msgstr "Выполнено действие: запрос на возмещение в Adyen Cloud"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:132
+msgid "Iniciamos la acción para solicitar una venta en Adyen Cloud..."
+msgstr "Инициировано действие: запрос на продажу в Adyen Cloud..."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:153
+msgid ""
+"Error al realizar la VENTA en el dispositivo Adyen en modo Cloud: \n"
+"- "
+msgstr ""
+"Ошибка при совершении ПРОДАЖИ на устройстве Adyen в облачном режиме: - "
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:158
+msgid "Finalizada la acción para solicitar una venta en Adyen Cloud"
+msgstr "Выполнено действие: запрос на продажу в Adyen Cloud"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:166
+#, fuzzy
+msgid ""
+"Iniciamos la acción para solicitar una anulación del pago en Adyen Cloud..."
+msgstr "Инициировано действие: запрос на возврат в Adyen Cloud..."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:183
+#, fuzzy
+msgid "Error al solicitar anulación del pago en Adyen Cloud"
+msgstr "Ошибка при попытке соединения с ConexFlow"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:214
+msgid "Iniciamos la acción para solicitar firma en Adyen Cloud..."
+msgstr "Инициировано действие: запрос на подпись в Adyen Cloud..."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:227
+msgid ""
+"No se ha podido cargar la configuración del dispositivo de tarjeta Adyen"
+msgstr "Не удается загрузить конфигурацию устройства чтения карт Adyen"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:235
+msgid "Consentimiento Notificaciones realizado"
+msgstr "Согласие на получение уведомлений получено"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:240
+msgid "Consentimiento Uso de Datos realizado"
+msgstr "Согласие на использование данных получено"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:245
+msgid "Firma realizada"
+msgstr "Подпись получена"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:250
+msgid "Error al solicitar los consentimientos/firma."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:253
+msgid "Finalizada la acción para solicitar firma en Adyen Cloud"
+msgstr "Выполнено действие: запрос подписи в Adyen Cloud"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:276
+msgid ""
+"Error al realizar la firma en el dispositivo Adyen en modo Cloud: \n"
+"- "
+msgstr "Ошибка при подписании на устройстве Adyen в облачном режиме: - "
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:297
+msgid "Inicio del proceso de pedir consentimiento : "
+msgstr "Начать процесс запроса согласия : "
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:311
+msgid ""
+"Error al realizar el consentimiento en el dispositivo Adyen en modo Cloud: \n"
+"- "
+msgstr "Ошибка при запросе согласия на устройстве Adyen в облачном режиме: - "
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:341
+msgid "Error no controlado en la respuesta del dispositivo Adyen."
+msgstr "Необработанная ошибка в ответе устройства Adyen."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:352
+msgid "No se ha recibido respuesta desde el dispositivo Adyen."
+msgstr "Не получен ответ от устройства Adyen."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:356
+msgid "Error al leer los datos de respuesta del dispositivo Adyen."
+msgstr "Ошибка при чтении данных ответа устройства Adyen."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:531
+msgid ""
+"Ha ocurrido un error en el pago y no se ha encontrado la transacción en el "
+"disposito TEF. No se ha realizado el pago"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:539
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:555
+#, fuzzy
+msgid "Ha ocurrido un error en el pago TEF: "
+msgstr "Ошибка при выполнении настройки."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:676
+msgid "El dispositivo Adyen indica: La operación ha sido abortada."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:677
+msgid "El dispositivo está ocupado actualmente."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:678
+#, fuzzy
+msgid "La operación ha sido cancelada manualmente desde el dispositivo Adyen."
+msgstr "Не получен ответ от устройства Adyen."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:679
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:683
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:686
+#, fuzzy
+msgid "No se ha podido establecer conexión con el dispositivo Adyen."
+msgstr "Не удается установить соединение с сервером."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:680
+msgid "El dispositivo Adyen tiene una operación en proceso."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:681
+#, fuzzy
+msgid "Error al insertar la tarjeta en el dispositivo Adyen."
+msgstr "Ошибка при чтении данных ответа устройства Adyen."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:682
+msgid "La tarjeta usada para la operación no es válida."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:684
+#, fuzzy
+msgid "Error en el formato del mensaje enviado al dispositivo Adyen."
+msgstr "Ошибка при чтении данных ответа устройства Adyen."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:685
+msgid "El dispositivo Adyen indica: Operación no permitida"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:687
+msgid ""
+"El dispositivo Adyen indica: Operación no permitida por restricción de pagos."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:688
+msgid "El dispositivo Adyen indica: Operación rechazada."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:689
+msgid "El dispositivo Adyen no se encuentra disponible."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:690
+msgid "El servicio del dispositivo Adyen no se encuentra disponible."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:691
+#, fuzzy
+msgid "El dispositivo Adyen no puede establecer conexión con el servidor."
+msgstr "Не удается установить соединение с сервером."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:692
+msgid "El PIN introducido en el dispositivo Adyen no es correcto."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/ByLTefAdyenCloud.java:695
+msgid ""
+"Configuración del TEF de Adyen Cloud: \r\n"
+" Cliente: "
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/configuracion/ByLConfAdyenCloudController.java:57
+#, fuzzy
+msgid "Seleccionado el medio de pago: "
+msgstr "Выберите способ оплаты."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/service/ByLAdyenCloudService.java:29
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/service/ByLAdyenCloudService.java:43
+msgid "Petición de tipo "
+msgstr "Запрос типа "
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/cloud/service/ByLAdyenCloudService.java:36
+msgid ""
+"Error en la comunicación, reinténtelo y si persiste el problema, realice "
+"operación en modo STANDALONE y avise a Soporte. Gracias"
+msgstr ""
+"Ошибка соединения. Повторите попытку. Если проблема не устранена, выполните "
+"операцию в АВТОНОМНОМ режиме и обратитесь в службу поддержки. Спасибо"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/service/ByLAdyenService.java:119
+msgid "Por favor firme"
+msgstr "Поставьте подпись"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/service/ByLAdyenService.java:164
+msgid "Términos y Condiciones"
+msgstr "Условия обслуживания"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/service/ByLAdyenService.java:168
+msgid "Denegar"
+msgstr "Отклонить"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/service/ByLAdyenService.java:170
+msgid "Aceptar"
+msgstr "OK"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/service/ByLAdyenService.java:265
+#, fuzzy
+msgid "Error al generar los detalles de la petición de devolución para Adyen."
+msgstr "Ошибка при создании данных запроса на возврат для Adyen."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/service/ByLAdyenService.java:358
+msgid "Error en la operación de ANULACIÓN: "
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/service/ByLAdyenService.java:366
+msgid "Completada la operación de ANULACIÓN correctamente"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/adyen/service/ByLAdyenService.java:370
+msgid "Error al realizar la operación de ANULACIÓN: "
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:173
+msgid "EFT timeout error"
+msgstr "Превышено время ожидания ЭПС"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:174
+msgid "No se puede abrir el puerto serie"
+msgstr "Не удается открыть последовательный порт"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:175
+msgid "EFT reading error"
+msgstr "Ошибка чтения ЭПС"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:176
+msgid "EFT protocol error"
+msgstr "Ошибка чтения ЭПС"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:177
+msgid "Axis connection failed"
+msgstr "Ошибка подключения к Axis"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:178
+msgid "Authorization center connection failed "
+msgstr "Ошибка подключения к центру авторизации "
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:179
+msgid "Cardholder or acceptor abort"
+msgstr "Прервано держателем карты или получателем"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:180
+msgid "Operation impossible"
+msgstr "Операция невозможна"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:181
+msgid "Card expired"
+msgstr "Срок действия карты истек"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:182
+msgid "Application not initialized"
+msgstr "Приложение не инициализировано"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:183
+msgid "Offline transaction file full"
+msgstr "Файл офлайн-транзакций переполнен"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:184
+msgid "Payment refused"
+msgstr "Платеж отклонен"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:185
+msgid "Amount below authorized minimum"
+msgstr "Сумма меньше разрешенного минимума"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:186
+msgid "Amount over authorized maximum"
+msgstr "Сумма больше разрешенного максимума"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:187
+msgid "Currency not supported"
+msgstr "Валюта не поддерживается"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:188
+msgid "Unknown terminal number"
+msgstr "Неизвестный номер терминала"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:189
+msgid "Card present in the reader"
+msgstr "Карта вставлена в считыватель"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:190
+msgid "Customer ticket printing failed"
+msgstr "Ошибка при печати квитанции клиента"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:191
+msgid "Retailer ticket printing failed"
+msgstr "Ошибка при печати квитанции продавца"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:192
+msgid "Card unreadable"
+msgstr "Карта не считывается"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:193
+msgid "Mute chip"
+msgstr "Отключить вход микросхемы"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:194
+msgid "Declined"
+msgstr "Отклонено"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:195
+msgid "Devolución de la llamada desconocida"
+msgstr "Неизвестный обратный вызов"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:196
+msgid "Se ha superado el tiempo de espera de la llamada"
+msgstr "Превышено время ожидания вызова"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:197
+msgid "Devolución de la llamada cancelada"
+msgstr "Обратный вызов отменен"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/axis/AxisManager.java:198
+msgid "Error al localizar el archivo de configuración c3Config"
+msgstr "Ошибка при поиске файла конфигурации c3Config"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/conexflow/gui/ConfiguracionConexFlowController.java:138
+msgid "El timeout debe ser un valor numérico."
+msgstr "Время ожидания должно быть числовым значением."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/conexflow/gui/mediosPago/AyudaMediosPagoConexFlowController.java:99
+msgid "Error cargando pantalla. Para mas información consulte el log."
+msgstr "Ошибка при загрузке экрана. См. подробные сведения в журнале."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/conexflow/gui/mediosPago/AyudaMediosPagoConexFlowController.java:139
+msgid "Debe seleccionar un medio de pago."
+msgstr "Выберите способ оплаты."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/conexflow/TefConexFlow.java:216
+msgid "Error al iniciar la conexión con ConexFlow"
+msgstr "Ошибка при попытке соединения с ConexFlow"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/conexflow/TefConexFlow.java:221
+msgid "Error no controlado al iniciar la conexión con ConexFlow"
+msgstr "Необработанная ошибка при попытке соединения с ConexFlow"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/conexflow/TefConexFlow.java:238
+msgid "Error al iniciar la desconexión con ConexFlow"
+msgstr "Ошибка при попытке разорвать соединение с ConexFlow"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/conexflow/TefConexFlow.java:243
+msgid "Error no controlado al iniciar la desconexión con ConexFlow"
+msgstr "Необработанная ошибка при попытке разорвать соединение с ConexFlow"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/conexflow/TefConexFlow.java:405
+msgid ""
+"Tiempo máximo de espera alcanzado realizando la petición. Por favor, revise "
+"su conexión y vuelva a intentarlo."
+msgstr ""
+"Достигнуто максимальное время ожидания при отправке запроса. Проверьте "
+"подключение и повторите попытку."
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/conexflow/TefConexFlow.java:407
+msgid "Error de Entrada/Salida al realizar la petición"
+msgstr "Ошибка ввода/вывода при отправке запроса"
+
+#: com/comerzzia/bimbaylola/pos/dispositivo/tarjeta/conexflow/TefConexFlow.java:453
+msgid "Cod. resultado: "
+msgstr "Код результата: "
+
+#~ msgid "Domicilio Fiscal"
+#~ msgstr "Налоговая резиденция"
+
+#, fuzzy
+#~ msgid "Se ha producido un error realizando el PrintXReport."
+#~ msgstr "Ошибка при выполнении настройки."
+
+#~ msgid "Inactiva"
+#~ msgstr "Неактивно"
+
+#~ msgid "Activa"
+#~ msgstr "Активно"
+
+#~ msgid "Desactivada"
+#~ msgstr "Деактивировано"
+
+#~ msgid "Consumida"
+#~ msgstr "Использовано"
+
+#~ msgid "Cancelada"
+#~ msgstr "Отменено"

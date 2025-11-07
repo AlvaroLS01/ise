@@ -1,0 +1,55 @@
+/**
+ * ComerZZia 3.0
+ *
+ * Copyright (c) 2008-2015 Comerzzia, S.L.  All Rights Reserved.
+ *
+ * THIS WORK IS  SUBJECT  TO  SPAIN  AND  INTERNATIONAL  COPYRIGHT  LAWS  AND
+ * TREATIES.   NO  PART  OF  THIS  WORK MAY BE  USED,  PRACTICED,  PERFORMED
+ * COPIED, DISTRIBUTED, REVISED, MODIFIED, TRANSLATED,  ABRIDGED, CONDENSED,
+ * EXPANDED,  COLLECTED,  COMPILED,  LINKED,  RECAST, TRANSFORMED OR ADAPTED
+ * WITHOUT THE PRIOR WRITTEN CONSENT OF COMERZZIA, S.L. ANY USE OR EXPLOITATION
+ * OF THIS WORK WITHOUT AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO
+ * CRIMINAL AND CIVIL LIABILITY.
+ *
+ * CONSULT THE END USER LICENSE AGREEMENT FOR INFORMATION ON ADDITIONAL
+ * RESTRICTIONS.
+ */
+.wrap-login-user {
+	-fx-background-color: #fff;
+}
+
+.boton-seleccion-usuario {
+	-fx-font-size: 8px;
+	-fx-text-fill: #000000;
+	
+}
+
+.boton-seleccion-usuario-linea1 {
+	-fx-font-size: 16px;
+	-fx-font-weight: bold;
+	-fx-text-fill: #000000;
+	
+}
+
+.boton-seleccion-usuario-linea2 {
+	-fx-font-size: 15px;
+	-fx-text-fill: #000000;
+}
+
+.login-top {
+	-fx-border-width: 0 0 1 0;
+	-fx-border-color: #000000;
+	-fx-background-image: url("../../../../gui/imagenes/fondos/top-usuariobackground.png");
+}
+.login-left {
+	-fx-border-width: 0 1 0 0;
+	-fx-border-color: #000000;
+}
+
+.nombre-accion {
+	-fx-font-size: 22px;
+	-fx-font-weight: bold;
+	-fx-text-fill: #000000;
+	
+}
+

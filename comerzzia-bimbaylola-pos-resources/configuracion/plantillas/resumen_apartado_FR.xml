@@ -1,0 +1,130 @@
+<plantilla>
+	<documento>
+		<logo alignLogo="center"></logo>   
+		  	
+		#parse("./plantillas/datos_cabecera_FR.xml")
+		
+		<linea line-size="1"><texto size="40" align="center" style="1">*** Extrait réservation ***</texto> </linea>
+		<linea line-size="4"><texto>=======================================================</texto> </linea>
+		
+		#set ($tamano = ${apartado.getIdApartado().toString().length()})
+		#set ($cbApartado = ${apartado.getIdApartado().toString()})
+		#foreach ($cuenta in [12..$tamano])
+		   #set ($cbApartado = "0" + $cbApartado)
+		#end
+		
+		<linea line-size="4"><texto style="1">Date               Num. Réservation             Vendeur</texto> </linea>	
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>	
+		<linea line-size="4">            
+		   <texto size="20" align="left">${fmt.formateaFecha($apartado.getFechaApartado())}</texto>
+		   <texto size="22" align="left">${cbApartado}</texto>
+		   <texto size="13" align="left">${apartado.getUsuario()}</texto>
+		</linea>		
+		#if(${apartado.getEstadoApartado()}==2)
+			<linea><texto></texto></linea>		
+			<linea line-size="1"><texto align="center" size="40">*** COMPLÉTÉ ***</texto></linea>
+		#else
+			#if(${apartado.getEstadoApartado()}==1)
+				<linea><texto></texto></linea>		
+				<linea line-size="1"><texto align="center" size="40">*** ANNULÉ ***</texto></linea>
+			#end		
+		#end
+		
+		<linea><texto></texto></linea>
+		<linea line-size="4"><texto align="left" size="55">Nom: ${apartado.getDesCliente()}</texto></linea>
+		#if(${apartado.getTelefono1()})
+			<linea line-size="4"><texto align="left" size="55">Téléphone: ${apartado.getTelefono1()}</texto></linea>
+		#end
+		<linea><texto></texto></linea>
+		
+		<linea line-size="4"><texto size="55" align="left">Détail des articles réservés</texto></linea>	
+		<linea line-size="4"><texto style="1">Article        Réservation     Ret./Quant.      Montant</texto> </linea>	
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>			
+		#foreach ($articulo in $articulos)
+			<linea line-size="4">
+				<texto size="17" align="left">${articulo.getCodart()}${articulo.getDesglose1()}${articulo.getDesglose2()}</texto>			
+				<texto size="15" align="left">${fmt.formateaFecha(${articulo.getFechaApartadoArticulo()})}</texto>
+				
+				#if (${articulo.getEstadoLineaApartado()}==1)
+					<texto>C-</texto>
+				#else
+					#if (${articulo.getEstadoLineaApartado()}==2)
+					   <texto>R-</texto>					
+					#end
+				#end
+				
+				
+				#if (${articulo.getEstadoTicket()}=="Disponible")
+				   <texto size="12" align="left">${articulo.getEstadoTicket()}</texto>
+				#else
+					#if (${articulo.getFechaActualizacion()})
+						<texto size="11" align="left">${fmt.formateaFecha(${articulo.getFechaActualizacion()})}</texto>
+					#else
+						<texto size="13" align="right">Unknow</texto>					
+					#end
+				#end
+				<texto size="10" align="right">${articulo.getImporteTotalAsString()}</texto>				
+			</linea>
+			<linea line-size="4"><texto size="25" align="left">${articulo.getDesart()}</texto></linea>
+		#end
+ 		<linea><texto></texto></linea>
+		#if(${pagos})
+			<linea line-size="4"><texto size="55" align="left">Détail des acomptes</texto></linea>	
+			<linea line-size="4"><texto style="1">Date      Document        Mode de paiement     Montant</texto> </linea>	
+			<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>	
+			#foreach ($pago in $pagos)
+				<linea line-size="4">
+					<texto size="11" align="left">${fmt.formateaFecha(${pago.getFecha()})}</texto>
+                    #if(${pago.getDocumento()})		
+                    	<texto size="17" align="left">${pago.getDocumento()}</texto>	
+					#else
+						<texto size="17" align="left">                   </texto>	
+					#end						
+					<texto size="20" align="left">${pago.getDesMedioPago()}</texto>	
+					#if(${pago.getCargoTicket()})
+						<texto size="7" align="right">${pago.getCargoTicket()}</texto>
+					#else
+						#if(${pago.getAbonoTicket()})
+							<texto size="7" align="right">-${pago.getAbonoTicket()}</texto>
+						#end					
+					#end
+				</linea>
+			#end
+		#end
+		
+		<linea><texto></texto></linea>		
+		<linea><texto size="40" align="left" style="1">Récapitulatif comptable au ${fecha}</texto></linea>
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>			
+		<linea>
+			<texto size="20" align="left">Acomptes:</texto>
+			<texto size="20" align="right">${abonado}</texto>
+		</linea>		
+		<linea>
+			<texto size="20" align="left">Montant retiré:</texto>
+			<texto size="20" align="right">${servido}</texto>
+		</linea>
+		<linea><texto size="40" align="right">----------</texto></linea>		
+		<linea>
+			<texto size="20" align="left" style="1">Solde client:</texto>
+			<texto size="20" align="right" style="1">${saldo}</texto>
+		</linea>
+		<linea><texto></texto></linea>		
+		<linea>
+			<texto size="30" align="left">Montant en attente de paiement:</texto>
+			<texto size="10" align="right">${pendiente}</texto>
+		</linea>
+		<linea><texto></texto></linea>		
+		
+		<codbar align="center" tipo-leyenda="2" >${cbApartado}</codbar>			
+		<linea>
+			<texto align="center" size="40">NOUS VOUS REMERCIONS DE VOTRE VISITE</texto>
+		</linea>
+		<linea>
+			<texto></texto>
+		</linea>
+		<linea>
+			<texto></texto>
+		</linea>
+		<corte></corte>
+	</documento>
+</plantilla>

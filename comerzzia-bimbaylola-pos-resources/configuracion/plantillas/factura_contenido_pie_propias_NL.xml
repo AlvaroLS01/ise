@@ -1,0 +1,94 @@
+    #set ($esPagoTRTA = false)	
+	#foreach ($pago in $ticket.getPagos())       
+		#if(${pago.isPagoTarjetaRegalo()})
+			#set ($esPagoTRTA = true)
+		#end
+	#end
+	
+	#if($ticket.getCabecera().getCodTipoDocumento() == "SR" || $ticket.getCabecera().getCodTipoDocumento() == "OR")
+		#if(${esPagoTRTA})
+			<!-- DEVOLUCION DONDE INTERVIENE TARJETA REGALO/ABONO -->
+			<linea line-size="4"> <texto align="center" style="1">Bedankt voor je bezoek. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***CADEAU/TEGOEDKAART***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">De kaart is vijf jaar geldig vanaf de datum van opwaarderen. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">De kaart is alleen geldig voor aankopen in BIMBA Y LOLA-winkels in Nederland (excl. warenhuizen en e-shop www.bimbaylola.com) en totdat het volledige saldo op de kaart is verbruikt. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Het ongebruikte saldo van de kaart wordt in geen geval terugbetaald of omgewisseld voor contant geld. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">We aanvaarden geen aansprakelijkheid voor verloren, gestolen of beschadigde kaarten. Op producten die met de kaart worden gekocht is het retourneringsbeleid van BIMBA Y LOLA van toepassing. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">In overeenstemming met het retourneringsbeleid van BIMBA Y LOLA kunnen cadeaukaarten binnen een periode van maximaal 30 dagen na de aankoopdatum worden geretourneerd indien en voor zover de kaart ongebruikt is en de beschermende verzegeling van de veiligheidscode intact is. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Voor het ruilen of retourneren van artikelen die met de kaart zijn gekocht, moet de kaart worden overgelegd. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Controleer of het saldo van de kaart overeenkomt met het bedrag op de desbetreffende kassabon.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">De aankoop en het gebruik van de kaart betekent dat je de toepasselijke voorwaarden, beschikbaar op www.bimbaylola.com, begrijpt en ermee akkoord gaat. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Dit doet geen afbreuk aan je wettelijke rechten. </texto> </linea>
+						
+		#else
+           <!-- DEVOLUCION NORMAL -->
+			<linea line-size="4"> <texto align="center" style="1">Bedankt voor je bezoek. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+
+		#end
+	#else
+	    <!-- NO ES UNA DEVOLUCIÓN -->
+		#if($ticket.getCabecera().getCodTipoDocumento() == "TR")
+			#if(!${ticket.isDevolucionTarjetaRegalo()})
+			
+			<linea line-size="4"> <texto align="center" style="1">Bedankt voor je bezoek. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***CADEAU/TEGOEDKAART***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">De kaart is vijf jaar geldig vanaf de datum van opwaarderen. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">De kaart is alleen geldig voor aankopen in BIMBA Y LOLA-winkels in Nederland (excl. warenhuizen en e-shop www.bimbaylola.com) en totdat het volledige saldo op de kaart is verbruikt. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Het ongebruikte saldo van de kaart wordt in geen geval terugbetaald of omgewisseld voor contant geld. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">We aanvaarden geen aansprakelijkheid voor verloren, gestolen of beschadigde kaarten. Op producten die met de kaart worden gekocht is het retourneringsbeleid van BIMBA Y LOLA van toepassing. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">In overeenstemming met het retourneringsbeleid van BIMBA Y LOLA kunnen cadeaukaarten binnen een periode van maximaal 30 dagen na de aankoopdatum worden geretourneerd indien en voor zover de kaart ongebruikt is en de beschermende verzegeling van de veiligheidscode intact is. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Voor het ruilen of retourneren van artikelen die met de kaart zijn gekocht, moet de kaart worden overgelegd. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Controleer of het saldo van de kaart overeenkomt met het bedrag op de desbetreffende kassabon.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">De aankoop en het gebruik van de kaart betekent dat je de toepasselijke voorwaarden, beschikbaar op www.bimbaylola.com, begrijpt en ermee akkoord gaat. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Dit doet geen afbreuk aan je wettelijke rechten. </texto> </linea>
+				
+			#elseif(${ticket.isDevolucionTarjetaRegalo()}) 
+			    <!-- DEVOLUCION DE TARJETA REGALO  -->
+			
+			<linea line-size="4"> <texto align="center" style="1">Bedankt voor je bezoek. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***CADEAU/TEGOEDKAART***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">De kaart is vijf jaar geldig vanaf de datum van opwaarderen. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">De kaart is alleen geldig voor aankopen in BIMBA Y LOLA-winkels in Nederland (excl. warenhuizen en e-shop www.bimbaylola.com) en totdat het volledige saldo op de kaart is verbruikt. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Het ongebruikte saldo van de kaart wordt in geen geval terugbetaald of omgewisseld voor contant geld. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">We aanvaarden geen aansprakelijkheid voor verloren, gestolen of beschadigde kaarten. Op producten die met de kaart worden gekocht is het retourneringsbeleid van BIMBA Y LOLA van toepassing. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">In overeenstemming met het retourneringsbeleid van BIMBA Y LOLA kunnen cadeaukaarten binnen een periode van maximaal 30 dagen na de aankoopdatum worden geretourneerd indien en voor zover de kaart ongebruikt is en de beschermende verzegeling van de veiligheidscode intact is. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Voor het ruilen of retourneren van artikelen die met de kaart zijn gekocht, moet de kaart worden overgelegd. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Controleer of het saldo van de kaart overeenkomt met het bedrag op de desbetreffende kassabon.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">De aankoop en het gebruik van de kaart betekent dat je de toepasselijke voorwaarden, beschikbaar op www.bimbaylola.com, begrijpt en ermee akkoord gaat. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Dit doet geen afbreuk aan je wettelijke rechten. </texto> </linea>
+
+
+		    #end
+			
+		<!-- ESTO ES UNA VENTA -->
+		#elseif(${esPagoTRTA})
+			<linea line-size="4"> <texto align="center" style="1">Bedankt voor je bezoek. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***CADEAU/TEGOEDKAART***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">De kaart is vijf jaar geldig vanaf de datum van opwaarderen. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">De kaart is alleen geldig voor aankopen in BIMBA Y LOLA-winkels in Nederland (excl. warenhuizen en e-shop www.bimbaylola.com) en totdat het volledige saldo op de kaart is verbruikt. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Het ongebruikte saldo van de kaart wordt in geen geval terugbetaald of omgewisseld voor contant geld. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">We aanvaarden geen aansprakelijkheid voor verloren, gestolen of beschadigde kaarten. Op producten die met de kaart worden gekocht is het retourneringsbeleid van BIMBA Y LOLA van toepassing. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">In overeenstemming met het retourneringsbeleid van BIMBA Y LOLA kunnen cadeaukaarten binnen een periode van maximaal 30 dagen na de aankoopdatum worden geretourneerd indien en voor zover de kaart ongebruikt is en de beschermende verzegeling van de veiligheidscode intact is. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Voor het ruilen of retourneren van artikelen die met de kaart zijn gekocht, moet de kaart worden overgelegd. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Controleer of het saldo van de kaart overeenkomt met het bedrag op de desbetreffende kassabon.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">De aankoop en het gebruik van de kaart betekent dat je de toepasselijke voorwaarden, beschikbaar op www.bimbaylola.com, begrijpt en ermee akkoord gaat. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Dit doet geen afbreuk aan je wettelijke rechten. </texto> </linea>
+
+			
+		#else
+		    <!-- VENTA -->
+			<linea line-size="4"> <texto align="center" style="1">Bedankt voor je bezoek. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+
+		
+		#end
+	#end

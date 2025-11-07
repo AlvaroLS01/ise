@@ -1,0 +1,44 @@
+
+package com.comerzzia.bimbaylola.pos.gui.ventas.tickets.articulos.vertex;
+
+import java.math.BigDecimal;
+
+import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    "fieldId",
+    "value"
+})
+@Generated("jsonschema2pojo")
+public class FlexibleCodeField {
+
+    @JsonProperty("fieldId")
+    private BigDecimal fieldId;
+    @JsonProperty("value")
+    private String value;
+
+    @JsonProperty("fieldId")
+    public BigDecimal getFieldId() {
+        return fieldId;
+    }
+
+    @JsonProperty("fieldId")
+    public void setFieldId(BigDecimal fieldId) {
+        this.fieldId = fieldId;
+    }
+
+    @JsonProperty("value")
+    public String getValue() {
+        return value;
+    }
+
+    @JsonProperty("value")
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+}

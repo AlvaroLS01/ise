@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.comerzzia.pos.core.gui.componentes.datepicker.* ?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="657.0" prefWidth="1087.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.pos.gui.ventas.cajas.cierre.CierreCajaController">
+  <children>
+    <HBox prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane prefHeight="600.0" prefWidth="800.0" HBox.hgrow="ALWAYS">
+          <children>
+            <VBox prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <AnchorPane maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="800.0" styleClass="titulo-ventana" VBox.vgrow="NEVER">
+                  <children>
+                    <Label alignment="CENTER" prefHeight="22.000099999997474" prefWidth="800.0" text="%Gestión de Caja" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0" />
+                  </children>
+                </AnchorPane>
+                <HBox id="HBox" alignment="CENTER" minHeight="40.0" prefHeight="43.0" prefWidth="800.0" spacing="5.0" VBox.vgrow="NEVER">
+                  <children>
+                    <AnchorPane minHeight="47.0" prefHeight="47.0" prefWidth="610.9998779296875" HBox.hgrow="ALWAYS">
+                      <children>
+                        <Group id="Group" layoutX="-190.0" layoutY="8.0">
+                          <children>
+                            <TextField id="tfCodigoIntro" fx:id="tfUsuarioCajero" alignment="CENTER_LEFT" editable="false" focusTraversable="false" layoutX="297.0" layoutY="0.0" prefHeight="30.0" prefWidth="137.0" />
+                            <TextField id="tfCantidadIntro" fx:id="tfNombreCajero" alignment="CENTER_LEFT" editable="false" focusTraversable="false" layoutX="440.0" layoutY="0.0" prefHeight="30.0" prefWidth="334.0" text="" />
+                            <Label alignment="CENTER_RIGHT" layoutX="193.0" layoutY="3.0" prefWidth="97.0" text="%Cajero">
+                              <font>
+                                <Font size="18.0" />
+                              </font>
+                            </Label>
+                          </children>
+                        </Group>
+                      </children>
+                    </AnchorPane>
+                    <AnchorPane prefHeight="152.0" prefWidth="11.0" HBox.hgrow="ALWAYS" />
+                    <AnchorPane minHeight="38.0" prefHeight="41.0" prefWidth="192.0">
+                      <children>
+                        <Label id="lbStatusTicketsAparcados" fx:id="lbCaja" layoutX="49.0" layoutY="9.0" prefHeight="24.0" prefWidth="129.0" text="%Caja CERRADA" />
+                        <ImageView id="imagenTicketsAparcados" fx:id="ivCaja" fitHeight="40.0" fitWidth="40.0" layoutX="0.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <Group id="Group" layoutX="20.0" layoutY="45.0" scaleX="1.0" scaleY="1.0" />
+                      </children>
+                    </AnchorPane>
+                  </children>
+                </HBox>
+                <HBox prefHeight="61.0" prefWidth="800.0" VBox.vgrow="NEVER">
+                  <children>
+                    <FlowPane columnHalignment="LEFT" hgap="5.0" minHeight="54.0" prefHeight="60.0" prefWidth="630.0" HBox.hgrow="NEVER">
+                      <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="122.0" text="%Fecha Apertura" />
+                        <TextField fx:id="tfFechaApertura" editable="false" focusTraversable="false" prefHeight="30.0" prefWidth="140.0" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="122.0" text="%Fecha Cierre" />
+                        <DatePicker fx:id="tfFechaCierre" prefHeight="30.0" prefWidth="140.0" />
+                      </children>
+                    </FlowPane>
+                    <AnchorPane prefHeight="60.0" prefWidth="3.0" HBox.hgrow="ALWAYS" />
+                    <AnchorPane prefHeight="60.0" prefWidth="200.0" HBox.hgrow="NEVER" />
+                  </children>
+                </HBox>
+                <HBox id="HBox" alignment="CENTER" spacing="5.0" VBox.vgrow="ALWAYS">
+                  <children>
+                    <VBox id="VBox" fx:id="grupoDescuadre" alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
+                      <children>
+                        <HBox id="HBox" alignment="CENTER" prefHeight="211.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                          <children>
+                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="528.0" HBox.hgrow="ALWAYS">
+                              <children>
+                                <TableView id="tbLineas" fx:id="tbRecuento" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pickOnBounds="false" prefHeight="200.0" prefWidth="735.0" tableMenuButtonVisible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                  <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                  </columnResizePolicy>
+                                  <columns>
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="165.0" text="%MEDIO PAGO" fx:id="tcRecuentoMedioPago" />
+                                    <TableColumn maxWidth="5000.0" minWidth="60.0" prefWidth="65.0" styleClass="texto-right" text="%ENTRADAS" fx:id="tcRecuentoEntrada" />
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" styleClass="texto-right" text="%SALIDAS" fx:id="tcRecuentoSalida" />
+                                    <TableColumn maxWidth="5000.0" minWidth="0.0" prefWidth="92.0" styleClass="texto-right" text="%TOTAL (E-S)" fx:id="tcRecuentoTotalES" />
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="60.0" styleClass="texto-right" text="%RECUENTO" fx:id="tcRecuentoRecuento" />
+                                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="63.0" styleClass="texto-right" text="%DESCUADRE" fx:id="tcRecuentoDescuadre" />
+                                  </columns>
+                                </TableView>
+                              </children>
+                              <HBox.margin>
+                                <Insets left="5.0" right="5.0" />
+                              </HBox.margin>
+                            </AnchorPane>
+                            <AnchorPane id="panelBotoneraTabMovimientos" fx:id="panelBotoneraTabla" prefHeight="150.0" prefWidth="50.0" HBox.hgrow="NEVER">
+                              <HBox.margin>
+                                <Insets right="5.0" top="5.0" fx:id="x2" />
+                              </HBox.margin>
+                            </AnchorPane>
+                            <AnchorPane minWidth="161.0" prefHeight="304.0" prefWidth="197.0" HBox.hgrow="NEVER">
+                              <children>
+                                <FlowPane hgap="0.0" minWidth="161.0" orientation="VERTICAL" prefHeight="304.0" prefWidth="169.0" rotate="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="0.0">
+                                  <children>
+                                    <Label alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="163.0" text="%Total(E/S)" />
+                                    <TextField fx:id="tfTotalES" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" prefHeight="30.0" prefWidth="167.0" styleClass="text-right" />
+                                    <Label alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="162.0" text="%Total Recuento" />
+                                    <TextField fx:id="tfTotalRecuento" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" prefHeight="30.0" prefWidth="103.0" styleClass="text-right" />
+                                    <Label alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="165.0" text="%Descuadre" />
+                                    <TextField fx:id="tfDescuadre" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" prefHeight="30.0" prefWidth="82.0" styleClass="text-right" />
+                                  </children>
+                                  <padding>
+                                    <Insets fx:id="x1" />
+                                  </padding>
+                                </FlowPane>
+                              </children>
+                            </AnchorPane>
+                          </children>
+                        </HBox>
+                        <HBox minHeight="33.0" prefHeight="33.0" prefWidth="800.0" VBox.vgrow="NEVER">
+                          <children>
+                            <FlowPane hgap="5.0" prefHeight="33.0" prefWidth="774.0" HBox.hgrow="SOMETIMES">
+                              <children>
+                                <Label alignment="CENTER_RIGHT" maxWidth="140.0" minWidth="110.0" prefHeight="33.0" prefWidth="120.0" text="%Entradas (Ventas)" textAlignment="RIGHT">
+                                  <FlowPane.margin>
+                                    <Insets fx:id="x1" />
+                                  </FlowPane.margin>
+                                </Label>
+                                <TextField fx:id="tfEntradasVentas" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" maxWidth="140.0" prefHeight="30.0" prefWidth="120.0" styleClass="text-right" />
+                                <Label fx:id="lbEntradasTickets" alignment="CENTER_LEFT" maxWidth="140.0" minWidth="118.0" prefHeight="33.0" prefWidth="120.0" text="%En X Tickets" />
+                                <Label alignment="CENTER_RIGHT" maxWidth="156.0" minWidth="120.0" prefHeight="33.0" prefWidth="146.0" text="%Salidas (Devolución)" textAlignment="RIGHT" />
+                                <TextField fx:id="tfSalidasDevolucion" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" maxWidth="140.0" prefHeight="30.0" prefWidth="120.0" styleClass="text-right" />
+                                <Label fx:id="lbSalidasTickets" alignment="CENTER_LEFT" maxWidth="140.0" minWidth="97.0" prefHeight="33.0" prefWidth="97.0" text="%En X Tickets" />
+                                <Label fx:id="lbVentaNeta" alignment="CENTER_RIGHT" maxWidth="140.0" minWidth="90.0" prefHeight="33.0" prefWidth="90.0" text="%Venta Neta" />
+                                <TextField fx:id="tfVentaNeta" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" maxWidth="140.0" prefHeight="30.0" prefWidth="120.0" styleClass="text-right" />
+                              </children>
+                            </FlowPane>
+                          </children>
+                          <VBox.margin>
+                            <Insets top="5.0" />
+                          </VBox.margin>
+                        </HBox>
+                        <HBox minHeight="33.0" prefHeight="33.0" prefWidth="800.0" VBox.vgrow="NEVER">
+                          <children>
+                            <FlowPane hgap="5.0" prefHeight="25.0" prefWidth="778.0" HBox.hgrow="SOMETIMES">
+                              <children>
+                                <Label alignment="CENTER_RIGHT" maxWidth="140.0" minWidth="120.0" prefHeight="33.0" prefWidth="120.0" text="%Entradas (Mov)" />
+                                <TextField fx:id="tfEntradasMovimientos" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" maxWidth="140.0" prefHeight="30.0" prefWidth="120.0" styleClass="text-right" />
+                                <Label alignment="CENTER_LEFT" maxWidth="140.0" minWidth="120.0" prefHeight="33.0" prefWidth="120.0" text="" />
+                                <Label alignment="CENTER_RIGHT" maxWidth="157.0" minWidth="120.0" prefHeight="33.0" prefWidth="146.0" text="%Salidas (Mov)" />
+                                <TextField fx:id="tfSalidasMovimientos" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" maxWidth="140.0" prefHeight="30.0" prefWidth="120.0" styleClass="text-right" />
+                              </children>
+                            </FlowPane>
+                            <AnchorPane prefHeight="0.0" prefWidth="30.0" HBox.hgrow="ALWAYS" />
+                          </children>
+                        </HBox>
+                        <HBox minHeight="33.0" prefHeight="33.0" prefWidth="800.0" VBox.vgrow="NEVER">
+                          <children>
+                            <FlowPane hgap="5.0" prefHeight="33.0" prefWidth="778.0" HBox.hgrow="SOMETIMES" HBox.margin="$x1">
+                              <children>
+                                <Label alignment="CENTER_RIGHT" maxWidth="140.0" minWidth="120.0" prefHeight="33.0" prefWidth="120.0" text="%Total Entradas" />
+                                <TextField fx:id="tfEntradasTotal" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" maxWidth="140.0" prefHeight="30.0" prefWidth="120.0" styleClass="text-right" />
+                                <Label alignment="CENTER_LEFT" maxWidth="140.0" minWidth="120.0" prefHeight="33.0" prefWidth="120.0" text="" />
+                                <Label alignment="CENTER_RIGHT" maxWidth="159.0" minWidth="120.0" prefHeight="33.0" prefWidth="146.0" text="%Total Salidas" />
+                                <TextField fx:id="tfSalidasTotal" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" maxWidth="140.0" prefHeight="30.0" prefWidth="120.0" styleClass="text-right" />
+                              </children>
+                            </FlowPane>
+                            <AnchorPane prefHeight="95.0" prefWidth="30.0" HBox.hgrow="ALWAYS" />
+                          </children>
+                          <VBox.margin>
+                            <Insets bottom="5.0" />
+                          </VBox.margin>
+                        </HBox>
+                      </children>
+                    </VBox>
+                  </children>
+                </HBox>
+                <HBox id="HBox" alignment="CENTER" prefHeight="56.0" prefWidth="800.0" spacing="0.0" VBox.vgrow="NEVER">
+                  <children>
+                    <AnchorPane minHeight="56.0" prefHeight="56.0" prefWidth="438.0" HBox.hgrow="ALWAYS">
+                      <children>
+                        <TilePane alignment="CENTER_RIGHT" minHeight="35.0" prefHeight="56.0" prefWidth="438.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="2.0">
+                          <children>
+                            <Button id="btAceptar" fx:id="btCerrarCaja" minHeight="42.0" minWidth="125.0" mnemonicParsing="false" onAction="#accionCerrarCaja" prefHeight="42.0" prefWidth="-1.0" styleClass="btAceptar" text="%Cerrar Caja" />
+                            <Button fx:id="btCancelar" minHeight="42.0" minWidth="115.0" mnemonicParsing="false" onAction="#accionCancelar" prefHeight="42.0" prefWidth="115.0" styleClass="btCancelar" text="%Cancelar">
+                              <TilePane.margin>
+                                <Insets left="4.0" right="4.0" />
+                              </TilePane.margin>
+                            </Button>
+                          </children>
+                        </TilePane>
+                      </children>
+                    </AnchorPane>
+                  </children>
+                </HBox>
+              </children>
+            </VBox>
+          </children>
+        </AnchorPane>
+      </children>
+    </HBox>
+  </children>
+  <stylesheets>
+    <URL value="@../../../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

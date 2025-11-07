@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.apartados.ByLApartadosCabeceraMapper">
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.apartados.ByLApartadosCabecera">
+    <id column="uid_actividad" jdbcType="VARCHAR" property="uidActividad" />
+    <id column="uid_apartado" jdbcType="VARCHAR" property="uidApartado" />
+    <result column="cod_caja" jdbcType="VARCHAR" property="codCaja" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    uid_actividad, uid_apartado, cod_caja
+  </sql>
+  <select id="selectByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.apartados.ByLApartadosCabeceraExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_clie_apartados_cab_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.apartados.ByLApartadosCabeceraKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from x_clie_apartados_cab_tbl
+    where uid_actividad = #{uidActividad,jdbcType=VARCHAR}
+      and uid_apartado = #{uidApartado,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.apartados.ByLApartadosCabeceraKey">
+    delete from x_clie_apartados_cab_tbl
+    where uid_actividad = #{uidActividad,jdbcType=VARCHAR}
+      and uid_apartado = #{uidApartado,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.apartados.ByLApartadosCabeceraExample">
+    delete from x_clie_apartados_cab_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.apartados.ByLApartadosCabecera">
+    insert into x_clie_apartados_cab_tbl (uid_actividad, uid_apartado, cod_caja
+      )
+    values (#{uidActividad,jdbcType=VARCHAR}, #{uidApartado,jdbcType=VARCHAR}, #{codCaja,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.apartados.ByLApartadosCabecera">
+    insert into x_clie_apartados_cab_tbl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        uid_actividad,
+      </if>
+      <if test="uidApartado != null">
+        uid_apartado,
+      </if>
+      <if test="codCaja != null">
+        cod_caja,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="uidApartado != null">
+        #{uidApartado,jdbcType=VARCHAR},
+      </if>
+      <if test="codCaja != null">
+        #{codCaja,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.apartados.ByLApartadosCabeceraExample" resultType="java.lang.Long">
+    select count(*) from x_clie_apartados_cab_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update x_clie_apartados_cab_tbl
+    <set>
+      <if test="row.uidActividad != null">
+        uid_actividad = #{row.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="row.uidApartado != null">
+        uid_apartado = #{row.uidApartado,jdbcType=VARCHAR},
+      </if>
+      <if test="row.codCaja != null">
+        cod_caja = #{row.codCaja,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update x_clie_apartados_cab_tbl
+    set uid_actividad = #{row.uidActividad,jdbcType=VARCHAR},
+      uid_apartado = #{row.uidApartado,jdbcType=VARCHAR},
+      cod_caja = #{row.codCaja,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.apartados.ByLApartadosCabecera">
+    update x_clie_apartados_cab_tbl
+    <set>
+      <if test="codCaja != null">
+        cod_caja = #{codCaja,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid_actividad = #{uidActividad,jdbcType=VARCHAR}
+      and uid_apartado = #{uidApartado,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.apartados.ByLApartadosCabecera">
+    update x_clie_apartados_cab_tbl
+    set cod_caja = #{codCaja,jdbcType=VARCHAR}
+    where uid_actividad = #{uidActividad,jdbcType=VARCHAR}
+      and uid_apartado = #{uidApartado,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.comerzzia.bimbaylola.pos.persistence.apartados.ByLApartadosCabeceraExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_clie_apartados_cab_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

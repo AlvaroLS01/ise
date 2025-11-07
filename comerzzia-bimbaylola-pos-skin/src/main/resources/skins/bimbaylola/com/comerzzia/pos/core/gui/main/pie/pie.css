@@ -1,0 +1,46 @@
+/**
+ * ComerZZia 3.0
+ *
+ * Copyright (c) 2008-2015 Comerzzia, S.L.  All Rights Reserved.
+ *
+ * THIS WORK IS  SUBJECT  TO  SPAIN  AND  INTERNATIONAL  COPYRIGHT  LAWS  AND
+ * TREATIES.   NO  PART  OF  THIS  WORK MAY BE  USED,  PRACTICED,  PERFORMED
+ * COPIED, DISTRIBUTED, REVISED, MODIFIED, TRANSLATED,  ABRIDGED, CONDENSED,
+ * EXPANDED,  COLLECTED,  COMPILED,  LINKED,  RECAST, TRANSFORMED OR ADAPTED
+ * WITHOUT THE PRIOR WRITTEN CONSENT OF COMERZZIA, S.L. ANY USE OR EXPLOITATION
+ * OF THIS WORK WITHOUT AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO
+ * CRIMINAL AND CIVIL LIABILITY.
+ *
+ * CONSULT THE END USER LICENSE AGREEMENT FOR INFORMATION ON ADDITIONAL
+ * RESTRICTIONS.
+ */
+.pie {
+	-fx-background-color: transparent;
+	-fx-text-fill: black;
+	-fx-border-width: 0;
+}
+
+.pie .label {
+	-fx-text-fill: #000;
+}
+
+.label-pie-tienda {
+	-fx-background-image: url("../../../../gui/imagenes/iconos/tienda.png");
+	-fx-padding: 0 0 0 28px;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: 6px center;
+}
+
+.label-pie-caja {
+	-fx-background-image: url("../../../../gui/imagenes/iconos/caja.png");
+	-fx-padding: 0 0 0 26px;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: 6px center;
+}
+
+.label-pie-usuario {
+	-fx-background-image: url("../../../../gui/imagenes/iconos/usuario.png");
+	-fx-padding: 0 0 0 24px;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: 4px center;
+}

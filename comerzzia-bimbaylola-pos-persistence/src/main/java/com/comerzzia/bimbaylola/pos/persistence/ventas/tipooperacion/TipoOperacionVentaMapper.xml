@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.ventas.tipooperacion.TipoOperacionVentaMapper">
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.ventas.tipooperacion.TipoOperacionVenta">
+    <id column="UID_ACTIVIDAD" jdbcType="VARCHAR" property="uidActividad" />
+    <id column="UID_TICKET" jdbcType="VARCHAR" property="uidTicket" />
+    <id column="UID_DIARIO_CAJA" jdbcType="VARCHAR" property="uidDiarioCaja" />
+    <result column="TIPO_DOCUMENTO" jdbcType="VARCHAR" property="tipoDocumento" />
+    <result column="SIGNO_DOCUMENTO" jdbcType="VARCHAR" property="signoDocumento" />
+    <result column="ID_TIPO_DOCUMENTO" jdbcType="BIGINT" property="idTipoDocumento" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    UID_ACTIVIDAD, UID_TICKET, UID_DIARIO_CAJA, TIPO_DOCUMENTO, SIGNO_DOCUMENTO, ID_TIPO_DOCUMENTO
+  </sql>
+  <select id="selectByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.ventas.tipooperacion.TipoOperacionVentaExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_TIPO_OPERACION_VENTA_TBL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.ventas.tipooperacion.TipoOperacionVentaKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from X_TIPO_OPERACION_VENTA_TBL
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_TICKET = #{uidTicket,jdbcType=VARCHAR}
+      and UID_DIARIO_CAJA = #{uidDiarioCaja,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.ventas.tipooperacion.TipoOperacionVentaKey">
+    delete from X_TIPO_OPERACION_VENTA_TBL
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_TICKET = #{uidTicket,jdbcType=VARCHAR}
+      and UID_DIARIO_CAJA = #{uidDiarioCaja,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.ventas.tipooperacion.TipoOperacionVentaExample">
+    delete from X_TIPO_OPERACION_VENTA_TBL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.ventas.tipooperacion.TipoOperacionVenta">
+    insert into X_TIPO_OPERACION_VENTA_TBL (UID_ACTIVIDAD, UID_TICKET, UID_DIARIO_CAJA, 
+      TIPO_DOCUMENTO, SIGNO_DOCUMENTO, ID_TIPO_DOCUMENTO
+      )
+    values (#{uidActividad,jdbcType=VARCHAR}, #{uidTicket,jdbcType=VARCHAR}, #{uidDiarioCaja,jdbcType=VARCHAR}, 
+      #{tipoDocumento,jdbcType=VARCHAR}, #{signoDocumento,jdbcType=VARCHAR}, #{idTipoDocumento,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.ventas.tipooperacion.TipoOperacionVenta">
+    insert into X_TIPO_OPERACION_VENTA_TBL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        UID_ACTIVIDAD,
+      </if>
+      <if test="uidTicket != null">
+        UID_TICKET,
+      </if>
+      <if test="uidDiarioCaja != null">
+        UID_DIARIO_CAJA,
+      </if>
+      <if test="tipoDocumento != null">
+        TIPO_DOCUMENTO,
+      </if>
+      <if test="signoDocumento != null">
+        SIGNO_DOCUMENTO,
+      </if>
+      <if test="idTipoDocumento != null">
+        ID_TIPO_DOCUMENTO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="uidTicket != null">
+        #{uidTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="uidDiarioCaja != null">
+        #{uidDiarioCaja,jdbcType=VARCHAR},
+      </if>
+      <if test="tipoDocumento != null">
+        #{tipoDocumento,jdbcType=VARCHAR},
+      </if>
+      <if test="signoDocumento != null">
+        #{signoDocumento,jdbcType=VARCHAR},
+      </if>
+      <if test="idTipoDocumento != null">
+        #{idTipoDocumento,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.ventas.tipooperacion.TipoOperacionVentaExample" resultType="java.lang.Long">
+    select count(*) from X_TIPO_OPERACION_VENTA_TBL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update X_TIPO_OPERACION_VENTA_TBL
+    <set>
+      <if test="record.uidActividad != null">
+        UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uidTicket != null">
+        UID_TICKET = #{record.uidTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uidDiarioCaja != null">
+        UID_DIARIO_CAJA = #{record.uidDiarioCaja,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipoDocumento != null">
+        TIPO_DOCUMENTO = #{record.tipoDocumento,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signoDocumento != null">
+        SIGNO_DOCUMENTO = #{record.signoDocumento,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idTipoDocumento != null">
+        ID_TIPO_DOCUMENTO = #{record.idTipoDocumento,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update X_TIPO_OPERACION_VENTA_TBL
+    set UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      UID_TICKET = #{record.uidTicket,jdbcType=VARCHAR},
+      UID_DIARIO_CAJA = #{record.uidDiarioCaja,jdbcType=VARCHAR},
+      TIPO_DOCUMENTO = #{record.tipoDocumento,jdbcType=VARCHAR},
+      SIGNO_DOCUMENTO = #{record.signoDocumento,jdbcType=VARCHAR},
+      ID_TIPO_DOCUMENTO = #{record.idTipoDocumento,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.ventas.tipooperacion.TipoOperacionVenta">
+    update X_TIPO_OPERACION_VENTA_TBL
+    <set>
+      <if test="tipoDocumento != null">
+        TIPO_DOCUMENTO = #{tipoDocumento,jdbcType=VARCHAR},
+      </if>
+      <if test="signoDocumento != null">
+        SIGNO_DOCUMENTO = #{signoDocumento,jdbcType=VARCHAR},
+      </if>
+      <if test="idTipoDocumento != null">
+        ID_TIPO_DOCUMENTO = #{idTipoDocumento,jdbcType=BIGINT},
+      </if>
+    </set>
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_TICKET = #{uidTicket,jdbcType=VARCHAR}
+      and UID_DIARIO_CAJA = #{uidDiarioCaja,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.ventas.tipooperacion.TipoOperacionVenta">
+    update X_TIPO_OPERACION_VENTA_TBL
+    set TIPO_DOCUMENTO = #{tipoDocumento,jdbcType=VARCHAR},
+      SIGNO_DOCUMENTO = #{signoDocumento,jdbcType=VARCHAR},
+      ID_TIPO_DOCUMENTO = #{idTipoDocumento,jdbcType=BIGINT}
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_TICKET = #{uidTicket,jdbcType=VARCHAR}
+      and UID_DIARIO_CAJA = #{uidDiarioCaja,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.comerzzia.bimbaylola.pos.persistence.ventas.tipooperacion.TipoOperacionVentaExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_TIPO_OPERACION_VENTA_TBL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

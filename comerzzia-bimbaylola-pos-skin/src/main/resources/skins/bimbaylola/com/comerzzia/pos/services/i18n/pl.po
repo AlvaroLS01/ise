@@ -1,0 +1,898 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-07 12:19+0100\n"
+"PO-Revision-Date: 2022-07-12 11:49+0200\n"
+"Last-Translator: _pl\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: com/comerzzia/bimbaylola/pos/services/apartados/CodigoBarrasApartadosException.java:30
+msgid "Error al generar el código de barras."
+msgstr "Błąd podczas generowania kodu kreskowego."
+
+#: com/comerzzia/bimbaylola/pos/services/cajas/ByLCajasService.java:67
+msgid "No existe caja abierta en el sistema"
+msgstr "Brak otwartej kasy w systemie"
+
+#: com/comerzzia/bimbaylola/pos/services/cajas/ByLCajasService.java:77
+#: com/comerzzia/bimbaylola/pos/services/cajas/ByLCajasService.java:159
+msgid "Error al consultar caja abierta en sesión del sistema"
+msgstr "Błąd podczas wyszukiwania otwartej kasy w ramach sesji systemu"
+
+#: com/comerzzia/bimbaylola/pos/services/cajas/ByLCajasService.java:149
+msgid "No existen cajas cerrada en el sistema"
+msgstr "Brak zamkniętych kas w systemie"
+
+#: com/comerzzia/bimbaylola/pos/services/cajas/ByLCajasService.java:197
+msgid "Error al consultar los movimientos de caja en el sistema"
+msgstr "Błąd podczas wyszukiwania operacji kasowych w systemie"
+
+#: com/comerzzia/bimbaylola/pos/services/clientes/ByLClientesService.java:57
+#: com/comerzzia/bimbaylola/pos/services/clientes/ByLClientesService.java:62
+#: com/comerzzia/bimbaylola/pos/services/clientes/ByLClientesService.java:69
+#: com/comerzzia/bimbaylola/pos/services/clientes/ByLClientesService.java:74
+#: com/comerzzia/bimbaylola/pos/services/clientes/ByLClientesService.java:81
+#: com/comerzzia/bimbaylola/pos/services/clientes/ByLClientesService.java:86
+#: com/comerzzia/bimbaylola/pos/services/clientes/ByLClientesService.java:99
+#: com/comerzzia/bimbaylola/pos/services/clientes/ByLClientesService.java:104
+#: com/comerzzia/bimbaylola/pos/services/clientes/ByLClientesService.java:118
+#: com/comerzzia/bimbaylola/pos/services/clientes/ByLClientesService.java:123
+#: com/comerzzia/bimbaylola/pos/services/clientes/ByLClientesService.java:130
+#: com/comerzzia/bimbaylola/pos/services/clientes/ByLClientesService.java:135
+msgid ""
+"Por favor, revisa el Tipo Documento seleccionado y si el Documento Fiscal es "
+"correcto. Gracias"
+msgstr ""
+"Proszę sprawdzić wybrany rodzaj dokumentu i czy dokument fiskalny jest "
+"poprawny. Dziękuję Ci"
+
+#: com/comerzzia/bimbaylola/pos/services/clientes/ClienteValidatedException.java:30
+msgid "Error en la validación del documento."
+msgstr "Błąd podczas walidacji dokumentu."
+
+#: com/comerzzia/bimbaylola/pos/services/core/config/configContadores/ContadoresConfigConstraintViolationException.java:49
+msgid "Error guardando contador"
+msgstr "Błąd przy zapisywaniu licznika"
+
+#: com/comerzzia/bimbaylola/pos/services/core/config/configContadores/ContadoresConfigException.java:52
+#: com/comerzzia/bimbaylola/pos/services/core/config/configContadores/parametros/ConfigContadoresParametrosException.java:47
+msgid "Error consultando contadores"
+msgstr "Błąd przy wyszukiwaniu liczników"
+
+#: com/comerzzia/bimbaylola/pos/services/core/config/configContadores/ContadoresConfigInvalidException.java:31
+msgid "Error en la longitud del valor del contador"
+msgstr "Nieprawidłowa długość wartości licznika"
+
+#: com/comerzzia/bimbaylola/pos/services/core/config/configContadores/ContadoresConfigNotFoundException.java:49
+msgid "No se han encontrado contadores"
+msgstr "Nie znaleziono liczników"
+
+#: com/comerzzia/bimbaylola/pos/services/core/config/configContadores/parametros/ConfigContadoresParametrosConstraintViolationException.java:46
+msgid "Error guardando parámetro de configuración"
+msgstr "Błąd przy zapisywaniu parametru konfiguracyjnego"
+
+#: com/comerzzia/bimbaylola/pos/services/core/config/configContadores/parametros/ConfigContadoresParametrosInvalidException.java:31
+msgid "Error en la longitud de un parámetro del contador"
+msgstr "Nieprawidłowa długość parametru licznika"
+
+#: com/comerzzia/bimbaylola/pos/services/core/config/configContadores/parametros/ConfigContadoresParametrosNotFoundException.java:47
+msgid "Propiedad no configurada"
+msgstr "Własność nieskonfigurowana"
+
+#: com/comerzzia/bimbaylola/pos/services/core/config/configContadores/rangos/FileCounterRangeManagerImpl.java:84
+msgid "No existe un directorio /fiscal en los recursos"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/core/procesadorIdFiscal/ProcesadorIdFiscalCL.java:146
+#: com/comerzzia/bimbaylola/pos/services/core/procesadorIdFiscal/ProcesadorIdFiscalCO.java:124
+#: com/comerzzia/bimbaylola/pos/services/core/procesadorIdFiscal/ProcesadorIdFiscalEC.java:85
+msgid "No se ha encontrado contador con rangos disponible"
+msgstr "Nie znaleziono dostępnego licznika o odpowiednich zakresach"
+
+#: com/comerzzia/bimbaylola/pos/services/core/procesadorIdFiscal/ProcesadorIdFiscalException.java:45
+msgid "Error realizando el procesamiento del identificador fiscal"
+msgstr "Błąd przy przetwarzaniu identyfikatora podatkowego"
+
+#: com/comerzzia/bimbaylola/pos/services/core/procesadorIdFiscal/ProcesadorIdFiscalPR.java:96
+msgid "Control number not available"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/core/procesadorIdFiscal/ProcesarDocumentoFiscalException.java:45
+#, fuzzy
+msgid "Error realizando el procesamiento del documento fiscal"
+msgstr "Błąd przy przetwarzaniu identyfikatora podatkowego"
+
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/ByLDispositivosFirma.java:96
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/ByLDispositivosFirma.java:157
+msgid "NO USA"
+msgstr "BEZ USA"
+
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/DispositivoFirmaException.java:28
+msgid "Error en el proceso de firma."
+msgstr "Błąd procedury podpisywania."
+
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/IFirma.java:14
+msgid "Quiero recibir comunicaciones comerciales de BIMBA Y LOLA."
+msgstr "Chcę otrzymywać informacje handlowe od BIMBA Y LOLA."
+
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/IFirma.java:15
+msgid ""
+"Acepto que mis datos sean usados para la elaboración de perfiles basados en "
+"hábitos de compra."
+msgstr ""
+"Wyrażam zgodę na wykorzystanie moich danych do opracowania profili klientów "
+"opartych na przyzwyczajeniach zakupowych."
+
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/wacom/TPad.java:17
+msgid ""
+"Bimba y Lola es Responsable del Tratamiento de sus datos. Para más info "
+"consulte en tienda"
+msgstr ""
+"Firma Bimba y Lola jest administratorem przetwarzającym Twoje dane. Więcej "
+"informacji na ten temat można uzyskać w sklepie"
+
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/wacom/TPad.java:18
+msgid "OK"
+msgstr "OK"
+
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/wacom/TPad.java:19
+msgid "Siguiente"
+msgstr "Dalej"
+
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/wacom/TPad.java:20
+msgid "Cancelar"
+msgstr "Anuluj"
+
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/wacom/TPad.java:21
+msgid "Por favor firme debajo ..."
+msgstr "Proszę złożyć poniżej podpis..."
+
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/wacom/TPad.java:22
+msgid "Limpiar"
+msgstr "Wyczyść"
+
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/wacom/WacomManager.java:111
+msgid "El usuario ha cancelado el proceso de firma."
+msgstr "Użytkownik anulował proces składania podpisu."
+
+#: com/comerzzia/bimbaylola/pos/services/dispositivofirma/wacom/WacomManager.java:114
+msgid "El dispositivo no se encuentra disponible. Revise la conexión."
+msgstr "Urządzenie nie jest dostępne. Sprawdź połączenie."
+
+#: com/comerzzia/bimbaylola/pos/services/fidelizacion/firma/exception/FidelizadoFirmaConstraintViolationException.java:31
+msgid "Ya existe un FidelizadoFirma con estos datos."
+msgstr "Istnieje już podpis stałego klienta o tych samych danych."
+
+#: com/comerzzia/bimbaylola/pos/services/fidelizacion/firma/exception/FidelizadoFirmaNotFoundException.java:31
+msgid ""
+"No se han encontrado resultados de Firmas de Fidelizado con estos datos."
+msgstr ""
+"Nie znaleziono wyników dot. podpisów stałego klienta o tych samych danych."
+
+#: com/comerzzia/bimbaylola/pos/services/fidelizacion/firma/exception/FidelizadoFirmaServicioException.java:31
+msgid "Error al realizar la acción con un FidelizadoFirma"
+msgstr "Błąd podczas procedury dot. podpisu stałego klienta"
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:28
+msgid "unknown operation"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:29
+msgid "not enough memory to complete the operation"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:30
+msgid "operation not specified"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:31
+msgid ""
+"the structure of storage of the error of the FN operation is not specified"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:32
+msgid "the structure of the results of the FN operation is not specified"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:33
+msgid ""
+"the structure of the input parameters of the FN operation is not specified"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:34
+msgid "exceeded the maximum data size for the FN command"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:35
+msgid "error in classifier"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:36
+msgid "error of the initial state of the FN before (re-) registration"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:37
+msgid "FN error when receiving status"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:38
+msgid "FN error when issuing the command \"Start registration report\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:39
+msgid "FN error when issuing the command \"Transfer document data\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:40
+msgid ""
+"FN error when issuing the command \"Generate a report on registration (re-"
+"registration) of FCR\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:41
+msgid "FN error when issuing the command \"Start closing the FN fiscal mode\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:42
+msgid "FN error when issuing the command \"Close FN fiscal mode\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:43
+msgid "error when trying to capture FN"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:44
+msgid ""
+"FN error when issuing the command \"Start generating a report on the current "
+"state of calculations\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:45
+msgid ""
+"FN error when issuing the command \"Generate a report on the current state "
+"of calculations\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:46
+msgid "FN error: shift is open"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:47
+msgid "FN error: shift is closed"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:48
+msgid "FN error: there is an unclosed document"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:49
+msgid ""
+"FN error when issuing the command \"Request for the number of FDs for which "
+"there is no receipt\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:50
+msgid "FN error when issuing the command \"Request for FN validity period\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:51
+msgid ""
+"FN error when issuing the command \"Request for FN fiscalization results\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:52
+msgid "FN error: there are documents unconfirmed in the FDO"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:53
+msgid "FN error when issuing the command \"Start opening shift\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:54
+msgid "FN error when issuing the command \"Open shift\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:55
+msgid "FN error when issuing the command \"Start closing shift\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:56
+msgid "FN error when issuing the command \"Close shift\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:57
+msgid "FN error when issuing the command \"Start receipt formation (SRF)\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:58
+msgid "type definition error: check or SRF"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:59
+msgid "FN error: check is not open"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:60
+msgid "data conversion error"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:61
+msgid "FN error when issuing the \"Generate check\" command"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:62
+msgid "FN error when issuing the command \"Undo the current document\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:63
+msgid "error: unclosed document is missing"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:64
+msgid "error: shift overdue"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:65
+msgid "error: correction check is not open"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:66
+msgid "FN error when receiving counters"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:67
+msgid "FN error when receiving the shift state"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:68
+msgid "error: the check is empty (no items for calculation)"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:69
+msgid ""
+"error: the stage of the receipt formation does not correspond to the "
+"operation"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:70
+msgid ""
+"FN error when issuing the command \"Request for the number and type of FN "
+"software version\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:71
+msgid "error: a debug version of the FN is needed to perform the operation"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:72
+msgid "FN error when issuing the \"FN Reset\" command"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:73
+msgid "FN error when receiving the status of information exchange with the FDO"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:74
+msgid "FN error: message reading for FDO has already started"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:75
+msgid "FN error: no messages for FDO"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:76
+msgid ""
+"FN error when issuing the command \"Send the status of the transport "
+"connection with the FDO server\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:77
+msgid ""
+"FN error when issuing the command \"Start reading a message for the FDO "
+"server\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:78
+msgid "FN error: message reading for FDO has not started yet"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:79
+msgid ""
+"FN error when issuing the command \"Cancel message reading for the FDO server"
+"\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:80
+msgid ""
+"FN error when issuing the command \"Read message block for the FDO server\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:81
+msgid "FN error: there is no readiness to accept a receipt from the FDO"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:82
+msgid ""
+"FN error when issuing the command \"Send a receipt from the FDO server\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:83
+msgid "FN error: incorrect fiscal signature"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:84
+msgid "FN error: invalid receipt format"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:85
+msgid "FN error: invalid FD number"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:86
+msgid "FN error: wrong FN number"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:87
+msgid "FN error: invalid CRC"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:88
+msgid ""
+"FN error when issuing the command \"Request for a fiscal document in TLV "
+"format\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:89
+msgid ""
+"FN error when issuing the command \"Reading the TLV of the fiscal document\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:90
+msgid "FN error: the compulsory document data is missing in the archive"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:91
+msgid "FN error: the document requested from the archive is not a receipt"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:92
+msgid ""
+"FN error when issuing the command \"Request for the total size of data "
+"transmitted by command 07h\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:93
+msgid "FN error when issuing the command \"Request for FN format\""
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:94
+msgid "FN error: erroneous data received from FN"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:95
+msgid "Timeout for receiving a command"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:96
+msgid "Print device is busy ..."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:97
+msgid "Unknown parameters specified in the command"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:98
+msgid "The command is missing compulsory parameters"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:99
+msgid "The command contains parameters, but they should not be"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:100
+msgid "Invalid command format or unknown command"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:101
+msgid "error in specifying the version of the FFD FCR"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:102
+msgid "error in setting the serial number of the FCR"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:103
+msgid "error in specifying the FCR version"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:104
+msgid "error in setting the registration number of the FCR"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:105
+msgid "error in setting TIN"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:106
+msgid "error in setting FDO TIN"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:107
+msgid "error in specifying the reason for re-registration"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:108
+msgid "error: the specified taxation system is not supported"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:109
+msgid "error in specifying a calculation attribute"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:110
+msgid "error in specifying the attribute of the payment method"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:111
+msgid "error in specifying the attribute of the item"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:112
+msgid "error in specifying the name of the item"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:113
+msgid "error in setting the unit of measurement"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:114
+msgid "error in setting the item code "
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:115
+msgid "error in specifying the quantity"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:116
+msgid "error in setting the unit price of an item"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:117
+msgid "error in setting the price value of the item"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:118
+msgid "error in setting the VAT rate "
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:119
+msgid "error in calculating the amount of VAT per unit "
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:120
+msgid "error in calculating the amount of VAT "
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:121
+msgid ""
+"error: the calculation of the value of items exceeded the maximum allowable "
+"value"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:122
+msgid ""
+"error: the calculation of the value for the check exceeded the amount of "
+"payments"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:123
+msgid ""
+"an error in specifying the amount of accepted cash as payment for a check"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:124
+msgid ""
+"error: the calculation of the cost by type of payment for the check exceeded "
+"the limit"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:125
+msgid "error of obtaining the current time from the internal clock of the FCR"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:126
+msgid "error: there can be only one item in a check with credit payment "
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:127
+msgid "error: cashier not set"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:128
+msgid "error in setting the agent attribute"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:129
+msgid "error: the document in electronic form is not generated"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:130
+msgid "error: the maximum number of items with an item code has been exceeded"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:131
+msgid "error: Attempt to re-set a unique parameter"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:132
+msgid "error: vendor tax ID not specified"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:133
+msgid "error: an attempt was made to set the quantity of a unique item"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:134
+msgid "error: printer failure"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:135
+msgid "failure to write to flash memory"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:136
+msgid "update file was not loaded"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:137
+msgid "the current version of FFD FN does not support the operation"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:138
+msgid "current version of FFD FN is not supported"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:139
+msgid "erroneous sequence of commands"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:140
+msgid "work with excisable goods is prohibited"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:141
+msgid "items with marked goods in receipts are prohibited"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:142
+msgid "error in setting the parameter of the FN operation"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:143
+msgid "FN operation parameter not specified"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:144
+msgid "error in setting the operating modes of the FCR"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:145
+msgid "error in specifying extended operating modes of the FCR"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:146
+msgid "error setting parameter with date / time"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:147
+msgid "error in setting a parameter with a tax number"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:148
+msgid "error in setting a parameter with a bit mask"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:149
+msgid "error: line length too long"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:150
+msgid "error: invalid data"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:151
+msgid "error: unknown FN command"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:152
+msgid "error: incorrect state of FN"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:153
+msgid "error: FN failure"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:154
+msgid "error: failure of the CRC"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:155
+msgid "error: command parameters do not correspond to FN life stage"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:156
+msgid "error: incorrect date and / or time"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:157
+msgid "error: no requested data"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:158
+msgid "error: incorrect value of command parameters"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:159
+msgid "error: invalid command."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:160
+msgid "error: invalid requisites."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:161
+msgid "error: data duplication"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:162
+msgid "error: there is no data compulsory for correct accounting in the FN"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:163
+msgid ""
+"error: the number of items in the document has exceeded the allowed limit"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:164
+msgid "error: oversized TLV data "
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:165
+msgid "error: no transport connection"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:166
+msgid "error: FN resource limit over"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:167
+msgid "error: FN resource limitation"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:168
+msgid "error: shift duration exceeded"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:169
+msgid "error: incorrect data on the time interval between fiscal documents"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:170
+msgid "error: incorrect variable transferred by the cash register to the FN"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:171
+msgid "error: incorrect variable with a sign of selling excisable goods"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:172
+msgid "error: FDO message could not be received"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:173
+msgid "DM verification key update service error"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:174
+msgid ""
+"error: unknown response from the verification code verification key update "
+"service"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:175
+msgid ""
+"error: it is required to repeat the procedure for updating DM verification "
+"keys"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:176
+msgid "error: work with marked goods is prohibited"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:177
+msgid ""
+"the correct sequence of sending commands for processing labeled goods is "
+"violated"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:178
+msgid "error: work with marked goods is temporarily blocked"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:179
+msgid "error: marking code check table is full"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:180
+msgid "error: period exceeded 90 days since last update of verification keys"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:181
+msgid "error: required requisites are missing in the TLV block"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:182
+msgid ""
+"error: attribute 2007 contains a DM that was not previously checked in FN"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:183
+msgid "error: Failed to contact the OISM server"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:184
+msgid "error: empty response received from OISM"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:185
+msgid "error: unable to contact OKP server"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FConstants.java:186
+msgid "error: empty response received from OKP"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FService.java:278
+msgid "Descuento del "
+msgstr "Rabat"
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FService.java:311
+msgid " Card No "
+msgstr "Numer karty"
+
+#: com/comerzzia/bimbaylola/pos/services/spark130f/Spark130FService.java:319
+msgid " Paid "
+msgstr "Płatny"
+
+#: com/comerzzia/bimbaylola/pos/services/ticket/ByLTicketsService.java:264
+msgid "Error mientras se imprimía el ticket en la impresora fiscal."
+msgstr "Błąd podczas drukowania paragonu w kasie fiskalnej."
+
+#: com/comerzzia/bimbaylola/pos/services/ticket/ByLTicketsService.java:614
+msgid "Se ha generado un ticket erróneo debido a un control del POS."
+msgstr "W wyniku kontroli POS został wygenerowany błędny bilet."
+
+#, fuzzy
+#~ msgid "Número de control no disponible"
+#~ msgstr "Nie znaleziono dostępnego licznika o odpowiednich zakresach"
+
+#~ msgid "Indique el número del documento"
+#~ msgstr "Podaj numer dokumentu"
+
+#~ msgid "Documento no válido"
+#~ msgstr "Dokument nieważny"
+
+#~ msgid "Documento no valido"
+#~ msgstr "Dokument nieważny"

@@ -1,0 +1,48 @@
+	#set ($esPagoTRTA = false)	
+	#foreach ($pago in $ticket.getPagos())       
+		#if(${pago.isPagoTarjetaRegalo()})
+			#set ($esPagoTRTA = true)
+		#end
+	#end
+	#if($ticket.getCabecera().getCodTipoDocumento() == "DE")
+		#if(${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()} || ${ticket.isDevolucionTarjetaRegalo()})
+		    <!-- devolucion de tarjeta regalo -->
+			
+			<linea line-size="4"> <texto align="center" style="1">Vielen Dank für Ihren Besuch. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			
+		#elseif(${esPagoTRTA})
+		    <!-- TICKET DE DEVOLUCION DE TARJETA-->
+			<linea line-size="4"> <texto align="center" style="1">Vielen Dank für Ihren Besuch. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			
+		#else
+		    <!-- ticket de devolucion normal -->
+			
+			<linea line-size="4"> <texto align="center" style="1">Vielen Dank für Ihren Besuch. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+
+		#end
+	#else
+	    <!-- DOCUMENTOS QUE NO SON DEVOLUCION -->
+		#if($ticket.getCabecera().getCodTipoDocumento() == "TR" && $!{ticket.isDevolucionTarjetaRegalo()})
+		    <!-- venta de tarjeta regalo -->
+		
+			<linea line-size="4"> <texto align="center" style="1">Vielen Dank für Ihren Besuch. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+
+		#elseif(${esPagoTRTA})
+		    <!-- venta en la que interviene una tarjeta -->
+		
+			<linea line-size="4"> <texto align="center" style="1">Vielen Dank für Ihren Besuch. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+
+
+		#else
+		    <!-- Pie para un ticket de venta normal -->
+		
+			<linea line-size="4"> <texto align="center" style="1">Vielen Dank für Ihren Besuch. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			
+		#end
+	#end

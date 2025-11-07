@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Sub_Lineas" pageWidth="530" pageHeight="555" orientation="Landscape" columnWidth="530" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="04f4dc3b-f2a6-4a35-8590-9b93b0024224">
+	<property name="ireport.zoom" value="1.6528925619834747"/>
+	<property name="ireport.x" value="112"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[".//"]]></defaultValueExpression>
+	</parameter>
+	<field name="cantidad" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[cantidad]]></fieldDescription>
+	</field>
+	<field name="desart" class="java.lang.String">
+		<fieldDescription><![CDATA[articulo.desArticulo]]></fieldDescription>
+	</field>
+	<field name="descuento" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[descuento]]></fieldDescription>
+	</field>
+	<field name="importe_linea" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[importeTotalConDto]]></fieldDescription>
+	</field>
+	<field name="precio" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[precioSinDto]]></fieldDescription>
+	</field>
+	<field name="fieldNumerosSerie" class="java.util.List">
+		<fieldDescription><![CDATA[numerosSerie]]></fieldDescription>
+	</field>
+	<field name="codart" class="java.lang.String">
+		<fieldDescription><![CDATA[articulo.codArticulo]]></fieldDescription>
+	</field>
+	<field name="Desglose1" class="java.lang.String">
+		<fieldDescription><![CDATA[desglose1]]></fieldDescription>
+	</field>
+	<field name="Desglose2" class="java.lang.String">
+		<fieldDescription><![CDATA[desglose2]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="17">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5e0f513b-39ee-4549-bbe4-8c4e3bad09b1" x="75" y="2" width="127" height="13"/>
+				<textElement>
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desart}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement uuid="3b582aba-b9fe-4252-84ba-bd1332f1bbac" x="399" y="2" width="37" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement uuid="67def409-17c9-4426-87c8-4e3e2266c55f" x="440" y="2" width="90" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importe_linea}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement uuid="edbdbeff-dd4a-448d-ae6c-4e69f8020b0a" x="351" y="2" width="41" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descuento}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement uuid="6066c98b-6b01-4a0e-8ec7-3093a328cb1b" x="299" y="2" width="47" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="13e8634a-5b65-42b9-aacb-2536365118a5" x="17" y="2" width="58" height="13"/>
+				<textElement>
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codart}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2681bf10-f43f-4444-8dd8-3e3c71d98495" x="1" y="4" width="15" height="13"/>
+				<textElement>
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ffc9d125-0bcb-4191-b9fe-21ad209603db" x="203" y="2" width="94" height="13"/>
+				<textElement>
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Desglose1} + " / " + $F{Desglose2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

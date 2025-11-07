@@ -1,0 +1,41 @@
+<!--Esta plantilla usa un parámetro $esBoletaCompleta que no llega desde el POS. Se debe asignar como (con un solo corchete): set( $esBoletaCompleta = true )-->
+##foreach ($pago in $ticket.getPagos())
+	#if (${pago.tieneDatosRespuestaPagoTarjeta()} && ${pago.getDatosRespuestaPagoTarjeta().getCodAutorizacion()})
+	
+		#if($pago.getDatosRespuestaPagoTarjeta().getTipoLectura() == "L")
+			<texto pre-command="29;40;76;6;0;48;69;32;32;1;1"></texto>
+		#end
+	
+		<!--Inicio boleta completa. Esto significa boleta después del ticket de venta -->
+		#if  (!$esBoletaCompleta) 
+			<linea> <texto> </texto> </linea>
+			
+			#if($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "VENTA")
+				<linea line-size="4"><texto>------------------- V E N T A -------------------------</texto> </linea>			
+			#elseif($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "DEVOLUCION")
+				<linea line-size="4"><texto>-------------- D E V O L U C I O N --------------------</texto> </linea>			
+			#end
+			
+			
+			#if($pago.getDatosRespuestaPagoTarjeta().getContactLess().equals("1"))
+				<linea line-size="4"><texto size="55" align="center">** CONTACTLESS **</texto></linea>
+			#end
+			<linea line-size="4"><texto size="55" align="left">Comercio: ${pago.getDatosRespuestaPagoTarjeta().getComercio()}</texto></linea>			
+			<linea line-size="4"><texto size="55" align="left">Fecha: ${pago.getDatosRespuestaPagoTarjeta().getFechaTransaccion()}</texto></linea>			
+			<linea line-size="4"><texto size="55" align="left">Terminal: ${pago.getDatosRespuestaPagoTarjeta().getTerminal()}</texto></linea>
+			<linea line-size="4"><texto size="40" align="left">Importe: ${pago.getImporteAsString()}</texto></linea>
+			<linea line-size="4"><texto size="55" align="left">Tarjeta: ${pago.getDatosRespuestaPagoTarjeta().getPAN()}</texto></linea>
+			<linea line-size="4"><texto size="55" align="left">         ${pago.getDatosRespuestaPagoTarjeta().getMarcaTarjeta()}</texto></linea>			
+			<linea line-size="4"><texto size="55" align="left">Titular: ${pago.getDatosRespuestaPagoTarjeta().getTitular()}</texto></linea>			
+			<linea line-size="4"><texto size="55" align="left">Número Op.: ${pago.getDatosRespuestaPagoTarjeta().getNumOperacion()}</texto></linea>		
+			<linea line-size="4"><texto size="55" align="left">Aut.: ${pago.getDatosRespuestaPagoTarjeta().getCodAutorizacion()}</texto></linea>			
+			<linea line-size="4"><texto size="55" align="left">N.Trans: ${pago.getDatosRespuestaPagoTarjeta().getNumTransaccion()}</texto></linea>			
+			<linea line-size="4"><texto size="55" align="left">Aplicación: ${pago.getDatosRespuestaPagoTarjeta().getAID()}</texto></linea>
+			<linea> <texto> </texto> </linea>			
+			
+			<!-- aqui falta todo lo que tiene que ver con dcc -->
+		
+		#end 
+		<!--Fin boleta completa-->
+	#end
+##end     		

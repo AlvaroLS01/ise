@@ -1,0 +1,155 @@
+/**
+ * ComerZZia 3.0
+ *
+ * Copyright (c) 2008-2015 Comerzzia, S.L.  All Rights Reserved.
+ *
+ * THIS WORK IS  SUBJECT  TO  SPAIN  AND  INTERNATIONAL  COPYRIGHT  LAWS  AND
+ * TREATIES.   NO  PART  OF  THIS  WORK MAY BE  USED,  PRACTICED,  PERFORMED
+ * COPIED, DISTRIBUTED, REVISED, MODIFIED, TRANSLATED,  ABRIDGED, CONDENSED,
+ * EXPANDED,  COLLECTED,  COMPILED,  LINKED,  RECAST, TRANSFORMED OR ADAPTED
+ * WITHOUT THE PRIOR WRITTEN CONSENT OF COMERZZIA, S.L. ANY USE OR EXPLOITATION
+ * OF THIS WORK WITHOUT AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO
+ * CRIMINAL AND CIVIL LIABILITY.
+ *
+ * CONSULT THE END USER LICENSE AGREEMENT FOR INFORMATION ON ADDITIONAL
+ * RESTRICTIONS.
+ */
+.openNotifications  {
+	-fx-background-color: transparent;
+	-fx-background-insets: 0, 0, 0;
+	-fx-background-image:
+		url("../../../../gui/imagenes/notificaciones/bell-gray.png");
+	-fx-padding: 0;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-cursor: hand;
+	-fx-text-fill: #edfbff;
+	-fx-skin: "com.sun.javafx.scene.control.skin.ButtonSkin";}
+
+.openNotifications.gray {
+	-fx-background-image: url("../../../../gui/imagenes/notificaciones/bell-gray.png");
+}
+.openNotifications.info{
+	-fx-background-image: url("../../../../gui/imagenes/notificaciones/bell.png");
+}
+.openNotifications.warn{
+	-fx-background-image: url("../../../../gui/imagenes/notificaciones/bell-warn.png");
+}
+.openNotifications.error{
+	-fx-background-image: url("../../../../gui/imagenes/notificaciones/bell-error.png");
+}
+.openNotifications.gray:hover{
+	-fx-background-image: url("../../../../gui/imagenes/notificaciones/bell-gray-hover.png");
+}
+.openNotifications.info:hover{
+	-fx-background-image: url("../../../../gui/imagenes/notificaciones/bell-hover.png");
+}
+.openNotifications.warn:hover{
+	-fx-background-image: url("../../../../gui/imagenes/notificaciones/bell-warn-hover.png");
+}
+.openNotifications.error:hover{
+	-fx-background-image: url("../../../../gui/imagenes/notificaciones/bell-error-hover.png");
+}
+
+.gotoAcercaDe  {
+	-fx-background-color: transparent;
+	-fx-background-insets: 0, 0, 0;
+	-fx-background-image: url("../../../../gui/imagenes/iconos/about.png");
+	-fx-padding: 0;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-cursor: hand;}
+
+.gotoAcercaDe:hover {
+	-fx-background-image: url("../../../../gui/imagenes/iconos/about_hover.png");
+}
+
+.gotoAcercaDe:hover:focused:pressed {
+	-fx-background-image: url("../../../../gui/imagenes/iconos/about_pressed.png");
+}
+
+.gotoLogin {
+	-fx-background-color: transparent;
+	-fx-background-insets: 0, 0, 0;
+	-fx-background-image:
+		url("../../../../gui/imagenes/iconos/change_cajero.png");
+	-fx-padding: 0;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-cursor: hand;}
+
+.gotoLogin:hover {
+	-fx-background-image:
+		url("../../../../gui/imagenes/iconos/change_cajero_hover.png");
+}
+
+.gotoLogin:pressed {
+	-fx-background-image:
+		url("../../../../gui/imagenes/iconos/change_cajero_pressed.png");
+}
+
+.accionCerrar {
+	-fx-background-color:transparent;
+	-fx-background-insets: 0,0,0;
+	-fx-background-image: url("../../../../gui/imagenes/iconos/exit.png");
+	-fx-padding: 0;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-cursor: hand;
+}
+
+.accionCerrar:hover {
+	-fx-background-image: url("../../../../gui/imagenes/iconos/exit_hover.png");
+}
+
+.accionCerrar:pressed {
+	-fx-background-image: url("../../../../gui/imagenes/iconos/exit_pressed.png");
+}
+.goToCambioPw{
+	-fx-background-color:transparent;
+    -fx-background-insets: 0,0,0;
+    -fx-background-image: url("../../../../gui/imagenes/iconos/llave.png");
+    -fx-padding: 0;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-cursor: hand;
+}
+.goToCambioPw:hover {
+    -fx-background-image: url("../../../../gui/imagenes/iconos/llave-hover.png");
+}
+.goToCambioPw:pressed {
+    -fx-background-image: url("../../../../gui/imagenes/iconos/llave-pressed.png");
+}
+.gotoPermisos{
+	-fx-background-color:transparent;
+    -fx-background-insets: 0,0,0;
+    -fx-background-image: url("../../../../gui/imagenes/iconos/permisos.png");
+    -fx-padding: 0;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-cursor: hand;
+}
+.gotoPermisos:hover {
+    -fx-background-image: url("../../../../gui/imagenes/iconos/permisos-hover.png");
+}
+.gotoPermisos:hover:focused:pressed {
+    -fx-background-image: url("../../../../gui/imagenes/iconos/permisos-pressed.png");
+}
+
+.goToLockTPV {
+	-fx-background-color:transparent;
+    -fx-background-insets: 0,0,0;
+    -fx-background-image: url("../../../../gui/imagenes/iconos/lock.png");
+    -fx-padding: 0;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-cursor: hand;
+    
+}
+
+.goToLockTPV:hover {
+    -fx-background-image: url("../../../../gui/imagenes/iconos/lock_hover.png");
+}
+.goToLockTPV:pressed {
+    -fx-background-image: url("../../../../gui/imagenes/iconos/lock_pressed.png");
+}

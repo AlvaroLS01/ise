@@ -1,0 +1,627 @@
+﻿.mainFxmlClass {
+   -fx-background-color: rgba(0,0,0,0);
+   -fx-font-family: 'Dosis';
+}
+/* TableView{ */
+/* 	-fx-font-family: 'Geogrotesque Regular'; */
+/* } */
+.main-izquierda {
+   -fx-border-width: 0;
+   -fx-background-color: #fff;
+}
+.main-izquierda .button{
+   -fx-border-width: 0;
+}
+.main-derecha {
+   -fx-background-color: #fff;
+}
+.titulo-ventana {
+     -fx-background-color: #000;
+    -fx-height: 42px;
+}
+.titulo-ventana .label{
+    -fx-text-fill: #fff;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+ .text-right{
+     text-align: right;     
+}
+.textoResaltado{
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;  
+    -fx-text-fill: #000000;
+}
+.texto-negrita{
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000; 
+}
+.etiqueta-titulo2{
+    -fx-font-weight: bold;    
+}
+.nombre-accion {
+   
+    -fx-font-size: 16px;
+    -fx-text-aligment: center;
+}
+.componente-transparente{
+    -fx-background-color: rgba(0, 0, 0, 0);    
+}
+.texto-detalle-no-editable:disabled{
+  -fx-font-size: 18pt;
+  -fx-text-fill: #000000;
+  -fx-prompt-text-fill: #000000;
+  -fx-opacity: 1.0;
+  -fx-background-color: #E0E0E0; 
+}
+ /*TABLAS*/
+.table-view:focused {
+    -fx-background-color: rgba(0,0,0,0),-fx-box-border,-fx-control-inner-background;    
+}
+.table-view .table-row-cell:focused {
+    -fx-background-color: #000000;
+    -fx-background-insets: 0;
+    -fx-background: -fx-accent;
+    -fx-text-fill: #fff;
+}
+.table-view .table-row-cell:focused:hover {
+    -fx-background-color: #000000;
+}
+.table-view .table-row-cell:hover {
+    -fx-background-color: #e5e5e5;
+}
+.table-view .table-row-cell:focused .table-cell {
+    -fx-text-fill: -fx-selection-bar-text;
+}
+.table-view .table-row-cell {
+    -fx-cell-size: 32px;
+}
+.table-column-align-right{
+     text-align: right;    
+     -fx-alignment: CENTER_RIGHT;
+     -fx-background-color:papayawhip;
+ }
+.table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.table-view *.scroll-bar:horizontal *.increment-arrow, 
+.table-view *.scroll-bar:horizontal *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
+.column-header .label{
+    -fx-background-color: 
+        linear-gradient(#f3f3f3 0%, #ececec 50%, #f2f2f2 100%);
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #919191;
+    -fx-font-size: 12;
+}
+/*BOTONERA*/
+.botonera GridPane{
+	-fx-vgap: 5;
+	-fx-hgap: 5;
+}
+/*CELDAS*/
+.boton-mediopago-botonera {
+    -fx-font-size: 8px;   
+    -fx-text-fill: #000000;    
+}
+.rightCol{
+    -fx-alignment: CENTER_RIGHT;
+}
+.leftCol{
+    -fx-alignment: CENTER_LEFT;
+}
+.centerCol{
+    -fx-alignment: CENTER;
+}
+/*BOTONES*/
+
+.button {
+    -fx-background-color: #fff;
+    -fx-background-insets: 0;
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+    -fx-text-fill: #000;  
+    -fx-font-size: 15px;
+    -fx-cursor: "hand";
+    -fx-border-width: 1px;
+    -fx-border-color: #c2c2c2;
+    -fx-border-radius: 5;
+}
+
+.buttonNoHand {
+    -fx-background-color: #fff;
+    -fx-background-insets: 0;
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+    -fx-text-fill: #000;  
+    -fx-font-size: 15px;
+    -fx-border-width: 1px;
+    -fx-border-color: #c2c2c2;
+    -fx-border-radius: 5;
+}
+
+.button:focused {
+    -fx-effect: dropshadow( three-pass-box , rgba(19,64,194,0.6) , 4, 0.0 , 0 , 0 );
+}
+.button:hover {
+        -fx-background-color:
+        rgba(0,0,0,0.08),
+        linear-gradient(#9a9a9a, #909090),
+        linear-gradient(white 0%, #ffffff 100%, #ffffff 100%, #ffffff 100%);
+}
+.button:pressed {
+        -fx-background-color:
+        rgba(0,0,0,0.08),
+        linear-gradient(#9a9a9a, #909090),
+        linear-gradient(white 0%, #ececec 50%, #dcdcdc 51%, #ededed 100%);
+}
+#btnMostrarOcultar {
+    -fx-padding: 0 0 0 0;
+    -fx-background-radius: 0;
+    -fx-border-width: 0;
+}
+.btAceptar {
+    -fx-background-image: url("../imagenes/iconos/aceptar.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+	-fx-font-weight:bold;
+}
+.btCancelar {
+    -fx-background-image: url("../imagenes/iconos/cancelar.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+    -fx-font-weight:bold;
+    -fx-font-size: 15px;
+}
+.btTipoDoc {
+    -fx-background-image: url("../imagenes/iconos/view.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:  center;
+    -fx-text-fill: #000;
+}
+.btnBuscarArticulos {
+    -fx-background-image: url("../imagenes/iconos/buscar-articulo.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:  center;
+
+}
+
+.btBuscar {
+    -fx-background-image: url("../imagenes/iconos/view.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+    -fx-text-fill: #000;
+}
+.btAdministrar {
+    -fx-background-image: url("../imagenes/iconos/administrar.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+}
+.btFactura {
+    -fx-background-image: url("../imagenes/iconos/contract.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+}
+.botoneraPeq {
+    -fx-background-color:#99bbbb;
+}
+.botoneraPeq .label {
+    -fx-background-color:#99bbbb;
+}
+#btnMostrarOcultar {
+    -fx-background-color:
+        #ffffff,
+        linear-gradient(#fff, #fff),
+        #fff;
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 3,2,2;
+    -fx-padding: 0 0 0 36px;
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 8px 4px;
+    -fx-font-weight: bold;
+    
+}
+
+#btnMostrarOcultar.menu-mostrado {
+    -fx-background-image: url("../imagenes/iconos/ocultar-menu.png");
+}
+
+#btnMostrarOcultar.menu-oculto {
+    -fx-background-image: url("../imagenes/iconos/mostrar-menu.png");
+}
+.botonMenu {
+    -fx-border-width: 0;
+}
+
+.botonMenu:focused{
+     -fx-background-color:rgba(0,0,0,0.08),
+        linear-gradient(#fff, #ccc),
+     linear-gradient(white 0%, #ececec 50%, #dcdcdc 51%, #ededed 100%);
+    -fx-effect: innershadow( one-pass-box , rgba(0,0,0,1) , 8, 0, 0, 2); 
+}
+.botonMenu:pressed {
+        -fx-background-color:rgba(0,0,0,0.08),
+        linear-gradient(#fff, #ccc),
+        linear-gradient(white 0%, #ececec 50%, #dcdcdc 51%, #ededed 100%);
+}
+.anotar-pago-but {
+    -fx-background-image: url("../imagenes/iconos/anotar-pago.png");
+        -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+}
+/*FORMULARIOS*/
+.text-input {
+    -fx-background-color:#f4f4f4;
+    -fx-font-size: 14px;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 4;
+    -fx-border-width: 1px;
+    -fx-effect: innershadow( one-pass-box , rgba(0,0,0,0.3) , 2, 0.0 , 2 , 2 );
+    -fx-background-insets: 0;
+    -fx-text-fill: #000000;
+}
+.text-input:focused {
+    -fx-background-color:#ffffff;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 4;
+    -fx-border-width: 1px;
+    -fx-effect: innershadow( one-pass-box , rgba(0,0,0,0.3) , 2, 0.0 , 2 , 2 );
+    -fx-background-insets: 0;
+}
+.label, .check-box {
+    -fx-font-size: 14px;
+    -fx-text-fill: #000000;  
+}
+.lbError {
+    -fx-text-fill:darkred;    
+}
+.error-formulario  {
+    -fx-background-color: #ffbbbb;  
+}
+
+.error-formulario:focused {
+    -fx-background-color: #ffbbbb;  
+    -fx-border-color: #000000; 
+}
+/*TOTAL*/
+.total {
+    -fx-background-color: #eee;
+    -fx-font-size: 60px;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-border-color: #a0a0a0;
+    -fx-padding: 0px 8px 0px 0px;
+ }
+.total .text{  
+    -fx-padding: 8px;
+}
+.label-total {
+    -fx-font-size: 18px;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+.total-sub {
+    -fx-background-color: #eee;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-border-color: #a0a0a0;
+    -fx-padding-right: 8px;
+    -fx-font-size: 12px;
+ }
+ 
+ .labelTipoRetirada{
+     -fx-font-size: 20px;  
+     -fx-label-padding: 6 0 18 6; 
+     -fx-text-fill: #000000;
+ }
+/*DIALOGO*/
+#ventanaDialogo, .pantalla-detalle {    
+    -fx-background-color: #fff;
+    -fx-background-radius: 5;
+    -fx-padding: 0;
+    -fx-border-color: #9c9c9c;
+    -fx-border-radius: 5;
+}
+#ventanaCargando {    
+    -fx-background-color: transparent;
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+}
+#ventanaVisorImpreso {    
+    -fx-background-color: #dcdcdc;
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+}
+/*PESTA?AS*/
+.tab{
+    -fx-font-size:18;
+ }
+.tab-pane .tab-header-background{
+    -fx-background-color: #fff;
+    -fx-effect: null;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #000000;
+}
+/*DIVISOR*/
+.split-pane-divider {
+    -fx-background-color: #f2f2f2;
+    -fx-border-width: 0px;
+}
+
+/*TITLED-PANE*/
+
+
+.titled-pane .button {
+    -fx-background-radius: 0;
+    -fx-border-width: 0;
+	
+}
+.titled-pane .content {
+    -fx-background-color: #ffffff;
+	 -fx-text-fill: #ffffff;
+}
+.background-accordion {
+  -fx-background-color: #ffffff;
+
+}
+.titled-pane {
+	-fx-text-fill: black;
+}
+.titled-pane:collapsed {
+	 -fx-text-fill: black;
+}
+.accordion .first-titled-pane .title {
+	 -fx-border-width:  0 0 0 0;	
+ 
+}
+.titled-pane .title {
+    -fx-cursor: "hand";
+    -fx-padding: 10 30 10 10;
+    -fx-font-size: 18px;   
+    -fx-font-weight: bold;   
+    -fx-background-color:
+    linear-gradient(#ffffff 0%, #ffffff 100%);
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1 0 0 0;	
+    -fx-text-fill: black;
+}
+
+/**
+	Cambiar color a las flechas del men�
+**/
+.titled-pane > .title > .arrow-button .arrow {
+  -fx-background-color: black;
+}
+
+.titled-pane:focused > .title > .arrow-button .arrow {
+  -fx-background-color: #e5e5e5;
+}
+
+.titled-pane:expanded .title,
+.titled-pane:expanded:hover .title,
+.titled-pane:pressed .title,
+.titled-pane:pressed:hover .title,
+.titled-pane:focussed .title, 
+.titled-pane:focussed:hover .title ,
+.titled-pane:hover .title,
+.titled-pane:collapsed .title,
+.titled-pane:collapsed:hover .title {
+    -fx-background-color: #ffffff; 
+    -fx-text-fill: black; 
+}
+/** 	Cambiar color a las flechas del men� **/
+.titled-pane > .title > .arrow-button .arrow {
+  -fx-background-color: black;
+}
+
+.titled-pane:focused > .title > .arrow-button .arrow {
+  -fx-background-color: #e5e5e5;
+}
+
+/*PERMISOS*/
+.concedido{ 
+    -fx-cursor: "hand";
+    -fx-background-image: url("../imagenes/iconos/check.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;       
+}
+.denegado{   
+    -fx-cursor: "hand";
+    -fx-background-image: url("../imagenes/iconos/forbidden.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; 
+}
+.administrar{
+    -fx-cursor: "hand";
+    -fx-background-image: url("../imagenes/iconos/businessman.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; 
+}
+
+.noestablecido{
+    -fx-cursor: "hand";  
+    -fx-background-image: url("../imagenes/iconos/permiso_ninguno.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;     
+}
+
+.lineapermiso-administrar{
+    -fx-background-image: url("../imagenes/iconos/businessman.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left center; 
+}
+.lineapermiso-concedido{
+    -fx-background-image: url("../imagenes/iconos/aceptar.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left center; 
+}
+.lineapermiso-denegado{
+    -fx-background-image: url("../imagenes/iconos/forbidden.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: left center; 
+}
+.lineapermiso-noestablecido{
+    -fx-background-color:white;
+}
+/*IMPRIMIR TICKET*/
+.impresion-tickets .scroll-pane
+    {
+     -fx-hbar-policy : never;
+     -fx-vbar-policy : never;
+    }
+    
+.impresion-tickets{       
+    -fx-font: 16px "monospace";
+    -fx-background-color: white;
+    -fx-text-fill: blue;
+}
+/*CLIENTE*/
+.label-cliente {
+	-fx-background-color: #fff;
+}
+
+.label-cliente .panelUsuario {
+	-fx-border-color: #949494;
+	-fx-border-width: 0 0 0 1px;
+	-fx-border-radius: 5;
+}
+
+.label-cliente .tituloCodCliente {
+	-fx-font-weight: bold;
+}
+
+.label-cliente .desCliente {
+	-fx-text-fill: #d75706;
+}
+/*APARCAR TICKET*/
+.park-wrap {
+	-fx-padding-left: 8px;
+	-fx-border-color: #fff;
+	-fx-border-width: 0 0 0 1px;
+}
+
+.lbTiquesAparcados {
+	-fx-background-image: url("../imagenes/iconos/iconoAviso-24.png");
+	-fx-background-repeat: no-repeat;
+}
+
+.cell-renderer-cupon{
+    -fx-background-color: rgba(255, 248, 33, .4);
+}
+
+.cell-renderer-lineaDocAjeno{
+    -fx-background-color: rgba(255, 248, 33, .4);
+}
+
+.cell-renderer-apartadoCancelado{
+	-fx-background-color: #ffbbbb;
+}
+
+.label-apartado-finalizado{
+	-fx-background-color: rgba(255, 248, 33, .4);
+}
+
+.label-apartado-cancelado{
+	-fx-background-color: #ffbbbb;
+}
+
+.btCambio {
+	-fx-background-image: url("../imagenes/iconos/cambio-pago.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+}
+
+
+.desplegable-menu {
+	-fx-background-color: white;
+    -fx-background-insets: 0, 0, 0, 0;
+    -fx-border-color: white; 
+    -fx-border-width: 0;
+}
+.pantalla-modal {    
+    -fx-background-color: #fff;
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+    -fx-border-color: #9c9c9c;
+    -fx-border-radius: 5;
+}
+.btnImprimir {
+    -fx-background-image: url("../imagenes/iconos/imprimir-32.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+}
+.btAlta {
+    -fx-background-image: url("../imagenes/iconos/add.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+}
+.btAceptar {
+    -fx-background-image: url("../imagenes/iconos/aceptar.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+}
+.btEditar {
+    -fx-background-image: url("../imagenes/iconos/edit.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+}
+.btnImprimir {
+    -fx-background-image: url("../imagenes/iconos/printer-.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+}
+.btInsertarDireccion{
+    -fx-background-image: url("../imagenes/iconos/row-plus.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+}
+.btEditarDireccion{
+    -fx-background-image: url("../imagenes/iconos/row_edit.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+}
+.btEliminarDireccion{
+    -fx-background-image: url("../imagenes/iconos/row-del-sel.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+}
+.btConfirmarCambios{
+    -fx-background-image: url("../imagenes/iconos/aceptar.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-padding: 10 10 10 40;
+}
+.btCambiarCajero {
+    -fx-background-image: url("../imagenes/iconos/cambiar_cajero.png");
+	-fx-background-position: top;
+    -fx-background-repeat: no-repeat;
+	-fx-text-aligment: bottom;
+    -fx-padding: 45 10 5 10;
+	-fx-background-radius: 5;
+}

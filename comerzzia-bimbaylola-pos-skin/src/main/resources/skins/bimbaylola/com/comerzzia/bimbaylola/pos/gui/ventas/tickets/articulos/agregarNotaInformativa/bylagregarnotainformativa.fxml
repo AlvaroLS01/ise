@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.comerzzia.pos.core.gui.componentes.datepicker.* ?>
+<?import com.comerzzia.pos.core.gui.componentes.textField.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-classpath-element C:/Tier1/ExploradorApps/Aplicaciones/JPOS_3_0/jpos/lib/comerzzia-pos-core-3.0-SNAPSHOT.jar?>
+<?scenebuilder-classpath-element C:/Tier1/ExploradorApps/Aplicaciones/JPOS_3_0/jpos/lib?>
+
+<AnchorPane id="AnchorPane" prefHeight="234.0" prefWidth="720.0" styleClass="mainFxmlClass, pantalla-detalle" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.bimbaylola.pos.gui.ventas.tickets.articulos.agregarNotaInformativa.ByLAgregarNotaInformativaController">
+  <children>
+    <VBox prefHeight="294.0" prefWidth="697.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane minHeight="40.0" prefHeight="40.0" prefWidth="678.0" style="&#10;" styleClass="titulo-ventana">
+          <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="678.0" text="%+INFO" AnchorPane.bottomAnchor="6.26" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.74" />
+          </children>
+        </AnchorPane>
+        <FlowPane alignment="CENTER_LEFT" hgap="5.0" prefHeight="50.0" prefWidth="200.0">
+          <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="167.0" rotate="0.0" style="fx-label-padding: 6 0 18 6;" text="%Tipo">
+              <font>
+                <Font size="16.0" fx:id="x1" />
+              </font>
+            </Label>
+            <TextField fx:id="tfCodNota" editable="true" prefHeight="30.0" prefWidth="80.0" />
+            <TextField fx:id="tfDescNota" prefHeight="30.0" prefWidth="290.0" />
+            <Button minHeight="36.0" minWidth="39.0" mnemonicParsing="false" onAction="#accionBuscarNotas" prefHeight="36.000099999997474" prefWidth="45.0" styleClass="btBuscar" text="" />
+          </children>
+        </FlowPane>
+        <FlowPane hgap="5.0" prefHeight="40.0" prefWidth="200.0">
+          <children>
+            <Label fx:id="lbFecha" alignment="CENTER_RIGHT" font="$x1" prefHeight="50.0" prefWidth="167.0" rotate="0.0" style="fx-label-padding: 6 0 18 6;" text="%Fecha entrega cliente" />
+            <DatePicker fx:id="dpFecha" prefWidth="138.0" />
+          </children>
+        </FlowPane>
+        <FlowPane hgap="5.0" prefHeight="50.0" prefWidth="720.0">
+          <children>
+            <Label fx:id="lbTexto" alignment="CENTER_RIGHT" font="$x1" prefHeight="50.0" prefWidth="167.0" rotate="0.0" style="fx-label-padding: 6 0 18 6;" text="%Observaciones" />
+            <TextField fx:id="tfTexto" disable="false" editable="true" focusTraversable="true" prefHeight="30.0" prefWidth="375.0" text="" />
+          </children>
+        </FlowPane>
+        <AnchorPane prefHeight="44.0" prefWidth="697.0" style="&#10;">
+          <children>
+            <HBox alignment="CENTER" prefHeight="21.0" prefWidth="697.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+              <children>
+                <Label fx:id="lbError" alignment="CENTER" contentDisplay="LEFT" prefHeight="30.0" prefWidth="428.0" styleClass="lbError" text="" textFill="#cc0000" />
+              </children>
+            </HBox>
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="50.0" prefHeight="57.0" prefWidth="700.0">
+          <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="298.0" spacing="10.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="177.0" AnchorPane.rightAnchor="245.0" AnchorPane.topAnchor="-1.0">
+              <children>
+                <Button id="btAceptar" alignment="CENTER" font="$x1" minHeight="42.0" minWidth="115.0" mnemonicParsing="false" onAction="#accionAceptar" prefHeight="42.0" prefWidth="115.0" style="" styleClass="btAceptar" text="%Aceptar" textAlignment="LEFT" />
+                <Button id="btCancelar" font="$x1" minHeight="42.0" minWidth="115.0" mnemonicParsing="false" onAction="#accionCancelar" prefHeight="42.0" prefWidth="115.0" styleClass="btCancelar" text="%Cancelar" />
+              </children>
+            </HBox>
+          </children>
+        </AnchorPane>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@../../../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

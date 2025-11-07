@@ -1,0 +1,20 @@
+		#if(!${tarjetaRegalo})
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***GARANTÍA LEGAL***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">El término de garantía legal es de 6 meses a partir de la fecha de compra para todos los artículos de la tienda.</texto> </linea>	
+		#else
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***GARANTÍA LEGAL***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">El término de garantía legal es de 6 meses a partir de la fecha de compra para todos los artículos de la tienda.</texto> </linea>	
+		#end
+		
+
+
+
+
+
+		

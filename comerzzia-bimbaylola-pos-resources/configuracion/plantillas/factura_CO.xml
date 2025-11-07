@@ -1,0 +1,32 @@
+<plantilla>
+	<!-- Esta primer condici�n la tenemos comentada por defecto. Sirve para elegir la impresi�n por ticket o por A4 -->
+	<!-- Si se descomenta, imprimir�a por A4 si no es FS o si es una devoluci�n y el ticket origen no es FS e imprimir�a por ticket si es FS o es una devoluci�n y el ticket origen es FS-->
+	#if( 
+		(!$ticket.getCabecera().getDatosDocOrigen() && $ticket.getCabecera().getCodTipoDocumento() == "FC")  
+		 || 
+		($ticket.getCabecera().getDatosDocOrigen() && $ticket.getCabecera().getDatosDocOrigen().getCodTipoDoc() == "FC") 
+		)
+		 <documento salida="impresora2" procesador="JASPER" fichero="facturas/facturaA4"></documento>
+		 <documento salida="impresora1">  
+
+			#foreach ($pago in $ticket.getPagos())
+				#set($esBoletaCompleta = true)
+				#if($ticket.esPagoAxis($pago))
+					#parse("./plantillas/detalle_pagos_boletas_axis.xml")
+				#end
+				#if($ticket.esPagoConexflow($pago))
+					#parse("./plantillas/detalle_pagos_boletas_conexflow.xml")
+				#end
+			#end
+			#parse("./plantillas/detalle_comprobantes_giftcard_CO.xml")
+		 </documento>
+	#else
+		<documento salida="impresora1">
+		#parse("./plantillas/factura_contenido_CO.xml")
+        #if ($ticket.getCabecera().getCodTipoDocumento() == "NC" && !$esCopia && !${salida.equals("pantalla")})
+		    #set ($esCopia = true)
+			#parse("./plantillas/factura_contenido_CO.xml")
+		#end
+		</documento>
+	#end
+</plantilla>

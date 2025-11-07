@@ -1,0 +1,76 @@
+<plantilla>
+	<documento>
+
+		<linea>
+			<texto></texto>
+		</linea>
+
+		#if (${movimiento.getCargoTicket()})
+			<linea > 
+				<texto align="center" size="40">MOVIMIENTO DE CAJA (Entrada)</texto>	
+			</linea>			
+		#else
+			<linea > 
+				<texto align="center" size="40">MOVIMIENTO DE CAJA (Salida)</texto>	
+			</linea>		
+		#end
+
+		<linea>
+			<texto></texto>
+		</linea>
+		<!-- 
+		   Se requiere poder pintar un cronomarcador, debido a errores de substring, se va cortando la cadena de fecha hasta componer la cadena a pintar.
+		   04/10/2019 19:57
+		   10/2019 19:57
+		   2019 19:57
+		   19:57
+		   57
+		-->
+	    #set ($auxFechaMovimiento = ${movimiento.getFechaTicket()})
+		#set ($codmovimiento = ${tienda} + ${caja})
+		#set ($codmovimiento = ${codmovimiento} + ${auxFechaMovimiento.substring(0, 2)})
+		#set ($auxFechaMovimiento = ${auxFechaMovimiento.substring(3)})
+		#set ($codmovimiento = ${codmovimiento} + ${auxFechaMovimiento.substring(0, 2)})	
+		#set ($auxFechaMovimiento = ${auxFechaMovimiento.substring(3)})
+		#set ($codmovimiento = ${codmovimiento} + ${auxFechaMovimiento.substring(0, 4)})		
+		#set ($auxFechaMovimiento = ${auxFechaMovimiento.substring(5)})
+		#set ($codmovimiento = ${codmovimiento} + ${auxFechaMovimiento.substring(0, 2)})	
+		#set ($auxFechaMovimiento = ${auxFechaMovimiento.substring(3)})
+		#set ($codmovimiento = ${codmovimiento} + ${auxFechaMovimiento})		
+		
+	
+		<linea line-size="4"><texto style="1">Documento          Fecha/Hora         Tienda/Caja Vend. </texto> </linea>	
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>	
+		<linea line-size='4'>
+		   <texto size="18" align="left">${codmovimiento}</texto>
+		   <texto size="23" align="left">${movimiento.getFechaTicket()}</texto>		   
+		   <texto size="7" align="left">${tienda}/${caja}</texto>		   
+		   <texto size="7" align="left">${movimiento.getUsuario()}</texto>		   
+		</linea>
+
+		<linea><texto></texto></linea>		
+
+	    #if (${movimiento.getDocumento()})
+			<linea line-size='4'><texto>${movimiento.getDocumento()}</texto></linea>
+			<linea><texto></texto></linea>
+		#end
+		
+		#if(${movimiento.getCargoTicket()})
+		<linea>
+			<texto size="26" align="left">${movimiento.getConcepto()}</texto>
+			<texto size="14" align="right">${movimiento.getCargoTicket()}</texto>
+		</linea>
+		#end
+		#if(${movimiento.getAbonoTicket()})
+		<linea>
+			<texto size="26" align="left">${movimiento.getConcepto()}</texto>
+			<texto size="14" align="right">${movimiento.getAbonoTicket()}</texto>
+		</linea>
+		#end
+
+		<linea><texto></texto></linea>		
+		<linea><texto></texto></linea>
+		<linea><texto></texto></linea>
+		<corte></corte>
+	</documento>
+</plantilla>

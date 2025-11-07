@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?scenebuilder-stylesheet ../../../styles/styles.css?>
+
+<AnchorPane id="detalle-gestion-ticket" focusTraversable="false" prefHeight="700.0" prefWidth="600.0" styleClass="mainFxmlClass, pantalla-detalle" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.pos.gui.ventas.gestiontickets.detalle.DetalleGestionticketsController">
+  <children>
+    <HBox id="HBox" alignment="CENTER" focusTraversable="false" prefHeight="750.0" prefWidth="1020.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane id="AnchorPane" focusTraversable="false" prefHeight="600.0" prefWidth="800.0" HBox.hgrow="ALWAYS">
+          <children>
+            <VBox id="VBox" alignment="CENTER" focusTraversable="false" prefHeight="600.0" prefWidth="800.0" spacing="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <AnchorPane focusTraversable="false" prefHeight="30.0" prefWidth="800.0" VBox.vgrow="NEVER" />
+                <HBox focusTraversable="false" minHeight="189.0" prefHeight="201.0" prefWidth="800.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                  <children>
+                    <TextArea fx:id="taTicket" editable="false" focusTraversable="false" prefHeight="600.0" prefWidth="394.0" styleClass="impresion-tickets" wrapText="true" HBox.hgrow="ALWAYS" />
+                    <AnchorPane fx:id="panelMenuTabla" focusTraversable="false" maxHeight="265.0" maxWidth="60.0" prefHeight="200.0" prefWidth="48.0">
+                      <HBox.margin>
+                        <Insets left="5.0" right="5.0" top="5.0" />
+                      </HBox.margin>
+                    </AnchorPane>
+                  </children>
+                  <padding>
+                    <Insets left="10.0" right="10.0" fx:id="x1" />
+                  </padding>
+                  <VBox.margin>
+                    <Insets />
+                  </VBox.margin>
+                </HBox>
+                <HBox id="HBox" alignment="CENTER" focusTraversable="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="800.0" spacing="5.0" VBox.vgrow="NEVER">
+                  <children>
+                    <AnchorPane focusTraversable="false" prefHeight="60.0" prefWidth="37.0" HBox.hgrow="ALWAYS" />
+                    <Button id="" fx:id="btTaxFree" maxHeight="42.0" maxWidth="175.0" minHeight="42.0" minWidth="69.0" mnemonicParsing="false" onAction="#accionTaxFree" prefHeight="42.0" prefWidth="175.0" styleClass="btTaxFree" text="%Generación TaxFree" wrapText="true" />
+                    <Button id="accionBuscar" fx:id="btnImprimirCopia" maxHeight="42.0" maxWidth="183.0" minHeight="42.0" minWidth="120.0" mnemonicParsing="false" onAction="#accionImprimirCopia" prefHeight="42.0" prefWidth="183.0" styleClass="btnImprimir" text="%Imprimir Copia" wrapText="true" />
+                    <Button id="accionBuscar" fx:id="btnTicketRegalo" maxHeight="42.0" maxWidth="175.0" minHeight="42.0" minWidth="120.0" mnemonicParsing="false" onAction="#accionTicketRegalo" prefHeight="42.0" prefWidth="175.0" styleClass="btnImprimir" text="%Ticket regalo" wrapText="true" />
+                  </children>
+                  <VBox.margin>
+                    <Insets left="10.0" right="10.0" top="10.0" />
+                  </VBox.margin>
+                </HBox>
+                <HBox id="HBox" alignment="CENTER" focusTraversable="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="800.0" spacing="5.0" VBox.vgrow="NEVER">
+                  <children>
+                    <AnchorPane focusTraversable="false" prefHeight="60.0" prefWidth="37.0" HBox.hgrow="ALWAYS" />
+                    <Button id="" fx:id="btReprint" maxHeight="42.0" maxWidth="210.0" minHeight="42.0" minWidth="69.0" mnemonicParsing="false" onAction="#accionTaxFreeReprint" prefHeight="42.0" prefWidth="194.0" styleClass="btTaxFree" text="%Reimpresión Voucher" wrapText="true" />
+                    <Button id="accionBuscar" fx:id="btnVolver" maxHeight="42.0" maxWidth="120.0" minHeight="42.0" minWidth="120.0" mnemonicParsing="false" onAction="#accionCancelar" prefHeight="42.0" prefWidth="120.0" styleClass="btCancelar" text="%Cerrar" wrapText="true" />
+                  </children>
+                  <VBox.margin>
+                    <Insets left="10.0" right="10.0" fx:id="x1" />
+                  </VBox.margin>
+                </HBox>
+              </children>
+            </VBox>
+          </children>
+          <HBox.margin>
+            <Insets />
+          </HBox.margin>
+        </AnchorPane>
+      </children>
+    </HBox>
+  </children>
+  <stylesheets>
+    <URL value="@../../../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

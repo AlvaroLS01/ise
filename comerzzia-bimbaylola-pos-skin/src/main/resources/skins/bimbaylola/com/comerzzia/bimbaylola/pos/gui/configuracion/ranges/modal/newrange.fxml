@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.comerzzia.bimbaylola.pos.gui.configuracion.ranges.modal.NewRangeController">
+    <children>
+        <HBox alignment="CENTER" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="600.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" styleClass="titulo-ventana" VBox.vgrow="NEVER">
+                            <children>
+                                <Label fx:id="lbTitle" text="%Añadir Nuevo Rango" />
+                            </children>
+                        </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Label fx:id="lbCounterId" text="%Id Contador" />
+                        <TextField fx:id="tfCounterId" />
+                     </children>
+                     <VBox.margin>
+                        <Insets right="80.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Label fx:id="lbDivider1" text="%Divisor 1" />
+                        <TextField fx:id="tfDivider1" />
+                     </children>
+                     <VBox.margin>
+                        <Insets right="80.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Label fx:id="lbDivider2" text="Divisor 2" />
+                        <TextField fx:id="tfDivider2" />
+                     </children>
+                     <VBox.margin>
+                        <Insets right="80.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Label fx:id="lbDivider3" text="Divisor 3" />
+                        <TextField fx:id="tfDivider3" />
+                     </children>
+                     <VBox.margin>
+                        <Insets right="80.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Label fx:id="lbRange" text="Rango" />
+                        <TextField fx:id="tfRange" />
+                     </children>
+                     <VBox.margin>
+                        <Insets right="80.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="lbError" styleClass="lbError">
+                           <padding>
+                              <Insets left="50.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets right="80.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="40.0">
+                     <children>
+                        <Button fx:id="btSaveNewRange" mnemonicParsing="false" onAction="#acceptAction" styleClass="btAceptar" text="%Aceptar" />
+                                <Button fx:id="btCancel" mnemonicParsing="false" onAction="#cancelAction" styleClass="btCancelar" text="%Cancelar">
+                                    <HBox.margin>
+                                        <Insets right="10.0" />
+                                    </HBox.margin>
+                                </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+   <styleClass>
+      <String fx:value="mainFxmlClass" />
+      <String fx:value="pantalla-modal" />
+   </styleClass>
+</AnchorPane>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?scenebuilder-stylesheet ../../../../gui/styles/styles.css?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1024.0" style="&#10;" styleClass="mainFxmlClass, pantalla-detalle, pantalla-con-fondo1" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.pos.core.gui.login.seleccionUsuarios.SeleccionUsuarioController">
+  <children>
+    <VBox prefHeight="700.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane prefHeight="689.0" prefWidth="1002.0" VBox.vgrow="ALWAYS">
+          <children>
+            <HBox id="HBox" alignment="CENTER" minHeight="200.0" prefHeight="200.0" prefWidth="1002.0" spacing="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <AnchorPane minHeight="-1.0" minWidth="-1.0" prefHeight="647.0" prefWidth="850.0" HBox.hgrow="ALWAYS">
+                  <children>
+                    <VBox prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <AnchorPane prefHeight="75.0" prefWidth="800.0" styleClass="seleccionaUser-top" VBox.vgrow="NEVER">
+                          <children>
+                            <Label alignment="CENTER" prefHeight="26.0" prefWidth="986.0" styleClass="nombre-accion" text="%SELECCIÓN DE USUARIO" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
+                            <ImageView fitHeight="75.0" fitWidth="305.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="495.0" AnchorPane.topAnchor="0.0">
+                              <image>
+                                <Image url="@../../../../gui/imagenes/logos/logo_comerzzia.png" />
+                              </image>
+                            </ImageView>
+                          </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="625.0" prefWidth="792.0" VBox.vgrow="ALWAYS">
+                          <children>
+                            <HBox prefHeight="534.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                <HBox minWidth="215.0" prefHeight="625.0" prefWidth="215.0" HBox.hgrow="NEVER">
+                                  <children>
+                                    <AnchorPane prefHeight="367.0" prefWidth="596.0" styleClass="login-left" HBox.hgrow="ALWAYS">
+                                      <children>
+                                        <VBox prefHeight="534.0" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <children>
+                                            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="personaje" VBox.vgrow="NEVER" />
+                                            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="null" VBox.vgrow="ALWAYS" />
+                                            <AnchorPane minHeight="200.0" prefHeight="-1.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                              <children>
+                                                <Button fx:id="botonCancelar" mnemonicParsing="false" onAction="#accionCancelar" prefHeight="35.0" prefWidth="149.5" styleClass="btCancelar" text="%Salir" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                                                <Button fx:id="botonConsultarArticulos" mnemonicParsing="false" onAction="#abrirBusquedaArticulos" prefHeight="35.0" prefWidth="160.0" styleClass="btStock" text="%Consultar Artículos" visible="true" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                                                <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="25.0" prefWidth="70.0" styleClass="texto-negrita" text="%Tienda" />
+                                                <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="66.0" prefWidth="70.0" styleClass="texto-negrita" text="%Caja" textAlignment="RIGHT" />
+                                                <Label fx:id="lbTienda" layoutX="102.0" layoutY="25.0" prefWidth="100.0" text="" textOverrun="WORD_ELLIPSIS" />
+                                                <Label fx:id="lbCaja" layoutX="102.0" layoutY="66.0" text="" />
+                                              </children>
+                                            </AnchorPane>
+                                          </children>
+                                        </VBox>
+                                      </children>
+                                    </AnchorPane>
+                                  </children>
+                                </HBox>
+                                <HBox prefHeight="625.0" prefWidth="785.0" HBox.hgrow="ALWAYS">
+                                  <children>
+                                    <AnchorPane prefHeight="534.0" prefWidth="792.0" styleClass="wrap-central-seleccionUsuarios" HBox.hgrow="ALWAYS">
+                                      <children>
+                                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <children>
+                                            <HBox prefHeight="528.0" prefWidth="807.0" styleClass="wrap-interno-seleccionUsuarios" VBox.vgrow="ALWAYS">
+                                              <children>
+                                                <AnchorPane fx:id="panelBotonera" minHeight="421.0" prefHeight="421.0" prefWidth="737.0" />
+                                                <AnchorPane fx:id="panelBotonesDesplazamiento" minWidth="60.0" prefHeight="120.0" prefWidth="60.0" HBox.hgrow="NEVER">
+                                                  <padding>
+                                                    <Insets left="5.0" />
+                                                  </padding>
+                                                  <HBox.margin>
+                                                    <Insets />
+                                                  </HBox.margin>
+                                                </AnchorPane>
+                                              </children>
+                                              <padding>
+                                                <Insets />
+                                              </padding>
+                                            </HBox>
+                                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="NEVER">
+                                              <children>
+                                                <TextField fx:id="usuarioTF" maxHeight="-1.0" minHeight="30.0" onKeyReleased="#accionAceptarIntro" prefHeight="40.0" prefWidth="156.0" promptText="%Usuario" />
+                                                <Button id="botonConsultarArticulos" fx:id="botonAceptar" mnemonicParsing="false" onAction="#accionAceptar" prefHeight="42.0" prefWidth="229.0" styleClass="btStock" text="%Aceptar" visible="true" />
+                                              </children>
+                                            </HBox>
+                                          </children>
+                                        </VBox>
+                                      </children>
+                                    </AnchorPane>
+                                  </children>
+                                </HBox>
+                              </children>
+                            </HBox>
+                          </children>
+                        </AnchorPane>
+                      </children>
+                    </VBox>
+                  </children>
+                </AnchorPane>
+              </children>
+            </HBox>
+          </children>
+        </AnchorPane>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@seleccionusuarios.css" />
+    <URL value="@../../../../gui/styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

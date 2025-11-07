@@ -1,4 +1,0 @@
-<plantilla>
-	<documento salida="impresora2" titulo="Factura Devolución" procesador="JASPER" fichero="facturas/facturaDevolucionA4_PT">		
-	</documento>
-</plantilla>

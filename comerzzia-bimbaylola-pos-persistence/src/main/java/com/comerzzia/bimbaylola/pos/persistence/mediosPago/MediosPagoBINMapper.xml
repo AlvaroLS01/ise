@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.mediosPago.MediosPagoBINMapper">
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.mediosPago.MediosPagoBIN">
+    <id column="UID_ACTIVIDAD" jdbcType="VARCHAR" property="uidActividad" />
+    <id column="CODMEDPAG" jdbcType="VARCHAR" property="codmedpag" />
+    <id column="ORDEN" jdbcType="VARCHAR" property="orden" />
+    <result column="FECHA_INICIO" jdbcType="TIMESTAMP" property="fechaInicio" />
+    <result column="FECHA_FIN" jdbcType="TIMESTAMP" property="fechaFin" />
+    <result column="ID_D365" jdbcType="VARCHAR" property="idD365" />
+    <result column="ID_D365_ABONO" jdbcType="VARCHAR" property="idD365Abono" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    UID_ACTIVIDAD, CODMEDPAG, ORDEN, FECHA_INICIO, FECHA_FIN, ID_D365, ID_D365_ABONO
+  </sql>
+  <select id="selectByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.mediosPago.MediosPagoBINExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_MEDIOS_PAGO_TBL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.mediosPago.MediosPagoBINKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from X_MEDIOS_PAGO_TBL
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and CODMEDPAG = #{codmedpag,jdbcType=VARCHAR}
+      and ORDEN = #{orden,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.mediosPago.MediosPagoBINKey">
+    delete from X_MEDIOS_PAGO_TBL
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and CODMEDPAG = #{codmedpag,jdbcType=VARCHAR}
+      and ORDEN = #{orden,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.mediosPago.MediosPagoBINExample">
+    delete from X_MEDIOS_PAGO_TBL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.mediosPago.MediosPagoBIN">
+    insert into X_MEDIOS_PAGO_TBL (UID_ACTIVIDAD, CODMEDPAG, ORDEN, 
+      FECHA_INICIO, FECHA_FIN, ID_D365, 
+      ID_D365_ABONO)
+    values (#{uidActividad,jdbcType=VARCHAR}, #{codmedpag,jdbcType=VARCHAR}, #{orden,jdbcType=VARCHAR}, 
+      #{fechaInicio,jdbcType=TIMESTAMP}, #{fechaFin,jdbcType=TIMESTAMP}, #{idD365,jdbcType=VARCHAR}, 
+      #{idD365Abono,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.mediosPago.MediosPagoBIN">
+    insert into X_MEDIOS_PAGO_TBL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        UID_ACTIVIDAD,
+      </if>
+      <if test="codmedpag != null">
+        CODMEDPAG,
+      </if>
+      <if test="orden != null">
+        ORDEN,
+      </if>
+      <if test="fechaInicio != null">
+        FECHA_INICIO,
+      </if>
+      <if test="fechaFin != null">
+        FECHA_FIN,
+      </if>
+      <if test="idD365 != null">
+        ID_D365,
+      </if>
+      <if test="idD365Abono != null">
+        ID_D365_ABONO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="codmedpag != null">
+        #{codmedpag,jdbcType=VARCHAR},
+      </if>
+      <if test="orden != null">
+        #{orden,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaInicio != null">
+        #{fechaInicio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fechaFin != null">
+        #{fechaFin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idD365 != null">
+        #{idD365,jdbcType=VARCHAR},
+      </if>
+      <if test="idD365Abono != null">
+        #{idD365Abono,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.mediosPago.MediosPagoBINExample" resultType="java.lang.Long">
+    select count(*) from X_MEDIOS_PAGO_TBL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update X_MEDIOS_PAGO_TBL
+    <set>
+      <if test="record.uidActividad != null">
+        UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codmedpag != null">
+        CODMEDPAG = #{record.codmedpag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orden != null">
+        ORDEN = #{record.orden,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fechaInicio != null">
+        FECHA_INICIO = #{record.fechaInicio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fechaFin != null">
+        FECHA_FIN = #{record.fechaFin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.idD365 != null">
+        ID_D365 = #{record.idD365,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idD365Abono != null">
+        ID_D365_ABONO = #{record.idD365Abono,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update X_MEDIOS_PAGO_TBL
+    set UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      CODMEDPAG = #{record.codmedpag,jdbcType=VARCHAR},
+      ORDEN = #{record.orden,jdbcType=VARCHAR},
+      FECHA_INICIO = #{record.fechaInicio,jdbcType=TIMESTAMP},
+      FECHA_FIN = #{record.fechaFin,jdbcType=TIMESTAMP},
+      ID_D365 = #{record.idD365,jdbcType=VARCHAR},
+      ID_D365_ABONO = #{record.idD365Abono,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.mediosPago.MediosPagoBIN">
+    update X_MEDIOS_PAGO_TBL
+    <set>
+      <if test="fechaInicio != null">
+        FECHA_INICIO = #{fechaInicio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fechaFin != null">
+        FECHA_FIN = #{fechaFin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idD365 != null">
+        ID_D365 = #{idD365,jdbcType=VARCHAR},
+      </if>
+      <if test="idD365Abono != null">
+        ID_D365_ABONO = #{idD365Abono,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and CODMEDPAG = #{codmedpag,jdbcType=VARCHAR}
+      and ORDEN = #{orden,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.mediosPago.MediosPagoBIN">
+    update X_MEDIOS_PAGO_TBL
+    set FECHA_INICIO = #{fechaInicio,jdbcType=TIMESTAMP},
+      FECHA_FIN = #{fechaFin,jdbcType=TIMESTAMP},
+      ID_D365 = #{idD365,jdbcType=VARCHAR},
+      ID_D365_ABONO = #{idD365Abono,jdbcType=VARCHAR}
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and CODMEDPAG = #{codmedpag,jdbcType=VARCHAR}
+      and ORDEN = #{orden,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.comerzzia.bimbaylola.pos.persistence.mediosPago.MediosPagoBINExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_MEDIOS_PAGO_TBL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

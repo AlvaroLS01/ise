@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.comerzzia.pos.core.gui.componentes.datepicker.* ?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="-1.0" prefWidth="-1.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.pos.gui.mantenimientos.fidelizados.movimientostarjetas.PaneMovimientosTarjetasController">
+  <children>
+    <HBox id="HBox" alignment="TOP_LEFT" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <children>
+        <AnchorPane prefHeight="-1.0" prefWidth="-1.0">
+          <children>
+            <VBox id="VBox" alignment="TOP_LEFT" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+              <children>
+                <AnchorPane prefHeight="-1.0" prefWidth="-1.0">
+                  <children>
+                    <HBox id="HBox" alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <Label alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="77.0" text="%Nº Tarjeta" />
+                        <ComboBox fx:id="cbNumeroTarjeta" onAction="#cargarMovimientos" prefHeight="25.0" prefWidth="141.0">
+                          <items>
+                            <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Item 1" />
+                              <String fx:value="Item 2" />
+                              <String fx:value="Item 3" />
+                            </FXCollections>
+                          </items>
+                        </ComboBox>
+                        <Label alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="40.0" text="%Tipo" />
+                        <TextField fx:id="tfTipoTarjeta" prefHeight="25.0" prefWidth="220.0" />
+                        <Label text="%Saldo Total" />
+                        <TextField fx:id="tfSaldo" prefHeight="25.0" prefWidth="100.0" />
+                        <Label alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="296.0" text="%Últimos 20 movimientos de la tarjeta seleccionada" />
+                      </children>
+                      <padding>
+                        <Insets left="15.0" />
+                      </padding>
+                    </HBox>
+                  </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="-1.0" prefWidth="-1.0">
+                  <children>
+                    <HBox prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <TableView fx:id="tableMovimientos" prefHeight="450.0" prefWidth="-1.0">
+                          <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                          </columnResizePolicy>
+                          <columns>
+                            <TableColumn maxWidth="5000.0" minWidth="70.0" prefWidth="143.0" text="%Fecha" fx:id="tcFecha" />
+                            <TableColumn maxWidth="5000.0" minWidth="350.0" prefWidth="514.0" text="%Concepto" fx:id="tcConcepto" />
+                            <TableColumn maxWidth="5000.0" minWidth="70.0" prefWidth="143.0" text="%Estado" fx:id="tcEstadoMovimiento" />
+                            <TableColumn maxWidth="5000.0" minWidth="119.0" prefWidth="119.0" text="%Entrada" fx:id="tcEntrada" />
+                            <TableColumn maxWidth="5000.0" minWidth="114.0" prefWidth="114.0" styleClass="column-red" text="%Salida" fx:id="tcSalida" />
+                          </columns>
+                        </TableView>
+                        <AnchorPane maxHeight="215.0" maxWidth="40.0" minHeight="215.0" minWidth="40.0" prefHeight="215.0" prefWidth="40.0" HBox.hgrow="NEVER" />
+                        <AnchorPane id="panelBotones" fx:id="panelBotonesMovimientos" maxHeight="215.0" maxWidth="63.0" minHeight="215.0" minWidth="63.0" prefHeight="215.0" prefWidth="63.0" HBox.hgrow="NEVER" />
+                      </children>
+                    </HBox>
+                  </children>
+                </AnchorPane>
+                <AnchorPane minHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0">
+                  <children>
+                    <HBox prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <Label alignment="CENTER" minWidth="420.0" prefHeight="29.0" prefWidth="599.0" styleClass="textoResaltado" text="%Total:" />
+                        <Label fx:id="lbTotalEntrada" alignment="CENTER_LEFT" contentDisplay="LEFT" minWidth="100.0" prefHeight="29.0" prefWidth="100.0" text="" />
+                        <Label fx:id="lbTotalSalida" alignment="CENTER_RIGHT" minWidth="119.0" prefHeight="29.0" prefWidth="160.0" text="" />
+                        <AnchorPane maxWidth="158.0" minWidth="103.0" prefHeight="29.0" prefWidth="132.0" />
+                      </children>
+                    </HBox>
+                  </children>
+                </AnchorPane>
+              </children>
+            </VBox>
+          </children>
+        </AnchorPane>
+      </children>
+      <padding>
+        <Insets top="10.0" fx:id="x4" />
+      </padding>
+    </HBox>
+  </children>
+</AnchorPane>

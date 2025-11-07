@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+
+    ComerZZia 3.0
+
+    Copyright (c) 2008-2015 Comerzzia, S.L.  All Rights Reserved.
+
+    THIS WORK IS  SUBJECT  TO  SPAIN  AND  INTERNATIONAL  COPYRIGHT  LAWS  AND
+    TREATIES.   NO  PART  OF  THIS  WORK MAY BE  USED,  PRACTICED,  PERFORMED
+    COPIED, DISTRIBUTED, REVISED, MODIFIED, TRANSLATED,  ABRIDGED, CONDENSED,
+    EXPANDED,  COLLECTED,  COMPILED,  LINKED,  RECAST, TRANSFORMED OR ADAPTED
+    WITHOUT THE PRIOR WRITTEN CONSENT OF COMERZZIA, S.L. ANY USE OR EXPLOITATION
+    OF THIS WORK WITHOUT AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO
+    CRIMINAL AND CIVIL LIABILITY.
+
+    CONSULT THE END USER LICENSE AGREEMENT FOR INFORMATION ON ADDITIONAL
+    RESTRICTIONS.
+
+-->
+<Panel>
+    <LineaBotones>
+        <Boton>
+			<texto>APERTURA</texto>
+            <clave>abrirCaja</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F1</teclaAccesoRapido>
+			<rutaImagen>iconos/abrir-caja.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>  
+        <Boton>
+			<texto>ABRIR CAJÓN</texto>
+            <clave>ABRIR CAJON</clave>
+            <tipo>OPERACION</tipo>
+			<teclaAccesoRapido>F2</teclaAccesoRapido>
+			<rutaImagen>iconos/ticket_aparcar.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>
+        <Boton>
+            <tipo>HUECO</tipo>
+        </Boton>
+        <Boton>
+			<texto>IMPRIMIR ULT. CIERRE</texto>
+            <clave>imprimirUltimoCierre</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F4</teclaAccesoRapido>
+			<rutaImagen>iconos/imprimir-ultimo-cierre.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>
+        <Boton>
+            <tipo>HUECO</tipo>
+        </Boton>
+	</LineaBotones>
+	<LineaBotones>	        
+		<Boton>
+			<texto>CIERRE</texto>
+            <clave>abrirCierreCaja</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F6</teclaAccesoRapido>
+			<rutaImagen>iconos/cerrar-caja.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>
+       	<Boton>
+			<texto>GASTOS TIENDA</texto>
+            <clave>insertarApunte</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F7</teclaAccesoRapido>
+			<rutaImagen>iconos/insertar-apunte.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>  
+       	<Boton>
+			<texto>RECUENTO CAJA</texto>
+            <clave>abrirRecuentoCaja</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F8</teclaAccesoRapido>
+			<rutaImagen>iconos/recuento-caja.png</rutaImagen>
+			<visible>S</visible>
+        </Boton> 
+        <Boton>
+        	<tipo>HUECO</tipo>
+        </Boton> 
+       	<Boton>
+			<texto>CAMBIAR CAJERO</texto>
+            <clave>cambiarCajero</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F10</teclaAccesoRapido>
+			<rutaImagen>iconos/cambiar_cajero.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>
+		<Boton>
+			<texto>ФИСКАЛЬНЫЙ ПРИНТЕР</texto>
+			<clave>opImpresoraFiscal</clave>
+			<tipo>METODO</tipo>
+			<teclaAccesoRapido>F11</teclaAccesoRapido>
+			<rutaImagen>iconos/print.png</rutaImagen>
+			<visible>S</visible>
+		</Boton>      
+    </LineaBotones>
+</Panel>

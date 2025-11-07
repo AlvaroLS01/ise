@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.pais.x.XPaisMapper" >
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.pais.x.XPaisBean" >
+    <id column="UID_INSTANCIA" property="uidInstancia" jdbcType="VARCHAR" />
+    <id column="CODPAIS" property="codpais" jdbcType="VARCHAR" />
+    <result column="PREFIJO_TELEFONO" property="prefijoTelefono" jdbcType="NUMERIC" />
+    <result column="ISO_LENGUAJE" property="isoLenguaje" jdbcType="VARCHAR" />
+    <result column="FILTRAR_CLIENTES_PAIS" property="filtrarClientesPais" jdbcType="CHAR" typeHandler="com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+            <foreach collection="criteria.filtrarClientesPaisCriteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler} and #{criterion.secondValue,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+            <foreach collection="criteria.filtrarClientesPaisCriteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler} and #{criterion.secondValue,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    UID_INSTANCIA, CODPAIS, PREFIJO_TELEFONO, ISO_LENGUAJE, FILTRAR_CLIENTES_PAIS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.x.XPaisExample" resultSetType="SCROLL_INSENSITIVE" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_PAISES_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.x.XPaisKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from X_PAISES_TBL
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and CODPAIS = #{codpais,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.x.XPaisKey" >
+    delete from X_PAISES_TBL
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and CODPAIS = #{codpais,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.x.XPaisExample" >
+    delete from X_PAISES_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.x.XPaisBean" >
+    insert into X_PAISES_TBL (UID_INSTANCIA, CODPAIS, PREFIJO_TELEFONO, 
+      ISO_LENGUAJE, FILTRAR_CLIENTES_PAIS
+      )
+    values (#{uidInstancia,jdbcType=VARCHAR}, #{codpais,jdbcType=VARCHAR}, #{prefijoTelefono,jdbcType=NUMERIC}, 
+      #{isoLenguaje,jdbcType=VARCHAR}, #{filtrarClientesPais,jdbcType=CHAR,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.x.XPaisBean" >
+    insert into X_PAISES_TBL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uidInstancia != null" >
+        UID_INSTANCIA,
+      </if>
+      <if test="codpais != null" >
+        CODPAIS,
+      </if>
+      <if test="prefijoTelefono != null" >
+        PREFIJO_TELEFONO,
+      </if>
+      <if test="isoLenguaje != null" >
+        ISO_LENGUAJE,
+      </if>
+      <if test="filtrarClientesPais != null" >
+        FILTRAR_CLIENTES_PAIS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uidInstancia != null" >
+        #{uidInstancia,jdbcType=VARCHAR},
+      </if>
+      <if test="codpais != null" >
+        #{codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="prefijoTelefono != null" >
+        #{prefijoTelefono,jdbcType=NUMERIC},
+      </if>
+      <if test="isoLenguaje != null" >
+        #{isoLenguaje,jdbcType=VARCHAR},
+      </if>
+      <if test="filtrarClientesPais != null" >
+        #{filtrarClientesPais,jdbcType=CHAR,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.x.XPaisExample" resultType="java.lang.Integer" >
+    select count(*) from X_PAISES_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update X_PAISES_TBL
+    <set >
+      <if test="record.uidInstancia != null" >
+        UID_INSTANCIA = #{record.uidInstancia,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codpais != null" >
+        CODPAIS = #{record.codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prefijoTelefono != null" >
+        PREFIJO_TELEFONO = #{record.prefijoTelefono,jdbcType=NUMERIC},
+      </if>
+      <if test="record.isoLenguaje != null" >
+        ISO_LENGUAJE = #{record.isoLenguaje,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filtrarClientesPais != null" >
+        FILTRAR_CLIENTES_PAIS = #{record.filtrarClientesPais,jdbcType=CHAR,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update X_PAISES_TBL
+    set UID_INSTANCIA = #{record.uidInstancia,jdbcType=VARCHAR},
+      CODPAIS = #{record.codpais,jdbcType=VARCHAR},
+      PREFIJO_TELEFONO = #{record.prefijoTelefono,jdbcType=NUMERIC},
+      ISO_LENGUAJE = #{record.isoLenguaje,jdbcType=VARCHAR},
+      FILTRAR_CLIENTES_PAIS = #{record.filtrarClientesPais,jdbcType=CHAR,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.x.XPaisBean" >
+    update X_PAISES_TBL
+    <set >
+      <if test="prefijoTelefono != null" >
+        PREFIJO_TELEFONO = #{prefijoTelefono,jdbcType=NUMERIC},
+      </if>
+      <if test="isoLenguaje != null" >
+        ISO_LENGUAJE = #{isoLenguaje,jdbcType=VARCHAR},
+      </if>
+      <if test="filtrarClientesPais != null" >
+        FILTRAR_CLIENTES_PAIS = #{filtrarClientesPais,jdbcType=CHAR,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler},
+      </if>
+    </set>
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and CODPAIS = #{codpais,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.x.XPaisBean" >
+    update X_PAISES_TBL
+    set PREFIJO_TELEFONO = #{prefijoTelefono,jdbcType=NUMERIC},
+      ISO_LENGUAJE = #{isoLenguaje,jdbcType=VARCHAR},
+      FILTRAR_CLIENTES_PAIS = #{filtrarClientesPais,jdbcType=CHAR,typeHandler=com.comerzzia.core.util.mybatis.typehandlers.BooleanStringTypeHandler}
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and CODPAIS = #{codpais,jdbcType=VARCHAR}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.x.XPaisExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_PAISES_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

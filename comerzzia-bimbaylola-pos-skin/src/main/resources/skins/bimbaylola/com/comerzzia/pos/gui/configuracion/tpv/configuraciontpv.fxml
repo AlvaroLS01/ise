@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="panelContenido" prefHeight="750.0" prefWidth="1020.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.bimbaylola.pos.gui.configuracion.tpv.ByLConfiguracionTPVController">
+  <children>
+    <HBox id="HBox" alignment="CENTER" prefHeight="750.0" prefWidth="1020.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane prefHeight="600.0" prefWidth="800.0" style="" HBox.hgrow="ALWAYS">
+          <children>
+            <VBox id="VBox" alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <AnchorPane prefHeight="42.0" prefWidth="1020.0" styleClass="titulo-ventana" VBox.vgrow="NEVER">
+                  <children>
+                    <Label alignment="CENTER" prefHeight="53.0" prefWidth="1000.0" text="%Configuración" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4.0" />
+                  </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="489.0" prefWidth="1020.0" VBox.vgrow="ALWAYS">
+                  <children>
+                    <HBox id="HBox" alignment="CENTER" prefHeight="470.0" prefWidth="1020.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <AnchorPane minWidth="-1.0" prefHeight="-1.0" prefWidth="1000.0" HBox.hgrow="ALWAYS">
+                          <children>
+                            <HBox prefHeight="472.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                <VBox fx:id="boxBotones" alignment="CENTER" minWidth="150.0" prefHeight="440.0" prefWidth="150.0" HBox.hgrow="NEVER">
+                                  <children>
+                                    <Button fx:id="btGenerales" mnemonicParsing="false" onAction="#accionBtGenerales" prefHeight="55.0" prefWidth="150.0" text="%General">
+                                      <VBox.margin>
+                                        <Insets bottom="2.0" top="2.0" fx:id="x1" />
+                                      </VBox.margin>
+                                    </Button>
+                                    <Button fx:id="btVisor" mnemonicParsing="false" onAction="#accionBtVisor" prefHeight="55.0" prefWidth="150.0" text="%Visor" VBox.margin="$x1" />
+                                    <Button fx:id="btCajon" mnemonicParsing="false" onAction="#accionBtCajon" prefHeight="55.0" prefWidth="149.0" text="%Cajón" VBox.margin="$x1" />
+                                    <Button fx:id="btImpresora" mnemonicParsing="false" onAction="#accionBtImpresora" prefHeight="55.0" prefWidth="150.0" text="%Impresora 1" VBox.margin="$x1" />
+                                    <Button fx:id="btImpresora2" mnemonicParsing="false" onAction="#accionBtImpresora2" prefHeight="55.0" prefWidth="150.0" text="%Impresora 2">
+                                      <VBox.margin>
+                                        <Insets bottom="2.0" top="2.0" fx:id="x1" />
+                                      </VBox.margin>
+                                    </Button>
+                                    <Button fx:id="btTarjeta" mnemonicParsing="false" onAction="#accionBtTarjeta" prefHeight="55.0" prefWidth="149.0" text="%Tarjeta">
+                                      <VBox.margin>
+                                        <Insets bottom="2.0" top="2.0" fx:id="x1" />
+                                      </VBox.margin>
+                                    </Button>
+                                    <Button fx:id="btBalanza" mnemonicParsing="false" onAction="#accionBtBalanza" prefHeight="55.0" prefWidth="150.0" text="%Balanza" visible="true">
+                                      <VBox.margin>
+                                        <Insets bottom="2.0" top="2.0" fx:id="x1" />
+                                      </VBox.margin>
+                                    </Button>
+                                    <Button fx:id="btFidelizacion" mnemonicParsing="false" onAction="#accionBtFidelizacion" prefHeight="55.0" prefWidth="150.0" text="%Fidelizado" visible="true">
+                                      <VBox.margin>
+                                        <Insets bottom="2.0" top="2.0" fx:id="x1" />
+                                      </VBox.margin>
+                                    </Button>
+                                    <Button fx:id="btGiftCard" mnemonicParsing="false" onAction="#accionBtGiftCard" prefHeight="55.0" prefWidth="150.0" text="%Gift Card" visible="true">
+                                      <VBox.margin>
+                                        <Insets bottom="2.0" top="2.0" fx:id="x1" />
+                                      </VBox.margin>
+                                    </Button>
+                                    <Button fx:id="btRecargaMovil" mnemonicParsing="false" onAction="#accionBtRecargaMovil" prefHeight="55.0" prefWidth="150.0" text="%Recarga móvil" />
+                                    <Button fx:id="btFirma" mnemonicParsing="false" onAction="#accionBtFirma" prefHeight="55.0" prefWidth="150.0" text="%Firma">
+                                      <VBox.margin>
+                                        <Insets bottom="2.0" top="2.0" fx:id="x1" />
+                                      </VBox.margin>
+                                    </Button>
+                                  </children>
+                                  <padding>
+                                    <Insets left="5.0" />
+                                  </padding>
+                                </VBox>
+                                <AnchorPane id="panelContenido" minHeight="316.0" prefHeight="316.0" prefWidth="851.0" HBox.hgrow="ALWAYS">
+                                  <children>
+                                    <ComboBox fx:id="cbDesConfig" layoutY="25.0" minWidth="0.0" prefHeight="21.0" prefWidth="370.0" AnchorPane.leftAnchor="344.0" AnchorPane.rightAnchor="156.0">
+                                      <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                          <String fx:value="Item 1" />
+                                          <String fx:value="Item 2" />
+                                          <String fx:value="Item 3" />
+                                        </FXCollections>
+                                      </items>
+                                    </ComboBox>
+                                    <ComboBox fx:id="cbMetConex" layoutY="62.0" minWidth="0.0" onKeyReleased="#accionAceptarEnter" prefHeight="21.0" prefWidth="370.0" visible="true" AnchorPane.leftAnchor="344.0" AnchorPane.rightAnchor="156.0">
+                                      <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                          <String fx:value="Item 1" />
+                                          <String fx:value="Item 2" />
+                                          <String fx:value="Item 3" />
+                                        </FXCollections>
+                                      </items>
+                                    </ComboBox>
+                                    <Label fx:id="lbMetodoConex" alignment="CENTER_RIGHT" layoutX="65.0" layoutY="65.0" prefWidth="235.0" text="" visible="true" />
+                                    <Label fx:id="lbDesConfig" alignment="CENTER_RIGHT" layoutX="65.0" layoutY="28.0" prefWidth="235.0" text="" />
+                                    <TextArea fx:id="taConfig" editable="false" layoutY="101.0" prefHeight="179.0" prefWidth="390.0" visible="false" wrapText="true" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" />
+                                    <HBox alignment="TOP_RIGHT" layoutX="9.0" layoutY="302.0" prefHeight="100.0" prefWidth="851.0">
+                                      <children>
+                                        <Button fx:id="btAutoTest" mnemonicParsing="false" onAction="#autoTest" prefHeight="40.0" prefWidth="-1.0" text="%AutoTest">
+                                          <HBox.margin>
+                                            <Insets right="10.0" fx:id="x3" />
+                                          </HBox.margin>
+                                        </Button>
+                                        <Button fx:id="btTestConexion" mnemonicParsing="false" onAction="#testConexion" prefHeight="40.0" text="%Test Conexión" HBox.margin="$x3" />
+                                        <Button fx:id="btEditarConfiguracion" mnemonicParsing="false" onAction="#abrirConfiguracionDispositivo" prefHeight="40.0" text="%Editar configuración" HBox.margin="$x3" />
+                                      </children>
+                                    </HBox>
+                                    <TextField fx:id="tfTienda" editable="false" layoutY="24.0" minWidth="0.0" prefWidth="370.0" AnchorPane.leftAnchor="344.0" AnchorPane.rightAnchor="156.0" />
+                                    <TextField fx:id="tfCaja" disable="false" editable="false" layoutY="61.0" minWidth="0.0" prefWidth="370.0" AnchorPane.leftAnchor="344.0" AnchorPane.rightAnchor="156.0" />
+                                  </children>
+                                </AnchorPane>
+                                <AnchorPane minHeight="-Infinity" prefHeight="200.0" prefWidth="0.0" HBox.hgrow="NEVER" />
+                              </children>
+                            </HBox>
+                          </children>
+                        </AnchorPane>
+                      </children>
+                    </HBox>
+                  </children>
+                </AnchorPane>
+                <HBox prefHeight="216.0" prefWidth="1000.0" VBox.vgrow="ALWAYS">
+                  <children>
+                    <AnchorPane maxHeight="208.0" maxWidth="535.0" prefHeight="208.0" prefWidth="535.0" HBox.hgrow="ALWAYS" />
+                    <AnchorPane prefHeight="208.0" prefWidth="1.0" HBox.hgrow="ALWAYS" />
+                    <TilePane alignment="BOTTOM_RIGHT" prefHeight="208.0" prefWidth="287.0" HBox.hgrow="NEVER">
+                      <children>
+                        <Button id="brAceptar" fx:id="btAceptar" mnemonicParsing="false" onAction="#accionAceptar" prefHeight="42.0" prefWidth="115.0" styleClass="btAceptar" text="%Aceptar">
+                          <TilePane.margin>
+                            <Insets bottom="5.0" right="5.0" fx:id="x2" />
+                          </TilePane.margin>
+                        </Button>
+                        <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#accionCancelar" prefHeight="42.0" prefWidth="115.0" styleClass="btCancelar" text="%Cancelar">
+                          <TilePane.margin>
+                            <Insets bottom="5.0" left="5.0" right="5.0" />
+                          </TilePane.margin>
+                        </Button>
+                      </children>
+                      <padding>
+                        <Insets bottom="5.0" right="5.0" fx:id="x2" />
+                      </padding>
+                    </TilePane>
+                  </children>
+                </HBox>
+              </children>
+            </VBox>
+          </children>
+        </AnchorPane>
+      </children>
+    </HBox>
+  </children>
+  <stylesheets>
+    <URL value="file:/D:/Proyectos/Producto/Comerzzia/branches/v4.6/SolucionTienda/jpos/comerzzia-pos-skin/src/main/resources/skins/standard/com/comerzzia/pos/gui/styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

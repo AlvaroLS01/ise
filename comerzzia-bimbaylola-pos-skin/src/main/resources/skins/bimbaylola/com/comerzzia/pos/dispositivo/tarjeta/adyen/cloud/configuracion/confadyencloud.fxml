@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="620.0" styleClass="mainFxmlClass, pantalla-detalle" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.pos.dispositivo.tarjeta.adyen.cloud.configuracion.ConfAdyenCloudController">
+  <children>
+    <VBox layoutX="0.0" layoutY="0.0" prefHeight="620.0" prefWidth="620.0">
+      <children>
+        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="620.0" styleClass="titulo-ventana">
+          <children>
+            <Label id="lbTitulo" fx:id="lbTitle" text="%Configuración TEF Adyen Cloud" />
+          </children>
+        </HBox>
+        <VBox prefHeight="520.0" prefWidth="620.0">
+          <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="620.0">
+              <children>
+                <Label prefHeight="30.0" prefWidth="120.0" text="%Cliente :">
+                  <HBox.margin>
+                    <Insets left="40.0" fx:id="x1" />
+                  </HBox.margin>
+                </Label>
+                <CheckBox id="cbLive" fx:id="cbClientLive" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" selected="false" text="%LIVE" textAlignment="LEFT" wrapText="false">
+                  <HBox.margin>
+                    <Insets left="50.0" fx:id="x4" />
+                  </HBox.margin>
+                </CheckBox>
+                <CheckBox id="cbTest" fx:id="cbClientTest" alignment="CENTER_LEFT" allowIndeterminate="false" indeterminate="false" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" selected="false" text="%TEST" textAlignment="LEFT" HBox.margin="$x4" />
+              </children>
+              <VBox.margin>
+                <Insets top="20.0" />
+              </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="620.0">
+              <children>
+                <Label id="lbTerminalID" fx:id="lbPOIID" prefHeight="30.0" prefWidth="140.0" text="%POIID :">
+                  <HBox.margin>
+                    <Insets left="40.0" fx:id="x1" />
+                  </HBox.margin>
+                </Label>
+                <TextField id="tfTerminal" fx:id="tfPOIID" prefWidth="200.0">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </TextField>
+                <Label alignment="CENTER" prefHeight="30.0" prefWidth="100.0" text="%Protocolo :" />
+                <TextField id="tfProtocolo" fx:id="tfProtocol" prefWidth="85.0">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </TextField>
+              </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="620.0">
+              <children>
+                <Label id="lbServiceID" prefHeight="30.0" prefWidth="140.0" text="%Merchant Account :">
+                  <HBox.margin>
+                    <Insets left="40.0" fx:id="x1" />
+                  </HBox.margin>
+                </Label>
+                <TextField id="tfService" fx:id="tfMerchantAccount" prefWidth="200.0">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </TextField>
+                <Label id="lbServiceID" fx:id="lbMoneda" alignment="CENTER" prefHeight="30.0" prefWidth="100.0" text="%Moneda :">
+                  <HBox.margin>
+                    <Insets />
+                  </HBox.margin>
+                </Label>
+                <TextField id="tfService" fx:id="tfCurrency" prefWidth="85.0">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </TextField>
+              </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="620.0">
+              <children>
+                <Label id="lbTerminalID" fx:id="lbApiKey" prefHeight="30.0" prefWidth="140.0" text="%API Key :">
+                  <HBox.margin>
+                    <Insets left="40.0" fx:id="x1" />
+                  </HBox.margin>
+                </Label>
+                <TextField id="tfTerminal" fx:id="tfApiKey" prefWidth="395.0">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </TextField>
+              </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="620.0">
+              <children>
+                <Label prefHeight="30.0" prefWidth="140.0" text="%URL API:">
+                  <HBox.margin>
+                    <Insets left="40.0" fx:id="x1" />
+                  </HBox.margin>
+                </Label>
+                <TextField fx:id="tfTerminalApiUrl" prefWidth="395.0">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </TextField>
+              </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="620.0">
+              <children>
+                <Label id="lbFormaPagoo" fx:id="lbFormaPago" prefHeight="30.0" prefWidth="140.0" text="%Forma Pago 1 :">
+                  <HBox.margin>
+                    <Insets left="40.0" fx:id="x1" />
+                  </HBox.margin>
+                </Label>
+                <TextField id="tfFormaPago" fx:id="tfCodFormaPago" prefHeight="30.0" prefWidth="80.0">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </TextField>
+                <TextField fx:id="tfDesFormaPago" editable="false" focusTraversable="false" prefHeight="30.0" prefWidth="250.0">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </TextField>
+                <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#openPaymentMethod" prefHeight="30.0" prefWidth="45.0" styleClass="btBuscar" text="">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </Button>
+              </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="620.0">
+              <children>
+                <Label id="lbFormaPagoo" prefHeight="30.0" prefWidth="140.0" text="%Forma Pago 2 :">
+                  <HBox.margin>
+                    <Insets left="40.0" fx:id="x1" />
+                  </HBox.margin>
+                </Label>
+                <TextField id="tfFormaPago2" fx:id="tfCodFormaPago2" prefHeight="30.0" prefWidth="80.0">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </TextField>
+                <TextField fx:id="tfDesFormaPago2" editable="false" focusTraversable="false" prefHeight="30.0" prefWidth="250.0">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </TextField>
+                <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#openPaymentMethod2" prefHeight="30.0" prefWidth="45.0" styleClass="btBuscar" text="">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </Button>
+              </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="620.0">
+              <children>
+                <Label prefWidth="250.0" text="%Merchant Application">
+                  <HBox.margin>
+                    <Insets left="40.0" fx:id="x1" />
+                  </HBox.margin>
+                </Label>
+                <Separator prefWidth="510.0">
+                  <HBox.margin>
+                    <Insets left="10.0" fx:id="x2" />
+                  </HBox.margin>
+                </Separator>
+              </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="620.0">
+              <children>
+                <Label prefHeight="30.0" prefWidth="140.0" text="%Nombre :">
+                  <HBox.margin>
+                    <Insets left="40.0" fx:id="x1" />
+                  </HBox.margin>
+                </Label>
+                <TextField id="tfNombreAdyen" fx:id="tfMerchantApplicationName" prefWidth="200.0" HBox.margin="$x2" />
+                <Label alignment="CENTER" prefHeight="30.0" prefWidth="100.0" text="%Version :" />
+                <TextField id="tfVersionAdyen" fx:id="tfMerchantApplicationVersion" prefWidth="95.0" />
+              </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="620.0">
+              <children>
+                <Label prefWidth="250.0" text="%Merchant Device" HBox.margin="$x1" />
+                <Separator prefWidth="510.0" HBox.margin="$x2" />
+              </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="620.0">
+              <children>
+                <Label prefHeight="30.0" prefWidth="140.0" text="%Sistema :" HBox.margin="$x1" />
+                <TextField id="tfSistema" fx:id="tfMerchantDeviceSystem" prefWidth="200.0" HBox.margin="$x2" />
+                <Label alignment="CENTER" prefHeight="30.0" prefWidth="100.0" text="%Version :" />
+                <TextField id="tfVersionSistema" fx:id="tfMerchantDeviceVersion" prefWidth="95.0" />
+              </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="620.0">
+              <children>
+                <Label prefHeight="30.0" prefWidth="140.0" text="%Referencia :" HBox.margin="$x1" />
+                <TextField id="tfReferencia" fx:id="tfMerchantDeviceReference" prefWidth="200.0" HBox.margin="$x2" />
+              </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="620.0">
+              <children>
+                <Label fx:id="lbError" styleClass="lbError" text="" />
+              </children>
+            </HBox>
+          </children>
+        </VBox>
+        <HBox alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="620.0">
+          <children>
+            <Button fx:id="btAceptar" mnemonicParsing="false" onAction="#accept" prefHeight="45.0" prefWidth="112.0" styleClass="btAceptar" text="%Aceptar">
+              <HBox.margin>
+                <Insets right="10.0" fx:id="x3" />
+              </HBox.margin>
+            </Button>
+            <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#accionCancelar" prefHeight="45.0" prefWidth="112.0" styleClass="btCancelar" text="%Cancelar" HBox.margin="$x3" />
+          </children>
+        </HBox>
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

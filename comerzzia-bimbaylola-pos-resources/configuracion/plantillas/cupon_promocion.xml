@@ -1,0 +1,36 @@
+<plantilla>
+    <documento>
+		<logo alignLogo="center"></logo>    
+
+		#set( $imprimirDatosFacturacion = false )
+		#parse("./plantillas/datos_cabecera.xml")
+		
+		#if ($ticket.getLineas())
+			<linea line-size="4"><texto style="1">Fecha/hora       Documento          Cj     Vendedor</texto> </linea>	
+			<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>	
+			<linea line-size="4">
+			   <texto size="17" align="left">${ticket.getCabecera().getFechaAsLocale()}</texto>
+			   <texto size="19" align="left">${ticket.getCabecera().getCodTicket()}</texto>
+			   <texto size="6"  align="left">${ticket.getCabecera().getCodCaja()}</texto>	   
+			   <texto size="16" align="left">${ticket.getCajero().getUsuario()}</texto>
+			</linea>  
+		#end
+		
+		<linea><texto></texto></linea>
+		<linea line-size="1"><texto style="1" size="40" align="center">${cupon.getTituloCupon()}</texto></linea>
+		<linea><texto></texto></linea>
+		#foreach($lineaDescripcion in ${cupon.getDescripcionFormateada()})
+			<linea><texto size="40" align="center">${lineaDescripcion}</texto></linea>
+		#end
+		<linea><texto></texto></linea>
+		<codbar size="40" align="center" tipo-leyenda="2">${cupon.getCodigoCupon()}</codbar>
+		<linea><texto></texto></linea>
+		<linea line-size="4"><texto size="55" align="center" fontsize="4">Cupón emitido el día ${fechaEmision}</texto></linea>
+		<linea line-size="4"><texto size="55" align="center">Referencia: ${cupon.getIdPromocionOrigen()}/${cupon.getIdPromocionAplicacion()}</texto></linea>
+		<linea><texto></texto></linea>		
+		<linea line-size="4"> <texto align="center">Condiciones válidas para el territorio nacional excepto</texto> </linea>
+		<linea line-size="4"> <texto align="center">Islas Canarias, El Corte Inglés y tiendas Outlet.</texto> </linea>		
+		<linea><texto></texto></linea>
+		<corte></corte>
+	</documento>
+</plantilla>

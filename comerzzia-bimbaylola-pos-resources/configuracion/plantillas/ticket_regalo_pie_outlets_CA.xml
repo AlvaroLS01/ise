@@ -1,0 +1,34 @@
+#if(!${tarjetaRegalo})
+		<linea line-size="4"> <texto align="center" style="1">Gràcies per la vostra visita.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Gracias por su visita.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Thanks for your visit</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Conserveu el vostre tiquet per a qualsevol canvi o devolució. Els articles comprats a botigues outlet només es poden tornar a botigues outlet. Termini màxim 30 dies naturals des de la data de compra. La devolució de l’import de compra es farà únicament en una targeta abonament. Condicions vàlides per a botigues OUTLET del territori nacional excepte les Illes Canàries. Per al canvi o devolució d’articles és imprescindible que no hagin estat usats o deteriorats, i es conservi intacta l’etiqueta original. No s'admetran canvis ni devolucions d'articles de festa, bijuteria, accessoris sense l'embalatge original, articles de bany sense la protecció higiènica, peces de roba modificades a petició del client ni articles comprats en un altre país.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Aquesta garantia és addicional i no afecta els drets legals del consumidor.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">No se admitirán cambios ni devoluciones de accesorios sin el embalaje original.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Exchanges or returns of ccessories without original packaging will not be accepted.</texto> </linea>
+
+		#else
+		<linea line-size="4"> <texto align="center" style="1">Gràcies per la vostra visita.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Gracias por su visita.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Thanks for your visit</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Conserveu el vostre tiquet per a qualsevol canvi o devolució. Els articles comprats a botigues outlet només es poden tornar a botigues outlet. Termini màxim 30 dies naturals des de la data de compra. La devolució de l’import de compra es farà únicament en una targeta abonament. Condicions vàlides per a botigues OUTLET del territori nacional excepte les Illes Canàries. Per al canvi o devolució d’articles és imprescindible que no hagin estat usats o deteriorats, i es conservi intacta l’etiqueta original. No s'admetran canvis ni devolucions d'articles de festa, bijuteria, accessoris sense l'embalatge original, articles de bany sense la protecció higiènica, peces de roba modificades a petició del client ni articles comprats en un altre país.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Aquesta garantia és addicional i no afecta els drets legals del consumidor.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">No se admitirán cambios ni devoluciones de accesorios sin el embalaje original.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Exchanges or returns of ccessories without original packaging will not be accepted.</texto> </linea>
+		
+		<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">***Targeta Abonament/Regal***</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">La Targeta únicament és vàlida per a la compra d'articles a la venda als punts de venda de BIMBA Y LOLA presents al territori espanyol (excepte El Corte Inglés, aeroports i botiga on-line www.bimbaylola.com) fins que es consumeixi el saldo de la Targeta.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Aquest saldo no serà reemborsable ni serà bescanviable per diners en cap cas.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">No es reemplaçarà la Targeta en cas de robatori, pèrdua, extraviament o deteriorament. Els productes adquirits amb la Targeta estan subjectes a la política de canvis i devolucions de BIMBA Y LOLA.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Així mateix, s'acceptarà la devolució de la Targeta Regal que no hagi estat utilitzada en un termini màxim de 30 dies, sempre que tingui el protector del codi de seguretat sense manipular, respectant les condicions de devolució establertes a bimbaylola.com.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Per a qualsevol canvi o devolució d'articles pagats amb la Targeta, és imprescindible conservar-los i presentar-los en el moment d'aquesta operació.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Si us plau, comproveu que el saldo de la Targeta és el que figura al tiquet vinculat.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">L'adquisició i l'ús de la Targeta implica l'acceptació de les condicions per al seu ús, disponibles a www.bimbaylola.com.</texto> </linea>
+		<linea line-size="4"> <texto align="center" style="1">Aquesta garantia és addicional i no afecta els drets del consumidor.</texto> </linea>
+
+			
+
+		#end

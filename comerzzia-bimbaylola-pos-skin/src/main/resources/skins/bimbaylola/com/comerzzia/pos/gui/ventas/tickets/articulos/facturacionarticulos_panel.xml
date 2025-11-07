@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+
+    ComerZZia 3.0
+
+    Copyright (c) 2008-2015 Comerzzia, S.L.  All Rights Reserved.
+
+    THIS WORK IS  SUBJECT  TO  SPAIN  AND  INTERNATIONAL  COPYRIGHT  LAWS  AND
+    TREATIES.   NO  PART  OF  THIS  WORK MAY BE  USED,  PRACTICED,  PERFORMED
+    COPIED, DISTRIBUTED, REVISED, MODIFIED, TRANSLATED,  ABRIDGED, CONDENSED,
+    EXPANDED,  COLLECTED,  COMPILED,  LINKED,  RECAST, TRANSFORMED OR ADAPTED
+    WITHOUT THE PRIOR WRITTEN CONSENT OF COMERZZIA, S.L. ANY USE OR EXPLOITATION
+    OF THIS WORK WITHOUT AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO
+    CRIMINAL AND CIVIL LIABILITY.
+
+    CONSULT THE END USER LICENSE AGREEMENT FOR INFORMATION ON ADDITIONAL
+    RESTRICTIONS.
+
+-->
+<Panel>
+    <LineaBotones>
+    	<!--<Boton>
+			<texto>abrir cajón (no visible)</texto>
+            <clave>ABRIR CAJON</clave>
+            <tipo>OPERACION</tipo>
+			<teclaAccesoRapido>Ctrl + O</teclaAccesoRapido>
+			<rutaImagen>iconos/ticket_aparcar.png</rutaImagen>
+			<visible>N</visible>
+        </Boton>
+         -->
+        <Boton>
+			<texto>APARCAR TICKET</texto>
+            <clave>aparcarTicket</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F1</teclaAccesoRapido>
+			<rutaImagen>iconos/ticket_aparcar.png</rutaImagen>
+			<visible>S</visible>
+        </Boton> 
+        <Boton>
+			<texto>RECUPERAR TICKET</texto>
+            <clave>recuperarTicket</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F2</teclaAccesoRapido>
+			<rutaImagen>iconos/ticket_recuperar.png</rutaImagen>
+			<visible>S</visible>
+        </Boton> 
+        <Boton>
+            <texto>SALDO GIFTCARD</texto>
+            <clave>consultarSaldoGiftCard</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F3</teclaAccesoRapido>
+			<rutaImagen>iconos/park.png</rutaImagen> 
+			<visible>S</visible>
+        </Boton>		
+        <Boton>
+			<texto>ELIMINAR TICKET</texto>
+            <clave>CANCELAR VENTA</clave>
+            <tipo>OPERACION</tipo>
+			<teclaAccesoRapido>F4</teclaAccesoRapido>
+			<rutaImagen>iconos/ticket_anular.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>
+       	<Boton>
+			<texto>CAMBIAR CAJERO</texto>
+            <clave>cambiarCajero</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F5</teclaAccesoRapido>
+			<rutaImagen>iconos/cambiar_cajero.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>  		
+        <Boton>
+			<texto>DEVOLUCIONES</texto>
+            <clave>210</clave>
+            <tipo>ACCION</tipo>
+			<teclaAccesoRapido>F6</teclaAccesoRapido>
+			<rutaImagen>menu/POS-devolucion-ticket.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>		
+	</LineaBotones>
+	<LineaBotones>	        
+		<Boton>
+			<texto>HISTORICO</texto>
+            <clave>abrirGestionTickets</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F7</teclaAccesoRapido>
+			<rutaImagen>iconos/ticket_gestion.png</rutaImagen>
+			<visible>S</visible>
+            <parametros>
+                <entry>
+                <key>idAccion</key>
+                <value>207</value>
+                </entry>
+            </parametros>
+        </Boton>
+        <Boton>
+            <texto>CLIENTES</texto>
+            <clave>fidelizacion</clave>
+            <tipo>METODO</tipo>
+		    <teclaAccesoRapido>F8</teclaAccesoRapido>
+		    <rutaImagen>iconos/cliente.png</rutaImagen>
+		    <visible>S</visible>        	
+        </Boton>
+       	<Boton>
+			<texto>IMPR. TICKET REGALO</texto>
+            <clave>imprimirTicketRegalo</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F9</teclaAccesoRapido>
+			<rutaImagen>menu/POS-imprimir.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>
+        <Boton>
+			<texto>ABRIR CAJÓN</texto>
+            <clave>ABRIR CAJON</clave>
+            <tipo>OPERACION</tipo>
+			<teclaAccesoRapido>F10</teclaAccesoRapido>
+			<rutaImagen>iconos/ticket_aparcar.png</rutaImagen>
+			<visible>S</visible>
+        </Boton> 
+       	<!--  Boton>
+			<texto>CLIENTE</texto>
+            <clave>abrirBusquedaClientes</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F10</teclaAccesoRapido>
+			<rutaImagen>iconos/cliente.png</rutaImagen>
+			<visible>S</visible>
+        </Boton -->  
+        <Boton>
+			<texto>PAGOS</texto>
+            <clave>abrirPagos</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F11</teclaAccesoRapido>
+			<rutaImagen>iconos/pagos.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>		
+        <Boton>
+			<texto>RESERVAS</texto>
+            <clave>208</clave>
+            <tipo>ACCION</tipo>
+			<teclaAccesoRapido>F12</teclaAccesoRapido>
+			<rutaImagen>menu/POS-gestion-apartados.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>		
+    </LineaBotones> 
+</Panel>

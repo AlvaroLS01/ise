@@ -1,0 +1,128 @@
+<!--Esta plantilla usa un parámetro $esBoletaCompleta que no llega desde el POS. Se debe asignar como (con un solo corchete): set( $esBoletaCompleta = true )-->
+<!--Esta plantilla usa un parámetro $esBoletaCompleta que no llega desde el POS. Se debe asignar como (con un solo corchete): set( $esBoletaCompleta = true )-->
+#foreach ($pago in $ticket.getPagos())
+	#if (${pago.tieneDatosRespuestaPagoTarjeta()} && ${pago.getDatosRespuestaPagoTarjeta().getCodAutorizacion()})
+	
+		#if($pago.getDatosRespuestaPagoTarjeta().getTipoLectura() == "L")
+			<texto pre-command="29;40;76;6;0;48;69;32;32;1;1"></texto>
+		#end
+	
+		<!--Inicio boleta completa-->
+		#if  ($esBoletaCompleta) 
+			<!-- <linea> <texto> Boleta completa y getAuthMode = a $pago.getDatosRespuestaPagoTarjeta().getAuthMode()  </texto> </linea> -->
+			#if (!($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "DEVOLUCION") 
+			     && !($pago.getDatosRespuestaPagoTarjeta().getAuthMode() == "0")
+				 && !($pago.getDatosRespuestaPagoTarjeta().getAuthMode() == "1"))
+		
+
+				#parse("./plantillas/datos_cabecera.xml")
+				
+				<linea> <texto> </texto> </linea>
+				
+				#if($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "VENTA")
+					<linea line-size="4"><texto>------------------- V E N D A -------------------------</texto> </linea>			
+				#elseif($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "DEVOLUCION")
+					<linea line-size="4"><texto>-------------- D E V O L U C I Ó ----------------------</texto> </linea>			
+				#end
+				
+				#if($pago.getDatosRespuestaPagoTarjeta().getAID())
+					<linea><texto> </texto></linea>
+					<linea line-size="4"><texto size="40" align="left">AID: ${pago.getDatosRespuestaPagoTarjeta().getAID()}</texto></linea>
+				#end
+				
+				<linea><texto> </texto></linea>
+				#if (${pago.getDatosRespuestaPagoTarjeta().getApplicationLabel()})
+					<linea line-size="4"><texto size="40" align="left">Ap.Lb: ${pago.getDatosRespuestaPagoTarjeta().getApplicationLabel()}</texto></linea>
+				#end
+				#if (${pago.getDatosRespuestaPagoTarjeta().getAID()})
+				   <linea line-size="4"><texto size="40" align="left">DDF Name: ${pago.getDatosRespuestaPagoTarjeta().getAID()}</texto></linea>
+				#end
+				<linea><texto> </texto></linea>
+				
+				<linea line-size="4"><texto size="40" align="left">Comerç: ${pago.getDatosRespuestaPagoTarjeta().getCodigoCentro()}</texto></linea>
+				<linea line-size="4"><texto size="40" align="left">Targeta: ${pago.getDatosRespuestaPagoTarjeta().getPAN()}</texto></linea>
+				<linea line-size="4"><texto size="40" align="left">Data: ${pago.getDatosRespuestaPagoTarjeta().getFechaTransaccion()}</texto></linea>
+				<linea line-size="4"><texto size="40" align="left">Import: ${pago.getImporteAsString()} EUR</texto></linea>
+				<linea line-size="4"><texto> </texto></linea>
+				<linea line-size="4"><texto size="40" align="left">Num.Aut.: ${pago.getDatosRespuestaPagoTarjeta().getCodAutorizacion()}</texto></linea>
+				<linea line-size="4"><texto size="40" align="left">FUC: ${pago.getDatosRespuestaPagoTarjeta().getFuc()}</texto></linea>
+				<linea line-size="4"><texto size="40" align="left">PinPad: ${pago.getDatosRespuestaPagoTarjeta().getTerminalId()}</texto></linea>
+				
+				#if($pago.getDatosRespuestaPagoTarjeta().getNombreEntidad())
+					<linea line-size="4"><texto size="40" align="left">${pago.getDatosRespuestaPagoTarjeta().getNombreEntidad()}</texto></linea>
+				#end			
+				
+				<linea><texto></texto></linea>
+				<linea line-size="4"><texto size="40" align="left">Document:${ticket.getCabecera().getCodTicket()}</texto></linea>
+							
+				#if (!($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "DEVOLUCION") 
+					 && $pago.getDatosRespuestaPagoTarjeta().getAuthMode() != "0"
+					 && $pago.getDatosRespuestaPagoTarjeta().getAuthMode() != "1")
+
+					<linea line-size="4"><texto>Firma client</texto> </linea>
+					<linea><texto>----------------------------------------</texto></linea>
+					<linea><texto>|                                      |</texto></linea>
+					<linea><texto>|                                      |</texto></linea>
+					<linea><texto>|                                      |</texto></linea>
+					<linea><texto>|                                      |</texto></linea>
+					<linea><texto>----------------------------------------</texto></linea>
+				#end
+				
+				<linea><texto></texto></linea>
+				<linea line-size="4"><texto size="40" align="center">Còpia per a l'establiment</texto></linea>
+				<linea><texto></texto></linea>
+				<linea><texto></texto></linea>
+				<linea><texto></texto></linea>
+				<linea><texto></texto></linea>
+				<corte></corte>
+			#end
+		#else
+			<linea> <texto> </texto> </linea>
+			
+			#if($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "VENTA")
+				<linea line-size="4"><texto>------------------- V E N D A -------------------------</texto> </linea>			
+			#elseif($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "DEVOLUCION")
+				<linea line-size="4"><texto>-------------- D E V O L U C I Ó ----------------------</texto> </linea>			
+			#end
+			
+			#if($pago.getDatosRespuestaPagoTarjeta().getAID())
+				<linea><texto> </texto></linea>
+				<linea line-size="4"><texto size="40" align="left">AID: ${pago.getDatosRespuestaPagoTarjeta().getAID()}</texto></linea>
+			#end
+			
+			<linea><texto> </texto></linea>
+			#if (${pago.getDatosRespuestaPagoTarjeta().getApplicationLabel()})
+				<linea line-size="4"><texto size="40" align="left">Ap.Lb: ${pago.getDatosRespuestaPagoTarjeta().getApplicationLabel()}</texto></linea>
+			#end
+			#if (${pago.getDatosRespuestaPagoTarjeta().getAID()})
+			   <linea line-size="4"><texto size="40" align="left">DDF Name: ${pago.getDatosRespuestaPagoTarjeta().getAID()}</texto></linea>
+			#end
+			<linea><texto> </texto></linea>
+			
+			<linea line-size="4"><texto size="40" align="left">Comerç: ${pago.getDatosRespuestaPagoTarjeta().getCodigoCentro()}</texto></linea>
+			<linea line-size="4"><texto size="40" align="left">Targeta: ${pago.getDatosRespuestaPagoTarjeta().getPAN()}</texto></linea>
+			<linea line-size="4"><texto size="40" align="left">Data ${pago.getDatosRespuestaPagoTarjeta().getFechaTransaccion()}</texto></linea>
+			<linea line-size="4"><texto size="40" align="left">Import: ${pago.getImporteAsString()} EUR</texto></linea>
+			<linea line-size="4"><texto> </texto></linea>
+			<linea line-size="4"><texto size="40" align="left">Num.Aut.: ${pago.getDatosRespuestaPagoTarjeta().getCodAutorizacion()}</texto></linea>
+			<linea line-size="4"><texto size="40" align="left">FUC: ${pago.getDatosRespuestaPagoTarjeta().getFuc()}</texto></linea>
+			<linea line-size="4"><texto size="40" align="left">PinPad: ${pago.getDatosRespuestaPagoTarjeta().getTerminalId()}</texto></linea>
+			
+			#if($pago.getDatosRespuestaPagoTarjeta().getNombreEntidad())
+				<linea line-size="4"><texto size="40" align="left">${pago.getDatosRespuestaPagoTarjeta().getNombreEntidad()}</texto></linea>
+			#end
+			
+			#if ($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "DEVOLUCION")
+				<linea line-size="4"><texto>Firma establiment</texto></linea>
+				<linea><texto>----------------------------------------</texto></linea>
+				<linea><texto>|                                      |</texto></linea>
+				<linea><texto>|                                      |</texto></linea>
+				<linea><texto>|                                      |</texto></linea>
+				<linea><texto>|                                      |</texto></linea>
+				<linea><texto>----------------------------------------</texto></linea>
+			#end
+		
+		#end 
+		<!--Fin boleta completa-->
+	#end
+#end     		

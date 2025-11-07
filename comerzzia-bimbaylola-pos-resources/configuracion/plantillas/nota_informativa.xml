@@ -1,0 +1,81 @@
+<plantilla>
+	<documento>
+
+	    #parse("./plantillas/datos_cabecera.xml")	
+	
+		<linea>
+			<texto></texto>
+		</linea>
+		<linea > 
+			<texto align="center" size="40">${linea.getNotaInformativa().getDescripcion()}</texto>
+		</linea>
+		<linea>
+			<texto></texto>
+		</linea>		
+		
+	
+		<linea line-size="4"><texto style="1">Documento             Fecha/Hora            Tienda/Caja</texto> </linea>	
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>	
+		<linea line-size='4'>
+		   <texto size="22" align="left">${ticket.getCabecera().getCodTicket()}</texto>
+		   <texto size="25" align="left">${ticket.getCabecera().getFechaAsLocale()}</texto>		   
+		   <texto size="7" align="left">${ticket.getTienda().getCodAlmacen()}/${ticket.getCabecera().getCodCaja()}</texto>		   
+		   	   
+		</linea>
+		
+		#if(${linea.getCodigoBarras()})
+			#set($codigo = $linea.getCodigoBarras())
+		#else
+			#set($codigo = $linea.getCodArticulo())
+		#end
+		<linea><texto></texto></linea>
+		<linea>
+			<texto align="left">Línea: ${linea.getIdLinea()}  Artículo: ${codigo} - ${linea.getDesglose1()} - ${linea.getDesglose2()}</texto>
+		</linea>
+		<linea><texto></texto></linea>
+		<linea>
+			<texto align="left">Descripción: ${linea.getDesArticulo()}</texto>
+		</linea>
+		<linea><texto></texto></linea>
+		
+		#if(${linea.getNotaInformativa().getTexto()})
+			<linea>
+				<texto align="left">Observaciones: ${linea.getNotaInformativa().getTexto()}</texto>
+			</linea>
+			<linea><texto></texto></linea>
+		#end
+		#if(${linea.getNotaInformativa().getFecha()})
+			<linea>
+				<texto align="left">Fecha entrega cliente: ${linea.getNotaInformativa().getFecha()}</texto>
+			</linea>
+		#end
+
+		#if(${ticket.getCabecera().getDatosFidelizado().getNumTarjetaFidelizado()})
+	        <linea line-size="4">		
+			<texto size="15" align="left">${ticket.getCabecera().getDatosFidelizado().getNumTarjetaFidelizado()} </texto>
+			#if (${ticket.getCabecera().getDatosFidelizado().getNombre()} && ${ticket.getCabecera().getDatosFidelizado().getApellido()})
+				<texto size="35" align="left">$esc.xml(${ticket.getCabecera().getDatosFidelizado().getNombre()}) $esc.xml(${ticket.getCabecera().getDatosFidelizado().getApellido()})</texto>
+			#else
+				#if (${ticket.getCabecera().getDatosFidelizado().getNombre()})
+					<texto size="35" align="left">$esc.xml(${ticket.getCabecera().getDatosFidelizado().getNombre()})</texto>
+				#end
+			#end
+			</linea>
+			<linea line-size="4">
+			#if(${ticket.getCabecera().getDatosFidelizado().getTelefono()})
+				<texto size="15" align="left">$esc.xml(${ticket.getCabecera().getDatosFidelizado().getTelefono()})</texto>
+			#else
+				
+				#if(${ticket.getCabecera().getDatosFidelizado().getEmail()})
+					<texto size="35" align="left">$esc.xml(${ticket.getCabecera().getDatosFidelizado().getEmail()})</texto>	
+				#end	
+			#end
+			</linea>
+		#end
+	
+		<linea><texto></texto></linea>		
+		<linea><texto></texto></linea>
+		<linea><texto></texto></linea>
+		<corte></corte>
+	</documento>
+</plantilla>

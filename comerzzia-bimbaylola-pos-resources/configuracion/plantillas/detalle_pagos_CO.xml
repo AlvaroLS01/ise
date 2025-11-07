@@ -1,0 +1,57 @@
+﻿ <linea line-size="4"><texto size="55" align="left">Detalle de pagos</texto></linea>
+#foreach ($pago in $ticket.getPagos())
+	<linea line-size="4">
+		<texto size="15" align="left">${pago.getDesMedioPago()}</texto>
+		<texto size="20" align="right">${pago.getImporteAsString()}</texto>
+		<texto size="10" align="right"></texto>		
+	</linea>
+
+	#set($esBoletaCompleta = false)
+	<!--
+	#if($ticket.esPagoAxis($pago))
+		#parse("./plantillas/detalle_pagos_boletas_axis.xml")
+	#end -->
+	#if($ticket.esPagoConexflow($pago))
+		#parse("./plantillas/detalle_pagos_boletas_conexflow.xml")
+	#end
+	#if(!$ticket.esPagoConexflow($pago) && ${pago.getDatosRespuestaPagoTarjeta()} && !${pago.isPagoTarjetaRegalo()})
+		#parse("./plantillas/detalle_pagos_boletas_adyen_byl_CO.xml")
+	#end	
+
+#end 
+
+#set ($imprimeTextoTarjeta = 'N')
+#foreach ($pago in $ticket.getPagos())
+	#if (${pago.isPagoTarjetaRegalo()})
+	    #set ($imprimeTextoTarjeta = 'S')
+		#if(${pago.getGiftcard()})
+		    <linea><texto>---------------------------------------</texto></linea>
+			<linea line-size="4"> <texto size="55" align="left" style ="1">N. Tarjeta:	${pago.getGiftcard().getNumTarjetaRegalo().substring(0,10)}***</texto> </linea>
+			<linea line-size="4">
+				<texto align="left" style ="1" size="10">Pago:</texto>
+				<texto size="29" align="right">${pago.getImporteAsString()}</texto>
+			</linea>
+			<linea line-size="4"> 
+				<texto align="left" style ="1" size="17">Saldo disponible:</texto>
+				<texto size="22" align="right">${pago.getGiftcard().getSaldoTotalAsString()}</texto> 
+			</linea>
+			<linea><texto size="39" align="left">OP:${pago.getGiftcard().getUidTransaccion()}</texto></linea>
+		#else		
+			#foreach ($giftcard in $pago.getGiftcards())
+			    <linea><texto>---------------------------------------</texto></linea>
+				<linea line-size="4"><texto size="39" align="left">N. Tarjeta: ${giftcard.getNumTarjetaRegalo().substring(0,10)}***</texto></linea>
+				
+				#set($importePago = $giftcard.getImportePago())
+				<linea line-size="4">
+					<texto align="left" style ="1" size="10">Pago:</texto>
+					<texto size="29" align="right">$fmt.formateaImporte($importePago)</texto>
+				</linea>
+				<linea line-size="4"> 
+					<texto align="left" style ="1" size="17">Saldo disponible:</texto>
+					<texto size="22" align="right">${giftcard.getSaldoDisponibleAsString()}</texto> 
+				</linea>
+				<linea line-size="4"><texto size="39" align="left">OP:${giftcard.getUidTransaccion()}</texto></linea>
+			#end;
+		#end
+	#end
+#end

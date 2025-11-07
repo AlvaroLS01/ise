@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?scenebuilder-stylesheet ../../../../../../../../../../../../../../../../../../../../../Productos/Comerzzia/trunk/SolucionTienda/jpos/comerzzia-pos-skin/src/main/resources/skins/standard/com/comerzzia/pos/gui/styles/styles.css?>
+
+<AnchorPane id="AnchorPane" minHeight="343.9999000000025" prefHeight="449.000022070315" prefWidth="520.0" styleClass="mainFxmlClass, pantalla-detalle" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.bimbaylola.pos.dispositivo.tarjeta.conexflow.gui.ConfiguracionConexFlowController">
+  <children>
+    <HBox id="HBox" alignment="CENTER" prefHeight="750.0" prefWidth="1020.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane id="AnchorPane" minHeight="458.9998779296875" prefHeight="458.9998779296875" prefWidth="518.0" HBox.hgrow="ALWAYS">
+          <children>
+            <VBox id="VBox" alignment="CENTER" minHeight="418.0" prefHeight="448.9998779296875" prefWidth="518.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+              <children>
+                <AnchorPane prefHeight="30.0" prefWidth="800.0" styleClass="titulo-ventana" VBox.vgrow="NEVER">
+                  <children>
+                    <Label alignment="CENTER" prefHeight="25.999908447265625" prefWidth="800.0" text="%Configuración de ConexFlow" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  </children>
+                </AnchorPane>
+                <VBox prefHeight="274.0" prefWidth="518.0">
+                  <children>
+                    <FlowPane hgap="5.0" prefHeight="200.0" prefWidth="200.0">
+                      <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="100.0" text="%Comercio" />
+                        <TextField fx:id="tfComercio" prefWidth="348.0" />
+                      </children>
+                    </FlowPane>
+                    <FlowPane hgap="5.0" prefHeight="200.0" prefWidth="200.0">
+                      <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="100.0" text="%Tienda" />
+                        <TextField fx:id="tfTienda" prefWidth="348.0" />
+                      </children>
+                    </FlowPane>
+                    <FlowPane hgap="5.0" prefHeight="200.0" prefWidth="200.0">
+                      <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="100.0" text="%Número TPV" />
+                        <TextField fx:id="tfNumTPV" prefWidth="348.0" />
+                      </children>
+                    </FlowPane>
+                    <FlowPane hgap="5.0" prefHeight="200.0" prefWidth="200.0">
+                      <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="100.0" text="%IP del terminal" />
+                        <TextField fx:id="tfServidorTCP" prefWidth="348.0" />
+                      </children>
+                    </FlowPane>
+                    <FlowPane hgap="5.0" prefHeight="200.0" prefWidth="200.0">
+                      <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="100.0" text="%Puerto" />
+                        <TextField fx:id="tfPuertoTCP" prefWidth="349.0" />
+                      </children>
+                    </FlowPane>
+                    <FlowPane hgap="5.0" prefHeight="200.0" prefWidth="200.0">
+                      <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="100.0" text="%Timeout (seg)" />
+                        <TextField fx:id="tfTimeout" prefWidth="348.0" />
+                      </children>
+                    </FlowPane>
+                    <FlowPane hgap="5.0" prefHeight="200.0" prefWidth="200.0">
+                      <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="100.0" text="%Forma de pago" />
+                        <TextField id="tfFormaPago" fx:id="tfCodFormaPago" prefWidth="63.0" />
+                        <TextField fx:id="tfDesFormaPago" editable="false" focusTraversable="false" prefWidth="279.0" />
+                        <Button minWidth="47.0" mnemonicParsing="false" onAction="#abrirAyudaMediosPago" prefWidth="47.0" styleClass="btBuscar" text="" />
+                      </children>
+                    </FlowPane>
+                  </children>
+                </VBox>
+                <HBox id="HBox" alignment="CENTER" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="800.0" spacing="5.0">
+                  <children>
+                    <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                    <AnchorPane minHeight="56.0" prefHeight="60.0" prefWidth="361.0">
+                      <children>
+                        <TilePane alignment="CENTER_RIGHT" minHeight="35.0" prefHeight="60.0" prefWidth="326.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Button fx:id="btAceptar" mnemonicParsing="false" onAction="#accionAceptar" prefHeight="42.0" prefWidth="127.0" styleClass="btAceptar" text="%Aceptar" />
+                            <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#accionCancelar" prefHeight="42.0" prefWidth="127.0" styleClass="btCancelar" text="%Cancelar">
+                              <TilePane.margin>
+                                <Insets left="4.0" right="4.0" />
+                              </TilePane.margin>
+                            </Button>
+                          </children>
+                        </TilePane>
+                      </children>
+                    </AnchorPane>
+                  </children>
+                </HBox>
+              </children>
+            </VBox>
+          </children>
+          <HBox.margin>
+            <Insets />
+          </HBox.margin>
+        </AnchorPane>
+      </children>
+    </HBox>
+  </children>
+  <stylesheets>
+    <URL value="@permisos.css" />
+    <URL value="@../../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

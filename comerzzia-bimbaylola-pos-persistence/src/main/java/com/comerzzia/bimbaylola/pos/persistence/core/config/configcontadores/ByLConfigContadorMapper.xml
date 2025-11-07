@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.ByLConfigContadorMapper" >
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.ByLConfigContadorBean" >
+    <id column="ID_CONTADOR" property="idContador" jdbcType="VARCHAR" />
+    <result column="DESCRIPCION" property="descripcion" jdbcType="VARCHAR" />
+    <result column="MASCARA_DIVISOR1" property="mascaraDivisor1" jdbcType="VARCHAR" />
+    <result column="MASCARA_DIVISOR2" property="mascaraDivisor2" jdbcType="VARCHAR" />
+    <result column="MASCARA_DIVISOR3" property="mascaraDivisor3" jdbcType="VARCHAR" />
+    <result column="LONGITUD_MAXIMA" property="longitudMaxima" jdbcType="DECIMAL" />
+    <result column="DIRECCION_RELLENO" property="direccionRelleno" jdbcType="CHAR" />
+    <result column="CARACTER_RELLENO" property="caracterRelleno" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID_CONTADOR, DESCRIPCION, MASCARA_DIVISOR1, MASCARA_DIVISOR2, MASCARA_DIVISOR3, LONGITUD_MAXIMA, 
+    DIRECCION_RELLENO, CARACTER_RELLENO
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.ByLConfigContadorExample" resultSetType="SCROLL_INSENSITIVE" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CONFIG_CONTADORES_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CONFIG_CONTADORES_TBL
+    where ID_CONTADOR = #{idContador,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CONFIG_CONTADORES_TBL
+    where ID_CONTADOR = #{idContador,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.ByLConfigContadorExample" >
+    delete from CONFIG_CONTADORES_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.ByLConfigContadorBean" >
+    insert into CONFIG_CONTADORES_TBL (ID_CONTADOR, DESCRIPCION, MASCARA_DIVISOR1, 
+      MASCARA_DIVISOR2, MASCARA_DIVISOR3, LONGITUD_MAXIMA, 
+      DIRECCION_RELLENO, CARACTER_RELLENO)
+    values (#{idContador,jdbcType=VARCHAR}, #{descripcion,jdbcType=VARCHAR}, #{mascaraDivisor1,jdbcType=VARCHAR}, 
+      #{mascaraDivisor2,jdbcType=VARCHAR}, #{mascaraDivisor3,jdbcType=VARCHAR}, #{longitudMaxima,jdbcType=DECIMAL}, 
+      #{direccionRelleno,jdbcType=CHAR}, #{caracterRelleno,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.ByLConfigContadorBean" >
+    insert into CONFIG_CONTADORES_TBL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idContador != null" >
+        ID_CONTADOR,
+      </if>
+      <if test="descripcion != null" >
+        DESCRIPCION,
+      </if>
+      <if test="mascaraDivisor1 != null" >
+        MASCARA_DIVISOR1,
+      </if>
+      <if test="mascaraDivisor2 != null" >
+        MASCARA_DIVISOR2,
+      </if>
+      <if test="mascaraDivisor3 != null" >
+        MASCARA_DIVISOR3,
+      </if>
+      <if test="longitudMaxima != null" >
+        LONGITUD_MAXIMA,
+      </if>
+      <if test="direccionRelleno != null" >
+        DIRECCION_RELLENO,
+      </if>
+      <if test="caracterRelleno != null" >
+        CARACTER_RELLENO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idContador != null" >
+        #{idContador,jdbcType=VARCHAR},
+      </if>
+      <if test="descripcion != null" >
+        #{descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="mascaraDivisor1 != null" >
+        #{mascaraDivisor1,jdbcType=VARCHAR},
+      </if>
+      <if test="mascaraDivisor2 != null" >
+        #{mascaraDivisor2,jdbcType=VARCHAR},
+      </if>
+      <if test="mascaraDivisor3 != null" >
+        #{mascaraDivisor3,jdbcType=VARCHAR},
+      </if>
+      <if test="longitudMaxima != null" >
+        #{longitudMaxima,jdbcType=DECIMAL},
+      </if>
+      <if test="direccionRelleno != null" >
+        #{direccionRelleno,jdbcType=CHAR},
+      </if>
+      <if test="caracterRelleno != null" >
+        #{caracterRelleno,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.ByLConfigContadorExample" resultType="java.lang.Integer" >
+    select count(*) from CONFIG_CONTADORES_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CONFIG_CONTADORES_TBL
+    <set >
+      <if test="record.idContador != null" >
+        ID_CONTADOR = #{record.idContador,jdbcType=VARCHAR},
+      </if>
+      <if test="record.descripcion != null" >
+        DESCRIPCION = #{record.descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mascaraDivisor1 != null" >
+        MASCARA_DIVISOR1 = #{record.mascaraDivisor1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mascaraDivisor2 != null" >
+        MASCARA_DIVISOR2 = #{record.mascaraDivisor2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mascaraDivisor3 != null" >
+        MASCARA_DIVISOR3 = #{record.mascaraDivisor3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.longitudMaxima != null" >
+        LONGITUD_MAXIMA = #{record.longitudMaxima,jdbcType=DECIMAL},
+      </if>
+      <if test="record.direccionRelleno != null" >
+        DIRECCION_RELLENO = #{record.direccionRelleno,jdbcType=CHAR},
+      </if>
+      <if test="record.caracterRelleno != null" >
+        CARACTER_RELLENO = #{record.caracterRelleno,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CONFIG_CONTADORES_TBL
+    set ID_CONTADOR = #{record.idContador,jdbcType=VARCHAR},
+      DESCRIPCION = #{record.descripcion,jdbcType=VARCHAR},
+      MASCARA_DIVISOR1 = #{record.mascaraDivisor1,jdbcType=VARCHAR},
+      MASCARA_DIVISOR2 = #{record.mascaraDivisor2,jdbcType=VARCHAR},
+      MASCARA_DIVISOR3 = #{record.mascaraDivisor3,jdbcType=VARCHAR},
+      LONGITUD_MAXIMA = #{record.longitudMaxima,jdbcType=DECIMAL},
+      DIRECCION_RELLENO = #{record.direccionRelleno,jdbcType=CHAR},
+      CARACTER_RELLENO = #{record.caracterRelleno,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.ByLConfigContadorBean" >
+    update CONFIG_CONTADORES_TBL
+    <set >
+      <if test="descripcion != null" >
+        DESCRIPCION = #{descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="mascaraDivisor1 != null" >
+        MASCARA_DIVISOR1 = #{mascaraDivisor1,jdbcType=VARCHAR},
+      </if>
+      <if test="mascaraDivisor2 != null" >
+        MASCARA_DIVISOR2 = #{mascaraDivisor2,jdbcType=VARCHAR},
+      </if>
+      <if test="mascaraDivisor3 != null" >
+        MASCARA_DIVISOR3 = #{mascaraDivisor3,jdbcType=VARCHAR},
+      </if>
+      <if test="longitudMaxima != null" >
+        LONGITUD_MAXIMA = #{longitudMaxima,jdbcType=DECIMAL},
+      </if>
+      <if test="direccionRelleno != null" >
+        DIRECCION_RELLENO = #{direccionRelleno,jdbcType=CHAR},
+      </if>
+      <if test="caracterRelleno != null" >
+        CARACTER_RELLENO = #{caracterRelleno,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID_CONTADOR = #{idContador,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.ByLConfigContadorBean" >
+    update CONFIG_CONTADORES_TBL
+    set DESCRIPCION = #{descripcion,jdbcType=VARCHAR},
+      MASCARA_DIVISOR1 = #{mascaraDivisor1,jdbcType=VARCHAR},
+      MASCARA_DIVISOR2 = #{mascaraDivisor2,jdbcType=VARCHAR},
+      MASCARA_DIVISOR3 = #{mascaraDivisor3,jdbcType=VARCHAR},
+      LONGITUD_MAXIMA = #{longitudMaxima,jdbcType=DECIMAL},
+      DIRECCION_RELLENO = #{direccionRelleno,jdbcType=CHAR},
+      CARACTER_RELLENO = #{caracterRelleno,jdbcType=CHAR}
+    where ID_CONTADOR = #{idContador,jdbcType=VARCHAR}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.ByLConfigContadorExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CONFIG_CONTADORES_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <sql id="Join_Tipo_Documento_Column_List" >
+    A.ID_CONTADOR, DESCRIPCION, MASCARA_DIVISOR1, MASCARA_DIVISOR2, MASCARA_DIVISOR3, LONGITUD_MAXIMA, 
+    DIRECCION_RELLENO, CARACTER_RELLENO
+  </sql>
+  <select id="selectByExampleJoinTipoDocumento" resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.ByLConfigContadorExample" resultSetType="SCROLL_INSENSITIVE" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Join_Tipo_Documento_Column_List" />
+    from CONFIG_CONTADORES_TBL A LEFT JOIN D_TIPOS_DOCUMENTOS_TBL T ON (T.ID_CONTADOR = A.ID_CONTADOR)
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="countByExampleJoinTipoDocumento" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.ByLConfigContadorExample" resultType="java.lang.Integer" >
+    select count(*) from CONFIG_CONTADORES_TBL A LEFT JOIN D_TIPOS_DOCUMENTOS_TBL T ON (T.ID_CONTADOR = A.ID_CONTADOR)
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

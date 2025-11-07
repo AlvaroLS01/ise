@@ -1,0 +1,97 @@
+<!--Esta plantilla usa un parámetro $esBoletaCompleta que no llega desde el POS. Se debe asignar como (con un solo corchete): set( $esBoletaCompleta = true )-->
+##foreach ($pago in $ticket.getPagos())
+	#if (${pago.tieneDatosRespuestaPagoTarjeta()})
+	
+		#if($pago.getDatosRespuestaPagoTarjeta().getTipoLectura() == "L")
+			<texto pre-command="29;40;76;6;0;48;69;32;32;1;1"></texto>
+		#end
+		
+		<!--Inicio boleta completa. Esto significa boleta después del ticket de venta -->
+		#if  (!$esBoletaCompleta) 
+			<linea> <texto> </texto> </linea>
+			
+			#if($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "VENTA")
+				<linea line-size="4"><texto>------------------ V E R K O O P ----------------------</texto> </linea>			
+			#elseif($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "DEVOLUCION")
+				<linea line-size="4"><texto>------------ R E S T I T U T I E ----------------------</texto> </linea>			
+			#end
+			
+			
+			#if($pago.getDatosRespuestaPagoTarjeta().getContactLess().equals("1"))
+				<linea line-size="4"><texto size="55" align="center">** CONTACTLESS **</texto></linea>
+			#end
+			#if (${pago.getDatosRespuestaPagoTarjeta().getComercio()})
+				<linea line-size="4"><texto size="55" align="left">Bedrijf: ${pago.getDatosRespuestaPagoTarjeta().getComercio()}</texto></linea>
+			#end			
+			#if (${pago.getDatosRespuestaPagoTarjeta().getFechaTransaccion()})
+				<linea line-size="4"><texto size="55" align="left">Datum: ${pago.getDatosRespuestaPagoTarjeta().getFechaTransaccion()}</texto></linea>
+			#end
+			#if (${pago.getDatosRespuestaPagoTarjeta().getTerminal()})
+				<linea line-size="4"><texto size="55" align="left">Terminal: ${pago.getDatosRespuestaPagoTarjeta().getTerminal()}</texto></linea>
+			#end
+			#if (${pago.getDatosRespuestaPagoTarjeta().getPAN()})
+				<linea line-size="4"><texto size="55" align="left">Pas: ${pago.getDatosRespuestaPagoTarjeta().getPAN()}</texto></linea>
+			#end
+			<!--#if (${pago.getDatosRespuestaPagoTarjeta().getMarcaTarjeta()})
+			   <linea line-size="4"><texto size="55" align="left">         ${pago.getDatosRespuestaPagoTarjeta().getMarcaTarjeta()}</texto></linea>
+			#end -->
+            #if (${pago.getDatosRespuestaPagoTarjeta().getTitular()})
+				<linea line-size="4"><texto size="55" align="left">Titular: ${pago.getDatosRespuestaPagoTarjeta().getTitular()}</texto></linea>			
+			#end
+			#if (${pago.getDatosRespuestaPagoTarjeta().getNumOperacion()})
+				<linea line-size="4"><texto size="55" align="left">Number Op.: ${pago.getDatosRespuestaPagoTarjeta().getNumOperacion()}</texto></linea>
+			#end
+			#if (${pago.getDatosRespuestaPagoTarjeta().getCodAutorizacion()})
+				<linea line-size="4"><texto size="55" align="left">Aut.: ${pago.getDatosRespuestaPagoTarjeta().getCodAutorizacion()}</texto></linea>			
+			#end
+			#if (${pago.getDatosRespuestaPagoTarjeta().getNumTransaccion()})
+				<linea line-size="4"><texto size="55" align="left">N.Trans: ${pago.getDatosRespuestaPagoTarjeta().getNumTransaccion()}</texto></linea>			
+			#end
+			#if (${pago.getDatosRespuestaPagoTarjeta().getAID()})
+				<linea line-size="4"><texto size="55" align="left">Aplication: ${pago.getDatosRespuestaPagoTarjeta().getAID()}</texto></linea>
+			#end
+			<linea> <texto> </texto> </linea>			
+			
+			<!-- aqui falta todo lo que tiene que ver con dcc -->
+			#if (${pago.getDatosRespuestaPagoTarjeta().isDCC()})
+				<linea> <texto> </texto> </linea>
+				<linea><texto size="40" align="left" fontsize="4">Transactiebedrag : ${pago.getDatosRespuestaPagoTarjeta().getImporteDivisa()} ${pago.getDatosRespuestaPagoTarjeta().getCodigoDivisa()}</texto></linea> 
+				<linea><texto size="40" align="left" fontsize="4">Munteenheid van de transactie: ${pago.getDatosRespuestaPagoTarjeta().getCodigoDivisa()}</texto></linea>
+				<linea><texto size="40" align="left" fontsize="4">Tipo cambio actual: 1 ${pago.getDatosRespuestaPagoTarjeta().getMoneda()} = ${pago.getDatosRespuestaPagoTarjeta().getExchangeRate()} ${pago.getDatosRespuestaPagoTarjeta().getCodigoDivisa()} </texto></linea>				
+				<linea><texto size="40" align="left" fontsize="4">Incremento de precio: ${pago.getDatosRespuestaPagoTarjeta().getComision()}%</texto></linea>
+				<linea><texto size="40" align="left" fontsize="4">${pago.getDatosRespuestaPagoTarjeta().getMarkUp()}</texto></linea>
+				<linea><texto size="40" align="center" fontsize="4"></texto></linea>
+                <linea><texto size="40" align="center" fontsize="4">Er zijn me diverse valuta-opties</texto></linea>
+				<linea><texto size="40" align="center" fontsize="4">aangeboden en ik heb ervoor gekozen</texto></linea>
+				<linea><texto size="40" align="center" fontsize="4">om DCC te accepteren en in ${pago.getDatosRespuestaPagoTarjeta().getCodigoDivisa()} te</texto></linea> 
+				<linea><texto size="40" align="center" fontsize="4">betalen tegen de door Adyen N.V.</texto></linea> 
+				<linea><texto size="40" align="center" fontsize="4">aangeboden wisselkoers. Bedankt</texto></linea>
+				<linea><texto size="40" align="center" fontsize="4"></texto></linea>
+				<linea><texto size="40" align="center" fontsize="4"></texto></linea>
+			#end
+			
+			#if (${pago.getDatosRespuestaPagoTarjeta().getpedirFirma()})
+				<linea> <texto>Handtekening verplicht</texto> </linea>
+				<linea >
+					<texto size="40" align="center">------------------------------</texto> 
+				</linea>
+				<linea><texto size="40" align="center">|                            |</texto></linea>
+				<linea><texto size="40" align="center">|                            |</texto></linea>
+				<linea><texto size="40" align="center">|                            |</texto></linea>
+				<linea><texto size="40" align="center">|                            |</texto></linea>
+				<linea><texto size="40" align="center">|                            |</texto></linea>
+				<linea><texto size="40" align="center">|                            |</texto></linea>
+				<linea><texto size="40" align="center">|                            |</texto></linea>
+				<linea><texto size="40" align="center">|                            |</texto></linea>
+				<linea>
+					<texto size="40" align="center">------------------------------</texto> 
+				</linea>				
+			#end
+			
+			
+			
+			
+		#end 
+		<!--Fin boleta completa-->
+	#end
+##end     		

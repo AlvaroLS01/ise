@@ -1,0 +1,89 @@
+    #set ($esPagoTRTA = false)	
+	#foreach ($pago in $ticket.getPagos())       
+		#if(${pago.isPagoTarjetaRegalo()})
+			#set ($esPagoTRTA = true)
+		#end
+	#end
+
+	#if($ticket.getCabecera().getCodTipoDocumento() == "NC" )
+		#if(${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()} || ${ticket.isDevolucionTarjetaRegalo()} || ${esPagoTRTA})
+			<!-- DEVOLUCION DONDE INTERVIENE TARJETA REGALO/ABONO -->
+			<linea line-size="4"> <texto align="center" style="1">Obrigado pela sua visita. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea><texto></texto></linea>
+			<linea line-size="4"> <texto align="center" style="1">***Cartão Oferta/Pagamento***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">O Cartão é válido por três anos a contar da data do seu carregamento. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">O Cartão só é válido para a compra de artigos à venda nos pontos de venda da BIMBA Y LOLA presentes no território português (excepto El Corte Inglés e loja online www.bimbaylola.com) até esgotar o saldo do Cartão. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">O referido saldo não será reembolsável, nem pode ser trocado por dinheiro em nenhuma circunstância. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">O Cartão não será substituído em caso de roubo, perda, extravio ou danificação. Os produtos adquiridos com o Cartão estão sujeitos às políticas de trocas de devoluções da BIMBA Y LOLA. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Deste modo, será aceite a devolução do Cartão Oferta não usado num prazo máximo de 30 dias, desde que o protetor do codigo de segurança esteja intacto, respeitando as condições de devolução estabelecidas  </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para qualquer troca ou devolução de artigos pagos com o Cartão, é imprescindível a sua conservação e apresentação no momento da referida operação.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Por favor, verifique se o saldo do seu Cartão é o que consta no talão anexado ao mesmo. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">A aquisição e utilização do Cartão implica a aceitação das condições para a utilização do mesmo e que estão disponíveis em www.bimbaylola.com. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Esta garantia é adicional e não afecta os direitos do consumidor.</texto> </linea>
+
+			
+		   
+		#else
+           <!-- DEVOLUCION NORMAL -->
+			<linea line-size="4"> <texto align="center" style="1">Obrigado pela sua visita. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+		#end
+	#else
+	    <!-- NO ES UNA DEVOLUCIÓN (se ha omitido una línea que ponía ticket regalo) --> 
+		#if($ticket.getCabecera().getCodTipoDocumento() == "TR")
+			#if(${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()})
+			<linea line-size="4"> <texto align="center" style="1">Obrigado pela sua visita. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea><texto></texto></linea>
+			<linea line-size="4"> <texto align="center" style="1">***Cartão Oferta/Pagamento***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">O Cartão é válido por três anos a contar da data do seu carregamento. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">O Cartão só é válido para a compra de artigos à venda nos pontos de venda da BIMBA Y LOLA presentes no território português (excepto El Corte Inglés e loja online www.bimbaylola.com) até esgotar o saldo do Cartão. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">O referido saldo não será reembolsável, nem pode ser trocado por dinheiro em nenhuma circunstância. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">O Cartão não será substituído em caso de roubo, perda, extravio ou danificação. Os produtos adquiridos com o Cartão estão sujeitos às políticas de trocas de devoluções da BIMBA Y LOLA. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Deste modo, será aceite a devolução do Cartão Oferta não usado num prazo máximo de 30 dias, desde que o protetor do codigo de segurança esteja intacto, respeitando as condições de devolução estabelecidas  </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para qualquer troca ou devolução de artigos pagos com o Cartão, é imprescindível a sua conservação e apresentação no momento da referida operação.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Por favor, verifique se o saldo do seu Cartão é o que consta no talão anexado ao mesmo. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">A aquisição e utilização do Cartão implica a aceitação das condições para a utilização do mesmo e que estão disponíveis em www.bimbaylola.com. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Esta garantia é adicional e não afecta os direitos do consumidor.</texto> </linea>
+
+			#elseif(${ticket.isDevolucionTarjetaRegalo()}) 
+			    <!-- DEVOLUCION DE TARJETA REGALO  -->
+			 <linea line-size="4"> <texto align="center" style="1">Obrigado pela sua visita. </texto> </linea>
+			 <linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			 <linea><texto></texto></linea>
+			 <linea line-size="4"> <texto align="center" style="1">***Cartão Oferta/Pagamento***</texto> </linea>
+			 <linea line-size="4"> <texto align="center" style="1">O Cartão é válido por três anos a contar da data do seu carregamento. </texto> </linea>
+			 <linea line-size="4"> <texto align="center" style="1">O Cartão só é válido para a compra de artigos à venda nos pontos de venda da BIMBA Y LOLA presentes no território português (excepto El Corte Inglés e loja online www.bimbaylola.com) até esgotar o saldo do Cartão. </texto> </linea>
+			 <linea line-size="4"> <texto align="center" style="1">O referido saldo não será reembolsável, nem pode ser trocado por dinheiro em nenhuma circunstância. </texto> </linea>
+			 <linea line-size="4"> <texto align="center" style="1">O Cartão não será substituído em caso de roubo, perda, extravio ou danificação. Os produtos adquiridos com o Cartão estão sujeitos às políticas de trocas de devoluções da BIMBA Y LOLA. </texto> </linea>
+			 <linea line-size="4"> <texto align="center" style="1">Deste modo, será aceite a devolução do Cartão Oferta não usado num prazo máximo de 30 dias, desde que o protetor do codigo de segurança esteja intacto, respeitando as condições de devolução estabelecidas  </texto> </linea>
+			 <linea line-size="4"> <texto align="center" style="1">Para qualquer troca ou devolução de artigos pagos com o Cartão, é imprescindível a sua conservação e apresentação no momento da referida operação.</texto> </linea>
+			 <linea line-size="4"> <texto align="center" style="1">Por favor, verifique se o saldo do seu Cartão é o que consta no talão anexado ao mesmo. </texto> </linea>
+			 <linea line-size="4"> <texto align="center" style="1">A aquisição e utilização do Cartão implica a aceitação das condições para a utilização do mesmo e que estão disponíveis em www.bimbaylola.com. </texto> </linea>
+			 <linea line-size="4"> <texto align="center" style="1">Esta garantia é adicional e não afecta os direitos do consumidor.</texto> </linea>
+
+		    #end
+			
+		<!-- ESTO ES UNA VENTA -->
+		#elseif (${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()} or ${activacionTR} or ${esPagoTRTA})
+			<linea line-size="4"> <texto align="center" style="1">Obrigado pela sua visita. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea><texto></texto></linea>
+			<linea line-size="4"> <texto align="center" style="1">***Cartão Oferta/Pagamento***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">O Cartão é válido por três anos a contar da data do seu carregamento. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">O Cartão só é válido para a compra de artigos à venda nos pontos de venda da BIMBA Y LOLA presentes no território português (excepto El Corte Inglés e loja online www.bimbaylola.com) até esgotar o saldo do Cartão. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">O referido saldo não será reembolsável, nem pode ser trocado por dinheiro em nenhuma circunstância. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">O Cartão não será substituído em caso de roubo, perda, extravio ou danificação. Os produtos adquiridos com o Cartão estão sujeitos às políticas de trocas de devoluções da BIMBA Y LOLA. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Deste modo, será aceite a devolução do Cartão Oferta não usado num prazo máximo de 30 dias, desde que o protetor do codigo de segurança esteja intacto, respeitando as condições de devolução estabelecidas  </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para qualquer troca ou devolução de artigos pagos com o Cartão, é imprescindível a sua conservação e apresentação no momento da referida operação.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Por favor, verifique se o saldo do seu Cartão é o que consta no talão anexado ao mesmo. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">A aquisição e utilização do Cartão implica a aceitação das condições para a utilização do mesmo e que estão disponíveis em www.bimbaylola.com. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Esta garantia é adicional e não afecta os direitos do consumidor.</texto> </linea>
+
+		#else
+		    <!-- VENTA -->
+			<linea line-size="4"> <texto align="center" style="1">Obrigado pela sua visita. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+		#end
+	#end

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuracion fecha="10/02/2014"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<BaseDatos> 
+		<URL>jdbc:mysql://vm-desarrollo1.tier.es:3306/czzpos_byl</URL> 
+		<Driver>com.mysql.jdbc.Driver</Driver> 
+		<Usuario>czzpos_byl</Usuario> 
+		<Password>fuego</Password> 
+	</BaseDatos> 
+
+	<!-- <BaseDatos> -->
+	<!-- <URL>jdbc:mysql://localhost:3306/czzpos_byl_s12</URL> -->
+	<!-- <Driver>com.mysql.jdbc.Driver</Driver> -->
+	<!-- <Usuario>root</Usuario> -->
+	<!-- <Password>fuego</Password> -->
+	<!-- </BaseDatos> -->
+
+	<!--<BaseDatos> <URL>jdbc:mysql://vm-desarrollo1.tier.es:3306/czzpos_byl_alemania</URL> 
+		<Driver>com.mysql.jdbc.Driver</Driver> <Usuario>byl_alemania</Usuario> <Password>fuego</Password> 
+		</BaseDatos> -->
+
+	<!--<BaseDatos> <URL>jdbc:mysql://localhost:3306/czzpos_byl_n26_pre</URL> 
+		<Driver>com.mysql.jdbc.Driver</Driver> <Usuario>root</Usuario> <Password>fuego</Password> 
+		</BaseDatos> -->
+
+	<!--<BaseDatos> <URL>jdbc:mysql://192.168.101.245:3306/czz_byl</URL> <Driver>com.mysql.jdbc.Driver</Driver> 
+		<Usuario>czz_byl</Usuario> <Password>czz_byl</Password> </BaseDatos> -->
+
+
+	<!--<BaseDatos> <Driver>net.sourceforge.jtds.jdbc.Driver</Driver> <URL>jdbc:jtds:sqlserver://vm-dbserver.tier1.es:1433/czz_bimbaylola</URL> 
+ 		<Usuario>czz_bimbaylola</Usuario> <Password>fuego</Password> </BaseDatos>-->
+
+	<!-- <BaseDatos> <Driver>net.sourceforge.jtds.jdbc.Driver</Driver> <URL>jdbc:jtds:sqlserver://10.20.107.70:1433/czz_bimbaylola</URL> 
+		<Usuario>czz_bimbaylola</Usuario> <Password>fuego</Password> </BaseDatos> -->
+
+	<!--<BaseDatos> <Driver>oracle.jdbc.OracleDriver</Driver> <URL>jdbc:oracle:thin:@vm-orasoft.tier1.es:1521:PRODUCTO</URL> 
+		<Usuario>CMZ_V4_2</Usuario> <Password>CMZ_V4_2</Password> </BaseDatos> -->
+
+
+	<Localizacion>
+		<pais>ES</pais>
+		<idioma>es</idioma>
+	</Localizacion>
+	<!-- Eliminar tag para eliminar modo desarrollo -->
+
+	<Desarrollo>
+		<Usuario>administrador</Usuario>
+		<Password>cmz</Password>
+	</Desarrollo>
+
+	<Interfaz>
+		<Ancho>1080</Ancho>
+		<Alto>720</Alto>
+		<PantallaCompleta>false</PantallaCompleta>
+		<EfectoFondoVentanaModales>true</EfectoFondoVentanaModales>
+		<MostrarTecladoAlfanumerico>false</MostrarTecladoAlfanumerico>
+		<OcultarConfiguracion>
+			<Opcion>btRecargaMovil</Opcion>
+		</OcultarConfiguracion>
+	</Interfaz>
+	<login>BIENVENIDA</login>
+	<Skin>bimbaylola</Skin>
+	<!-- <AccionInicio>210</AccionInicio> -->
+
+	<InStoreEngine>
+		<RestUrl></RestUrl>
+		<SegundosPeticionNotificaciones></SegundosPeticionNotificaciones>
+	</InStoreEngine>
+	<!-- <SegundosInactividad>10</SegundosInactividad> -->
+	<!-- <ImagenesArticulos> <RutaImagenes></RutaImagenes> <ImagenDefecto></ImagenDefecto> 
+		</ImagenesArticulos> -->
+
+	<Aplicacion>JPOS</Aplicacion>
+<!-- 	<Menu>POS PROFESIONAL BYL</Menu> -->
+	<Menu>POS_BYL</Menu>
+
+	<SystemProperties>
+		<!-- <prism.verbose>true</prism.verbose> -->
+		<!-- <prism.order>j2d</prism.order> -->
+	</SystemProperties>
+	<!-- <KeyCodes> <Tablas> <Accion>E</Accion> <AccionGeneral>CTRL+E</AccionGeneral> 
+		<UltimoGeneral>CTRL+SHIFT+RIGHT</UltimoGeneral> <PrimeroGeneral>CTRL+SHIFT+LEFT</PrimeroGeneral> 
+		<SiguienteGeneral>CTRL+K</SiguienteGeneral> <AnteriorGeneral>CTRL+L</AnteriorGeneral> 
+		</Tablas> </KeyCodes> -->
+
+	<!-- Esta etiqueta es un campo opcional, en el cual se especifica el id 
+		de la acción par acceder a la pantalla de fidelizado, en el caso de que se 
+		haya cambiado el id que trae la misma acción por defecto -->
+	<!--<AccionFidelizado>75676</AccionFidelizado> -->
+
+</configuracion>

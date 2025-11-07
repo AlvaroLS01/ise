@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    ComerZZia 3.0
+
+    Copyright (c) 2008-2015 Comerzzia, S.L.  All Rights Reserved.
+
+    THIS WORK IS  SUBJECT  TO  SPAIN  AND  INTERNATIONAL  COPYRIGHT  LAWS  AND
+    TREATIES.   NO  PART  OF  THIS  WORK MAY BE  USED,  PRACTICED,  PERFORMED
+    COPIED, DISTRIBUTED, REVISED, MODIFIED, TRANSLATED,  ABRIDGED, CONDENSED,
+    EXPANDED,  COLLECTED,  COMPILED,  LINKED,  RECAST, TRANSFORMED OR ADAPTED
+    WITHOUT THE PRIOR WRITTEN CONSENT OF COMERZZIA, S.L. ANY USE OR EXPLOITATION
+    OF THIS WORK WITHOUT AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO
+    CRIMINAL AND CIVIL LIABILITY.
+
+    CONSULT THE END USER LICENSE AGREEMENT FOR INFORMATION ON ADDITIONAL
+    RESTRICTIONS.
+
+-->
+<Panel>
+	<LineaBotones> 
+        <Boton>
+			<texto>ANOTAR PAGO</texto>
+            <clave>ABRIR PAGOS</clave>
+            <tipo>OPERACION</tipo>
+			<teclaAccesoRapido>F2</teclaAccesoRapido>
+			<rutaImagen>iconos/anotarpagos.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>  
+        <Boton>
+			<texto>COMPLETAR VENTA</texto>
+            <clave>vender</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F3</teclaAccesoRapido>
+			<rutaImagen>iconos/completarventa.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>
+        <Boton>
+			<texto>IMPRIMIR</texto>
+            <clave>imprimirResumen</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F4</teclaAccesoRapido>
+			<rutaImagen>iconos/ticket_gestion.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>  
+	</LineaBotones>
+	<LineaBotones>
+        <Boton>
+			<texto>VER PAGOS</texto>
+            <clave>mostrarPagos</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F5</teclaAccesoRapido>
+			<rutaImagen>iconos/verpagos.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>  
+       <!-- <Boton>
+            <texto>DATOS CLIENTE</texto>
+            <clave>cambiarDatosCliente</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F6</teclaAccesoRapido>
+			<rutaImagen>iconos/datos.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>-->
+        <Boton>
+            <texto>CLIENTES</texto>
+            <clave>fidelizacion</clave>
+            <tipo>METODO</tipo>
+		    <teclaAccesoRapido>F8</teclaAccesoRapido>
+		    <rutaImagen>iconos/cliente.png</rutaImagen>
+		    <visible>S</visible>        	
+        </Boton>
+        <Boton>
+			<texto>BÚSQUEDA</texto>
+            <clave>abrirBusquedaArticulos</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F9</teclaAccesoRapido>
+			<rutaImagen>iconos/buscar-articulo.png</rutaImagen>
+			<visible>S</visible>
+        </Boton>
+	</LineaBotones>
+</Panel>
+    

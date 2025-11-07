@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" minHeight="240.0" prefHeight="457.0" prefWidth="657.0" styleClass="mainFxmlClass, pantalla-detalle" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.bimbaylola.pos.dispositivo.impresora.spark130f.gui.ConfiguracionSpark130FController">
+  <children>
+    <HBox id="HBox" alignment="CENTER" prefHeight="240.0" prefWidth="520.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane id="AnchorPane" minHeight="240.0" prefHeight="240.0" prefWidth="520.0" HBox.hgrow="ALWAYS">
+          <children>
+            <VBox id="VBox" alignment="CENTER" minHeight="240.0" prefHeight="240.0" prefWidth="520.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <AnchorPane prefHeight="30.0" prefWidth="520.0" styleClass="titulo-ventana" VBox.vgrow="NEVER">
+                  <children>
+                    <Label alignment="CENTER" prefHeight="30.0" prefWidth="520.0" text="%Configuración SPARK130F" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  </children>
+                  <VBox.margin>
+                    <Insets fx:id="x1" />
+                  </VBox.margin>
+                </AnchorPane>
+                <VBox prefHeight="357.0" prefWidth="657.0">
+                  <children>
+                    <FlowPane hgap="5.0" prefHeight="60.0" prefWidth="520.0">
+                      <children>
+                        <Label alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="110.0" text="%IP Impresora :">
+                          <FlowPane.margin>
+                            <Insets left="20.0" fx:id="x2" />
+                          </FlowPane.margin>
+                        </Label>
+                        <TextField id="tfPuertoTCP" fx:id="tfIP" prefWidth="196.0" />
+                      </children>
+                    </FlowPane>
+                  </children>
+                </VBox>
+                <HBox id="HBox" alignment="CENTER" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="520.0" spacing="5.0">
+                  <children>
+                    <AnchorPane minHeight="56.0" prefHeight="60.0" prefWidth="361.0">
+                      <children>
+                        <TilePane alignment="CENTER_RIGHT" minHeight="35.0" prefHeight="60.0" prefWidth="326.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Button fx:id="btAceptar" mnemonicParsing="false" onAction="#accionAceptar" prefHeight="42.0" prefWidth="127.0" styleClass="btAceptar" text="%Aceptar" />
+                            <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#accionCancelar" prefHeight="42.0" prefWidth="127.0" styleClass="btCancelar" text="%Cancelar">
+                              <TilePane.margin>
+                                <Insets left="4.0" right="4.0" />
+                              </TilePane.margin>
+                            </Button>
+                          </children>
+                        </TilePane>
+                      </children>
+                    </AnchorPane>
+                  </children>
+                </HBox>
+              </children>
+            </VBox>
+          </children>
+          <HBox.margin>
+            <Insets fx:id="x1" />
+          </HBox.margin>
+        </AnchorPane>
+      </children>
+    </HBox>
+  </children>
+  <stylesheets>
+    <URL value="@permisos.css" />
+    <URL value="@../../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" minWidth="-1.0" prefHeight="550.0" prefWidth="550.0" styleClass="mainFxmlClass, pantalla-detalle" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.pos.core.gui.permisos.usuario.PermisosUsuarioController">
+  <children>
+    <HBox id="HBox" alignment="CENTER" minWidth="388.0" prefHeight="700.0" prefWidth="403.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane id="AnchorPane" minWidth="388.0" prefHeight="700.0" prefWidth="388.0" HBox.hgrow="ALWAYS">
+          <children>
+            <VBox id="VBox" alignment="CENTER" prefHeight="700.0" prefWidth="388.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <AnchorPane prefHeight="30.0" prefWidth="800.0" styleClass="titulo-ventana" VBox.vgrow="NEVER">
+                  <children>
+                    <Label alignment="CENTER" prefHeight="25.999908447265625" prefWidth="800.0" text="%Gestión de Permisos" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  </children>
+                </AnchorPane>
+                <HBox id="HBox" alignment="CENTER" minHeight="33.0" prefHeight="33.0" prefWidth="1000.0" spacing="5.0" VBox.vgrow="NEVER">
+                  <children>
+                    <AnchorPane prefHeight="30.0" prefWidth="980.0" HBox.hgrow="ALWAYS">
+                      <children>
+                        <Label fx:id="lbNombreAccion" alignment="CENTER" layoutX="74.0" layoutY="-1.0" prefHeight="30.0" prefWidth="383.0" styleClass="nombre-accion" text="NOMBRE DE ACCION" />
+                      </children>
+                      <HBox.margin>
+                        <Insets />
+                      </HBox.margin>
+                    </AnchorPane>
+                  </children>
+                  <padding>
+                    <Insets left="10.0" right="10.0" fx:id="x1" />
+                  </padding>
+                </HBox>
+                <HBox minHeight="189.0" minWidth="403.0" padding="$x1" prefHeight="414.0" prefWidth="480.0" spacing="5.0" VBox.vgrow="SOMETIMES">
+                  <children>
+                    <TilePane fx:id="tpAcciones" hgap="5.0" minWidth="369.0" orientation="VERTICAL" prefColumns="1" prefHeight="426.0" prefRows="10" prefTileWidth="300.0" prefWidth="466.0" vgap="5.0" HBox.hgrow="ALWAYS" />
+                  </children>
+                </HBox>
+                <HBox id="HBox" alignment="CENTER" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="800.0" spacing="5.0" VBox.vgrow="NEVER">
+                  <children>
+                    <AnchorPane prefHeight="60.0" prefWidth="123.0" HBox.hgrow="ALWAYS">
+                      <children>
+                        <AnchorPane layoutX="59.0" layoutY="0.0" minHeight="56.0" prefHeight="60.0" prefWidth="339.0" />
+                        <TilePane alignment="CENTER_RIGHT" minHeight="35.0" prefHeight="60.0" prefWidth="339.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.5" AnchorPane.rightAnchor="80.5" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Button fx:id="btAdministrar" mnemonicParsing="false" onAction="#accionAdministrar" prefHeight="42.0" prefWidth="163.0" styleClass="btAdministrar" text="%Administrar">
+                              <TilePane.margin>
+                                <Insets />
+                              </TilePane.margin>
+                            </Button>
+                            <Button fx:id="btAceptar" mnemonicParsing="false" onAction="#accionCancelar" prefHeight="42.0" prefWidth="110.0" styleClass="btAceptar" text="%Aceptar">
+                              <TilePane.margin>
+                                <Insets left="4.0" right="4.0" />
+                              </TilePane.margin>
+                            </Button>
+                          </children>
+                        </TilePane>
+                      </children>
+                    </AnchorPane>
+                  </children>
+                </HBox>
+              </children>
+            </VBox>
+          </children>
+          <HBox.margin>
+            <Insets />
+          </HBox.margin>
+        </AnchorPane>
+      </children>
+    </HBox>
+  </children>
+  <stylesheets>
+    <URL value="@../../../../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

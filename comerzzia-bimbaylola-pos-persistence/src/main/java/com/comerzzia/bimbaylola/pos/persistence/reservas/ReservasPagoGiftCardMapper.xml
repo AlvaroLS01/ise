@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.reservas.ReservasPagoGiftCardMapper" >
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.reservas.ReservasPagoGiftCardBean" >
+    <id column="UID_ACTIVIDAD" property="uidActividad" jdbcType="VARCHAR" />
+    <id column="ID_CLIE_ALBARAN" property="idClieAlbaran" jdbcType="BIGINT" />
+    <id column="LINEA" property="linea" jdbcType="INTEGER" />
+    <result column="NUMERO_TARJETA" property="numeroTarjeta" jdbcType="VARCHAR" />
+    <result column="SALDO" property="saldo" jdbcType="DECIMAL" />
+    <result column="SALDO_PROVISIONAL" property="saldoProvisional" jdbcType="DECIMAL" />
+    <result column="UID_TRANSACCION" property="uidTransaccion" jdbcType="VARCHAR" />
+    <result column="IMPORTE_PAGO" property="importePago" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    UID_ACTIVIDAD, ID_CLIE_ALBARAN, LINEA, NUMERO_TARJETA, SALDO, SALDO_PROVISIONAL, 
+    UID_TRANSACCION, IMPORTE_PAGO
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.reservas.ReservasPagoGiftCardExample" resultSetType="SCROLL_INSENSITIVE" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_clie_albaranes_giftcard_pag_tbl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.reservas.ReservasPagoGiftCardKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from x_clie_albaranes_giftcard_pag_tbl
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and ID_CLIE_ALBARAN = #{idClieAlbaran,jdbcType=BIGINT}
+      and LINEA = #{linea,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.reservas.ReservasPagoGiftCardKey" >
+    delete from x_clie_albaranes_giftcard_pag_tbl
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and ID_CLIE_ALBARAN = #{idClieAlbaran,jdbcType=BIGINT}
+      and LINEA = #{linea,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.reservas.ReservasPagoGiftCardExample" >
+    delete from x_clie_albaranes_giftcard_pag_tbl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.reservas.ReservasPagoGiftCardBean" >
+    insert into x_clie_albaranes_giftcard_pag_tbl (UID_ACTIVIDAD, ID_CLIE_ALBARAN, LINEA, 
+      NUMERO_TARJETA, SALDO, SALDO_PROVISIONAL, 
+      UID_TRANSACCION, IMPORTE_PAGO)
+    values (#{uidActividad,jdbcType=VARCHAR}, #{idClieAlbaran,jdbcType=BIGINT}, #{linea,jdbcType=INTEGER}, 
+      #{numeroTarjeta,jdbcType=VARCHAR}, #{saldo,jdbcType=DECIMAL}, #{saldoProvisional,jdbcType=DECIMAL}, 
+      #{uidTransaccion,jdbcType=VARCHAR}, #{importePago,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.reservas.ReservasPagoGiftCardBean" >
+    insert into x_clie_albaranes_giftcard_pag_tbl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uidActividad != null" >
+        UID_ACTIVIDAD,
+      </if>
+      <if test="idClieAlbaran != null" >
+        ID_CLIE_ALBARAN,
+      </if>
+      <if test="linea != null" >
+        LINEA,
+      </if>
+      <if test="numeroTarjeta != null" >
+        NUMERO_TARJETA,
+      </if>
+      <if test="saldo != null" >
+        SALDO,
+      </if>
+      <if test="saldoProvisional != null" >
+        SALDO_PROVISIONAL,
+      </if>
+      <if test="uidTransaccion != null" >
+        UID_TRANSACCION,
+      </if>
+      <if test="importePago != null" >
+        IMPORTE_PAGO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uidActividad != null" >
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="idClieAlbaran != null" >
+        #{idClieAlbaran,jdbcType=BIGINT},
+      </if>
+      <if test="linea != null" >
+        #{linea,jdbcType=INTEGER},
+      </if>
+      <if test="numeroTarjeta != null" >
+        #{numeroTarjeta,jdbcType=VARCHAR},
+      </if>
+      <if test="saldo != null" >
+        #{saldo,jdbcType=DECIMAL},
+      </if>
+      <if test="saldoProvisional != null" >
+        #{saldoProvisional,jdbcType=DECIMAL},
+      </if>
+      <if test="uidTransaccion != null" >
+        #{uidTransaccion,jdbcType=VARCHAR},
+      </if>
+      <if test="importePago != null" >
+        #{importePago,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.reservas.ReservasPagoGiftCardExample" resultType="java.lang.Integer" >
+    select count(*) from x_clie_albaranes_giftcard_pag_tbl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update x_clie_albaranes_giftcard_pag_tbl
+    <set >
+      <if test="record.uidActividad != null" >
+        UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idClieAlbaran != null" >
+        ID_CLIE_ALBARAN = #{record.idClieAlbaran,jdbcType=BIGINT},
+      </if>
+      <if test="record.linea != null" >
+        LINEA = #{record.linea,jdbcType=INTEGER},
+      </if>
+      <if test="record.numeroTarjeta != null" >
+        NUMERO_TARJETA = #{record.numeroTarjeta,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saldo != null" >
+        SALDO = #{record.saldo,jdbcType=DECIMAL},
+      </if>
+      <if test="record.saldoProvisional != null" >
+        SALDO_PROVISIONAL = #{record.saldoProvisional,jdbcType=DECIMAL},
+      </if>
+      <if test="record.uidTransaccion != null" >
+        UID_TRANSACCION = #{record.uidTransaccion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.importePago != null" >
+        IMPORTE_PAGO = #{record.importePago,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update x_clie_albaranes_giftcard_pag_tbl
+    set UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      ID_CLIE_ALBARAN = #{record.idClieAlbaran,jdbcType=BIGINT},
+      LINEA = #{record.linea,jdbcType=INTEGER},
+      NUMERO_TARJETA = #{record.numeroTarjeta,jdbcType=VARCHAR},
+      SALDO = #{record.saldo,jdbcType=DECIMAL},
+      SALDO_PROVISIONAL = #{record.saldoProvisional,jdbcType=DECIMAL},
+      UID_TRANSACCION = #{record.uidTransaccion,jdbcType=VARCHAR},
+      IMPORTE_PAGO = #{record.importePago,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.reservas.ReservasPagoGiftCardBean" >
+    update x_clie_albaranes_giftcard_pag_tbl
+    <set >
+      <if test="numeroTarjeta != null" >
+        NUMERO_TARJETA = #{numeroTarjeta,jdbcType=VARCHAR},
+      </if>
+      <if test="saldo != null" >
+        SALDO = #{saldo,jdbcType=DECIMAL},
+      </if>
+      <if test="saldoProvisional != null" >
+        SALDO_PROVISIONAL = #{saldoProvisional,jdbcType=DECIMAL},
+      </if>
+      <if test="uidTransaccion != null" >
+        UID_TRANSACCION = #{uidTransaccion,jdbcType=VARCHAR},
+      </if>
+      <if test="importePago != null" >
+        IMPORTE_PAGO = #{importePago,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and ID_CLIE_ALBARAN = #{idClieAlbaran,jdbcType=BIGINT}
+      and LINEA = #{linea,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.reservas.ReservasPagoGiftCardBean" >
+    update x_clie_albaranes_giftcard_pag_tbl
+    set NUMERO_TARJETA = #{numeroTarjeta,jdbcType=VARCHAR},
+      SALDO = #{saldo,jdbcType=DECIMAL},
+      SALDO_PROVISIONAL = #{saldoProvisional,jdbcType=DECIMAL},
+      UID_TRANSACCION = #{uidTransaccion,jdbcType=VARCHAR},
+      IMPORTE_PAGO = #{importePago,jdbcType=DECIMAL}
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and ID_CLIE_ALBARAN = #{idClieAlbaran,jdbcType=BIGINT}
+      and LINEA = #{linea,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.reservas.ReservasPagoGiftCardExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_clie_albaranes_giftcard_pag_tbl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,61 @@
+/**
+ * ComerZZia 3.0
+ *
+ * Copyright (c) 2008-2015 Comerzzia, S.L.  All Rights Reserved.
+ *
+ * THIS WORK IS  SUBJECT  TO  SPAIN  AND  INTERNATIONAL  COPYRIGHT  LAWS  AND
+ * TREATIES.   NO  PART  OF  THIS  WORK MAY BE  USED,  PRACTICED,  PERFORMED
+ * COPIED, DISTRIBUTED, REVISED, MODIFIED, TRANSLATED,  ABRIDGED, CONDENSED,
+ * EXPANDED,  COLLECTED,  COMPILED,  LINKED,  RECAST, TRANSFORMED OR ADAPTED
+ * WITHOUT THE PRIOR WRITTEN CONSENT OF COMERZZIA, S.L. ANY USE OR EXPLOITATION
+ * OF THIS WORK WITHOUT AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO
+ * CRIMINAL AND CIVIL LIABILITY.
+ *
+ * CONSULT THE END USER LICENSE AGREEMENT FOR INFORMATION ON ADDITIONAL
+ * RESTRICTIONS.
+ */
+NotificationsPopup, #NotificationsPopup{
+	-fx-background-image:url("../../../../gui/imagenes/notificaciones/top.png");
+	-fx-background-position: left top;
+	-fx-background-repeat: no-repeat;	
+	-fx-font-family: Dosis;
+	-fx-font-size: 14px;
+}
+vBox, #vBox {
+	-fx-background-color: transparent;
+}
+
+#scrollPane{
+	-fx-background-color: transparent;
+	-fx-border-width: 0 2 2 2;
+	-fx-border-color: #434343;
+	-fx-padding: 0;
+}
+
+#container{
+	-fx-background-color: #fcfcf7;
+	-fx-padding: 0;
+}
+
+#btnClearAll{
+	-fx-background-color: transparent;
+    -fx-background-image: url("../../../../gui/imagenes/notificaciones/removeall.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 0px center;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+	-fx-font-weight: bold;
+    -fx-padding: 10 10 10 30;
+}
+
+
+#btnClose{
+	-fx-background-color: transparent;
+    -fx-background-image: url("../../../../gui/imagenes/notificaciones/close.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+	-fx-font-weight: bold;
+    -fx-padding: 10 10 10 30;
+}

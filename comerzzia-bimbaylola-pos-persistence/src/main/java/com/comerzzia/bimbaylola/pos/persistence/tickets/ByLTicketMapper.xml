@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicketMapper">
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicket">
+    <id column="uid_actividad" jdbcType="VARCHAR" property="uidActividad" />
+    <id column="uid_ticket" jdbcType="VARCHAR" property="uidTicket" />
+    <result column="codalm" jdbcType="VARCHAR" property="codalm" />
+    <result column="id_ticket" jdbcType="BIGINT" property="idTicket" />
+    <result column="fecha" jdbcType="TIMESTAMP" property="fecha" />
+    <result column="procesado" jdbcType="CHAR" property="procesado" />
+    <result column="fecha_proceso" jdbcType="TIMESTAMP" property="fechaProceso" />
+    <result column="mensaje_proceso" jdbcType="VARCHAR" property="mensajeProceso" />
+    <result column="codcaja" jdbcType="VARCHAR" property="codcaja" />
+    <result column="id_tipo_documento" jdbcType="BIGINT" property="idTipoDocumento" />
+    <result column="cod_ticket" jdbcType="VARCHAR" property="codTicket" />
+    <result column="firma" jdbcType="VARCHAR" property="firma" />
+    <result column="serie_ticket" jdbcType="VARCHAR" property="serieTicket" />
+    <result column="id_accion_estados" jdbcType="BIGINT" property="idAccionEstados" />
+    <result column="id_estado" jdbcType="INTEGER" property="idEstado" />
+  </resultMap>
+
+	<resultMap id="historicoResultMap" type="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicketBean">
+	   	<result column="uid_actividad" jdbcType="VARCHAR" property="uidActividad" />
+	   	<result column="uid_ticket" jdbcType="VARCHAR" property="uidTicket"/>
+	    <result column="id_ticket" jdbcType="VARCHAR" property="idTicket" />
+	   	<result column="fecha" jdbcType="TIMESTAMP" property="fecha" />
+	   	<result column="codcaja" jdbcType="VARCHAR" property="codcaja" />
+	   	<result column="destipodocumento" jdbcType="VARCHAR" property="desDoc"/>
+	   	<result column="id_tipo_documento" jdbcType="VARCHAR" property="idTipoDocumento" />
+	  	<result column="usuario" jdbcType="VARCHAR" property="vendedor" />
+	   	<result column="total" jdbcType="DECIMAL" property="total" />
+	   	<result column="desmedpag" jdbcType="VARCHAR" property="desMedPag" />
+	   	<result column="ticket" jdbcType="BLOB" property="ticket"/>
+	 </resultMap>
+    
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicket">
+    <result column="ticket" jdbcType="LONGVARBINARY" property="ticket" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    uid_actividad, uid_ticket, codalm, id_ticket, fecha, procesado, fecha_proceso, mensaje_proceso, 
+    codcaja, id_tipo_documento, cod_ticket, firma, serie_ticket, id_accion_estados, id_estado
+  </sql>
+  <sql id="Blob_Column_List">
+    ticket
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicketExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from d_tickets_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicketExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from d_tickets_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicketKey" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from d_tickets_tbl
+    where uid_actividad = #{uidActividad,jdbcType=VARCHAR}
+      and uid_ticket = #{uidTicket,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicketKey">
+    delete from d_tickets_tbl
+    where uid_actividad = #{uidActividad,jdbcType=VARCHAR}
+      and uid_ticket = #{uidTicket,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicketExample">
+    delete from d_tickets_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicket">
+    insert into d_tickets_tbl (uid_actividad, uid_ticket, codalm, 
+      id_ticket, fecha, procesado, 
+      fecha_proceso, mensaje_proceso, codcaja, 
+      id_tipo_documento, cod_ticket, firma, 
+      serie_ticket, id_accion_estados, id_estado, 
+      ticket)
+    values (#{uidActividad,jdbcType=VARCHAR}, #{uidTicket,jdbcType=VARCHAR}, #{codalm,jdbcType=VARCHAR}, 
+      #{idTicket,jdbcType=BIGINT}, #{fecha,jdbcType=TIMESTAMP}, #{procesado,jdbcType=CHAR}, 
+      #{fechaProceso,jdbcType=TIMESTAMP}, #{mensajeProceso,jdbcType=VARCHAR}, #{codcaja,jdbcType=VARCHAR}, 
+      #{idTipoDocumento,jdbcType=BIGINT}, #{codTicket,jdbcType=VARCHAR}, #{firma,jdbcType=VARCHAR}, 
+      #{serieTicket,jdbcType=VARCHAR}, #{idAccionEstados,jdbcType=BIGINT}, #{idEstado,jdbcType=INTEGER}, 
+      #{ticket,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicket">
+    insert into d_tickets_tbl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        uid_actividad,
+      </if>
+      <if test="uidTicket != null">
+        uid_ticket,
+      </if>
+      <if test="codalm != null">
+        codalm,
+      </if>
+      <if test="idTicket != null">
+        id_ticket,
+      </if>
+      <if test="fecha != null">
+        fecha,
+      </if>
+      <if test="procesado != null">
+        procesado,
+      </if>
+      <if test="fechaProceso != null">
+        fecha_proceso,
+      </if>
+      <if test="mensajeProceso != null">
+        mensaje_proceso,
+      </if>
+      <if test="codcaja != null">
+        codcaja,
+      </if>
+      <if test="idTipoDocumento != null">
+        id_tipo_documento,
+      </if>
+      <if test="codTicket != null">
+        cod_ticket,
+      </if>
+      <if test="firma != null">
+        firma,
+      </if>
+      <if test="serieTicket != null">
+        serie_ticket,
+      </if>
+      <if test="idAccionEstados != null">
+        id_accion_estados,
+      </if>
+      <if test="idEstado != null">
+        id_estado,
+      </if>
+      <if test="ticket != null">
+        ticket,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="uidTicket != null">
+        #{uidTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="codalm != null">
+        #{codalm,jdbcType=VARCHAR},
+      </if>
+      <if test="idTicket != null">
+        #{idTicket,jdbcType=BIGINT},
+      </if>
+      <if test="fecha != null">
+        #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procesado != null">
+        #{procesado,jdbcType=CHAR},
+      </if>
+      <if test="fechaProceso != null">
+        #{fechaProceso,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mensajeProceso != null">
+        #{mensajeProceso,jdbcType=VARCHAR},
+      </if>
+      <if test="codcaja != null">
+        #{codcaja,jdbcType=VARCHAR},
+      </if>
+      <if test="idTipoDocumento != null">
+        #{idTipoDocumento,jdbcType=BIGINT},
+      </if>
+      <if test="codTicket != null">
+        #{codTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="firma != null">
+        #{firma,jdbcType=VARCHAR},
+      </if>
+      <if test="serieTicket != null">
+        #{serieTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="idAccionEstados != null">
+        #{idAccionEstados,jdbcType=BIGINT},
+      </if>
+      <if test="idEstado != null">
+        #{idEstado,jdbcType=INTEGER},
+      </if>
+      <if test="ticket != null">
+        #{ticket,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicketExample" resultType="java.lang.Long">
+    select count(*) from d_tickets_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update d_tickets_tbl
+    <set>
+      <if test="record.uidActividad != null">
+        uid_actividad = #{record.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uidTicket != null">
+        uid_ticket = #{record.uidTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codalm != null">
+        codalm = #{record.codalm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idTicket != null">
+        id_ticket = #{record.idTicket,jdbcType=BIGINT},
+      </if>
+      <if test="record.fecha != null">
+        fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.procesado != null">
+        procesado = #{record.procesado,jdbcType=CHAR},
+      </if>
+      <if test="record.fechaProceso != null">
+        fecha_proceso = #{record.fechaProceso,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mensajeProceso != null">
+        mensaje_proceso = #{record.mensajeProceso,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codcaja != null">
+        codcaja = #{record.codcaja,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idTipoDocumento != null">
+        id_tipo_documento = #{record.idTipoDocumento,jdbcType=BIGINT},
+      </if>
+      <if test="record.codTicket != null">
+        cod_ticket = #{record.codTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firma != null">
+        firma = #{record.firma,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serieTicket != null">
+        serie_ticket = #{record.serieTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idAccionEstados != null">
+        id_accion_estados = #{record.idAccionEstados,jdbcType=BIGINT},
+      </if>
+      <if test="record.idEstado != null">
+        id_estado = #{record.idEstado,jdbcType=INTEGER},
+      </if>
+      <if test="record.ticket != null">
+        ticket = #{record.ticket,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update d_tickets_tbl
+    set uid_actividad = #{record.uidActividad,jdbcType=VARCHAR},
+      uid_ticket = #{record.uidTicket,jdbcType=VARCHAR},
+      codalm = #{record.codalm,jdbcType=VARCHAR},
+      id_ticket = #{record.idTicket,jdbcType=BIGINT},
+      fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      procesado = #{record.procesado,jdbcType=CHAR},
+      fecha_proceso = #{record.fechaProceso,jdbcType=TIMESTAMP},
+      mensaje_proceso = #{record.mensajeProceso,jdbcType=VARCHAR},
+      codcaja = #{record.codcaja,jdbcType=VARCHAR},
+      id_tipo_documento = #{record.idTipoDocumento,jdbcType=BIGINT},
+      cod_ticket = #{record.codTicket,jdbcType=VARCHAR},
+      firma = #{record.firma,jdbcType=VARCHAR},
+      serie_ticket = #{record.serieTicket,jdbcType=VARCHAR},
+      id_accion_estados = #{record.idAccionEstados,jdbcType=BIGINT},
+      id_estado = #{record.idEstado,jdbcType=INTEGER},
+      ticket = #{record.ticket,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update d_tickets_tbl
+    set uid_actividad = #{record.uidActividad,jdbcType=VARCHAR},
+      uid_ticket = #{record.uidTicket,jdbcType=VARCHAR},
+      codalm = #{record.codalm,jdbcType=VARCHAR},
+      id_ticket = #{record.idTicket,jdbcType=BIGINT},
+      fecha = #{record.fecha,jdbcType=TIMESTAMP},
+      procesado = #{record.procesado,jdbcType=CHAR},
+      fecha_proceso = #{record.fechaProceso,jdbcType=TIMESTAMP},
+      mensaje_proceso = #{record.mensajeProceso,jdbcType=VARCHAR},
+      codcaja = #{record.codcaja,jdbcType=VARCHAR},
+      id_tipo_documento = #{record.idTipoDocumento,jdbcType=BIGINT},
+      cod_ticket = #{record.codTicket,jdbcType=VARCHAR},
+      firma = #{record.firma,jdbcType=VARCHAR},
+      serie_ticket = #{record.serieTicket,jdbcType=VARCHAR},
+      id_accion_estados = #{record.idAccionEstados,jdbcType=BIGINT},
+      id_estado = #{record.idEstado,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicket">
+    update d_tickets_tbl
+    <set>
+      <if test="codalm != null">
+        codalm = #{codalm,jdbcType=VARCHAR},
+      </if>
+      <if test="idTicket != null">
+        id_ticket = #{idTicket,jdbcType=BIGINT},
+      </if>
+      <if test="fecha != null">
+        fecha = #{fecha,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procesado != null">
+        procesado = #{procesado,jdbcType=CHAR},
+      </if>
+      <if test="fechaProceso != null">
+        fecha_proceso = #{fechaProceso,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mensajeProceso != null">
+        mensaje_proceso = #{mensajeProceso,jdbcType=VARCHAR},
+      </if>
+      <if test="codcaja != null">
+        codcaja = #{codcaja,jdbcType=VARCHAR},
+      </if>
+      <if test="idTipoDocumento != null">
+        id_tipo_documento = #{idTipoDocumento,jdbcType=BIGINT},
+      </if>
+      <if test="codTicket != null">
+        cod_ticket = #{codTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="firma != null">
+        firma = #{firma,jdbcType=VARCHAR},
+      </if>
+      <if test="serieTicket != null">
+        serie_ticket = #{serieTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="idAccionEstados != null">
+        id_accion_estados = #{idAccionEstados,jdbcType=BIGINT},
+      </if>
+      <if test="idEstado != null">
+        id_estado = #{idEstado,jdbcType=INTEGER},
+      </if>
+      <if test="ticket != null">
+        ticket = #{ticket,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where uid_actividad = #{uidActividad,jdbcType=VARCHAR}
+      and uid_ticket = #{uidTicket,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicket">
+    update d_tickets_tbl
+    set codalm = #{codalm,jdbcType=VARCHAR},
+      id_ticket = #{idTicket,jdbcType=BIGINT},
+      fecha = #{fecha,jdbcType=TIMESTAMP},
+      procesado = #{procesado,jdbcType=CHAR},
+      fecha_proceso = #{fechaProceso,jdbcType=TIMESTAMP},
+      mensaje_proceso = #{mensajeProceso,jdbcType=VARCHAR},
+      codcaja = #{codcaja,jdbcType=VARCHAR},
+      id_tipo_documento = #{idTipoDocumento,jdbcType=BIGINT},
+      cod_ticket = #{codTicket,jdbcType=VARCHAR},
+      firma = #{firma,jdbcType=VARCHAR},
+      serie_ticket = #{serieTicket,jdbcType=VARCHAR},
+      id_accion_estados = #{idAccionEstados,jdbcType=BIGINT},
+      id_estado = #{idEstado,jdbcType=INTEGER},
+      ticket = #{ticket,jdbcType=LONGVARBINARY}
+    where uid_actividad = #{uidActividad,jdbcType=VARCHAR}
+      and uid_ticket = #{uidTicket,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicket">
+    update d_tickets_tbl
+    set codalm = #{codalm,jdbcType=VARCHAR},
+      id_ticket = #{idTicket,jdbcType=BIGINT},
+      fecha = #{fecha,jdbcType=TIMESTAMP},
+      procesado = #{procesado,jdbcType=CHAR},
+      fecha_proceso = #{fechaProceso,jdbcType=TIMESTAMP},
+      mensaje_proceso = #{mensajeProceso,jdbcType=VARCHAR},
+      codcaja = #{codcaja,jdbcType=VARCHAR},
+      id_tipo_documento = #{idTipoDocumento,jdbcType=BIGINT},
+      cod_ticket = #{codTicket,jdbcType=VARCHAR},
+      firma = #{firma,jdbcType=VARCHAR},
+      serie_ticket = #{serieTicket,jdbcType=VARCHAR},
+      id_accion_estados = #{idAccionEstados,jdbcType=BIGINT},
+      id_estado = #{idEstado,jdbcType=INTEGER}
+    where uid_actividad = #{uidActividad,jdbcType=VARCHAR}
+      and uid_ticket = #{uidTicket,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleWithBLOBsWithRowbounds" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicketExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from d_tickets_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleWithRowbounds" parameterType="com.comerzzia.bimbaylola.pos.persistence.tickets.ByLTicketExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from d_tickets_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectForHistoricalSearch" parameterType="com.comerzzia.pos.persistence.tickets.TicketExample" resultMap="historicoResultMap">
+	select case when count(distinct caj.codmedpag) > 1 then 'MULTIPAGO' else min(med.DESMEDPAG) end AS DESMEDPAG, sum(cargo - abono) as total, tick.uid_actividad, 
+		tick.uid_ticket, tick.fecha, doc.destipodocumento, tick.id_tipo_documento ,codcaja, id_ticket, usuario  
+			from d_tickets_tbl tick left join 
+				 d_caja_det_tbl caj on tick.uid_actividad=caj.uid_actividad and tick.id_tipo_documento=caj.id_tipo_documento and tick.uid_ticket=caj.id_documento left join 
+				 d_tipos_documentos_tbl doc on tick.uid_actividad = doc.uid_actividad and tick.id_tipo_documento = doc.id_tipo_documento left join 
+		 		 d_medios_pago_tbl med on tick.uid_actividad = med.uid_actividad and caj.codmedpag = med.codmedpag 
+	<if test="_parameter != null">
+		<include refid="Example_Where_Clause" />
+	</if>
+	group by tick.uid_actividad, tick.uid_ticket, tick.fecha
+	<if test="orderByClause != null">
+		order by ${orderByClause}
+	</if>
+</select>
+</mapper>

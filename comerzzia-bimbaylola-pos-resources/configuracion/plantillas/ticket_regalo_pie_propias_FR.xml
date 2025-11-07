@@ -1,0 +1,23 @@
+		#if(!${tarjetaRegalo})
+			<linea line-size="4"> <texto align="center" style="1">Merci de votre visite. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conservez votre ticket pour tout échange ou remboursement. Délai maximum 30 jours calendaires à compter de la date d'achat.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Keep your receipt for any exchange or return. Maximum term 30 calendar days from the date of purchase.</texto> </linea>
+
+		#else
+			<linea line-size="4"> <texto align="center" style="1">Merci de votre visite. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conservez votre ticket pour tout échange ou remboursement. Délai maximum 30 jours calendaires à compter de la date d'achat.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Keep your receipt for any exchange or return. Maximum term 30 calendar days from the date of purchase.</texto> </linea>
+			<linea><texto></texto></linea>
+			<linea line-size="4"> <texto align="center" style="1">***BON D'ACHAT/CARTE CADEAU***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La carte est valide 3 ans à partir de la date de recharge. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Carte est valable seulement pour l’achat d’articles en vente dans les points de vente de BIMBA Y LOLA présents sur le territoire national (sauf grands magasins et vente en ligne www.bimbaylola.com) jusqu’á épuisement du solde de la Carte. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">En aucun cas, ce solde ne sera remboursé, ni échangé contre de l’argent en espèce. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">En cas de vol, de perte ou de détérioration, la Carte ne sera pas remplacée. Les articles achetés avec la Carte sont soumis aux conditions d’échange et de remboursement de BIMBA Y LOLA.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">En outre, le retour de la Carte Cadeau qui n'a pas été utilisée dans un délai de 30 jours sera accepté, à condition que la protection figurant sur le code de sécurité soit intacte, comme le stipule les conditions de retour imposées par bimbaylola.com. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Pour tout échange ou remboursement d’articles payés avec la Carte, il est indispensable de la conserver et de la présenter à ce moment. Il est fortement recommandé de vérifier que le solde de la Carte correspond au solde indiqué sur le ticket présenté avec la Carte.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">L'acquisition et l'utilisation de la Carte impliquent l'acceptation des conditions d'utilisation de celle-ci disponibles sur www.bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Cette garantie est additionnelle et n’affecte pas les droits légaux du consommateur. </texto> </linea>
+
+		#end

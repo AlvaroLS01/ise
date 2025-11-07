@@ -1,0 +1,32 @@
+<plantilla>
+	<!-- Esta primer condición la tenemos comentada por defecto. Sirve para elegir la impresión por ticket o por A4 -->
+	<!-- Si se descomenta, imprimiría por A4 si no es FS o si es una devolución y el ticket origen no es FS e imprimiría por ticket si es FS o es una devolución y el ticket origen es FS-->
+	#if( 
+		(!$ticket.getCabecera().getDatosDocOrigen() && $ticket.getCabecera().getCodTipoDocumento() == "FO")  
+		 || 
+		($ticket.getCabecera().getDatosDocOrigen() && $ticket.getCabecera().getDatosDocOrigen().getCodTipoDoc() == "FO") 
+		)
+		 <documento salida="impresora2" procesador="JASPER" fichero="facturas/facturaA4"></documento>
+		 <documento salida="impresora1">  
+
+			#foreach ($pago in $ticket.getPagos())
+				#set($esBoletaCompleta = true)
+				#if($ticket.esPagoAxis($pago))
+					#parse("./plantillas/detalle_pagos_boletas_axis.xml")
+				#end
+				#if($ticket.esPagoConexflow($pago))
+					#parse("./plantillas/detalle_pagos_boletas_conexflow.xml")
+				#end
+			#end
+			#parse("./plantillas/detalle_comprobantes_giftcard_FR.xml")
+		 </documento>
+	#else
+		<documento salida="impresora1">
+		#parse("./plantillas/factura_contenido_FR.xml")
+        #if ($ticket.getCabecera().getCodTipoDocumento() == "SR" && !$esCopia && !${salida.equals("pantalla")})
+		    #set ($esCopia = true)
+			#parse("./plantillas/factura_contenido_FR.xml")
+		#end
+		</documento>
+	#end
+</plantilla>

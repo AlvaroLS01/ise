@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.comerzzia.pos.core.gui.componentes.datepicker.* ?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" minHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.pos.gui.mantenimientos.fidelizados.FidelizadoController">
+  <children>
+    <VBox prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane minHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+          <children>
+            <HBox prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <AnchorPane minHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS">
+                  <children>
+                    <VBox prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0" styleClass="titulo-ventana">
+                          <children>
+                            <Label fx:id="lbTitulo" alignment="CENTER" text="%FIDELIZADO" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                          </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="-1.0" prefWidth="-1.0">
+                          <children>
+                            <HBox minHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                <VBox prefHeight="-1.0" prefWidth="-1.0" spacing="4.0" style="" HBox.hgrow="ALWAYS">
+                                  <children>
+                                    <HBox prefHeight="-1.0" prefWidth="-1.0" style="" VBox.vgrow="ALWAYS">
+                                      <children>
+                                        <TabPane fx:id="tpDatosFidelizado" maxHeight="-Infinity" prefHeight="-1.0" prefWidth="-1.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="1.7976931348623157E308" tabMinWidth="0.0" HBox.hgrow="ALWAYS">
+                                          <tabs>
+                                            <Tab fx:id="tabResumen" text="%Resumen">
+                                              <content>
+                                                <fx:include fx:id="paneResumenFidelizado" source="paneResumenFidelizado.fxml" prefHeight="527.0" />
+                                              </content>
+                                            </Tab>
+                                            <Tab fx:id="tabDatosGenerales" text="%Datos generales">
+                                              <content>
+                                                <fx:include fx:id="paneDatosGenerales" source="paneDatosGenerales.fxml" />
+                                              </content>
+                                            </Tab>
+                                            <Tab fx:id="tabDirecciones" text="%Direcciones">
+                                              <content>
+                                                <fx:include fx:id="paneDirecciones" source="paneDirecciones.fxml" />
+                                              </content>
+                                            </Tab>
+                                            <!--  
+                                            <Tab fx:id="tabObservaciones" text="%Observaciones">
+                                              <content>
+                                                <fx:include fx:id="paneObservaciones" source="paneObservaciones.fxml" />
+                                              </content>
+                                            </Tab>
+                                            <Tab fx:id="tabColectivos" text="%Colectivos">
+                                              <content>
+                                                <fx:include fx:id="paneColectivos" source="paneColectivos.fxml" />
+                                              </content>
+                                            </Tab>
+                                            <Tab fx:id="tabMovimientosTarjetas" text="%Movimientos Tarjetas">
+                                              <content>
+                                                <fx:include fx:id="paneMovimientosTarjetas" source="paneMovimientosTarjetas.fxml" />
+                                              </content>
+                                            </Tab>
+                                            <Tab fx:id="tabUltimasVentas" text="%Últimas Ventas">
+                                              <content>
+                                                <fx:include fx:id="paneUltimasVentas" source="paneUltimasVentas.fxml" />
+                                              </content>
+                                            </Tab>
+                                            <Tab fx:id="tabEtiquetas" text="%Etiquetas">
+                                              <content>
+                                                <fx:include fx:id="paneEtiquetas" source="paneEtiquetas.fxml" />
+                                              </content>
+                                            </Tab>
+                                            -->
+                                          </tabs>
+                                        </TabPane>
+                                      </children>
+                                    </HBox>
+                                    <AnchorPane maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="-1.0">
+                                      <children>
+                                        <Label fx:id="lbError" contentDisplay="CENTER" maxWidth="899.0" minWidth="899.0" prefWidth="899.0" styleClass="lbError" text="" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <Label fx:id="lblCampoObligatorios" maxWidth="235.0" minWidth="235.0" prefWidth="235.0" text="%(*) Campos obligatorios" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                      </children>
+                                    </AnchorPane>
+                                    <FlowPane id="fpBotones" alignment="CENTER_RIGHT" hgap="10.0" prefHeight="-1.0" prefWidth="-1.0" style="&#10;" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Button fx:id="btImprimirDocFidelizado" mnemonicParsing="false" onAction="#imprimeTicketFidelizado" styleClass="btnImprimir" text="%Imprimir Documento" textAlignment="LEFT" />
+                                        <Button id="btEditar" fx:id="btConsentimientoFirma" alignment="CENTER" mnemonicParsing="false" onAction="#accionConsentimientoFirma" styleClass="btEditar" text="%Consentimientos y Firma" visible="true" />
+                                        <Button fx:id="btImprimir" alignment="CENTER" maxHeight="-1.0" mnemonicParsing="false" onAction="#accionImprimir" prefHeight="-1.0" styleClass="btnImprimir" text="%Imprimir Ficha" visible="true" />
+                                        <Button fx:id="btEditar" alignment="CENTER" mnemonicParsing="false" onAction="#accionEditar" styleClass="btEditar" text="%Editar" visible="true" />
+                                        <Button fx:id="btAceptar" alignment="CENTER" mnemonicParsing="false" onAction="#accionAceptar" styleClass="btAceptar" text="%Aceptar" visible="true" />
+                                        <Button fx:id="btCancelar" cancelButton="false" defaultButton="false" mnemonicParsing="false" onAction="#accionCancelar" styleClass="btCancelar" text="%Cancelar" visible="true" />
+                                        <Button fx:id="btCerrar" alignment="CENTER" mnemonicParsing="false" onAction="#accionCerrar" prefWidth="124.0" styleClass="btCancelar" text="%Cerrar" visible="true" />
+                                      </children>
+                                      <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                      </VBox.margin>
+                                    </FlowPane>
+                                  </children>
+                                  <padding>
+                                    <Insets top="10.0" />
+                                  </padding>
+                                </VBox>
+                              </children>
+                            </HBox>
+                          </children>
+                        </AnchorPane>
+                      </children>
+                    </VBox>
+                  </children>
+                </AnchorPane>
+              </children>
+            </HBox>
+          </children>
+        </AnchorPane>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@../../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

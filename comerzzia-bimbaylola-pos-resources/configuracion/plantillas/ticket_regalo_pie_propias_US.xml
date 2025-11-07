@@ -1,0 +1,26 @@
+		#if(!${tarjetaRegalo})
+			<linea line-size="4"> <texto align="center" style="1">***GIFT RECEIPT***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit</texto> </linea>
+			
+		#else
+			<linea line-size="4"> <texto align="center" style="1">***GIFT RECEIPT***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***GIFT/VOUCHER CARD***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">The Card does not have an expiration date and shall remain valid until all value stored on the Card is used.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">The Card is only valid for the purchase of items for sale at BIMBA Y LOLA stores located in the territory of United States (except the online store www.bimbaylola.com) and until the full balance on the Card has been reached. Puerto Rico and other US territories excluded.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">The Card’s unused balance shall not be refunded or exchanged for cash, except as required by law.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">We will not accept liability for those Cards that are lost, stolen or damaged. Products purchased with the Card are subject to BIMBA Y LOLA’s returns policy.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">In accordance to BIMBA Y LOLA’s returns policy, the Gift Cards may be returned within a max. period of 30 days if and when the card is unused and with the security code’s protective seal is intact.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">For the exchange or refund of any items purchased with the Card it is necessary that the card be presented.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Please check that the Card’s balance matches that which appears on the corresponding receipt.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">The purchase and use of the Card implies the understanding and acceptance of applicable terms and conditions, available at www.bimbaylola.com</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">This policy is in addition to and does not affect consumers’ rights under any applicable law.</texto> </linea>
+
+		#end
+		
+
+
+
+
+
+		

@@ -1,0 +1,63 @@
+<plantilla> 
+    <documento>
+		<logo></logo>  
+		<linea> <texto> </texto> </linea>
+		#set( $imprimirDatosFacturacion =  false)
+		#parse("./plantillas/datos_cabecera_SG.xml")
+
+		<linea line-size="1"><texto size="40" align="center" style="1">*** Gift receipt ***</texto> </linea>
+		<linea line-size="4"><texto>=======================================================</texto> </linea>
+
+		<linea line-size="4"><texto style="1">Date/Time              Document             Cd Salesper</texto> </linea>		
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>	
+		<linea line-size="4">
+		   <texto size="23" align="left">${ticket.getCabecera().getFechaAsLocale()}</texto>
+		   <texto size="21" align="left">${ticket.getCabecera().getCodTicket()}</texto>
+		   <texto size="5"  align="left">${ticket.getCabecera().getCodCaja()}</texto>	   
+		   <texto size="6" align="left">${ticket.getCajero().getUsuario()}</texto>
+		</linea>	
+        <linea> <texto> </texto> </linea>       
+		
+		<linea> <texto style ="1">Item                               Unit </texto> </linea>	
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>	
+		## LINEAS
+		#foreach ($linea in $ticket.getLineas())
+			<!-- Impresoras UPOS usan line-cols para reducir el tamaño de la fuente -->
+			<!-- Para entornos NON-FOOD -->
+			#if(${linea.isImprimirTicketRegalo()}) 
+				<linea> 
+					<texto size="25" align="left">${linea.getArticulo().getCodArticulo()}${linea.getDesglose1()}${linea.getDesglose2()}</texto>
+					<texto size="15"  align="right">${linea.getCantidad().intValue()}</texto>
+				</linea>   		
+				<linea><texto size="34" align="left">${linea.getArticulo().getDesArticulo()}</texto></linea>
+			#end
+		#end		
+		
+		<linea><texto></texto></linea>
+		<codbar align="center" tipo-leyenda="0" >${ticket.getCabecera().getLocalizador()}</codbar>
+		
+		#set( $tarjetaRegalo =  false)
+		#foreach ($pago in $ticket.getPagos())
+			#if(${pago.getCodMedioPago().equals("1000")})
+				#set( $tarjetaRegalo =  true)
+			#end
+		#end
+		
+		<!-- Configuración del pie de página, Textos legales -->
+		
+		#if ( (${ticket.getCabecera().getCodCanal()}== 19) )
+		   #parse("./plantillas/ticket_regalo_pie_propias_SG.xml")
+		#else
+			<linea line-size="4"><texto>Pie no definido para el canal ${ticket.getCabecera().getCodCanal()}</texto> </linea>			
+		#end
+		<linea> <texto size="40" align="center"></texto> </linea>
+		<linea> <texto size="40" align="center"></texto> </linea>	
+		<!-- Ocultar para el mercado de España [28/12/2020]		
+		#if(!${salida.equals("pantalla")})
+			<codbar align="center" tipo-leyenda="2" >${ticket.getCabecera().getCodTicket()}</codbar>
+			<linea> <texto size="40" align="center"></texto> </linea>
+		#end	
+		-->
+		<corte></corte>
+	</documento>
+</plantilla>

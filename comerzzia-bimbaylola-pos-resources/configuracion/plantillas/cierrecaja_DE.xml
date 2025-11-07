@@ -1,0 +1,248 @@
+<plantilla>
+    <documento>
+		<linea> 
+			<texto> 
+			</texto> 
+		</linea>
+		
+		<linea line-size="4"><texto size="58" align="center">${empresa.getDesEmpresa()}</texto></linea>
+		<linea line-size="4"><texto size="58" align="center">${empresa.getCif()}</texto></linea>    
+		<linea line-size="4"><texto size="58" align="center">Geschäft ${caja.getCodAlmAsString()}</texto></linea>
+		<linea line-size="4"><texto>=======================================================</texto> </linea>				
+		
+		<linea> 
+			<texto></texto> 
+		</linea>
+		<linea> 
+			<texto></texto> 
+		</linea>
+		#if(${caja.getCodAlmAsString()}&&${caja.getCodCajaAsString()})
+		<linea> 
+			<texto size="40" align="left">Kasee: ${caja.getCodAlmAsString()}/${caja.getCodCajaAsString()}</texto> 
+		</linea>
+		#end
+		#if(${fechaApertura})
+		<linea>
+				<texto size="40" align="left">ERÖFFNUNGSDATUM: ${fechaApertura}</texto>
+		</linea>
+		#end
+		#if(${fechaCierre})
+		<linea>
+			<texto size="40" align="left">ABSCHLUSSDATUM: ${fechaCierre}</texto>
+		</linea>
+		#end
+		#if(${usuario})
+		<linea>
+			<texto size="40" align="left">BENUTZERABSCHLUSS: ${usuario.getUsuario()} </texto>
+		</linea>
+		#end
+		#if(${fechaImpresion})
+		<linea>
+			<texto size="40" align="left">DATUM DRUCKEN: ${fechaImpresion}</texto>
+		</linea>
+		#end
+		<linea> 
+			<texto></texto> 
+		</linea>
+		
+		<!-- Se recalculan totales quitando los abonos en FS de devoluciones y añadiendo las activaciones/desactivaciones -->
+		#set($totalEntradas = ${caja.getTotalApuntesEntrada()})
+		#set($totalImporteVentas = $caja.getTotalVentasEntrada())
+		#set($numVentas = $caja.getNumTicketsEntrada())
+		#set($totalSalidas = $caja.getTotalApuntesSalida())
+		#set($totalImporteDevoluciones = $caja.getTotalVentasSalida())
+		#set($numDevoluciones = $caja.getNumTicketsSalida())
+		
+		#set($importeActTR = ${fmt.desformateaImporte("0")})
+		#set($importeCancTR = ${fmt.desformateaImporte("0")})
+		
+		#foreach ($movimiento in $caja.getMovimientosVenta())
+			#if($movimiento.getIdTipoDocumento() == "1" && $movimiento.getAbono() > 0)
+				#set($totalImporteVentas = $totalImporteVentas.subtract($movimiento.getAbono()))
+				#set($totalImporteDevoluciones = $totalImporteDevoluciones.subtract($movimiento.getAbono()))
+				#set($numDevoluciones = $numDevoluciones - 1)
+			#elseif($movimiento.getIdTipoDocumento() == "10004")
+				#if($movimiento.getAbono() == 0)
+					#set($importeActTR = $importeActTR.add($movimiento.getCargo()))
+					#set($totalImporteVentas = $totalImporteVentas.subtract($movimiento.getCargo()))
+					#set($numVentas = $numVentas - 1)
+				#elseif($movimiento.getCargo() == 0)
+					#set($importeCancTR = $importeCancTR.add($movimiento.getAbono()))
+					#set($totalImporteDevoluciones = $totalImporteDevoluciones.subtract($movimiento.getAbono()))
+					#set($numDevoluciones = $numDevoluciones - 1)
+				#end
+			#end
+		#end
+		
+		#set($totalEntradas = $totalEntradas.add($importeActTR))
+		#set($totalSalidas = $totalSalidas.add($importeCancTR))
+		
+		<linea>
+			<texto size="40" align="left">CASH CLOSING</texto>
+		</linea>
+		<linea>
+			<texto>----------------------------------------</texto>
+		</linea>
+		#if( ${totalEntradas})
+		<linea> 
+			<texto size="20" align="left">A) EINLAGE</texto>
+			<texto size="20" align="right">${fmt.formateaImporte($totalEntradas)}</texto> 
+		</linea>
+		#end
+		#foreach ($movimiento in $caja.getMovimientosApuntes())
+				#if ($movimiento.getCargo() != 0)
+					<linea line-size="4">
+						<texto size="5" align="left"></texto>
+						<texto size="21" align="left">${movimiento.getConcepto()}</texto>
+						<texto size="15" align="right">${fmt.formateaImporte(${movimiento.getCargo()})} </texto>
+					</linea>
+				#end					
+		#end
+		#if($importeActTR > 0)
+			<linea line-size="4">
+				<texto size="5" align="left"></texto>
+				<texto size="21" align="left">Verkauf Geschenkkarte</texto>
+				<texto size="15" align="right">${fmt.formateaImporte(${importeActTR})} </texto>
+			</linea>
+		#end
+		
+		<linea>
+			<texto>----------------------------------------</texto>
+		</linea>
+		#if(${totalImporteVentas})
+		<linea>
+			<texto size="20" align="left">B) VERKAUF</texto>
+			<texto size="20" align="right">${fmt.formateaImporte($totalImporteVentas)}</texto>
+		</linea>
+		#end
+		#if(${caja.getNumTicketsEntrada()})
+		<linea> 
+			<texto size="40" align="left">${numVentas} VERKAUF VON TICKETS</texto> 
+		</linea>
+		#end
+		<linea>
+			<texto>----------------------------------------</texto>
+		</linea>
+		#if(${totalSalidas})
+		<linea> 
+			<texto size="20" align="left">C) AUSGÄNGE</texto> 
+			<texto size="20" align="right">${fmt.formateaImporte($totalSalidas)}</texto>
+		</linea>
+		#end
+		#foreach ($movimiento in $caja.getMovimientosApuntes())	
+				#if ($movimiento.getAbono() != 0)
+					<linea line-size="4">
+						<texto size="5" align="left"></texto>
+						<texto size="21" align="left">${movimiento.getConcepto()}</texto>
+						<texto size="15" align="right">${fmt.formateaImporte(${movimiento.getAbono()})} </texto>
+					</linea>
+				#end
+		#end
+		#if(${importeCancTR} > 0)
+			<linea line-size="4">
+				<texto size="5" align="left"></texto>
+				<texto size="21" align="left">Stornierung Geschenkkarte</texto>
+				<texto size="15" align="right">${fmt.formateaImporte(${importeCancTR})} </texto>
+			</linea>
+		#end
+		
+		<linea>
+			<texto>----------------------------------------</texto>
+		</linea>
+		#if(${totalImporteDevoluciones})
+		<linea>
+			<texto size="20" align="left">D) RÜCKGABE</texto>
+			<texto size="20" align="right">${fmt.formateaImporte($totalImporteDevoluciones)}</texto>
+		</linea>
+		#end
+		<linea> 
+			<texto size="40" align="left">${numDevoluciones} TICKETS RÜCKSENDEN</texto>
+		</linea>
+		<linea>
+			<texto>----------------------------------------</texto>
+		</linea>
+		<linea>
+			<texto>----------------------------------------</texto>
+		</linea>
+		<linea> 
+			<texto size="20" align="left" style="1">GESAMTBEWEGUNGEN</texto> 
+			<texto size="20" align="right" style="1">${caja.getTotalAsString()}</texto>
+		</linea>
+		<linea> 
+			<texto>----------------------------------------</texto> 
+		</linea>
+		<linea> 
+			<texto>----------------------------------------</texto> 
+		</linea>
+		<linea> 
+			<texto size="20" align="left" style="1">NETTOUMSATZ</texto> 
+			#set($netoVenta = $totalImporteVentas - $totalImporteDevoluciones)
+			<texto size="20" align="right" style="1">${fmt.formateaImporte($netoVenta)}</texto>
+		</linea>
+		<linea> 
+			<texto>----------------------------------------</texto> 
+		</linea>
+		<linea> 
+			<texto></texto> 
+		</linea>
+		<linea>
+			<texto>HALBZAHLUNG     GESAMT  RÜCKLAUF      DISC</texto>
+		</linea>
+		<linea><texto>----------------------------------------</texto></linea>
+		#foreach($acumulado in $acumulados)
+			<linea>
+				#if(${acumulado.getMedioPago().getDesMedioPago()})
+				    <!--
+					#if(${acumulado.getMedioPago().getDesMedioPago().equals("TARJETA PINPAD")})
+						<texto size="15" align="left">PINPAD</texto>
+					#else
+						#if(${acumulado.getMedioPago().getDesMedioPago().equals("ENTREGA A CUENTA")})
+							<texto size="15" align="left">A/A CUENTA</texto>
+						#else
+							<texto size="15" align="left">${acumulado.getMedioPago().getDesMedioPago()}</texto>
+						#end
+					#end
+					-->
+					<texto size="10" align="left">${acumulado.getMedioPago().getDesMedioPago()}</texto>
+				#end
+				#if(${acumulado.getTotal()})
+				<texto size="10" align="right">${acumulado.getTotalAsString()}</texto>
+				#end
+				#if(${acumulado.getRecuento()})
+				<texto size="10" align="right">${acumulado.getRecuentoAsString()}</texto>
+				#end
+				#if(${acumulado.getDescuadre()})
+				<texto size="10" align="right">${acumulado.getDescuadreAsString()}</texto>
+				#end
+			</linea>
+		#end
+		<linea><texto>----------------------------------------</texto></linea>
+		<linea>
+			<texto size="10" align="left" style="1">GESAMT</texto> 
+			#if(${caja.getTotalAsString()}) 
+			<texto size="10" align="right" style="1">${caja.getTotalAsString()}</texto>
+			#end
+			#if(${caja.getTotalRecuentoAsString()})
+			<texto size="10" align="right" style="1">${caja.getTotalRecuentoAsString()}</texto>
+			#end
+			#if(${caja.getDescuadreAsString()})
+			<texto size="10" align="right" style="1">${caja.getDescuadreAsString()}</texto> 
+			#end
+		</linea>
+		<linea>
+			<texto></texto>
+		</linea>
+		<linea line-size="4"><texto>Cashback-Tickets</texto></linea>
+		<linea><texto>----------------------------------------</texto></linea>		
+		#foreach ($operacion in $caja.getMovimientosVenta())
+			#if ($operacion.getAbono() > 0 && ${operacion.getCodMedioPago().equals("0000")})
+				<linea line-size="4">	
+					<texto size="25" align="left">${operacion.getDocumento()}</texto>
+					<texto size="15" align="right">${fmt.formateaImporte(${operacion.getAbono()})} </texto>
+				</linea>		
+			#end
+		#end
+		<linea><texto></texto></linea>			
+		<corte></corte>
+	</documento>
+</plantilla>

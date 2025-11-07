@@ -1,0 +1,117 @@
+    #set ($esPagoTRTA = false)	
+	#foreach ($pago in $ticket.getPagos())       
+		#if(${pago.isPagoTarjetaRegalo()})
+			#set ($esPagoTRTA = true)
+		#end
+	#end
+
+	#if($ticket.getCabecera().getCodTipoDocumento() == "SR" || $ticket.getCabecera().getCodTipoDocumento() == "OR")
+		#if(${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()} || ${ticket.isDevolucionTarjetaRegalo()} || ${esPagoTRTA})
+			<!-- DEVOLUCION DONDE INTERVIENE TARJETA REGALO/ABONO -->
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserve su ticket para cualquier cambio o devolución.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Plazo máximo para cambios y/o devoluciones 30 días naturales a partir de la fecha de compra.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para el cambio o devolución de los artículos deberán presentarse en perfecto estado y con las etiquetas originales. Para cambio o devolución de artículos de bisutería, accesorios y baño es imprescindible se conserve intacto el precinto de seguridad.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">El importe de su compra será reembolsado en la misma forma de pago efectuada en el momento de la compra excepto cuando se presente ticket regalo que únicamente se admitirán cambios. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Las condiciones establecidas son válidas para territorio nacional excepto tiendas Palacio de Hierro.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se admitirán cambios ni devoluciones de artículos comprados en otro país.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***Tarjeta Abono/Regalo***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta es válida por un periodo de 3 años desde su adquisición.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta únicamente es válida para la compra de artículos a la venta en los puntos de venta de BIMBA Y LOLA presentes en el territorio nacional (excepto El Palacio de Hierro y tienda online www.bimbaylola.com) hasta que se consuma el saldo de la Tarjeta.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Dicho saldo no será reembolsable ni será canjeable por dinero en ningún caso.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se reemplazará la Tarjeta en caso de robo, pérdida, extravío o deterioro. Los productos adquiridos con la Tarjeta están sujetos a la política de cambios y devoluciones de BIMBA Y LOLA.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Asimismo, se aceptará la devolución de la Tarjeta Regalo que no haya sido utilizada en un plazo máximo de 30 días, siempre y cuando tenga el protector del código de seguridad sin manipular, respetando las condiciones de devolución establecidas en bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para cualquier cambio o devolución de artículos pagados con la Tarjeta, es imprescindible su conservación y presentación en el momento de dicha operación.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Por favor, compruebe que el saldo de la Tarjeta es el que figura en el ticket vinculado a la misma.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La adquisición y uso de la Tarjeta implica la aceptación de las condiciones para el uso de la misma disponibles en www.bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Esta garantía es adicional y no afecta a los derechos del consumidor.</texto> </linea>
+			
+		   
+		#else
+           <!-- DEVOLUCION NORMAL -->
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserve su ticket para cualquier cambio o devolución.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Plazo máximo para cambios y/o devoluciones 30 días naturales a partir de la fecha de compra.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para el cambio o devolución de los artículos deberán presentarse en perfecto estado y con las etiquetas originales. Para cambio o devolución de artículos de bisutería, accesorios y baño es imprescindible se conserve intacto el precinto de seguridad.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">El importe de su compra será reembolsado en la misma forma de pago efectuada en el momento de la compra excepto cuando se presente ticket regalo que únicamente se admitirán cambios. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Las condiciones establecidas son válidas para territorio nacional excepto tiendas Palacio de Hierro.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se admitirán cambios ni devoluciones de artículos comprados en otro país.</texto> </linea>
+	   
+		#end
+	#else
+	    <!-- NO ES UNA DEVOLUCIÓN -->
+		#if($ticket.getCabecera().getCodTipoDocumento() == "TR")
+			#if(${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()})
+				<linea line-size="4"> <texto align="center" style="1">Gracias por su visita.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserve su ticket para cualquier cambio o devolución.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Plazo máximo para cambios y/o devoluciones 30 días naturales a partir de la fecha de compra.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para el cambio o devolución de los artículos deberán presentarse en perfecto estado y con las etiquetas originales. Para cambio o devolución de artículos de bisutería, accesorios y baño es imprescindible se conserve intacto el precinto de seguridad.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">El importe de su compra será reembolsado en la misma forma de pago efectuada en el momento de la compra excepto cuando se presente ticket regalo que únicamente se admitirán cambios. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Las condiciones establecidas son válidas para territorio nacional excepto tiendas Palacio de Hierro.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se admitirán cambios ni devoluciones de artículos comprados en otro país.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***Tarjeta Abono/Regalo***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta es válida por un periodo de 3 años desde su adquisición.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta únicamente es válida para la compra de artículos a la venta en los puntos de venta de BIMBA Y LOLA presentes en el territorio nacional (excepto El Palacio de Hierro y tienda online www.bimbaylola.com) hasta que se consuma el saldo de la Tarjeta.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Dicho saldo no será reembolsable ni será canjeable por dinero en ningún caso.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se reemplazará la Tarjeta en caso de robo, pérdida, extravío o deterioro. Los productos adquiridos con la Tarjeta están sujetos a la política de cambios y devoluciones de BIMBA Y LOLA.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Asimismo, se aceptará la devolución de la Tarjeta Regalo que no haya sido utilizada en un plazo máximo de 30 días, siempre y cuando tenga el protector del código de seguridad sin manipular, respetando las condiciones de devolución establecidas en bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para cualquier cambio o devolución de artículos pagados con la Tarjeta, es imprescindible su conservación y presentación en el momento de dicha operación.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Por favor, compruebe que el saldo de la Tarjeta es el que figura en el ticket vinculado a la misma.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La adquisición y uso de la Tarjeta implica la aceptación de las condiciones para el uso de la misma disponibles en www.bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Esta garantía es adicional y no afecta a los derechos del consumidor.</texto> </linea>
+
+			#elseif(${ticket.isDevolucionTarjetaRegalo()}) 
+			    <!-- DEVOLUCION DE TARJETA REGALO  -->
+				<linea line-size="4"> <texto align="center" style="1">Gracias por su visita.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserve su ticket para cualquier cambio o devolución.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Plazo máximo para cambios y/o devoluciones 30 días naturales a partir de la fecha de compra.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para el cambio o devolución de los artículos deberán presentarse en perfecto estado y con las etiquetas originales. Para cambio o devolución de artículos de bisutería, accesorios y baño es imprescindible se conserve intacto el precinto de seguridad.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">El importe de su compra será reembolsado en la misma forma de pago efectuada en el momento de la compra excepto cuando se presente ticket regalo que únicamente se admitirán cambios. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Las condiciones establecidas son válidas para territorio nacional excepto tiendas Palacio de Hierro.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se admitirán cambios ni devoluciones de artículos comprados en otro país.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***Tarjeta Abono/Regalo***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta es válida por un periodo de 3 años desde su adquisición.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta únicamente es válida para la compra de artículos a la venta en los puntos de venta de BIMBA Y LOLA presentes en el territorio nacional (excepto El Palacio de Hierro y tienda online www.bimbaylola.com) hasta que se consuma el saldo de la Tarjeta.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Dicho saldo no será reembolsable ni será canjeable por dinero en ningún caso.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se reemplazará la Tarjeta en caso de robo, pérdida, extravío o deterioro. Los productos adquiridos con la Tarjeta están sujetos a la política de cambios y devoluciones de BIMBA Y LOLA.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Asimismo, se aceptará la devolución de la Tarjeta Regalo que no haya sido utilizada en un plazo máximo de 30 días, siempre y cuando tenga el protector del código de seguridad sin manipular, respetando las condiciones de devolución establecidas en bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para cualquier cambio o devolución de artículos pagados con la Tarjeta, es imprescindible su conservación y presentación en el momento de dicha operación.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Por favor, compruebe que el saldo de la Tarjeta es el que figura en el ticket vinculado a la misma.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La adquisición y uso de la Tarjeta implica la aceptación de las condiciones para el uso de la misma disponibles en www.bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Esta garantía es adicional y no afecta a los derechos del consumidor.</texto> </linea>
+
+		    #end
+			
+		<!-- ESTO ES UNA VENTA -->
+		#elseif (${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()} or ${activacionTR} or ${esPagoTRTA})
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserve su ticket para cualquier cambio o devolución.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Plazo máximo para cambios y/o devoluciones 30 días naturales a partir de la fecha de compra.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para el cambio o devolución de los artículos deberán presentarse en perfecto estado y con las etiquetas originales. Para cambio o devolución de artículos de bisutería, accesorios y baño es imprescindible se conserve intacto el precinto de seguridad.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">El importe de su compra será reembolsado en la misma forma de pago efectuada en el momento de la compra excepto cuando se presente ticket regalo que únicamente se admitirán cambios. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Las condiciones establecidas son válidas para territorio nacional excepto tiendas Palacio de Hierro.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se admitirán cambios ni devoluciones de artículos comprados en otro país.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***Tarjeta Abono/Regalo***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta es válida por un periodo de 3 años desde su adquisición.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta únicamente es válida para la compra de artículos a la venta en los puntos de venta de BIMBA Y LOLA presentes en el territorio nacional (excepto El Palacio de Hierro y tienda online www.bimbaylola.com) hasta que se consuma el saldo de la Tarjeta.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Dicho saldo no será reembolsable ni será canjeable por dinero en ningún caso.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se reemplazará la Tarjeta en caso de robo, pérdida, extravío o deterioro. Los productos adquiridos con la Tarjeta están sujetos a la política de cambios y devoluciones de BIMBA Y LOLA.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Asimismo, se aceptará la devolución de la Tarjeta Regalo que no haya sido utilizada en un plazo máximo de 30 días, siempre y cuando tenga el protector del código de seguridad sin manipular, respetando las condiciones de devolución establecidas en bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para cualquier cambio o devolución de artículos pagados con la Tarjeta, es imprescindible su conservación y presentación en el momento de dicha operación.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Por favor, compruebe que el saldo de la Tarjeta es el que figura en el ticket vinculado a la misma.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La adquisición y uso de la Tarjeta implica la aceptación de las condiciones para el uso de la misma disponibles en www.bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Esta garantía es adicional y no afecta a los derechos del consumidor.</texto> </linea>
+
+		#else
+		    <!-- VENTA -->
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserve su ticket para cualquier cambio o devolución.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Plazo máximo para cambios y/o devoluciones 30 días naturales a partir de la fecha de compra.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para el cambio o devolución de los artículos deberán presentarse en perfecto estado y con las etiquetas originales. Para cambio o devolución de artículos de bisutería, accesorios y baño es imprescindible se conserve intacto el precinto de seguridad.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">El importe de su compra será reembolsado en la misma forma de pago efectuada en el momento de la compra excepto cuando se presente ticket regalo que únicamente se admitirán cambios. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Las condiciones establecidas son válidas para territorio nacional excepto tiendas Palacio de Hierro.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se admitirán cambios ni devoluciones de artículos comprados en otro país.</texto> </linea>
+
+			
+		#end
+	#end

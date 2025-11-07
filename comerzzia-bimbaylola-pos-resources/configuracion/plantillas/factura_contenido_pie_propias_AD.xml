@@ -1,0 +1,52 @@
+    #set ($esPagoTRTA = false)	
+	#foreach ($pago in $ticket.getPagos())       
+		#if(${pago.isPagoTarjetaRegalo()})
+			#set ($esPagoTRTA = true)
+		#end
+	#end
+	
+	#if($ticket.getCabecera().getCodTipoDocumento() == "SR")
+		#if(${ticket.isDevolucionTarjetaRegalo()} or ${esPagoTRTA})
+			<linea line-size="4"> <texto align="center" style="1">Gràcies per la vostra visita</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserveu el vostre tiquet per a qualsevol canvi o devolució. Termini màxim 30 dies naturals des de la data de compra. Condicions vàlides per al territori nacional excepte grans magatzems, botigues Outlet i aeroports. Per al canvi o devolució d’articles és imprescindible que no hagin estat usats o deteriorats, i es conservi intacta l’etiqueta original. No s'admetran canvis ni devolucions d'articles de bany sense la protecció higiènica, arracades o accessoris sense l'embalatge original, peces de roba modificades a petició del client ni articles comprats en un altre país. L'import de la vostra compra serà reemborsat amb la mateixa forma de pagament i sempre amb el tiquet original. En cas de tiquet regal, només es permetrà canvi per un altre article de mateix import o bé d'un import superior abonant la diferència.</texto> </linea>		
+			<linea line-size="4"> <texto align="center" style="1">Aquesta garantia és addicional i no afecta els drets legals del consumidor.</texto> </linea>
+
+			
+		#elseif(${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()})
+			<linea line-size="4"> <texto align="center" style="1">Gràcies per la vostra visita</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserveu el vostre tiquet per a qualsevol canvi o devolució. Termini màxim 30 dies naturals des de la data de compra. Condicions vàlides per al territori nacional excepte grans magatzems, botigues Outlet i aeroports. Per al canvi o devolució d’articles és imprescindible que no hagin estat usats o deteriorats, i es conservi intacta l’etiqueta original. No s'admetran canvis ni devolucions d'articles de bany sense la protecció higiènica, arracades o accessoris sense l'embalatge original, peces de roba modificades a petició del client ni articles comprats en un altre país. L'import de la vostra compra serà reemborsat amb la mateixa forma de pagament i sempre amb el tiquet original. En cas de tiquet regal, només es permetrà canvi per un altre article de mateix import o bé d'un import superior abonant la diferència.</texto> </linea>		
+			<linea line-size="4"> <texto align="center" style="1">Aquesta garantia és addicional i no afecta els drets legals del consumidor.</texto> </linea>
+
+		#else
+			<linea line-size="4"> <texto align="center" style="1">Gràcies per la vostra visita</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserveu el vostre tiquet per a qualsevol canvi o devolució. Termini màxim 30 dies naturals des de la data de compra. Condicions vàlides per al territori nacional excepte grans magatzems, botigues Outlet i aeroports. Per al canvi o devolució d’articles és imprescindible que no hagin estat usats o deteriorats, i es conservi intacta l’etiqueta original. No s'admetran canvis ni devolucions d'articles de bany sense la protecció higiènica, arracades o accessoris sense l'embalatge original, peces de roba modificades a petició del client ni articles comprats en un altre país. L'import de la vostra compra serà reemborsat amb la mateixa forma de pagament i sempre amb el tiquet original. En cas de tiquet regal, només es permetrà canvi per un altre article de mateix import o bé d'un import superior abonant la diferència.</texto> </linea>		
+			<linea line-size="4"> <texto align="center" style="1">Aquesta garantia és addicional i no afecta els drets legals del consumidor.</texto> </linea>
+
+		#end
+	#else
+		#if(${activacionTR})
+			<linea line-size="4"> <texto align="center" style="1">Gràcies per la vostra visita</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserveu el vostre tiquet per a qualsevol canvi o devolució. Termini màxim 30 dies naturals des de la data de compra. Condicions vàlides per al territori nacional excepte grans magatzems, botigues Outlet i aeroports. Per al canvi o devolució d’articles és imprescindible que no hagin estat usats o deteriorats, i es conservi intacta l’etiqueta original. No s'admetran canvis ni devolucions d'articles de bany sense la protecció higiènica, arracades o accessoris sense l'embalatge original, peces de roba modificades a petició del client ni articles comprats en un altre país. L'import de la vostra compra serà reemborsat amb la mateixa forma de pagament i sempre amb el tiquet original. En cas de tiquet regal, només es permetrà canvi per un altre article de mateix import o bé d'un import superior abonant la diferència.</texto> </linea>		
+			<linea line-size="4"> <texto align="center" style="1">Aquesta garantia és addicional i no afecta els drets legals del consumidor.</texto> </linea>
+
+
+
+		#elseif(${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()} or ${esPagoTRTA})
+			<linea line-size="4"> <texto align="center" style="1">Gràcies per la vostra visita</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserveu el vostre tiquet per a qualsevol canvi o devolució. Termini màxim 30 dies naturals des de la data de compra. Condicions vàlides per al territori nacional excepte grans magatzems, botigues Outlet i aeroports. Per al canvi o devolució d’articles és imprescindible que no hagin estat usats o deteriorats, i es conservi intacta l’etiqueta original. No s'admetran canvis ni devolucions d'articles de bany sense la protecció higiènica, arracades o accessoris sense l'embalatge original, peces de roba modificades a petició del client ni articles comprats en un altre país. L'import de la vostra compra serà reemborsat amb la mateixa forma de pagament i sempre amb el tiquet original. En cas de tiquet regal, només es permetrà canvi per un altre article de mateix import o bé d'un import superior abonant la diferència.</texto> </linea>		
+			<linea line-size="4"> <texto align="center" style="1">Aquesta garantia és addicional i no afecta els drets legals del consumidor.</texto> </linea>
+
+
+		#else
+			<linea line-size="4"> <texto align="center" style="1">Gràcies per la vostra visita</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserveu el vostre tiquet per a qualsevol canvi o devolució. Termini màxim 30 dies naturals des de la data de compra. Condicions vàlides per al territori nacional excepte grans magatzems, botigues Outlet i aeroports. Per al canvi o devolució d’articles és imprescindible que no hagin estat usats o deteriorats, i es conservi intacta l’etiqueta original. No s'admetran canvis ni devolucions d'articles de bany sense la protecció higiènica, arracades o accessoris sense l'embalatge original, peces de roba modificades a petició del client ni articles comprats en un altre país. L'import de la vostra compra serà reemborsat amb la mateixa forma de pagament i sempre amb el tiquet original. En cas de tiquet regal, només es permetrà canvi per un altre article de mateix import o bé d'un import superior abonant la diferència.</texto> </linea>		
+			<linea line-size="4"> <texto align="center" style="1">Aquesta garantia és addicional i no afecta els drets legals del consumidor.</texto> </linea>
+
+		#end
+	#end

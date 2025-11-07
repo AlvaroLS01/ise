@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" minHeight="590.0" prefHeight="593.0" prefWidth="739.0" styleClass="pantalla-detalle" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.bimbaylola.pos.gui.pagos.datoscliente.ByLCambiarDatosClienteCOController">
+  <children>
+    <VBox prefHeight="481.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane minHeight="529.0" prefHeight="529.0" prefWidth="717.0" VBox.vgrow="ALWAYS">
+          <children>
+            <HBox prefHeight="481.0" prefWidth="642.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <AnchorPane minHeight="571.0" prefHeight="571.0" prefWidth="717.0" HBox.hgrow="ALWAYS">
+                  <children>
+                    <VBox prefHeight="571.0" prefWidth="717.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <AnchorPane prefHeight="34.0" prefWidth="717.0" styleClass="titulo-ventana">
+                          <children>
+                            <Label fx:id="lbTitulo" alignment="CENTER" text="%Datos del Cliente" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                          </children>
+                        </AnchorPane>
+                        <TabPane fx:id="tabPane" prefHeight="482.0" prefWidth="739.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                          <tabs>
+                            <Tab fx:id="tabGeneral" text="%Datos Generales">
+                              <content>
+                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                  <children>
+                                    <AnchorPane prefHeight="0.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <VBox.margin>
+                                        <Insets top="20.0" />
+                                      </VBox.margin>
+                                    </AnchorPane>
+                                    <FlowPane hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Tipo Documento" />
+                                        <ComboBox fx:id="cbTipoDocIdent" prefHeight="29.0" prefWidth="244.5">
+                                          <items>
+                                            <FXCollections fx:factory="observableArrayList">
+                                              <String fx:value="Item 1" />
+                                              <String fx:value="Item 2" />
+                                              <String fx:value="Item 3" />
+                                            </FXCollections>
+                                          </items>
+                                        </ComboBox>
+                                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="114.0" text="%Num. Documento" />
+                                        <TextField fx:id="tfNumDocIdent" prefWidth="164.00009999999747">
+                                          <FlowPane.margin>
+                                            <Insets right="5.0" />
+                                          </FlowPane.margin>
+                                        </TextField>
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane fx:id="panelCodCliente" alignment="CENTER_LEFT" hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Cliente" />
+                                        <TextField fx:id="tfCodCliente" prefWidth="109.0" />
+                                        <TextField fx:id="tfDesCliente" prefWidth="420.0" />
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane fx:id="panelRazonSocial" hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label fx:id="lbRazonSocial" alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Nombre" />
+                                        <TextField fx:id="tfRazonSocial" prefWidth="520.0" />
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Domicilio" />
+                                        <TextField fx:id="tfDomicilio" prefWidth="520.0" />
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Población" />
+                                        <TextField fx:id="tfPoblacion" prefWidth="365.0" />
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Provincia" />
+                                        <TextField fx:id="tfProvincia" prefWidth="365.0" />
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Localidad" />
+                                        <TextField fx:id="tfLocalidad" prefWidth="365.0" />
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%C.P." />
+                                        <TextField fx:id="tfCP" prefWidth="155.0" />
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane hgap="4.0" prefHeight="33.0" prefWidth="200.0">
+                                      <children>
+                                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Email" />
+                                        <TextField id="tfTelefono" fx:id="tfEmail" prefWidth="200.0" />
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Teléfono" />
+                                        <TextField fx:id="tfTelefono" prefWidth="200.0" />
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Pais" />
+                                        <TextField fx:id="tfCodPais" prefWidth="82.0" />
+                                        <TextField fx:id="tfDesPais" editable="false" focusTraversable="false" prefWidth="339.0" />
+                                        <Button minHeight="34.0" minWidth="43.0" mnemonicParsing="false" onAction="#accionBuscarPais" prefHeight="34.0" prefWidth="43.0" styleClass="btBuscar" text="Button" />
+                                      </children>
+                                    </FlowPane>
+                                  </children>
+                                </VBox>
+                              </content>
+                            </Tab>
+                            <Tab fx:id="tabBanco" text="%Datos Bancarios">
+                              <content>
+                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                  <children>
+                                    <AnchorPane prefHeight="0.0" prefWidth="200.0">
+                                      <VBox.margin>
+                                        <Insets top="20.0" />
+                                      </VBox.margin>
+                                    </AnchorPane>
+                                    <FlowPane fx:id="panelBanco" hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label fx:id="lbBanco" alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Nombre" />
+                                        <TextField fx:id="tfBanco" prefWidth="520.0" />
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane fx:id="panelBancoDomicilio" hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label fx:id="lbBancoDomicilio" alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Domicilio" />
+                                        <TextField fx:id="tfBancoDomicilio" prefWidth="520.0" />
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane fx:id="panelBancoPoblacion" hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label fx:id="lbBancoPoblacion" alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%Población" />
+                                        <TextField fx:id="tfBancoPoblacion" prefWidth="520.0" />
+                                      </children>
+                                    </FlowPane>
+                                    <FlowPane fx:id="panelBancoCCC" hgap="4.0" prefHeight="33.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                      <children>
+                                        <Label fx:id="lbBancoCCC" alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="120.0" text="%CCC" />
+                                        <TextField fx:id="tfBancoCCC" prefWidth="200.0" text="" />
+                                      </children>
+                                    </FlowPane>
+                                  </children>
+                                </VBox>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                        <AnchorPane prefHeight="41.0" prefWidth="717.0" VBox.vgrow="NEVER">
+                          <children>
+                            <Label fx:id="lbError" alignment="CENTER" layoutY="2.0" prefHeight="26.0" prefWidth="717.0" styleClass="lbError" text="" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                          </children>
+                        </AnchorPane>
+                        <HBox minHeight="51.0" prefHeight="51.0" prefWidth="717.0" VBox.vgrow="NEVER">
+                          <children>
+                            <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                              <children>
+                                <Button fx:id="btBuscar" mnemonicParsing="false" onAction="#accionBuscarCliente" prefHeight="49.0" prefWidth="163.0" styleClass="btBuscar" text="%Buscar Cliente" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0" />
+                              </children>
+                            </AnchorPane>
+                            <TilePane alignment="BOTTOM_RIGHT" hgap="10.0" prefHeight="50.0" prefWidth="303.0" HBox.hgrow="NEVER">
+                              <children>
+                                <Button mnemonicParsing="false" onAction="#accionAceptar" prefHeight="42.0" prefWidth="115.0" styleClass="btAceptar" text="%Aceptar" />
+                                <Button mnemonicParsing="false" onAction="#accionCancelar" prefHeight="42.0" prefWidth="115.0" styleClass="btCancelar" text="%Cancelar" />
+                              </children>
+                              <padding>
+                                <Insets bottom="5.0" right="5.0" />
+                              </padding>
+                            </TilePane>
+                          </children>
+                        </HBox>
+                      </children>
+                    </VBox>
+                  </children>
+                </AnchorPane>
+              </children>
+            </HBox>
+          </children>
+        </AnchorPane>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@../../../../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

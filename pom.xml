@@ -1,106 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.comerzzia.bricodepot</groupId>
-	<artifactId>comerzzia-custom-backoffice</artifactId>
-	<version>${revision}</version>
+	<groupId>com.comerzzia.byl</groupId>
+	<artifactId>comerzzia-bimbaylola-pos</artifactId>
+	<version>4.6.14</version>
 	<packaging>pom</packaging>
+	<name>comerzzia-bimbaylola-pos</name>
 
 	<properties>
-		<maven.test.skip>true</maven.test.skip>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<revision>25-SNAPSHOT</revision>
-		<comerzzia.backoffice.version>4.8.1.230720</comerzzia.backoffice.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.test.skip>true</maven.test.skip>		
+		<cmzVersion>4.6.14</cmzVersion>
+		<bo.webservices.version>4.6.14-SNAPSHOT</bo.webservices.version>
 	</properties>
 
 	<repositories>
 		<repository>
-			<id>comerzzia</id>
+			<id>artifactory</id>
 			<url>http://repo.comerzzia.com/artifactory/comerzzia/</url>
 		</repository>
 		<repository>
 			<id>clientes</id>
 			<url>http://software.tier1.es/artifactory/clientes.local/</url>
 		</repository>
+		<repository>
+			<id>tier1</id>
+			<url>http://software.tier1.es/artifactory/tier1-external-libs.local/</url>
+		</repository>
 	</repositories>
 
 	<pluginRepositories>
 		<pluginRepository>
-			<id>comerzzia</id>
+			<id>artifactory</id>
 			<url>http://repo.comerzzia.com/artifactory/comerzzia/</url>
 		</pluginRepository>
 	</pluginRepositories>
-
-	<distributionManagement>
-		<repository>
-			<id>artifactory</id>
-			<name>vm-bugtrac.mpcorporacion.com-releases</name>
-			<url>http://software.tier1.es/artifactory/clientes.local</url>
-		</repository>
-		<snapshotRepository>
-			<id>artifactory</id>
-			<name>vm-bugtrac.mpcorporacion.com-snapshots</name>
-			<url>http://software.tier1.es/artifactory/clientes.local</url>
-		</snapshotRepository>
-	</distributionManagement>
-
-	<dependencies>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.jcraft</groupId>
-			<artifactId>jsch</artifactId>
-			<version>0.1.55</version>
-		</dependency>
-		<!-- Validador Claves Bricodepot-->        
-		<dependency>
-			<groupId>com.comerzzia.bricodepot.librerias</groupId>
-			<artifactId>comerzzia-bricodepot-validacion-password</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency> 
-	</dependencies>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.comerzzia</groupId>
-				<artifactId>comerzzia-backoffice-dependencies</artifactId>
-				<version>${comerzzia.backoffice.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<build>
 		<pluginManagement>
@@ -108,6 +43,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
 					<configuration>
 						<encoding>${project.build.sourceEncoding}</encoding>
 						<source>${java.version}</source>
@@ -122,51 +58,16 @@
 						<encoding>${project.build.sourceEncoding}</encoding>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<configuration>
-						<archive>
-							<manifestEntries>
-								<Build-commit>${buildCommit}</Build-commit>
-								<Build-number>${buildNumber}</Build-number>
-								<Build-timestamp>${buildTimestamp}</Build-timestamp>
-								<Built-By>${buildUser}</Built-By>
-								<comerzzia-module>${project.artifactId}</comerzzia-module>
-								<comerzzia-module-version>${project.version}</comerzzia-module-version>
-							</manifestEntries>
-						</archive>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>2.4</version>
-					<configuration>
-						<manifest>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-						</manifest>
-						<archive>
-							<manifestEntries>
-								<Build-commit>${buildCommit}</Build-commit>
-								<Build-number>${buildNumber}</Build-number>
-								<Build-timestamp>${buildTimestamp}</Build-timestamp>
-								<Built-By>${buildUser}</Built-By>
-								<comerzzia-module>${project.artifactId}</comerzzia-module>
-								<comerzzia-module-version>${project.version}</comerzzia-module-version>
-								<Version>${comerzzia.backoffice.version}</Version>
-								<comerzzia-custom-version>${project.version}</comerzzia-custom-version>
-							</manifestEntries>
-						</archive>
-					</configuration>
-				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
+
 	<modules>
-		<module>comerzzia-custom-backoffice-resources</module>
-		<module>comerzzia-custom-backoffice-services</module>
-		<module>comerzzia-custom-backoffice-web</module>
-		<module>comerzzia-custom-backoffice-admin-web</module>
+		<module>comerzzia-bimbaylola-pos-util</module>
+		<module>comerzzia-bimbaylola-pos-persistence</module>
+		<module>comerzzia-bimbaylola-pos-services</module>
+		<module>comerzzia-bimbaylola-pos-gui</module>
+		<module>comerzzia-bimbaylola-pos-skin</module>
+		<module>comerzzia-bimbaylola-pos-devices</module>
 	</modules>
 </project>

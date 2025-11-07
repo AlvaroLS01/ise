@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="pantalla-modal" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.bimbaylola.pos.gui.pagos.msi.MsiController">
+  <children>
+    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="578.0" styleClass="titulo-ventana">
+          <children>
+            <Label text="%Meses Sin Intereses" />
+          </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="72.0" prefWidth="578.0">
+          <children>
+            <Label styleClass="lb-destacado" text="%Elija los meses en los que se fraccionará el pago" />
+          </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="130.0" prefWidth="578.0">
+          <children>
+            <CheckBox fx:id="cbTres" mnemonicParsing="false" text="%3 meses">
+              <HBox.margin>
+                <Insets right="30.0" fx:id="x1" />
+              </HBox.margin>
+            </CheckBox>
+            <CheckBox id="cbSeis" fx:id="cbSeis" mnemonicParsing="false" text="%6 meses" HBox.margin="$x1" />
+            <CheckBox fx:id="cbNueve" mnemonicParsing="false" text="%9 meses" HBox.margin="$x1" />
+            <CheckBox fx:id="cbDoce" mnemonicParsing="false" text="%12 meses" />
+          </children>
+        </HBox>
+        <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+          <children>
+            <Button mnemonicParsing="false" onAction="#AccionAceptar" styleClass="btAceptar" text="%Aceptar">
+              <HBox.margin>
+                <Insets bottom="20.0" />
+              </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#AccionCancelar" styleClass="btCancelar" text="%Cancelar">
+              <HBox.margin>
+                <Insets bottom="20.0" left="50.0" right="20.0" />
+              </HBox.margin>
+            </Button>
+          </children>
+        </HBox>
+      </children>
+    </VBox>
+  </children>
+
+</AnchorPane>

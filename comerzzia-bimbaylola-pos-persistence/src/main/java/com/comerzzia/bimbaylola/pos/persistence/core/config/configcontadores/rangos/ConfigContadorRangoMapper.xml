@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.rangos.ConfigContadorRangoMapper">
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.rangos.ConfigContadorRango">
+    <id column="ID_CONTADOR" jdbcType="VARCHAR" property="idContador" />
+    <id column="ID_RANGO" jdbcType="VARCHAR" property="idRango" />
+    <result column="RANGO_DESCRIPCION" jdbcType="VARCHAR" property="rangoDescripcion" />
+    <result column="RANGO_INICIO" jdbcType="NUMERIC" property="rangoInicio" />
+    <result column="RANGO_FIN" jdbcType="NUMERIC" property="rangoFin" />
+    <result column="RANGO_AVISO" jdbcType="NUMERIC" property="rangoAviso" />
+    <result column="RANGO_AVISO_INTERVALO" jdbcType="NUMERIC" property="rangoAvisoIntervalo" />
+    <result column="RANGO_ULTIMO_AVISO" jdbcType="NUMERIC" property="rangoUltimoAviso" />
+    <result column="RANGO_FECHA_INICIO" jdbcType="TIMESTAMP" property="rangoFechaInicio" />
+    <result column="RANGO_FECHA_FIN" jdbcType="TIMESTAMP" property="rangoFechaFin" />
+    <result column="RANGO_FECHA_AVISO" jdbcType="TIMESTAMP" property="rangoFechaAviso" />
+    <result column="RANGO_FECHA_AVISO_INTERVALO" jdbcType="NUMERIC" property="rangoFechaAvisoIntervalo" />
+    <result column="RANGO_FECHA_ULTIMO_AVISO" jdbcType="TIMESTAMP" property="rangoFechaUltimoAviso" />
+    <result column="CODEMP" jdbcType="VARCHAR" property="codemp" />
+    <result column="CODALM" jdbcType="VARCHAR" property="codalm" />
+    <result column="CODCAJA" jdbcType="VARCHAR" property="codcaja" />
+    <result column="RANGO_CO_NUM_RESOLUCION" jdbcType="VARCHAR" property="rangoCoNumResolucion" />
+    <result column="RANGO_CO_FECHA_RESOLUCION" jdbcType="TIMESTAMP" property="rangoCoFechaResolucion" />
+    <result column="RANGO_CO_CLAVE_TECNICA" jdbcType="VARCHAR" property="rangoCoClaveTecnica" />
+    <result column="RANGO_CO_PREF" jdbcType="VARCHAR" property="rangoCoPref" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID_CONTADOR, ID_RANGO, RANGO_DESCRIPCION, RANGO_INICIO, RANGO_FIN, RANGO_AVISO, RANGO_AVISO_INTERVALO, 
+    RANGO_ULTIMO_AVISO, RANGO_FECHA_INICIO, RANGO_FECHA_FIN, RANGO_FECHA_AVISO, RANGO_FECHA_AVISO_INTERVALO, 
+    RANGO_FECHA_ULTIMO_AVISO, CODEMP, CODALM, CODCAJA, RANGO_CO_NUM_RESOLUCION, RANGO_CO_FECHA_RESOLUCION, 
+    RANGO_CO_CLAVE_TECNICA, RANGO_CO_PREF
+  </sql>
+  <select id="selectByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.rangos.ConfigContadorRangoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_CONFIG_CONTADORES_RANGOS_TBL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.rangos.ConfigContadorRangoKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from X_CONFIG_CONTADORES_RANGOS_TBL
+    where ID_CONTADOR = #{idContador,jdbcType=VARCHAR}
+      and ID_RANGO = #{idRango,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.rangos.ConfigContadorRangoKey">
+    delete from X_CONFIG_CONTADORES_RANGOS_TBL
+    where ID_CONTADOR = #{idContador,jdbcType=VARCHAR}
+      and ID_RANGO = #{idRango,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.rangos.ConfigContadorRangoExample">
+    delete from X_CONFIG_CONTADORES_RANGOS_TBL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.rangos.ConfigContadorRango">
+    insert into X_CONFIG_CONTADORES_RANGOS_TBL (ID_CONTADOR, ID_RANGO, RANGO_DESCRIPCION, 
+      RANGO_INICIO, RANGO_FIN, RANGO_AVISO, 
+      RANGO_AVISO_INTERVALO, RANGO_ULTIMO_AVISO, 
+      RANGO_FECHA_INICIO, RANGO_FECHA_FIN, RANGO_FECHA_AVISO, 
+      RANGO_FECHA_AVISO_INTERVALO, RANGO_FECHA_ULTIMO_AVISO, 
+      CODEMP, CODALM, CODCAJA, 
+      RANGO_CO_NUM_RESOLUCION, RANGO_CO_FECHA_RESOLUCION, 
+      RANGO_CO_CLAVE_TECNICA, RANGO_CO_PREF)
+    values (#{idContador,jdbcType=VARCHAR}, #{idRango,jdbcType=VARCHAR}, #{rangoDescripcion,jdbcType=VARCHAR}, 
+      #{rangoInicio,jdbcType=NUMERIC}, #{rangoFin,jdbcType=NUMERIC}, #{rangoAviso,jdbcType=NUMERIC}, 
+      #{rangoAvisoIntervalo,jdbcType=NUMERIC}, #{rangoUltimoAviso,jdbcType=NUMERIC}, 
+      #{rangoFechaInicio,jdbcType=TIMESTAMP}, #{rangoFechaFin,jdbcType=TIMESTAMP}, #{rangoFechaAviso,jdbcType=TIMESTAMP}, 
+      #{rangoFechaAvisoIntervalo,jdbcType=NUMERIC}, #{rangoFechaUltimoAviso,jdbcType=TIMESTAMP}, 
+      #{codemp,jdbcType=VARCHAR}, #{codalm,jdbcType=VARCHAR}, #{codcaja,jdbcType=VARCHAR}, 
+      #{rangoCoNumResolucion,jdbcType=VARCHAR}, #{rangoCoFechaResolucion,jdbcType=TIMESTAMP}, 
+      #{rangoCoClaveTecnica,jdbcType=VARCHAR}, #{rangoCoPref,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.rangos.ConfigContadorRango">
+    insert into X_CONFIG_CONTADORES_RANGOS_TBL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idContador != null">
+        ID_CONTADOR,
+      </if>
+      <if test="idRango != null">
+        ID_RANGO,
+      </if>
+      <if test="rangoDescripcion != null">
+        RANGO_DESCRIPCION,
+      </if>
+      <if test="rangoInicio != null">
+        RANGO_INICIO,
+      </if>
+      <if test="rangoFin != null">
+        RANGO_FIN,
+      </if>
+      <if test="rangoAviso != null">
+        RANGO_AVISO,
+      </if>
+      <if test="rangoAvisoIntervalo != null">
+        RANGO_AVISO_INTERVALO,
+      </if>
+      <if test="rangoUltimoAviso != null">
+        RANGO_ULTIMO_AVISO,
+      </if>
+      <if test="rangoFechaInicio != null">
+        RANGO_FECHA_INICIO,
+      </if>
+      <if test="rangoFechaFin != null">
+        RANGO_FECHA_FIN,
+      </if>
+      <if test="rangoFechaAviso != null">
+        RANGO_FECHA_AVISO,
+      </if>
+      <if test="rangoFechaAvisoIntervalo != null">
+        RANGO_FECHA_AVISO_INTERVALO,
+      </if>
+      <if test="rangoFechaUltimoAviso != null">
+        RANGO_FECHA_ULTIMO_AVISO,
+      </if>
+      <if test="codemp != null">
+        CODEMP,
+      </if>
+      <if test="codalm != null">
+        CODALM,
+      </if>
+      <if test="codcaja != null">
+        CODCAJA,
+      </if>
+      <if test="rangoCoNumResolucion != null">
+        RANGO_CO_NUM_RESOLUCION,
+      </if>
+      <if test="rangoCoFechaResolucion != null">
+        RANGO_CO_FECHA_RESOLUCION,
+      </if>
+      <if test="rangoCoClaveTecnica != null">
+        RANGO_CO_CLAVE_TECNICA,
+      </if>
+      <if test="rangoCoPref != null">
+        RANGO_CO_PREF,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idContador != null">
+        #{idContador,jdbcType=VARCHAR},
+      </if>
+      <if test="idRango != null">
+        #{idRango,jdbcType=VARCHAR},
+      </if>
+      <if test="rangoDescripcion != null">
+        #{rangoDescripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="rangoInicio != null">
+        #{rangoInicio,jdbcType=NUMERIC},
+      </if>
+      <if test="rangoFin != null">
+        #{rangoFin,jdbcType=NUMERIC},
+      </if>
+      <if test="rangoAviso != null">
+        #{rangoAviso,jdbcType=NUMERIC},
+      </if>
+      <if test="rangoAvisoIntervalo != null">
+        #{rangoAvisoIntervalo,jdbcType=NUMERIC},
+      </if>
+      <if test="rangoUltimoAviso != null">
+        #{rangoUltimoAviso,jdbcType=NUMERIC},
+      </if>
+      <if test="rangoFechaInicio != null">
+        #{rangoFechaInicio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rangoFechaFin != null">
+        #{rangoFechaFin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rangoFechaAviso != null">
+        #{rangoFechaAviso,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rangoFechaAvisoIntervalo != null">
+        #{rangoFechaAvisoIntervalo,jdbcType=NUMERIC},
+      </if>
+      <if test="rangoFechaUltimoAviso != null">
+        #{rangoFechaUltimoAviso,jdbcType=TIMESTAMP},
+      </if>
+      <if test="codemp != null">
+        #{codemp,jdbcType=VARCHAR},
+      </if>
+      <if test="codalm != null">
+        #{codalm,jdbcType=VARCHAR},
+      </if>
+      <if test="codcaja != null">
+        #{codcaja,jdbcType=VARCHAR},
+      </if>
+      <if test="rangoCoNumResolucion != null">
+        #{rangoCoNumResolucion,jdbcType=VARCHAR},
+      </if>
+      <if test="rangoCoFechaResolucion != null">
+        #{rangoCoFechaResolucion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rangoCoClaveTecnica != null">
+        #{rangoCoClaveTecnica,jdbcType=VARCHAR},
+      </if>
+      <if test="rangoCoPref != null">
+        #{rangoCoPref,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.rangos.ConfigContadorRangoExample" resultType="java.lang.Long">
+    select count(*) from X_CONFIG_CONTADORES_RANGOS_TBL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update X_CONFIG_CONTADORES_RANGOS_TBL
+    <set>
+      <if test="row.idContador != null">
+        ID_CONTADOR = #{row.idContador,jdbcType=VARCHAR},
+      </if>
+      <if test="row.idRango != null">
+        ID_RANGO = #{row.idRango,jdbcType=VARCHAR},
+      </if>
+      <if test="row.rangoDescripcion != null">
+        RANGO_DESCRIPCION = #{row.rangoDescripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="row.rangoInicio != null">
+        RANGO_INICIO = #{row.rangoInicio,jdbcType=NUMERIC},
+      </if>
+      <if test="row.rangoFin != null">
+        RANGO_FIN = #{row.rangoFin,jdbcType=NUMERIC},
+      </if>
+      <if test="row.rangoAviso != null">
+        RANGO_AVISO = #{row.rangoAviso,jdbcType=NUMERIC},
+      </if>
+      <if test="row.rangoAvisoIntervalo != null">
+        RANGO_AVISO_INTERVALO = #{row.rangoAvisoIntervalo,jdbcType=NUMERIC},
+      </if>
+      <if test="row.rangoUltimoAviso != null">
+        RANGO_ULTIMO_AVISO = #{row.rangoUltimoAviso,jdbcType=NUMERIC},
+      </if>
+      <if test="row.rangoFechaInicio != null">
+        RANGO_FECHA_INICIO = #{row.rangoFechaInicio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.rangoFechaFin != null">
+        RANGO_FECHA_FIN = #{row.rangoFechaFin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.rangoFechaAviso != null">
+        RANGO_FECHA_AVISO = #{row.rangoFechaAviso,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.rangoFechaAvisoIntervalo != null">
+        RANGO_FECHA_AVISO_INTERVALO = #{row.rangoFechaAvisoIntervalo,jdbcType=NUMERIC},
+      </if>
+      <if test="row.rangoFechaUltimoAviso != null">
+        RANGO_FECHA_ULTIMO_AVISO = #{row.rangoFechaUltimoAviso,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.codemp != null">
+        CODEMP = #{row.codemp,jdbcType=VARCHAR},
+      </if>
+      <if test="row.codalm != null">
+        CODALM = #{row.codalm,jdbcType=VARCHAR},
+      </if>
+      <if test="row.codcaja != null">
+        CODCAJA = #{row.codcaja,jdbcType=VARCHAR},
+      </if>
+      <if test="row.rangoCoNumResolucion != null">
+        RANGO_CO_NUM_RESOLUCION = #{row.rangoCoNumResolucion,jdbcType=VARCHAR},
+      </if>
+      <if test="row.rangoCoFechaResolucion != null">
+        RANGO_CO_FECHA_RESOLUCION = #{row.rangoCoFechaResolucion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.rangoCoClaveTecnica != null">
+        RANGO_CO_CLAVE_TECNICA = #{row.rangoCoClaveTecnica,jdbcType=VARCHAR},
+      </if>
+      <if test="row.rangoCoPref != null">
+        RANGO_CO_PREF = #{row.rangoCoPref,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update X_CONFIG_CONTADORES_RANGOS_TBL
+    set ID_CONTADOR = #{row.idContador,jdbcType=VARCHAR},
+      ID_RANGO = #{row.idRango,jdbcType=VARCHAR},
+      RANGO_DESCRIPCION = #{row.rangoDescripcion,jdbcType=VARCHAR},
+      RANGO_INICIO = #{row.rangoInicio,jdbcType=NUMERIC},
+      RANGO_FIN = #{row.rangoFin,jdbcType=NUMERIC},
+      RANGO_AVISO = #{row.rangoAviso,jdbcType=NUMERIC},
+      RANGO_AVISO_INTERVALO = #{row.rangoAvisoIntervalo,jdbcType=NUMERIC},
+      RANGO_ULTIMO_AVISO = #{row.rangoUltimoAviso,jdbcType=NUMERIC},
+      RANGO_FECHA_INICIO = #{row.rangoFechaInicio,jdbcType=TIMESTAMP},
+      RANGO_FECHA_FIN = #{row.rangoFechaFin,jdbcType=TIMESTAMP},
+      RANGO_FECHA_AVISO = #{row.rangoFechaAviso,jdbcType=TIMESTAMP},
+      RANGO_FECHA_AVISO_INTERVALO = #{row.rangoFechaAvisoIntervalo,jdbcType=NUMERIC},
+      RANGO_FECHA_ULTIMO_AVISO = #{row.rangoFechaUltimoAviso,jdbcType=TIMESTAMP},
+      CODEMP = #{row.codemp,jdbcType=VARCHAR},
+      CODALM = #{row.codalm,jdbcType=VARCHAR},
+      CODCAJA = #{row.codcaja,jdbcType=VARCHAR},
+      RANGO_CO_NUM_RESOLUCION = #{row.rangoCoNumResolucion,jdbcType=VARCHAR},
+      RANGO_CO_FECHA_RESOLUCION = #{row.rangoCoFechaResolucion,jdbcType=TIMESTAMP},
+      RANGO_CO_CLAVE_TECNICA = #{row.rangoCoClaveTecnica,jdbcType=VARCHAR},
+      RANGO_CO_PREF = #{row.rangoCoPref,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.rangos.ConfigContadorRango">
+    update X_CONFIG_CONTADORES_RANGOS_TBL
+    <set>
+      <if test="rangoDescripcion != null">
+        RANGO_DESCRIPCION = #{rangoDescripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="rangoInicio != null">
+        RANGO_INICIO = #{rangoInicio,jdbcType=NUMERIC},
+      </if>
+      <if test="rangoFin != null">
+        RANGO_FIN = #{rangoFin,jdbcType=NUMERIC},
+      </if>
+      <if test="rangoAviso != null">
+        RANGO_AVISO = #{rangoAviso,jdbcType=NUMERIC},
+      </if>
+      <if test="rangoAvisoIntervalo != null">
+        RANGO_AVISO_INTERVALO = #{rangoAvisoIntervalo,jdbcType=NUMERIC},
+      </if>
+      <if test="rangoUltimoAviso != null">
+        RANGO_ULTIMO_AVISO = #{rangoUltimoAviso,jdbcType=NUMERIC},
+      </if>
+      <if test="rangoFechaInicio != null">
+        RANGO_FECHA_INICIO = #{rangoFechaInicio,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rangoFechaFin != null">
+        RANGO_FECHA_FIN = #{rangoFechaFin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rangoFechaAviso != null">
+        RANGO_FECHA_AVISO = #{rangoFechaAviso,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rangoFechaAvisoIntervalo != null">
+        RANGO_FECHA_AVISO_INTERVALO = #{rangoFechaAvisoIntervalo,jdbcType=NUMERIC},
+      </if>
+      <if test="rangoFechaUltimoAviso != null">
+        RANGO_FECHA_ULTIMO_AVISO = #{rangoFechaUltimoAviso,jdbcType=TIMESTAMP},
+      </if>
+      <if test="codemp != null">
+        CODEMP = #{codemp,jdbcType=VARCHAR},
+      </if>
+      <if test="codalm != null">
+        CODALM = #{codalm,jdbcType=VARCHAR},
+      </if>
+      <if test="codcaja != null">
+        CODCAJA = #{codcaja,jdbcType=VARCHAR},
+      </if>
+      <if test="rangoCoNumResolucion != null">
+        RANGO_CO_NUM_RESOLUCION = #{rangoCoNumResolucion,jdbcType=VARCHAR},
+      </if>
+      <if test="rangoCoFechaResolucion != null">
+        RANGO_CO_FECHA_RESOLUCION = #{rangoCoFechaResolucion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rangoCoClaveTecnica != null">
+        RANGO_CO_CLAVE_TECNICA = #{rangoCoClaveTecnica,jdbcType=VARCHAR},
+      </if>
+      <if test="rangoCoPref != null">
+        RANGO_CO_PREF = #{rangoCoPref,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID_CONTADOR = #{idContador,jdbcType=VARCHAR}
+      and ID_RANGO = #{idRango,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.rangos.ConfigContadorRango">
+    update X_CONFIG_CONTADORES_RANGOS_TBL
+    set RANGO_DESCRIPCION = #{rangoDescripcion,jdbcType=VARCHAR},
+      RANGO_INICIO = #{rangoInicio,jdbcType=NUMERIC},
+      RANGO_FIN = #{rangoFin,jdbcType=NUMERIC},
+      RANGO_AVISO = #{rangoAviso,jdbcType=NUMERIC},
+      RANGO_AVISO_INTERVALO = #{rangoAvisoIntervalo,jdbcType=NUMERIC},
+      RANGO_ULTIMO_AVISO = #{rangoUltimoAviso,jdbcType=NUMERIC},
+      RANGO_FECHA_INICIO = #{rangoFechaInicio,jdbcType=TIMESTAMP},
+      RANGO_FECHA_FIN = #{rangoFechaFin,jdbcType=TIMESTAMP},
+      RANGO_FECHA_AVISO = #{rangoFechaAviso,jdbcType=TIMESTAMP},
+      RANGO_FECHA_AVISO_INTERVALO = #{rangoFechaAvisoIntervalo,jdbcType=NUMERIC},
+      RANGO_FECHA_ULTIMO_AVISO = #{rangoFechaUltimoAviso,jdbcType=TIMESTAMP},
+      CODEMP = #{codemp,jdbcType=VARCHAR},
+      CODALM = #{codalm,jdbcType=VARCHAR},
+      CODCAJA = #{codcaja,jdbcType=VARCHAR},
+      RANGO_CO_NUM_RESOLUCION = #{rangoCoNumResolucion,jdbcType=VARCHAR},
+      RANGO_CO_FECHA_RESOLUCION = #{rangoCoFechaResolucion,jdbcType=TIMESTAMP},
+      RANGO_CO_CLAVE_TECNICA = #{rangoCoClaveTecnica,jdbcType=VARCHAR},
+      RANGO_CO_PREF = #{rangoCoPref,jdbcType=VARCHAR}
+    where ID_CONTADOR = #{idContador,jdbcType=VARCHAR}
+      and ID_RANGO = #{idRango,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.comerzzia.bimbaylola.pos.persistence.core.config.configcontadores.rangos.ConfigContadorRangoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_CONFIG_CONTADORES_RANGOS_TBL
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

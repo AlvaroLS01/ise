@@ -1,0 +1,24 @@
+		#if(!${tarjetaRegalo})
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***GARANTÍA LEGAL***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">El término de garantía legal es de 90 días a partir de la fecha de compra para todos los artículos de la tienda. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para solicitar y descargar tu factura debes acceder al siguiente enlace: http://webportal.edicomgroup.com/customers/bimbaylola/search.htm indicando el número de ticket de tu compra y el importe total. </texto> </linea>
+			#else
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***GARANTÍA LEGAL***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">El término de garantía legal es de 90 días a partir de la fecha de compra para todos los artículos de la tienda. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"></texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para solicitar y descargar tu factura debes acceder al siguiente enlace: http://webportal.edicomgroup.com/customers/bimbaylola/search.htm indicando el número de ticket de tu compra y el importe total. </texto> </linea>
+		#end
+		
+
+
+
+
+
+		

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.comerzzia.pos.core.gui.componentes.datepicker.* ?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="-1.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.bimbaylola.pos.gui.mantenimientos.fidelizados.datosgenerales.ByLPaneDatosGeneralesController">
+  <children>
+    <HBox id="HBox" alignment="TOP_LEFT" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <VBox id="VBox" alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="0.0" HBox.hgrow="ALWAYS">
+          <children>
+            <HBox id="HBox" alignment="CENTER" maxHeight="-1.0" minHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" spacing="0.0" VBox.vgrow="SOMETIMES">
+              <children>
+                <VBox prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                  <children>
+                    <AnchorPane maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="-1.0">
+                      <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" prefHeight="-1.0" prefWidth="150.0" text="%Código" />
+                            <TextField fx:id="tfCodigo" editable="false" prefHeight="30.0" prefWidth="270.0" />
+                          </children>
+                        </HBox>
+                      </children>
+                      <VBox.margin>
+                        <Insets top="5.0" fx:id="x1" />
+                      </VBox.margin>
+                    </AnchorPane>
+                    <AnchorPane maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="-1.0" VBox.margin="$x1">
+                      <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" prefHeight="-1.0" prefWidth="150.0" text="%Nombre">
+                              <graphic>
+                                <Label text="*" />
+                              </graphic>
+                            </Label>
+                            <TextField fx:id="tfNombre" editable="true" prefHeight="30.0" prefWidth="270.0" />
+                            <Label alignment="CENTER_RIGHT" prefHeight="-1.0" prefWidth="100.0" text="%Apellidos">
+                              <graphic>
+                                <Label text="*" />
+                              </graphic>
+                            </Label>
+                            <TextField fx:id="tfApellidos" editable="true" prefHeight="30.0" prefWidth="270.0" />
+                          </children>
+                        </HBox>
+                      </children>
+                    </AnchorPane>
+                    <AnchorPane maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="-1.0" VBox.margin="$x1">
+                      <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="150.0" text="%Tipo documento" />
+                            <ComboBox fx:id="cbTipoDocumento" prefHeight="25.0" prefWidth="270.0">
+                              <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="Item 1" />
+                                  <String fx:value="Item 2" />
+                                  <String fx:value="Item 3" />
+                                </FXCollections>
+                              </items>
+                            </ComboBox>
+                            <Label alignment="CENTER_RIGHT" prefWidth="100.0" text="%Documento" />
+                            <TextField fx:id="tfDocumento" editable="true" prefHeight="30.0" prefWidth="270.0" />
+                            <Button id="btValidaDocumento" fx:id="btValidarDocumento" maxHeight="34.0" maxWidth="43.0" minHeight="34.0" minWidth="43.0" mnemonicParsing="false" onAction="#accionValidarDocumento" prefHeight="34.0" prefWidth="43.0" styleClass="btValidarDocumento" text="Button" />
+                          </children>
+                        </HBox>
+                      </children>
+                    </AnchorPane>
+                    <AnchorPane maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="-1.0" VBox.margin="$x1">
+                      <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" prefWidth="150.0" text="%Sexo" />
+                            <ComboBox fx:id="cbSexo" prefHeight="25.0" prefWidth="270.0">
+                              <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="Item 1" />
+                                  <String fx:value="Item 2" />
+                                  <String fx:value="Item 3" />
+                                </FXCollections>
+                              </items>
+                            </ComboBox>
+                          </children>
+                        </HBox>
+                      </children>
+                    </AnchorPane>
+                    <AnchorPane maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="-1.0" VBox.margin="$x1">
+                      <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" prefWidth="150.0" text="%Email" />
+                            <TextField fx:id="tfEmail" editable="true" prefHeight="30.0" prefWidth="270.0" />
+                          </children>
+                        </HBox>
+                      </children>
+                    </AnchorPane>
+                    <AnchorPane maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="-1.0" VBox.margin="$x1">
+                      <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" prefWidth="150.0" text="%Móvil" />
+                            <TextField fx:id="tfPrefijo" editable="false" prefWidth="70.0" />
+                            <TextField fx:id="tfMovil" editable="true" prefHeight="30.0" prefWidth="190.0">
+                              <HBox.margin>
+                                <Insets left="5.0" />
+                              </HBox.margin>
+                            </TextField>
+                          </children>
+                        </HBox>
+                      </children>
+                    </AnchorPane>
+                    <AnchorPane maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="-1.0" VBox.margin="$x1">
+                      <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="150.0" text="%Pais" />
+                            <TextField fx:id="tfCodPais" onAction="#cargaTiposDocumento" prefHeight="30.0" prefWidth="100.0" />
+                            <TextField fx:id="tfDesPais" editable="false" focusTraversable="false" prefHeight="30.0" prefWidth="545.0" />
+                            <Button fx:id="btBuscarPais" minHeight="34.0" minWidth="43.0" mnemonicParsing="false" onAction="#accionBuscarPais" prefHeight="34.0" prefWidth="43.0" styleClass="btBuscar" text="Button" />
+                          </children>
+                        </HBox>
+                      </children>
+                    </AnchorPane>
+                    <AnchorPane maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="-1.0">
+                      <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="150.0" text="" />
+                            <Label prefWidth="350.0" text="%Firma del Cliente">
+                              <graphic>
+                                <Label text="*" />
+                              </graphic>
+                              <HBox.margin>
+                                <Insets fx:id="x2" />
+                              </HBox.margin>
+                            </Label>
+                            <VBox fx:id="vbFirma" maxHeight="24.0" maxWidth="33.0" minHeight="24.0" minWidth="33.0" prefHeight="24.0" prefWidth="33.0" styleClass="buttonNoHand">
+                              <HBox.margin>
+                                <Insets left="20.0" fx:id="x3" />
+                              </HBox.margin>
+                            </VBox>
+                          </children>
+                        </HBox>
+                      </children>
+                      <VBox.margin>
+                        <Insets top="5.0" fx:id="x1" />
+                      </VBox.margin>
+                    </AnchorPane>
+                    <AnchorPane maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="-1.0">
+                      <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="150.0" text="" />
+                            <Label prefWidth="350.0" text="%Permitir Notificaciones" HBox.margin="$x2">
+                              <graphic>
+                                <Label text="*" />
+                              </graphic>
+                            </Label>
+                            <VBox fx:id="vbNotificaciones" maxHeight="24.0" maxWidth="33.0" minHeight="24.0" minWidth="33.0" prefHeight="24.0" prefWidth="33.0" styleClass="buttonNoHand" HBox.margin="$x3" />
+                          </children>
+                        </HBox>
+                      </children>
+                      <VBox.margin>
+                        <Insets top="5.0" fx:id="x1" />
+                      </VBox.margin>
+                    </AnchorPane>
+                    <AnchorPane maxHeight="35.0" minHeight="35.0" prefHeight="35.0" prefWidth="-1.0">
+                      <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <children>
+                            <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="150.0" text="" />
+                            <Label prefWidth="350.0" text="%Consentimiento de uso de datos">
+                              <graphic>
+                                <Label text="*" />
+                              </graphic>
+                              <HBox.margin>
+                                <Insets fx:id="x2" />
+                              </HBox.margin>
+                            </Label>
+                            <VBox id="vbConsentimientoi" fx:id="vbConsentimiento" maxHeight="24.0" maxWidth="33.0" minHeight="24.0" minWidth="33.0" prefHeight="24.0" prefWidth="33.0" styleClass="buttonNoHand" HBox.margin="$x3" />
+                          </children>
+                        </HBox>
+                      </children>
+                      <VBox.margin>
+                        <Insets top="5.0" fx:id="x1" />
+                      </VBox.margin>
+                    </AnchorPane>
+                    <VBox maxHeight="0.0" minHeight="0.0" prefHeight="200.0" prefWidth="100.0" visible="false">
+                      <children>
+                        <DatePicker id="dpFechaNacimiento" fx:id="dpFechaNacimiento" prefWidth="200" />
+                        <DatePicker id="dpFechaNacimiento" fx:id="dpFechaNacimiento" prefWidth="200" />
+                        <DatePicker id="dpFechaAlta" fx:id="dpFechaAlta" prefWidth="200" />
+                        <TextField fx:id="tfCodPostal" prefWidth="200.0" />
+                        <TextField fx:id="tfLocalidad" prefWidth="200.0" />
+                        <TextField fx:id="tfProvincia" prefWidth="200.0" />
+                        <TextField fx:id="tfPoblacion" prefWidth="200.0" />
+                        <TextField fx:id="tfDomicilio" prefWidth="200.0" />
+                        <TextField fx:id="tfCodTienda" onAction="#accionCargarTienda" prefWidth="200.0" />
+                        <TextField fx:id="tfDesTienda" prefWidth="200.0" />
+                        <TextField fx:id="tfNumeroTarjeta" prefWidth="200.0" />
+                        <TextField fx:id="tfCodColectivo" onAction="#accionCargarColectivo" prefWidth="200.0" />
+                        <TextField fx:id="tfDesColectivo" prefWidth="200.0" />
+                        <Button fx:id="btBuscarTienda" mnemonicParsing="false" onAction="#accionBuscarTienda" text="Button" />
+                        <Button fx:id="btLimpiarTienda" mnemonicParsing="false" onAction="#accionLimpiarTienda" text="Button" />
+                        <Button fx:id="btBuscarColectivo" mnemonicParsing="false" onAction="#accionBuscarColectivo" text="Button" />
+                        <Button fx:id="btLimpiarColectivo" mnemonicParsing="false" onAction="#accionLimpiarColectivo" text="Button" />
+                        <Label fx:id="lbColectivo" text="Label" />
+                        <Label fx:id="lbFechaAlta" text="Label" />
+                        <Label fx:id="lbNumeroTarjeta" text="Label" />
+                        <CheckBox fx:id="chNotifEmail" mnemonicParsing="false" text="CheckBox" />
+                        <CheckBox fx:id="chNotifMovil" mnemonicParsing="false" text="CheckBox" />
+                        <ComboBox fx:id="cbEstadoCivil">
+                          <items>
+                            <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Item 1" />
+                              <String fx:value="Item 2" />
+                              <String fx:value="Item 3" />
+                            </FXCollections>
+                          </items>
+                        </ComboBox>
+                      </children>
+                    </VBox>
+                  </children>
+                </VBox>
+              </children>
+              <padding>
+                <Insets top="10.0" />
+              </padding>
+              <VBox.margin>
+                <Insets top="2.0" />
+              </VBox.margin>
+            </HBox>
+          </children>
+        </VBox>
+      </children>
+    </HBox>
+  </children>
+  <stylesheets>
+    <URL value="@../../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

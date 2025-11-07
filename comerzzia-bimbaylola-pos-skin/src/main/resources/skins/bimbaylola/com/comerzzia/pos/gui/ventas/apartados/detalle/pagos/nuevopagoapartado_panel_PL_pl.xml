@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+
+    ComerZZia 3.0
+
+    Copyright (c) 2008-2015 Comerzzia, S.L.  All Rights Reserved.
+
+    THIS WORK IS  SUBJECT  TO  SPAIN  AND  INTERNATIONAL  COPYRIGHT  LAWS  AND
+    TREATIES.   NO  PART  OF  THIS  WORK MAY BE  USED,  PRACTICED,  PERFORMED
+    COPIED, DISTRIBUTED, REVISED, MODIFIED, TRANSLATED,  ABRIDGED, CONDENSED,
+    EXPANDED,  COLLECTED,  COMPILED,  LINKED,  RECAST, TRANSFORMED OR ADAPTED
+    WITHOUT THE PRIOR WRITTEN CONSENT OF COMERZZIA, S.L. ANY USE OR EXPLOITATION
+    OF THIS WORK WITHOUT AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO
+    CRIMINAL AND CIVIL LIABILITY.
+
+    CONSULT THE END USER LICENSE AGREEMENT FOR INFORMATION ON ADDITIONAL
+    RESTRICTIONS.
+
+-->
+<Panel>
+    <LineaBotones>
+    	<Boton>
+			<texto>aceptar (no visible)</texto>
+            <clave>aceptar</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F5</teclaAccesoRapido>
+			<visible>N</visible>
+        </Boton>
+    	<Boton>
+			<texto>abrir cajón (no visible)</texto>
+            <clave>ABRIR CAJON</clave>
+            <tipo>OPERACION</tipo>
+			<teclaAccesoRapido>Ctrl + O</teclaAccesoRapido>
+			<visible>N</visible>
+        </Boton>
+        <Boton>
+			<clave>0.01</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_1gr.png</rutaImagen>
+        </Boton>  
+        <Boton>
+            <clave>0.02</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_2gr.png</rutaImagen>
+        </Boton> 		
+        <Boton>
+            <clave>0.05</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_5gr.png</rutaImagen>
+        </Boton>  
+        <Boton>
+            <clave>0.10</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_10gr.png</rutaImagen>
+        </Boton>
+        <Boton>
+            <clave>0.20</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_20gr.png</rutaImagen>
+        </Boton> 		
+        <Boton>
+            <clave>0.50</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_50gr.png</rutaImagen>
+        </Boton>
+	
+        <Boton>
+            <clave>1</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_1zl.png</rutaImagen>
+        </Boton>
+	</LineaBotones>
+    <LineaBotones>
+        <Boton>
+            <clave>2</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_2zl.png</rutaImagen>
+        </Boton>  
+        <Boton>
+            <clave>5</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_5zl.png</rutaImagen>
+        </Boton>  
+        <Boton>
+            <clave>10</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_10zl.png</rutaImagen>
+        </Boton>
+        <Boton>
+            <clave>20</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_20zl.png</rutaImagen>
+        </Boton>
+        <Boton>
+            <clave>50</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_50zl.png</rutaImagen>
+        </Boton>
+		<Boton>
+            <clave>100</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_100zl.png</rutaImagen>
+        </Boton>	
+		<Boton>
+            <clave>200</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/pl_200zl.png</rutaImagen>
+        </Boton>			
+	</LineaBotones>
+</Panel>

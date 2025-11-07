@@ -1,0 +1,44 @@
+#foreach($pago in $ticket.getPagos())
+	#if(${pago.tieneDatosRespuestaPagoTarjeta()} && ${pago.getDatosRespuestaPagoTarjeta().getCodAutorizacion()})
+	
+		#if($pago.getDatosRespuestaPagoTarjeta().getTipoLectura() == "L")
+			<texto pre-command="29;40;76;6;0;48;69;32;32;1;1"></texto>
+		#end
+		
+		#if($ticket.getCustomerTicket($pago) && !$esBoletaCompleta)
+			<linea><texto></texto></linea>
+			#if($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "VENTA")
+				<linea line-size="4"><texto>------------------- V E N T A -------------------------</texto> </linea>			
+			#elseif($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "DEVOLUCION")
+				<linea line-size="4"><texto>-------------- D E V O L U C I O N --------------------</texto> </linea>			
+			#end
+			
+			#foreach($respuesta in $ticket.getCustomerTicket($pago))
+				<linea><texto size="40" align="left">${respuesta}</texto></linea>
+			#end
+		#end
+		
+		#if($ticket.getMerchantTicket($pago) && $esBoletaCompleta)
+			#parse("./plantillas/datos_cabecera.xml")
+			<linea><texto></texto></linea>
+			
+			#if($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "VENTA")
+				<linea line-size="4"><texto>------------------- V E N T A -------------------------</texto> </linea>			
+			#elseif($pago.getDatosRespuestaPagoTarjeta().getTipoTransaccion() == "DEVOLUCION")
+				<linea line-size="4"><texto>-------------- D E V O L U C I O N --------------------</texto> </linea>			
+			#end
+			
+			#foreach($respuesta in $ticket.getMerchantTicket($pago))
+				<linea><texto size="40" align="left">${respuesta}</texto></linea>
+			#end
+			<linea><texto></texto></linea>
+			<linea line-size="4"><texto size="40" align="center">Copia para el establecimiento</texto></linea>
+			<linea><texto></texto></linea>
+			<linea><texto></texto></linea>
+			<linea><texto></texto></linea>
+			<linea><texto></texto></linea>
+			<corte></corte>
+		
+		#end
+	#end
+#end     

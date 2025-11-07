@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.pais.provincias.ProvinciasMapper" >
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.pais.provincias.ProvinciasBean" >
+    <id column="UID_INSTANCIA" property="uidInstancia" jdbcType="VARCHAR" />
+    <id column="CODPROVINCIA" property="codprovincia" jdbcType="VARCHAR" />
+    <id column="CODPAIS" property="codpais" jdbcType="VARCHAR" />
+    <result column="DESPROVINCIA" property="desprovincia" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    UID_INSTANCIA, CODPROVINCIA, CODPAIS, DESPROVINCIA
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.provincias.ProvinciasExample" resultSetType="SCROLL_INSENSITIVE" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_pais_provincia_tbl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.provincias.ProvinciasKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from x_pais_provincia_tbl
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and CODPROVINCIA = #{codprovincia,jdbcType=VARCHAR}
+      and CODPAIS = #{codpais,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.provincias.ProvinciasKey" >
+    delete from x_pais_provincia_tbl
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and CODPROVINCIA = #{codprovincia,jdbcType=VARCHAR}
+      and CODPAIS = #{codpais,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.provincias.ProvinciasExample" >
+    delete from x_pais_provincia_tbl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.provincias.ProvinciasBean" >
+    insert into x_pais_provincia_tbl (UID_INSTANCIA, CODPROVINCIA, CODPAIS, 
+      DESPROVINCIA)
+    values (#{uidInstancia,jdbcType=VARCHAR}, #{codprovincia,jdbcType=VARCHAR}, #{codpais,jdbcType=VARCHAR}, 
+      #{desprovincia,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.provincias.ProvinciasBean" >
+    insert into x_pais_provincia_tbl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uidInstancia != null" >
+        UID_INSTANCIA,
+      </if>
+      <if test="codprovincia != null" >
+        CODPROVINCIA,
+      </if>
+      <if test="codpais != null" >
+        CODPAIS,
+      </if>
+      <if test="desprovincia != null" >
+        DESPROVINCIA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uidInstancia != null" >
+        #{uidInstancia,jdbcType=VARCHAR},
+      </if>
+      <if test="codprovincia != null" >
+        #{codprovincia,jdbcType=VARCHAR},
+      </if>
+      <if test="codpais != null" >
+        #{codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="desprovincia != null" >
+        #{desprovincia,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.provincias.ProvinciasExample" resultType="java.lang.Integer" >
+    select count(*) from x_pais_provincia_tbl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update x_pais_provincia_tbl
+    <set >
+      <if test="record.uidInstancia != null" >
+        UID_INSTANCIA = #{record.uidInstancia,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codprovincia != null" >
+        CODPROVINCIA = #{record.codprovincia,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codpais != null" >
+        CODPAIS = #{record.codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="record.desprovincia != null" >
+        DESPROVINCIA = #{record.desprovincia,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update x_pais_provincia_tbl
+    set UID_INSTANCIA = #{record.uidInstancia,jdbcType=VARCHAR},
+      CODPROVINCIA = #{record.codprovincia,jdbcType=VARCHAR},
+      CODPAIS = #{record.codpais,jdbcType=VARCHAR},
+      DESPROVINCIA = #{record.desprovincia,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.provincias.ProvinciasBean" >
+    update x_pais_provincia_tbl
+    <set >
+      <if test="desprovincia != null" >
+        DESPROVINCIA = #{desprovincia,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and CODPROVINCIA = #{codprovincia,jdbcType=VARCHAR}
+      and CODPAIS = #{codpais,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.provincias.ProvinciasBean" >
+    update x_pais_provincia_tbl
+    set DESPROVINCIA = #{desprovincia,jdbcType=VARCHAR}
+    where UID_INSTANCIA = #{uidInstancia,jdbcType=VARCHAR}
+      and CODPROVINCIA = #{codprovincia,jdbcType=VARCHAR}
+      and CODPAIS = #{codpais,jdbcType=VARCHAR}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.pais.provincias.ProvinciasExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_pais_provincia_tbl
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.comerzzia.pos.core.gui.componentes.textField.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-stylesheet ../../../../../../pos/gui/styles/styles.css?>
+
+<AnchorPane id="AnchorPane" prefHeight="394.0" prefWidth="833.0" styleClass="mainFxmlClass, pantalla-detalle" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.bimbaylola.pos.gui.ventas.cajas.accionesimpresorafiscal.AccionesImpresoraFiscalController">
+  <children>
+    <HBox id="HBox" alignment="CENTER" spacing="5.0" style="" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <VBox prefHeight="325.0" prefWidth="600.0" HBox.hgrow="ALWAYS">
+          <children>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="titulo-ventana">
+              <children>
+                <Label alignment="CENTER" prefHeight="38.0" prefWidth="720.0" text="%Acciones Impresora Fiscal" />
+              </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="265.0" prefWidth="833.0" VBox.vgrow="NEVER">
+              <children>
+                <AnchorPane fx:id="panelAcciones" prefHeight="245.0" prefWidth="813.0" HBox.hgrow="ALWAYS">
+                  <HBox.margin>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </HBox.margin>
+                </AnchorPane>
+              </children>
+            </HBox>
+            <HBox prefHeight="65.0" prefWidth="831.0" VBox.vgrow="NEVER">
+              <children>
+                <AnchorPane prefHeight="65.0" prefWidth="831.0" HBox.hgrow="ALWAYS">
+                  <children>
+                    <HBox alignment="CENTER_RIGHT" prefHeight="62.0" prefWidth="600.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <Button id="btCancelar" fx:id="btCerrar" minHeight="42.0" minWidth="115.0" mnemonicParsing="false" onAction="#accionCerrar" prefHeight="42.0" prefWidth="115.0" styleClass="btCancelar" text="%Cerrar">
+                          <font>
+                            <Font size="16.0" fx:id="x1" />
+                          </font>
+                        </Button>
+                      </children>
+                    </HBox>
+                  </children>
+                </AnchorPane>
+              </children>
+            </HBox>
+          </children>
+        </VBox>
+      </children>
+    </HBox>
+  </children>
+  <stylesheets>
+    <URL value="@../../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

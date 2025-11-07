@@ -1,0 +1,9 @@
+<plantilla>
+	<documento salida="impresora1">
+	#parse("./plantillas/factura_contenido_SG.xml")
+	#if ($ticket.getCabecera().getCodTipoDocumento() == "SR" && !$esCopia && !${salida.equals("pantalla")})
+		#set ($esCopia = true)
+		#parse("./plantillas/factura_contenido_SG.xml")
+	#end
+	</documento>
+</plantilla>

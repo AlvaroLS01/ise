@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- ComerZZia 3.0 Copyright (c) 2008-2015 Comerzzia, S.L. All Rights Reserved. 
+	THIS WORK IS SUBJECT TO SPAIN AND INTERNATIONAL COPYRIGHT LAWS AND TREATIES. 
+	NO PART OF THIS WORK MAY BE USED, PRACTICED, PERFORMED COPIED, DISTRIBUTED, 
+	REVISED, MODIFIED, TRANSLATED, ABRIDGED, CONDENSED, EXPANDED, COLLECTED, 
+	COMPILED, LINKED, RECAST, TRANSFORMED OR ADAPTED WITHOUT THE PRIOR WRITTEN 
+	CONSENT OF COMERZZIA, S.L. ANY USE OR EXPLOITATION OF THIS WORK WITHOUT AUTHORIZATION 
+	COULD SUBJECT THE PERPETRATOR TO CRIMINAL AND CIVIL LIABILITY. CONSULT THE 
+	END USER LICENSE AGREEMENT FOR INFORMATION ON ADDITIONAL RESTRICTIONS. -->
+<Panel>
+	<LineaBotones>
+		<Boton>
+			<texto>aceptar (no visible)</texto>
+			<clave>aceptar</clave>
+			<tipo>METODO</tipo>
+			<teclaAccesoRapido>F5</teclaAccesoRapido>
+			<visible>N</visible>
+		</Boton>
+		<Boton>
+			<texto>abrir cajón (no visible)</texto>
+			<clave>ABRIR CAJON</clave>
+			<tipo>OPERACION</tipo>
+			<teclaAccesoRapido>Ctrl + O</teclaAccesoRapido>
+			<visible>N</visible>
+		</Boton>
+		<Boton>
+			<clave>0.01</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_1C.png</rutaImagen>
+		</Boton>
+		<Boton>
+			<clave>0.05</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_5C.png</rutaImagen>
+		</Boton>
+		<Boton>
+			<clave>0.10</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_10C.png</rutaImagen>
+		</Boton>
+		<Boton>
+			<clave>0.20</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_20C.png</rutaImagen>
+		</Boton>
+		<Boton>
+			<clave>0.50</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_50C.png</rutaImagen>
+		</Boton>
+		<Boton>
+			<clave>1</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_1SS.png</rutaImagen>
+		</Boton>
+		<Boton>
+			<clave>2</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_2SS.png</rutaImagen>
+		</Boton>
+	</LineaBotones>
+	<LineaBotones>
+		<Boton>
+			<clave>5</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_5SS.png</rutaImagen>
+		</Boton>
+		<Boton>
+			<clave>10</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_10SS.png</rutaImagen>
+		</Boton>
+		<Boton>
+			<clave>20</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_20SS.png</rutaImagen>
+		</Boton>
+		<Boton>
+			<clave>50</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_50SS.png</rutaImagen>
+		</Boton>
+		<Boton>
+			<clave>100</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_100SS.png</rutaImagen>
+		</Boton>
+		<Boton>
+			<clave>1000</clave>
+			<tipo>PAGO</tipo>
+			<rutaImagen>importes/sg_1000SS.png</rutaImagen>
+		</Boton>
+	</LineaBotones>
+</Panel>

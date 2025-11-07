@@ -1,0 +1,13 @@
+		#if(!${tarjetaRegalo})
+			<linea> <texto> </texto> </linea>
+		#else
+			<linea line-size="4"> <texto align="center" style="1">Dziękujemy za wizytę w naszym sklepie! </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thank you for visiting our store. </texto> </linea>
+		#end
+		
+
+
+
+
+
+		

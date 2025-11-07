@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.ticket.articulos.agregarnotainformativa.AvisoInformativoMapper" >
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.ticket.articulos.agregarnotainformativa.AvisoInformativoBean" >
+    <id column="UID_ACTIVIDAD" property="uidActividad" jdbcType="VARCHAR" />
+    <id column="CODPAIS" property="codpais" jdbcType="VARCHAR" />
+    <id column="CODIGO" property="codigo" jdbcType="VARCHAR" />
+    <result column="DESCRIPCION" property="descripcion" jdbcType="VARCHAR" />
+    <result column="FECHA" property="fecha" jdbcType="CHAR" />
+    <result column="TEXTO" property="texto" jdbcType="CHAR" />
+    <result column="DOCU_INDEPE" property="docuIndepe" jdbcType="CHAR" />
+    <result column="COPIAS" property="copias" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    UID_ACTIVIDAD, CODPAIS, CODIGO, DESCRIPCION, FECHA, TEXTO, DOCU_INDEPE, COPIAS
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.ticket.articulos.agregarnotainformativa.AvisoInformativoExample" resultSetType="SCROLL_INSENSITIVE" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_AVISOS_INFORMATIVOS_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.ticket.articulos.agregarnotainformativa.AvisoInformativoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from X_AVISOS_INFORMATIVOS_TBL
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and CODPAIS = #{codpais,jdbcType=VARCHAR}
+      and CODIGO = #{codigo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.ticket.articulos.agregarnotainformativa.AvisoInformativoKey" >
+    delete from X_AVISOS_INFORMATIVOS_TBL
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and CODPAIS = #{codpais,jdbcType=VARCHAR}
+      and CODIGO = #{codigo,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.ticket.articulos.agregarnotainformativa.AvisoInformativoExample" >
+    delete from X_AVISOS_INFORMATIVOS_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.ticket.articulos.agregarnotainformativa.AvisoInformativoBean" >
+    insert into X_AVISOS_INFORMATIVOS_TBL (UID_ACTIVIDAD, CODPAIS, CODIGO, 
+      DESCRIPCION, FECHA, TEXTO, 
+      DOCU_INDEPE, COPIAS)
+    values (#{uidActividad,jdbcType=VARCHAR}, #{codpais,jdbcType=VARCHAR}, #{codigo,jdbcType=VARCHAR}, 
+      #{descripcion,jdbcType=VARCHAR}, #{fecha,jdbcType=CHAR}, #{texto,jdbcType=CHAR}, 
+      #{docuIndepe,jdbcType=CHAR}, #{copias,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.ticket.articulos.agregarnotainformativa.AvisoInformativoBean" >
+    insert into X_AVISOS_INFORMATIVOS_TBL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uidActividad != null" >
+        UID_ACTIVIDAD,
+      </if>
+      <if test="codpais != null" >
+        CODPAIS,
+      </if>
+      <if test="codigo != null" >
+        CODIGO,
+      </if>
+      <if test="descripcion != null" >
+        DESCRIPCION,
+      </if>
+      <if test="fecha != null" >
+        FECHA,
+      </if>
+      <if test="texto != null" >
+        TEXTO,
+      </if>
+      <if test="docuIndepe != null" >
+        DOCU_INDEPE,
+      </if>
+      <if test="copias != null" >
+        COPIAS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uidActividad != null" >
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="codpais != null" >
+        #{codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="codigo != null" >
+        #{codigo,jdbcType=VARCHAR},
+      </if>
+      <if test="descripcion != null" >
+        #{descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="fecha != null" >
+        #{fecha,jdbcType=CHAR},
+      </if>
+      <if test="texto != null" >
+        #{texto,jdbcType=CHAR},
+      </if>
+      <if test="docuIndepe != null" >
+        #{docuIndepe,jdbcType=CHAR},
+      </if>
+      <if test="copias != null" >
+        #{copias,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.ticket.articulos.agregarnotainformativa.AvisoInformativoExample" resultType="java.lang.Integer" >
+    select count(*) from X_AVISOS_INFORMATIVOS_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update X_AVISOS_INFORMATIVOS_TBL
+    <set >
+      <if test="record.uidActividad != null" >
+        UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codpais != null" >
+        CODPAIS = #{record.codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codigo != null" >
+        CODIGO = #{record.codigo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.descripcion != null" >
+        DESCRIPCION = #{record.descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fecha != null" >
+        FECHA = #{record.fecha,jdbcType=CHAR},
+      </if>
+      <if test="record.texto != null" >
+        TEXTO = #{record.texto,jdbcType=CHAR},
+      </if>
+      <if test="record.docuIndepe != null" >
+        DOCU_INDEPE = #{record.docuIndepe,jdbcType=CHAR},
+      </if>
+      <if test="record.copias != null" >
+        COPIAS = #{record.copias,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update X_AVISOS_INFORMATIVOS_TBL
+    set UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      CODPAIS = #{record.codpais,jdbcType=VARCHAR},
+      CODIGO = #{record.codigo,jdbcType=VARCHAR},
+      DESCRIPCION = #{record.descripcion,jdbcType=VARCHAR},
+      FECHA = #{record.fecha,jdbcType=CHAR},
+      TEXTO = #{record.texto,jdbcType=CHAR},
+      DOCU_INDEPE = #{record.docuIndepe,jdbcType=CHAR},
+      COPIAS = #{record.copias,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.ticket.articulos.agregarnotainformativa.AvisoInformativoBean" >
+    update X_AVISOS_INFORMATIVOS_TBL
+    <set >
+      <if test="descripcion != null" >
+        DESCRIPCION = #{descripcion,jdbcType=VARCHAR},
+      </if>
+      <if test="fecha != null" >
+        FECHA = #{fecha,jdbcType=CHAR},
+      </if>
+      <if test="texto != null" >
+        TEXTO = #{texto,jdbcType=CHAR},
+      </if>
+      <if test="docuIndepe != null" >
+        DOCU_INDEPE = #{docuIndepe,jdbcType=CHAR},
+      </if>
+      <if test="copias != null" >
+        COPIAS = #{copias,jdbcType=BIGINT},
+      </if>
+    </set>
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and CODPAIS = #{codpais,jdbcType=VARCHAR}
+      and CODIGO = #{codigo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.ticket.articulos.agregarnotainformativa.AvisoInformativoBean" >
+    update X_AVISOS_INFORMATIVOS_TBL
+    set DESCRIPCION = #{descripcion,jdbcType=VARCHAR},
+      FECHA = #{fecha,jdbcType=CHAR},
+      TEXTO = #{texto,jdbcType=CHAR},
+      DOCU_INDEPE = #{docuIndepe,jdbcType=CHAR},
+      COPIAS = #{copias,jdbcType=BIGINT}
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and CODPAIS = #{codpais,jdbcType=VARCHAR}
+      and CODIGO = #{codigo,jdbcType=VARCHAR}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.comerzzia.bimbaylola.pos.persistence.ticket.articulos.agregarnotainformativa.AvisoInformativoExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from X_AVISOS_INFORMATIVOS_TBL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

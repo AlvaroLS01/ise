@@ -1,0 +1,95 @@
+    #set ($esPagoTRTA = false)	
+	#foreach ($pago in $ticket.getPagos())       
+		#if(${pago.isPagoTarjetaRegalo()})
+			#set ($esPagoTRTA = true)
+		#end
+	#end
+	
+	#if($ticket.getCabecera().getCodTipoDocumento() == "SR")
+		#if(${ticket.isDevolucionTarjetaRegalo()} or ${esPagoTRTA})
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Verifique Documento: https://webportal.edicomgroup.com/customers/sii/ </texto></linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***Tarjeta Abono***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta es válida por un periodo de 2 años desde su recarga.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta únicamente es válida para la compra de artículos a la venta en los puntos de venta de BIMBA Y LOLA presentes en el territorio nacional (excepto grandes almacenes y tienda online www.bimbaylola.com) hasta que se consuma el saldo de la Tarjeta.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Dicho saldo no será reembolsable ni será canjeable por dinero en ningún caso.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se reemplazará la Tarjeta en caso de robo, pérdida, extravío o deterioro. Los productos adquiridos con la Tarjeta están sujetos a la política de cambios y devoluciones de BIMBA Y LOLA.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para cualquier cambio o devolución de artículos pagados con la Tarjeta, es imprescindible su conservación y presentación en el momento de dicha operación.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Por favor, compruebe que el saldo de la Tarjeta es el que figura en la boleta vinculado a la misma. La adquisición y uso de la Tarjeta implica la aceptación de las condiciones para el uso de la misma disponibles en www.bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Esta garantía es adicional y no afecta a los derechos del consumidor.</texto> </linea>
+
+
+			
+		#elseif(${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()})
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Verifique Documento: https://webportal.edicomgroup.com/customers/sii/</texto></linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***Tarjeta Abono***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta es válida por un periodo de 2 años desde su recarga.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta únicamente es válida para la compra de artículos a la venta en los puntos de venta de BIMBA Y LOLA presentes en el territorio nacional (excepto grandes almacenes y tienda online www.bimbaylola.com) hasta que se consuma el saldo de la Tarjeta.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Dicho saldo no será reembolsable ni será canjeable por dinero en ningún caso.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se reemplazará la Tarjeta en caso de robo, pérdida, extravío o deterioro. Los productos adquiridos con la Tarjeta están sujetos a la política de cambios y devoluciones de BIMBA Y LOLA.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para cualquier cambio o devolución de artículos pagados con la Tarjeta, es imprescindible su conservación y presentación en el momento de dicha operación.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Por favor, compruebe que el saldo de la Tarjeta es el que figura en la boleta vinculado a la misma. La adquisición y uso de la Tarjeta implica la aceptación de las condiciones para el uso de la misma disponibles en www.bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Esta garantía es adicional y no afecta a los derechos del consumidor.</texto> </linea>
+
+		#else
+			<!--<linea line-size="4"> <texto align="center" style="1">Gracias por su visita.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Conserve su ticket para cualquier cambio o devolución.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Plazo máximo 30 días.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Condiciones válidas para el territorio nacional excepto Islas Canarias, Ceuta, El Corte Inglés y tiendas Outlet.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para el cambio o devolución de artículos es imprescindible que se conserve intacto el precinto de seguridad.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se admitirán cambios ni devoluciones de artículos de baño sin la protección higiénica intacta.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">El importe de su compra será reembolsado en la misma forma de pago siempre y cuando presente el ticket original y en su caso la tarjeta y el resguardo de la operación. En el caso de presentar ticket regalo, o cuando la compra se realice a través del medio de pago Alipay o Wechat, el reembolso correspondiente se hará en una tarjeta abono.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Esta garantía es adicional y no afecta a los derechos legales del consumidor.</texto> </linea>
+		-->
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Verifique Documento: https://webportal.edicomgroup.com/customers/sii/</texto></linea>
+			
+		#end
+	#else
+		#if(${activacionTR})
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Verifique Documento: https://webportal.edicomgroup.com/customers/sii/</texto></linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***Tarjeta Abono***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta es válida por un periodo de 2 años desde su recarga.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta únicamente es válida para la compra de artículos a la venta en los puntos de venta de BIMBA Y LOLA presentes en el territorio nacional (excepto grandes almacenes y tienda online www.bimbaylola.com) hasta que se consuma el saldo de la Tarjeta.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Dicho saldo no será reembolsable ni será canjeable por dinero en ningún caso.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se reemplazará la Tarjeta en caso de robo, pérdida, extravío o deterioro. Los productos adquiridos con la Tarjeta están sujetos a la política de cambios y devoluciones de BIMBA Y LOLA.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para cualquier cambio o devolución de artículos pagados con la Tarjeta, es imprescindible su conservación y presentación en el momento de dicha operación.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Por favor, compruebe que el saldo de la Tarjeta es el que figura en la boleta vinculado a la misma. La adquisición y uso de la Tarjeta implica la aceptación de las condiciones para el uso de la misma disponibles en www.bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Esta garantía es adicional y no afecta a los derechos del consumidor.</texto> </linea>
+
+		#elseif(${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()} or ${esPagoTRTA})
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Verifique Documento: https://webportal.edicomgroup.com/customers/sii/</texto></linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">***Tarjeta Abono***</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta es válida por un periodo de 2 años desde su recarga.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">La Tarjeta únicamente es válida para la compra de artículos a la venta en los puntos de venta de BIMBA Y LOLA presentes en el territorio nacional (excepto grandes almacenes y tienda online www.bimbaylola.com) hasta que se consuma el saldo de la Tarjeta.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Dicho saldo no será reembolsable ni será canjeable por dinero en ningún caso.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">No se reemplazará la Tarjeta en caso de robo, pérdida, extravío o deterioro. Los productos adquiridos con la Tarjeta están sujetos a la política de cambios y devoluciones de BIMBA Y LOLA.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Para cualquier cambio o devolución de artículos pagados con la Tarjeta, es imprescindible su conservación y presentación en el momento de dicha operación.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Por favor, compruebe que el saldo de la Tarjeta es el que figura en la boleta vinculado a la misma. La adquisición y uso de la Tarjeta implica la aceptación de las condiciones para el uso de la misma disponibles en www.bimbaylola.com.</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Esta garantía es adicional y no afecta a los derechos del consumidor.</texto> </linea>
+
+		#else
+			<linea line-size="4"> <texto align="center" style="1">Gracias por su visita</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Thanks for your visit</texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1"> </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Verifique Documento: https://webportal.edicomgroup.com/customers/sii/</texto></linea>
+			
+		#end
+	#end

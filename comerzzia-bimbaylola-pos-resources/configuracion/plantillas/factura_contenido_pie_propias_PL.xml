@@ -1,0 +1,63 @@
+    #set ($esPagoTRTA = false)	
+	#foreach ($pago in $ticket.getPagos())       
+		#if(${pago.isPagoTarjetaRegalo()})
+			#set ($esPagoTRTA = true)
+		#end
+	#end
+
+	#if($ticket.getCabecera().getCodTipoDocumento() == "SR" || $ticket.getCabecera().getCodTipoDocumento() == "OR")
+		#if(${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()} || ${ticket.isDevolucionTarjetaRegalo()} || ${esPagoTRTA})
+			<!-- DEVOLUCION DONDE INTERVIENE TARJETA REGALO/ABONO -->
+			<linea line-size="4"> <texto align="center" style="1">***KARTA PODARUNKOWA/REFUNDACYJNA*** </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Karta jest ważna przez okres trzech lat od daty jej doładowania. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Karta umożliwia dokonywanie zakupów wyłącznie w sklepach BIMBA Y LOLA na terenie Polski (Z wyjątkiem domów towarowych i sklepu internetowego www.bimbaylola.com) aż do wykorzystania w całości istniejących na niej środków. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Niewykorzystane saldo karty nie zostanie w żadnym wypadku zwrócone ani wymienione na gotówkę. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Zrzekamy się wszelkiej odpowiedzialności za zgubioną, skradzioną lub zniszczoną kartę. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Zakupione przy użyciu karty towary  podlegają polityce zwrotów obowiązującej w firmie BIMBA Y LOLA. Zgodnie z polityką zwrotów firmy BIMBA Y LOLA, kartę podarunkową można zwrócić w maksymalnym terminie 30 dni, pod warunkiem, że nie była ona używana i pieczęć ochronna jej kodu zabezpieczającego pozostaje nienaruszona. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Wymiana lub zwrot dowolnego artykułu, do którego nabycia karta została użyta, wymaga jej okazania. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Proszę upewnić się, że dostępne na karcie środki są zgodne z figurującymi na odpowiednim paragonie. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Nabycie i używanie karty jest równoznaczne ze zrozumieniem i akceptacją obowiązujących warunków dokonywania zakupów, z którymi można zapoznać się na stronie: www.bimbaylola.com. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Nie ma to wpływu na ustawowe prawa konsumenta.</texto> </linea>
+
+		#else
+           <!-- DEVOLUCION NORMAL -->
+			
+		#end
+	#else
+	    <!-- NO ES UNA DEVOLUCIÓN compra de tarjeta regalo-->
+		#if($ticket.getCabecera().getCodTipoDocumento() == "TR")
+			#if(${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()})
+			<linea line-size="4"> <texto align="center" style="1">***KARTA PODARUNKOWA/REFUNDACYJNA*** </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Karta jest ważna przez okres trzech lat od daty jej doładowania. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Karta umożliwia dokonywanie zakupów wyłącznie w sklepach BIMBA Y LOLA na terenie Polski (Z wyjątkiem domów towarowych i sklepu internetowego www.bimbaylola.com) aż do wykorzystania w całości istniejących na niej środków. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Niewykorzystane saldo karty nie zostanie w żadnym wypadku zwrócone ani wymienione na gotówkę. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Zrzekamy się wszelkiej odpowiedzialności za zgubioną, skradzioną lub zniszczoną kartę. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Zakupione przy użyciu karty towary  podlegają polityce zwrotów obowiązującej w firmie BIMBA Y LOLA. Zgodnie z polityką zwrotów firmy BIMBA Y LOLA, kartę podarunkową można zwrócić w maksymalnym terminie 30 dni, pod warunkiem, że nie była ona używana i pieczęć ochronna jej kodu zabezpieczającego pozostaje nienaruszona. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Wymiana lub zwrot dowolnego artykułu, do którego nabycia karta została użyta, wymaga jej okazania. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Proszę upewnić się, że dostępne na karcie środki są zgodne z figurującymi na odpowiednim paragonie. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Nabycie i używanie karty jest równoznaczne ze zrozumieniem i akceptacją obowiązujących warunków dokonywania zakupów, z którymi można zapoznać się na stronie: www.bimbaylola.com. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Nie ma to wpływu na ustawowe prawa konsumenta.</texto> </linea>
+
+
+			#elseif(${ticket.isDevolucionTarjetaRegalo()}) 
+			    <!-- DEVOLUCION DE TARJETA REGALO  -->
+				
+		    #end
+			
+		<!-- ESTO ES UNA VENTA -->
+		#elseif (${ticket.getCabecera().getTarjetaRegalo().getNumTarjetaRegalo()} or ${activacionTR} or ${esPagoTRTA})
+			<linea line-size="4"> <texto align="center" style="1">***KARTA PODARUNKOWA/REFUNDACYJNA*** </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Karta jest ważna przez okres trzech lat od daty jej doładowania. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Karta umożliwia dokonywanie zakupów wyłącznie w sklepach BIMBA Y LOLA na terenie Polski (Z wyjątkiem domów towarowych i sklepu internetowego www.bimbaylola.com) aż do wykorzystania w całości istniejących na niej środków. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Niewykorzystane saldo karty nie zostanie w żadnym wypadku zwrócone ani wymienione na gotówkę. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Zrzekamy się wszelkiej odpowiedzialności za zgubioną, skradzioną lub zniszczoną kartę. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Zakupione przy użyciu karty towary  podlegają polityce zwrotów obowiązującej w firmie BIMBA Y LOLA. Zgodnie z polityką zwrotów firmy BIMBA Y LOLA, kartę podarunkową można zwrócić w maksymalnym terminie 30 dni, pod warunkiem, że nie była ona używana i pieczęć ochronna jej kodu zabezpieczającego pozostaje nienaruszona. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Wymiana lub zwrot dowolnego artykułu, do którego nabycia karta została użyta, wymaga jej okazania. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Proszę upewnić się, że dostępne na karcie środki są zgodne z figurującymi na odpowiednim paragonie. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Nabycie i używanie karty jest równoznaczne ze zrozumieniem i akceptacją obowiązujących warunków dokonywania zakupów, z którymi można zapoznać się na stronie: www.bimbaylola.com. </texto> </linea>
+			<linea line-size="4"> <texto align="center" style="1">Nie ma to wpływu na ustawowe prawa konsumenta.</texto> </linea>
+		#else
+		    <!-- VENTA -->
+			
+		#end
+	#end

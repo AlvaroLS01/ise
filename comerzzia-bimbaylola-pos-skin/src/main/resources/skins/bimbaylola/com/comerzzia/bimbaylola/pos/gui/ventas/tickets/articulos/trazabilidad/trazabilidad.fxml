@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.comerzzia.pos.core.gui.componentes.tecladonumerico.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="439.0" prefWidth="816.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.bimbaylola.pos.gui.ventas.tickets.articulos.trazabilidad.TrazabilidadController">
+  <children>
+    <VBox prefHeight="700.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane minHeight="42.0" prefHeight="42.0" prefWidth="1000.0" styleClass="titulo-ventana" VBox.vgrow="NEVER">
+          <children>
+            <Label alignment="CENTER" prefHeight="52.0" prefWidth="528.0" text="%Trazabilidad de articulos" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+          </children>
+        </AnchorPane>
+        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="5.0">
+          <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="78.0" text="%Artículo:" />
+            <Label fx:id="lbArticulo" prefHeight="39.0" prefWidth="459.0" styleClass="lbNegrita" text="" underline="false" />
+            <GridPane prefHeight="39.0" prefWidth="240.0">
+              <children>
+                <Label alignment="CENTER_RIGHT" prefHeight="19.0" prefWidth="86.0" text="%Cantidad:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label fx:id="lbCantidad" prefHeight="19.0" prefWidth="127.0" styleClass="lbNegrita" text="" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label alignment="TOP_RIGHT" prefWidth="86.0" text="%Pendiente:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label fx:id="lbPendiente" prefHeight="20.0" prefWidth="127.0" styleClass="lbNegrita" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="10.0" prefWidth="80.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="129.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="19.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+          </children>
+          <VBox.margin>
+            <Insets left="15.0" />
+          </VBox.margin>
+        </HBox>
+        <AnchorPane prefHeight="298.0" prefWidth="816.0" VBox.vgrow="ALWAYS">
+          <children>
+            <HBox prefHeight="290.0" prefWidth="816.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <AnchorPane prefHeight="271.0" prefWidth="525.0" HBox.hgrow="ALWAYS">
+                  <children>
+                    <ListView fx:id="lvCadenasTrazabilidad" layoutX="14.0" layoutY="14.0" orientation="VERTICAL" prefHeight="259.0" prefWidth="435.0" />
+                    <AnchorPane fx:id="panelBotonera" layoutX="456.0" layoutY="14.0" prefHeight="169.0" prefWidth="47.0" />
+                  </children>
+                </AnchorPane>
+                <AnchorPane fx:id="panelTeclado" prefHeight="300.0" prefWidth="291.0">
+                  <children>
+                    <TecladoNumerico fx:id="tecladoNumerico" layoutX="20.0" layoutY="0.0" />
+                  </children>
+                  <HBox.margin>
+                    <Insets top="10.0" />
+                  </HBox.margin>
+                </AnchorPane>
+              </children>
+            </HBox>
+          </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="64.0" prefWidth="816.0">
+          <children>
+            <Button id="btCerrar" fx:id="btCancelar" layoutX="695.0" layoutY="11.0" mnemonicParsing="false" onAction="#accionCancelar" styleClass="btCancelar" text="%Cancelar" />
+            <TextField fx:id="tfCadenaTrazabilidad" layoutX="14.0" layoutY="11.0" onKeyPressed="#actionKeyPress" onKeyReleased="#actionTfCodigoIntro" prefHeight="42.0" prefWidth="355.0" />
+            <Button layoutX="383.0" layoutY="11.0" mnemonicParsing="false" onAction="#addCadenaTrazabilidad" prefWidth="109.0" styleClass="btInsertar" text="%Insertar" />
+            <Button fx:id="btAceptar" layoutX="585.0" layoutY="11.0" mnemonicParsing="false" onAction="#accionAceptar" styleClass="btAceptar" text="%Aceptar" />
+          </children>
+        </AnchorPane>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@../../styles/styles.css" />
+    <URL value="@numerosserie.css" />
+  </stylesheets>
+</AnchorPane>

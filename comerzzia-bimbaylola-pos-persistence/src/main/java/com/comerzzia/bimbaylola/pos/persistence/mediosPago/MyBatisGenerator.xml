@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+  
+<generatorConfiguration>
+	<classPathEntry location="D:\Users\jtds-1.3.1.jar" />
+	<context id="Comerzzia" targetRuntime="MyBatis3">
+	
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+		<!--  <plugin type="org.mybatis.generator.plugins.ScrollInsensitivePlugin"/> -->
+		<!-- <plugin type="org.mybatis.generator.plugins.ViewPlugin"/> -->
+	
+		<commentGenerator>
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>	
+	    
+	    <jdbcConnection driverClass="net.sourceforge.jtds.jdbc.Driver"
+	        connectionURL="jdbc:jtds:sqlserver://vm-dbserver.tier1.es:1433/czz_bimbaylola"
+	        userId="czz_bimbaylola"
+	        password="fuego">
+	    </jdbcConnection>
+	    
+	    <javaModelGenerator targetPackage="com.comerzzia.bimbaylola.pos.persistence.mediosPago" targetProject="comerzzia-bimbaylola-pos-persistence/src/main/java">
+	      <property name="enableSubPackages" value="false" />
+	      <property name="trimStrings" value="true" />
+	     </javaModelGenerator>
+	    
+	    <sqlMapGenerator targetPackage="com.comerzzia.bimbaylola.pos.persistence.mediosPago"  targetProject="comerzzia-bimbaylola-pos-persistence/src/main/java">
+	      <property name="enableSubPackages" value="false" />
+	    </sqlMapGenerator>
+	
+	    <javaClientGenerator type="XMLMAPPER" targetPackage="com.comerzzia.bimbaylola.pos.persistence.mediosPago" targetProject="comerzzia-bimbaylola-pos-persistence/src/main/java">
+	      <property name="enableSubPackages" value="false" />
+	    </javaClientGenerator>
+	
+	    <table tableName="X_MEDIOS_PAGO_TBL" domainObjectName="MediosPagoBIN">
+	    </table>
+	</context>
+</generatorConfiguration>

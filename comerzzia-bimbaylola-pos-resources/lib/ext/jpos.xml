@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JposEntries>
+
+  <!-- ###################################################### -->
+  <!-- Example configuration for Exorigo-Upos fiscal printer: -->
+  <!-- ###################################################### -->
+  <JposEntry logicalName="UPOSFPPL">
+    <creation factoryClass="pl.com.upos.jpos.fp.pl.FiscalPrinterFactory" serviceClass="pl.com.upos.jpos.fp.pl.FiscalPrinterService"/>
+    <jpos category="FiscalPrinter" version="1.14"/>
+    <product description="UPOS Fiscal Printer" name="UPOS FP-PL" url="www.exorigo-upos.pl"/>
+    <vendor name="Exorigo-Upos" url="www.exorigo-upos.pl"/>
+    
+<!-- <prop name="portName" value="COM4" type="String"/>
+    <prop name="baudRate" value="115200" type="Integer" />-->
+     
+       <prop name="address" value="192.168.101.108" type="String"/>
+    <prop name="port" value="6090" type="Integer" />
+   
+    
+    <prop name="statusCheckInterval" value="-1" type="Integer" />
+    <prop name="shortOperationTimeout" value="5000" type="Integer" />
+    <prop name="longOperationTimeout" value="10000" type="Integer" />
+    <prop name="portOpenTimeout" value="5000" type="Integer" />
+    <prop name="closePortAutomatically" value="false" type="Boolean" />
+    <prop name="requiresClearError" value="false" type="Boolean" />
+    <prop name="deviceCharset" value="CP852" type="String"/>
+    <prop name="useLoggerProperties" value="true" type="Boolean" />
+    <prop name="driverType" value="0" type="Integer" />
+    <prop name="useNewLineDiscountFormat" value="true" type="Boolean" />
+    <prop name="doNotPrintZReportWithDayClosure" value="false" type="Boolean" />
+  </JposEntry>
+  
+  
+  
+  
+</JposEntries>

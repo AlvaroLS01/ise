@@ -1,0 +1,3208 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-05 11:27+0100\n"
+"PO-Revision-Date: 2022-07-15 11:56+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:351
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:19
+#: com/comerzzia/bimbaylola/pos/gui/login/seleccionUsuarios/ByLSeleccionUsuarioController.java:69
+msgid "Aceptar"
+msgstr "Accepter"
+
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:355
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:378
+msgid "Pulse para continuar"
+msgstr "Appuyer pour continuer"
+
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:375
+msgid "Si"
+msgstr "Oui"
+
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:401
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:20
+#: com/comerzzia/bimbaylola/pos/gui/login/seleccionUsuarios/ByLSeleccionUsuarioController.java:56
+msgid "Cancelar"
+msgstr "Annuler"
+
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:411
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:433
+msgid "No"
+msgstr "Non"
+
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:422
+msgid "Sí"
+msgstr "Oui"
+
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:446
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:478
+msgid "Ver Detalle"
+msgstr "Afficher détail"
+
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:458
+msgid "Ocultar Detalle"
+msgstr "Masquer détail"
+
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:598
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:103
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:1209
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1432
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:782
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:710
+msgid "Lo sentimos, ha ocurrido un error."
+msgstr "Nous sommes désolés, une erreur est survenue."
+
+#: com/comerzzia/bimbaylola/pos/gui/componentes/dialogos/ByLVentanaDialogoComponent.java:697
+msgid "Error inesperado. Para mas información consulte el log."
+msgstr ""
+"Erreur inattendue. Pour plus d'informations, consultez le fichier journal."
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/ranges/modal/NewRangeController.java:156
+#, fuzzy
+msgid "Error guardando rango. Consulte administrador."
+msgstr "Erreur lors de la sauvegarde des informations des dispositifs"
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/ranges/RangeConfigurationController.java:243
+msgid "¿Desea borrar el rango fiscal seleccionado?"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/ranges/RangeConfigurationController.java:250
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/ranges/RangeConfigurationController.java:305
+msgid "Error borrando rango"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/ranges/RangeConfigurationController.java:272
+msgid "¿Desea guardar cambios?"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/ranges/RangeConfigurationController.java:283
+msgid "Ningún rango puede estar vacío"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/ranges/RangeConfigurationController.java:327
+msgid "Error cargando datos en la tabla: "
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:183
+msgid "Caja configurada"
+msgstr "Caisse configurée"
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:184
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:27
+msgid "Tienda"
+msgstr "Boutique"
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:200
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:241
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:275
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:310
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:346
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:381
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:417
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:452
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:734
+msgid "Método de conexión"
+msgstr "Méthode de connexion"
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:201
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:242
+msgid "Tipo de impresora"
+msgstr "Type d'imprimante"
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:276
+msgid "Tipo de tarjeta de fidelización"
+msgstr "Type de carte de fidélité"
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:311
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:347
+msgid "Tipo de visor"
+msgstr "Type d'écran"
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:382
+msgid "Tipo de cajón"
+msgstr "Type de tiroir"
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:418
+msgid "Tipo de balanza"
+msgstr "Type de balance"
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:453
+msgid "Tipo de recarga móvil"
+msgstr "Type de recharge portable"
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:561
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:714
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:716
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:747
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:748
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:768
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:904
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:905
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:941
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:942
+msgid "NO USA"
+msgstr "N'UTILISE PAS"
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:735
+msgid "Tipo de dispositivo de firma"
+msgstr "Type de dispositif de signature"
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:868
+msgid "Deberá reiniciar la aplicación para establecer los cambios."
+msgstr ""
+"Vous devrez redémarrer l'application pour que les modifications soient "
+"prises en compte."
+
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:872
+#: com/comerzzia/bimbaylola/pos/gui/configuracion/tpv/ByLConfiguracionTPVController.java:881
+msgid "Error guardando información de dispositivos"
+msgstr "Erreur lors de la sauvegarde des informations des dispositifs"
+
+#: com/comerzzia/bimbaylola/pos/gui/disponibilidadstock/ByLDisponibilidadStockController.java:99
+msgid "No hay stock en la tienda"
+msgstr "Il n'y a pas de stock dans la boutique"
+
+#: com/comerzzia/bimbaylola/pos/gui/disponibilidadstock/ByLDisponibilidadStockController.java:170
+msgid "No hay stock en el resto de tiendas"
+msgstr "Il n'y a pas de stock dans les autres boutiques"
+
+#: com/comerzzia/bimbaylola/pos/gui/disponibilidadstock/ByLDisponibilidadStockController.java:304
+msgid "Debe introducir el código de artículo o código de barras"
+msgstr "Vous devez introduire le code d'article ou le code-barres"
+
+#: com/comerzzia/bimbaylola/pos/gui/disponibilidadstock/ByLDisponibilidadStockController.java:308
+#: com/comerzzia/bimbaylola/pos/gui/disponibilidadstock/ByLDisponibilidadStockController.java:408
+msgid "Se ha producido un error al consultar el stock: "
+msgstr "Une erreur s'est produite lors de la consultation du stock : "
+
+#: com/comerzzia/bimbaylola/pos/gui/disponibilidadstock/ByLDisponibilidadStockController.java:405
+msgid "No se ha podido establecer conexión con el servidor."
+msgstr "Connexion impossible avec le serveur."
+
+#: com/comerzzia/bimbaylola/pos/gui/disponibilidadstock/ByLDisponibilidadStockController.java:536
+msgid "No se ha podido conectar con el servidor."
+msgstr "La connexion avec le serveur n'a pu être établie."
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:8
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:235
+msgid "TALLA"
+msgstr "TAILLE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:9
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:236
+msgid "COLOR"
+msgstr "COULEUR"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:10
+msgid "Talla"
+msgstr "Taille"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:11
+msgid "Color"
+msgstr "Couleur"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:12
+msgid "Configuración TM30 TSE"
+msgstr "Configuration TM30 TSE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:13
+msgid "IP Impresora :"
+msgstr "IP imprimante :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:14
+msgid "Storage info :"
+msgstr "Storage info :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:15
+msgid "Copiar al portapapeles"
+msgstr "Copier dans le presse-papiers"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:16
+msgid "Set up"
+msgstr "Set up"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:17
+msgid "Export data"
+msgstr "Export data"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:18
+msgid "AutoTest"
+msgstr "AutoTest"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:21
+msgid "Configuración SPARK130F"
+msgstr "Configuration SPARK130F"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:22
+msgid "Configuración de Axis"
+msgstr "Configuration d'Axis"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:23
+msgid "Código Moneda :"
+msgstr "Code devise :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:24
+msgid "Forma de pago :"
+msgstr "Mode de paiement :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:25
+msgid "Configuración de ConexFlow"
+msgstr "Configuration de ConexFlow"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:26
+msgid "Comercio"
+msgstr "Commerce"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:28
+msgid "Número TPV"
+msgstr "Numéro TPV"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:29
+msgid "IP del terminal"
+msgstr "IP du terminal"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:30
+msgid "Puerto"
+msgstr "Port"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:31
+msgid "Timeout (seg)"
+msgstr "Délai (sec)"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:32
+msgid "Forma de pago"
+msgstr "Mode de paiement"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:33
+msgid "Medios de pago"
+msgstr "Modes de paiement"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:34
+msgid "Código"
+msgstr "Code"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:35
+msgid "Descripcion"
+msgstr "Description"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:36
+msgid "Añadir Nuevo Rango"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:37
+#, fuzzy
+msgid "Id Contador"
+msgstr "Contact"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:38
+msgid "Divisor 1"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:39
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:391
+#, fuzzy
+msgid "Configuración de Rangos Fiscales"
+msgstr "Configuration d'Axis"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:40
+msgid "ID CONTADOR"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:41
+msgid "DIVISOR 1"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:42
+msgid "DIVISOR 2"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:43
+msgid "DIVISOR 3"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:44
+msgid "RANGO"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:45
+#, fuzzy
+msgid "ACCIONES"
+msgstr "RETOURS"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:46
+#, fuzzy
+msgid "Confirmar Cambios"
+msgstr "Confirmer modifications :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:47
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteCOController.java:556
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteECController.java:675
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePAController.java:666
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePTController.java:560
+#, fuzzy
+msgid "Datos del Cliente"
+msgstr "Données client"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:48
+#, fuzzy
+msgid "Datos Generales"
+msgstr "Données générales"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:49
+msgid "Tipo Documento"
+msgstr "Type document"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:50
+#, fuzzy
+msgid "Num. Documento"
+msgstr "Document"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:51
+msgid "Cliente"
+msgstr "Client"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:52
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteCOController.java:118
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteECController.java:123
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePAController.java:119
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePTController.java:126
+msgid "Nombre"
+msgstr "Prénom"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:53
+msgid "Domicilio"
+msgstr "Domicile"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:54
+msgid "Población"
+msgstr "Ville"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:55
+msgid "Provincia"
+msgstr "Département"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:56
+msgid "Localidad"
+msgstr "Ville"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:57
+msgid "C.P."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:58
+msgid "Email"
+msgstr "Courriel"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:59
+msgid "Teléfono"
+msgstr "Téléphone"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:60
+msgid "Pais"
+msgstr "Pays"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:61
+#, fuzzy
+msgid "Datos Bancarios"
+msgstr "Données générales"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:62
+msgid "CCC"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:63
+#, fuzzy
+msgid "Buscar Cliente"
+msgstr "Inscription client"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:64
+msgid "Solicita al cliente si desea el documento por correo electrónico"
+msgstr "Demandez au client s'il souhaite recevoir le document par courriel"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:65
+msgid "Imprimir"
+msgstr "Imprimer"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:66
+msgid "Correo electrónico"
+msgstr "Courriel"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:67
+msgid "Imprimir y correo electrónico"
+msgstr "Imprimer et courriel"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:68
+msgid "Meses Sin Intereses"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:69
+msgid "Elija los meses en los que se fraccionará el pago"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:70
+msgid "3 meses"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:71
+msgid "6 meses"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:72
+msgid "9 meses"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:73
+msgid "12 meses"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:74
+msgid "Introduce referencia STANDALONE"
+msgstr "Saisissez référence STANDALONE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:75
+msgid "Acciones Impresora Fiscal"
+msgstr "Actions Imprimante fiscale"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:76
+msgid "Cerrar"
+msgstr "Fermer"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:77
+msgid "Selección fecha origen en ticket sin referenciar"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:78
+#, fuzzy
+msgid "Fecha Origen"
+msgstr "Date clôture"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:79
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:385
+#, fuzzy
+msgid "Devoluciones Profesional"
+msgstr "Vente professionnel"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:80
+msgid "Artículo"
+msgstr "Article"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:81
+msgid "ARTÍCULO"
+msgstr "ARTICLE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:82
+msgid "DESCRIPCIÓN"
+msgstr "DESCRIPTION"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:83
+msgid "UND."
+msgstr "UNIT."
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:84
+msgid "PRECIO"
+msgstr "PRIX"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:85
+msgid "DTO."
+msgstr "REM."
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:86
+msgid "IMPORTE"
+msgstr "MONTANT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:87
+msgid "Vendedor"
+msgstr "Vendeur"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:88
+msgid "TOTAL"
+msgstr "TOTAL"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:89
+msgid "Total Artículos:"
+msgstr "Total articles :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:90
+msgid "0"
+msgstr "0"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:91
+msgid "Base"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:92
+msgid "Iva"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:93
+msgid "Recargo"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:94
+msgid "+INFO"
+msgstr "+INFO"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:95
+msgid "Tipo"
+msgstr "Type"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:96
+msgid "Fecha entrega cliente"
+msgstr "Date remise client"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:97
+msgid "Observaciones"
+msgstr "Remarques"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:98
+msgid "Cambiar vendedor línea"
+msgstr "Modifier vendeur ligne"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:99
+msgid "Trazabilidad de articulos"
+msgstr "Traçabilité des articles"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:100
+msgid "Artículo:"
+msgstr "Article :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:101
+msgid "Cantidad:"
+msgstr "Quantité :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:102
+msgid "Pendiente:"
+msgstr "En attente :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:103
+msgid "Insertar"
+msgstr "Insérer"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:104
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:403
+msgid "Consulta de stocks"
+msgstr "Consultation de stocks"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:105
+msgid "Desglose 1"
+msgstr "Ventilation 1"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:106
+msgid "Desglose 2"
+msgstr "Ventilation 2"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:107
+msgid "Expresión Almacenes"
+msgstr "Expression entrepôts"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:108
+msgid "Consultar"
+msgstr "Consulter"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:109
+msgid "Solo disponible"
+msgstr "Seulement disponible"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:110
+msgid "Stocks tienda"
+msgstr "Stocks boutique"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:111
+msgid "Stock"
+msgstr "Stock"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:112
+msgid "Stock A"
+msgstr "Stock A"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:113
+msgid "Stock B"
+msgstr "Stock B"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:114
+msgid "Stock C"
+msgstr "Stock C"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:115
+msgid "Stock D"
+msgstr "Stock D"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:116
+msgid "Stock logístico"
+msgstr "Stock logistique"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:117
+msgid "Stocks resto tiendas"
+msgstr "Stocks autres boutiques"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:118
+msgid "Descripción"
+msgstr "Description"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:119
+msgid "Contacto"
+msgstr "Contact"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:120
+msgid "SELECCIÓN DE USUARIO"
+msgstr "SÉLECTION DE L'UTILISATEUR"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:121
+#: com/comerzzia/bimbaylola/pos/gui/login/seleccionUsuarios/ByLSeleccionUsuarioController.java:64
+msgid "Salir"
+msgstr "Quitter"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:122
+msgid "Consultar Artículos"
+msgstr "Consulter articles"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:123
+msgid "Caja"
+msgstr "Caisse"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:124
+msgid "Ocultar Menú"
+msgstr "Masquer menu"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:125
+msgid "Gestión de Permisos"
+msgstr "Gestion des autorisations"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:126
+msgid "Administrar"
+msgstr "Administrer"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:127
+msgid "Lea o escriba el código de barras de la tarjeta"
+msgstr "Lisez ou saisissez le code-barres de la carte"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:128
+msgid "Número de tarjeta"
+msgstr "Numéro de carte"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:129
+msgid "Alta Fidelizado"
+msgstr "Inscription client fidélisé"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:130
+msgid "Leer tarjeta"
+msgstr "Lire carte"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:131
+msgid "Búsqueda de clientes"
+msgstr "Recherche de clients"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:132
+msgid "Correo Electrónico"
+msgstr "Courriel"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:133
+msgid "Código de cliente"
+msgstr "Code de client"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:134
+msgid "Documento Fiscal"
+msgstr "Document fiscal"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:135
+msgid "Apellidos"
+msgstr "Nom"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:136
+msgid "Cliente genérico"
+msgstr "Client générique"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:137
+msgid "Alta Cliente"
+msgstr "Inscription client"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:138
+msgid "Direccion"
+msgstr "Adresse"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:139
+#, fuzzy
+msgid "Configuración TEF Adyen Cloud"
+msgstr "Configuration de ConexFlow"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:140
+#, fuzzy
+msgid "Cliente :"
+msgstr "Client"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:141
+msgid "LIVE"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:142
+msgid "TEST"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:143
+msgid "POIID :"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:144
+msgid "Protocolo :"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:145
+msgid "Merchant Account :"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:146
+#, fuzzy
+msgid "Moneda :"
+msgstr "Code devise :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:147
+msgid "API Key :"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:148
+#, fuzzy
+msgid "Forma Pago 1 :"
+msgstr "Mode de paiement :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:149
+#, fuzzy
+msgid "Forma Pago 2 :"
+msgstr "Mode de paiement :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:150
+msgid "Merchant Application"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:151
+#, fuzzy
+msgid "Nombre :"
+msgstr "Prénom"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:152
+msgid "Version :"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:153
+msgid "Merchant Device"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:154
+msgid "Sistema :"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:155
+#, fuzzy
+msgid "Referencia :"
+msgstr "Département :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:156
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:387
+msgid "Configuración"
+msgstr "Configuration"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:157
+msgid "General"
+msgstr "Général"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:158
+msgid "Visor"
+msgstr "Afficheur"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:159
+msgid "Cajón"
+msgstr "Tiroir"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:160
+msgid "Impresora 1"
+msgstr "Imprimante 1"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:161
+msgid "Impresora 2"
+msgstr "Imprimante 2"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:162
+msgid "Tarjeta"
+msgstr "Carte"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:163
+msgid "Balanza"
+msgstr "Balance"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:164
+msgid "Fidelizado"
+msgstr "Client fidélisé"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:165
+msgid "Gift Card"
+msgstr "Carte-cadeau"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:166
+msgid "Recarga móvil"
+msgstr "Recharge portable"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:167
+msgid "Firma"
+msgstr "Signature"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:168
+msgid "Test Conexión"
+msgstr "Test Connexion"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:169
+msgid "Editar configuración"
+msgstr "Éditer configuration"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:170
+msgid "FIDELIZADO"
+msgstr "CLIENT FIDÉLISÉ"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:171
+msgid "Resumen"
+msgstr "Résumé"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:172
+msgid "Datos generales"
+msgstr "Données générales"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:173
+msgid "Direcciones"
+msgstr "Adresses"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:174
+msgid "Colectivos"
+msgstr "Collectifs"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:175
+msgid "Movimientos Tarjetas"
+msgstr "Mouvements cartes"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:176
+msgid "Últimas Ventas"
+msgstr "Dernières ventes"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:177
+msgid "Etiquetas"
+msgstr "Étiquettes"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:178
+msgid "(*) Campos obligatorios"
+msgstr "(*) Champs obligatoires"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:179
+msgid "Imprimir Documento"
+msgstr "Imprimer document"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:180
+msgid "Consentimientos y Firma"
+msgstr "Consentements et signature"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:181
+msgid "Imprimir Ficha"
+msgstr "Imprimer fiche"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:182
+msgid "Editar"
+msgstr "Éditer"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:183
+msgid "Código Colectivo"
+msgstr "Code collectif"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:184
+msgid "Tipo documento"
+msgstr "Type document"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:185
+msgid "Documento"
+msgstr "Document"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:186
+msgid "Sexo"
+msgstr "Genre"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:187
+msgid "Móvil"
+msgstr "Portable"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:188
+msgid "Firma del Cliente"
+msgstr "Signature du client"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:189
+msgid "Permitir Notificaciones"
+msgstr "Autoriser notifications"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:190
+msgid "Consentimiento de uso de datos"
+msgstr "Consentement d'utilisation des données"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:191
+msgid "C.P"
+msgstr "CP"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:192
+msgid "Modo :"
+msgstr "Mode :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:193
+msgid "Confirmar Cambios :"
+msgstr "Confirmer modifications :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:194
+msgid "Descripción :"
+msgstr "Description :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:195
+msgid "Domicilio :"
+msgstr "Domicile :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:196
+msgid "Provincia :"
+msgstr "Département :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:197
+msgid "Localidad :"
+msgstr "Ville :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:198
+msgid "Población :"
+msgstr "Ville :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:199
+msgid "C.P :"
+msgstr "CP :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:200
+msgid "Nº Tarjeta"
+msgstr "Nº carte"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:201
+msgid "Saldo Total"
+msgstr "Solde total"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:202
+msgid "Últimos 20 movimientos de la tarjeta seleccionada"
+msgstr "20 derniers mouvements de la carte sélectionnée"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:203
+msgid "Fecha"
+msgstr "Date"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:204
+msgid "Concepto"
+msgstr "Concept"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:205
+msgid "Estado"
+msgstr "État"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:206
+msgid "Entrada"
+msgstr "Entrée"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:207
+msgid "Salida"
+msgstr "Sortie"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:208
+msgid "Total:"
+msgstr "Total :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:209
+msgid "Nº de tarjeta"
+msgstr "Nº de carte"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:210
+msgid "Ventas realizadas en los últimos 24 meses"
+msgstr "Ventes réalisées dans les 24 derniers mois"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:211
+msgid "Cantidad"
+msgstr "Quantité"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:212
+msgid "Importe"
+msgstr "Montant"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:213
+msgid "Cód. Tienda"
+msgstr "Code boutique"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:214
+msgid "Ticket"
+msgstr "Ticket"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:215
+msgid "Saldo"
+msgstr "Solde"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:216
+msgid "Fecha de nacimiento"
+msgstr "Date de naissance"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:217
+msgid "Tienda Favorita"
+msgstr "Boutique favorite"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:218
+msgid "Desglose1"
+msgstr "Ventilation 1"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:219
+msgid "Desglose2"
+msgstr "Ventilation 2"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:220
+msgid "Reservas"
+msgstr "Réservations"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:221
+msgid "Reserva Nº"
+msgstr "Réservation nº"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:222
+msgid "Ver todos"
+msgstr "Afficher tout"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:223
+msgid "Activo"
+msgstr "Actif"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:224
+msgid "Cancelado"
+msgstr "Annulé"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:225
+msgid "Finalizado"
+msgstr "Finalisé"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:226
+msgid "Buscar"
+msgstr "Chercher"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:227
+msgid "Nº"
+msgstr "Nº"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:228
+msgid "Detalle de reserva"
+msgstr "Détail de réservation"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:229
+msgid "Poblacion"
+msgstr "Ville"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:230
+msgid "CP"
+msgstr "CP"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:231
+msgid "Nº Doc"
+msgstr "Nº doc"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:232
+msgid "Recogida"
+msgstr "Retirée"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:233
+msgid "ARTICULO"
+msgstr "ARTICLE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:234
+msgid "DESCRIPCION"
+msgstr "DESCRIPTION"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:237
+msgid "CANT"
+msgstr "QUANT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:238
+msgid "PVP"
+msgstr "PRIX"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:239
+msgid "DTO"
+msgstr "REM"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:240
+msgid "SERVIDO"
+msgstr "SERVI"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:241
+msgid "ABONADO"
+msgstr "RÉGLÉ"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:242
+msgid "SALDO CLIENTE"
+msgstr "SOLDE CLIENT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:243
+msgid "PENDIENTE"
+msgstr "EN ATTENTE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:244
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:405
+msgid "Gestión de Caja"
+msgstr "Gestion de caisse"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:245
+msgid "Cajero"
+msgstr "Caissier"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:246
+msgid "Caja CERRADA"
+msgstr "Caisse CLÔTURÉE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:247
+msgid "Fecha Apertura"
+msgstr "Date ouverture"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:248
+msgid "Fecha Cierre"
+msgstr "Date clôture"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:249
+msgid "MEDIO PAGO"
+msgstr "MODE PAIEMENT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:250
+msgid "ENTRADAS"
+msgstr "ENTRÉES"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:251
+msgid "SALIDAS"
+msgstr "SORTIES"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:252
+msgid "TOTAL (E-S)"
+msgstr "TOTAL (E-S)"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:253
+msgid "RECUENTO"
+msgstr "COMPTAGE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:254
+msgid "DESCUADRE"
+msgstr "ÉCART"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:255
+msgid "Total(E/S)"
+msgstr "Total (E/S)"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:256
+msgid "Total Recuento"
+msgstr "Total comptage"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:257
+msgid "Descuadre"
+msgstr "Écart"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:258
+msgid "Entradas (Ventas)"
+msgstr "Entrées (ventes)"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:259
+msgid "En X Tickets"
+msgstr "Sur X Tickets"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:260
+msgid "Salidas (Devolución)"
+msgstr "Sorties (remboursement)"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:261
+msgid "Venta Neta"
+msgstr "Vente nette"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:262
+msgid "Entradas (Mov)"
+msgstr "Entrées (mouv.)"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:263
+msgid "Salidas (Mov)"
+msgstr "Sorties (mouv.)"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:264
+msgid "Total Entradas"
+msgstr "Total entrées"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:265
+msgid "Total Salidas"
+msgstr "Total sorties"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:266
+msgid "Cerrar Caja"
+msgstr "Clôturer caisse"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:267
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:360
+msgid "Devoluciones"
+msgstr "Retours"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:268
+msgid "Código de caja"
+msgstr "Code de caisse"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:269
+msgid "Tipo de documento"
+msgstr "Type de document"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:270
+msgid "Código de ticket"
+msgstr "Code de ticket"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:271
+msgid "DATOS DEL TICKET ORIGINAL"
+msgstr "DONNÉES DU TICKET ORIGINAL"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:272
+msgid "DEVUELTAS"
+msgstr "RETOURNÉES"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:273
+msgid "DEVOLVER"
+msgstr "RETOURNER"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:274
+msgid "Devolver"
+msgstr "Retourner"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:275
+msgid "Código de tienda"
+msgstr "Code boutique"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:276
+msgid "Cod. documento / Localizador"
+msgstr "Code document/localisateur"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:277
+msgid "INICIAR DEVOLUCION"
+msgstr "COMMENCER RETOUR"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:278
+msgid "DEVOLUCION SIN TICKET"
+msgstr "RETOUR SANS TICKET"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:279
+msgid "CLIENTE :"
+msgstr "CLIENT :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:280
+msgid "EMAIL :"
+msgstr "COURRIEL :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:281
+msgid "MOVIL :"
+msgstr "PORTABLE :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:282
+msgid "FIRMA :"
+msgstr "SIGNATURE :"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:283
+msgid "Generación TaxFree"
+msgstr "Génération HT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:284
+msgid "Imprimir Copia"
+msgstr "Imprimer copie"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:285
+msgid "Ticket regalo"
+msgstr "Ticket cadeau"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:286
+msgid "Reimpresión Voucher"
+msgstr "Réimpression bon"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:287
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:398
+msgid "Histórico"
+msgstr "Historique"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:288
+msgid "Tipo Doc."
+msgstr "Type doc."
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:289
+msgid "Localizador"
+msgstr "Localisateur"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:290
+msgid "Buscar Documento"
+msgstr "Chercher document"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:291
+msgid "Búsqueda en central"
+msgstr "Recherche dans central"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:292
+msgid "Fecha hasta"
+msgstr "Date jusqu'au"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:293
+msgid "Artículo/EAN"
+msgstr "Article/EAN"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:294
+msgid "Importe total"
+msgstr "Montant total"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:295
+msgid "Medio de pago"
+msgstr "Mode de paiement"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:296
+msgid "Todo en un ticket"
+msgstr "Tout sur un ticket"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:297
+msgid "Un documento por línea"
+msgstr "Un document par ligne"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:298
+msgid "Nº de copias"
+msgstr "Nbre de copies"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:299
+msgid "Búsqueda de artículos"
+msgstr "Recherche d'articles"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:300
+msgid "Precio"
+msgstr "Prix"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:301
+#, fuzzy
+msgid "Precio + IVA"
+msgstr "Prix"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:302
+msgid "Stocks de artículo"
+msgstr "Stocks d'article"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:303
+msgid "Stocks por modelo"
+msgstr "Stocks par modèle"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:304
+msgid "Stocks por desglose 1"
+msgstr "Stock par ventilation 1"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:305
+msgid "Stocks por desglose 2"
+msgstr "Stocks par ventilation 2"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:306
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:401
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:158
+msgid "Venta Profesional"
+msgstr "Vente professionnel"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:307
+msgid "/ Peso"
+msgstr "/poids"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:308
+#, fuzzy
+msgid "PRECIO + IVA"
+msgstr "PRIX"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:309
+#, fuzzy
+msgid "IMPORTE + IVA"
+msgstr "MONTANT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:310
+msgid "Edición artículo"
+msgstr "Édition article"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:311
+msgid "Articulo"
+msgstr "Article"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:312
+msgid "Descuento"
+msgstr "Remise"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:313
+msgid "Precio Total"
+msgstr "Prix total"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:314
+msgid "Números de serie"
+msgstr "Numéro de série"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:315
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:383
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:457
+msgid "Ventas"
+msgstr "Ventes"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:316
+msgid "VENDEDOR"
+msgstr "VENDEUR"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:317
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:375
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:120
+msgid "Pagos"
+msgstr "Paiements"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:318
+msgid "FORMA DE PAGO"
+msgstr "MODE DE PAIEMENT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:319
+msgid "Medio de Pago"
+msgstr "Mode de paiement"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:320
+msgid "Anotar pago"
+msgstr "Inscrire paiement"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:321
+msgid "Efectivo"
+msgstr "Espèces"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:322
+msgid "Otros"
+msgstr "Autres"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:323
+msgid "A PAGAR"
+msgstr "À PAYER"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:324
+msgid "A CUENTA"
+msgstr "ACOMPTE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:325
+msgid "ENTREGADO"
+msgstr "REMIS"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:326
+msgid "CAMBIO"
+msgstr "ÉCHANGE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:327
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:332
+msgid "CAMBIAR CAJERO"
+msgstr "MODIFIER CAISSIER"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:328
+#, fuzzy
+msgid "aceptar (no visible)"
+msgstr "ouvrir tiroir (non visible)"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:329
+msgid "abrir cajón (no visible)"
+msgstr "ouvrir tiroir (non visible)"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:330
+msgid "VER DOC. ORIGEN"
+msgstr "AFFICHER DOC. ORIGINE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:331
+msgid "ANULAR DEVOLUCION"
+msgstr "ANNULER RETOUR"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:333
+msgid "HISTÓRICO"
+msgstr "HISTORIQUE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:334
+msgid "PAGOS"
+msgstr "PAIEMENTS"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:335
+msgid "BÚSQUEDA"
+msgstr "RECHERCHE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:336
+msgid "APARCAR TICKET"
+msgstr "SUSPENDRE TICKET"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:337
+msgid "RECUPERAR TICKET"
+msgstr "RÉCUPÉRER TICKET"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:338
+msgid "SALDO GIFTCARD"
+msgstr "SOLDE CARTE-CADEAU"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:339
+msgid "ELIMINAR TICKET"
+msgstr "SUPPRIMER TICKET"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:340
+msgid "DEVOLUCIONES"
+msgstr "RETOURS"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:341
+msgid "HISTORICO"
+msgstr "HISTORIQUE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:342
+msgid "CLIENTES"
+msgstr "CLIENTS"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:343
+msgid "IMPR. TICKET REGALO"
+msgstr "IMPR. TICKET CADEAU"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:344
+msgid "ABRIR CAJÓN"
+msgstr "OUVRIR TIROIR"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:345
+msgid "CLIENTE"
+msgstr "CLIENT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:346
+msgid "RESERVAS"
+msgstr "RÉSERVATIONS"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:347
+msgid "ANOTAR PAGO"
+msgstr "INSCRIRE PAIEMENT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:348
+msgid "COMPLETAR VENTA"
+msgstr "TERMINER VENTE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:349
+msgid "IMPRIMIR"
+msgstr "IMPRIMER"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:350
+msgid "VER PAGOS"
+msgstr "AFFICHER PAIEMENTS"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:351
+msgid "DATOS CLIENTE"
+msgstr "DONNÉES CLIENT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:352
+msgid "APERTURA"
+msgstr "OUVERTURE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:353
+msgid "IMPRIMIR ULT. CIERRE"
+msgstr "IMPRIMER DERN. CLÔTURE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:354
+msgid "CIERRE"
+msgstr "CLÔTURE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:355
+msgid "GASTOS TIENDA"
+msgstr "FRAIS BOUTIQUE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:356
+msgid "RECUENTO CAJA"
+msgstr "COMPTABILISATION CAISSE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:357
+msgid "Factura"
+msgstr "Facture"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:358
+msgid "Datos cliente"
+msgstr "Données client"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:359
+msgid "Datos envío"
+msgstr "Données envoi"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:361
+msgid "STANDALONE ADYEN"
+msgstr "STANDALONE ADYEN"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:362
+msgid "Central"
+msgstr "Central"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:363
+msgid "ENTREGA A CUENTA"
+msgstr "ACOMPTE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:364
+msgid "DESCUENTO PROMOCIONAL"
+msgstr "REMISE PROMOTIONNELLE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:365
+msgid "DINERS"
+msgstr "DINERS"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:366
+msgid "Impresión de cupones"
+msgstr "Impression de coupons"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:367
+msgid "MAESTRO"
+msgstr "MAESTRO"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:368
+msgid "Venta a crédito"
+msgstr "Vente à crédit"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:369
+msgid "Backstore"
+msgstr "Arrière-boutique"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:370
+msgid "Preparación de pedidos"
+msgstr "Préparation de commandes"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:371
+msgid "TARJETA PINPAD"
+msgstr "CARTE LECTEUR NIP"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:372
+msgid "CMCIO1"
+msgstr "CMCIO1"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:373
+msgid "CMCIO3"
+msgstr "CMCIO3"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:374
+msgid "MESES SIN INTERESES"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:375
+msgid "Gestión de reservas"
+msgstr "Gestion des réservations"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:376
+msgid "PAYPAL"
+msgstr "PAYPAL"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:377
+msgid "Configuración TPV"
+msgstr "Configuration TPV"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:378
+#, fuzzy
+msgid "VentasVenta Profesional"
+msgstr "Vente professionnel"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:379
+msgid "GIRO"
+msgstr "VIREMENT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:380
+msgid "Gestíon de servicios"
+msgstr "Gestion de services"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:381
+msgid "AMEX"
+msgstr "AMEX"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:382
+msgid "TRANSFERENCIA"
+msgstr "VIREMENT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:384
+msgid "ASTUR"
+msgstr "ASTUR"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:386
+msgid "PAGARE"
+msgstr "BILLET À ORDRE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:388
+msgid "COMERCIO"
+msgstr "COMMERCE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:389
+msgid "CHEQUE"
+msgstr "CHÈQUE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:390
+msgid "VALE"
+msgstr "BON"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:392
+msgid "DEV/CAMBIO AUTO"
+msgstr "RET./ÉCHANGE AUTO"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:393
+msgid "ADYEN MSI"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:394
+msgid "Mantenimiento de Clientes"
+msgstr "Maintenance de clients"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:395
+msgid "EFECTIVO"
+msgstr "ESPÈCES"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:396
+msgid "Códigos de Barras especiales"
+msgstr "Code-barres spéciaux"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:397
+msgid "PORO"
+msgstr "PORO"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:399
+msgid "Backoffice"
+msgstr "Back-office"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:400
+msgid "Servicios"
+msgstr "Services"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:402
+msgid "STAND ALONE"
+msgstr "STAND ALONE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:404
+msgid "VISA"
+msgstr "VISA"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:406
+msgid "CONTRAREEMBOLSO"
+msgstr "CONTRE REMBOURSEMENT"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:407
+msgid "TTA REGALO/ABONO"
+msgstr "CARTE CADEAU/PRÉPAYÉE"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:408
+msgid "Identificación de Cliente"
+msgstr "Identification du client"
+
+#: com/comerzzia/bimbaylola/pos/gui/i18n/gen/AdditionalMessages.java:409
+msgid "Venta Omnicanal"
+msgstr "Vente omnicanaux"
+
+#: com/comerzzia/bimbaylola/pos/gui/login/ByLLoginController.java:33
+msgid "El usuario no tiene permisos para ejecutar la pantalla activa."
+msgstr "L'utilisateur n'a pas d'autorisations pour exécuter l'écran actif."
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/clientes/ByLMantenimientoClienteController.java:47
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/clientes/ByLMantenimientoClienteController.java:74
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/datosgenerales/ByLPaneDatosGeneralesController.java:445
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/datosCliente/ByLCambiarDatosClienteApartadoController.java:33
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLFacturaController.java:119
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLFacturaController.java:150
+msgid "Debe seleccionar Tipo documento"
+msgstr "Vous devez sélectionner type document"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/ByLFidelizadoController.java:433
+msgid "Fidelizado creado correctamente"
+msgstr "Fidélisé créé correctement"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/ByLFidelizadoController.java:544
+msgid "Fidelizado editado correctamente"
+msgstr "Fidélisé édité correctement"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/ByLFidelizadoController.java:889
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/ByLFidelizadoController.java:1442
+msgid "¿Desea cancelar el alta/actualización de los datos del cliente?"
+msgstr ""
+"Voulez-vous annuler l'enregistrement/la mise à jour des données client?"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/ByLFidelizadoController.java:961
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1928
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:474
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1586
+msgid ""
+"En espera de que el cliente pulse los consentimientos y la firma en el "
+"dispositivo"
+msgstr ""
+"En attendant que le client appuie sur les consentements et la signature sur "
+"l'appareil"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/ByLFidelizadoController.java:979
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/ByLFidelizadoController.java:989
+msgid "¿Desea repetir los Consentimientos y la Firma?"
+msgstr "Voulez-vous recommencer les autorisations et la signature ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/ByLFidelizadoController.java:1084
+msgid ""
+"El cliente ha cancelado la aceptación de los Consentimientos\n"
+"El cliente ha cancelado la Firma"
+msgstr ""
+"Le client a annulé l'acceptation des autorisations\n"
+"Le client a annulé la signature"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/ByLFidelizadoController.java:1087
+msgid "El cliente ha cancelado la aceptación de los Consentimientos"
+msgstr "Le client a annulé l'acceptation des autorisations"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/ByLFidelizadoController.java:1089
+msgid "El cliente ha cancelado la Firma"
+msgstr "Le client a annulé la signature"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/ByLFidelizadoController.java:1091
+msgid "Se ha realizado el Consentimiento y Firma correctamente"
+msgstr "Les autorisations et la signature ont été correctement enregistrées"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/ByLFidelizadoController.java:1102
+msgid "Error no controlado a la hora de realizar el Consentimiento y Firma"
+msgstr ""
+"Erreur incontrôlée lors de l'enregistrement des autorisations et de la "
+"signature"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/direcciones/PaneDireccionesController.java:399
+msgid "Para editar una Dirección debe seleccionar una"
+msgstr "Pour éditer une adresse, vous devez la sélectionner"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/direcciones/PaneDireccionesController.java:444
+msgid "¿Está seguro de eliminar la Dirección seleccionada?"
+msgstr "Êtes-vous sûr(e) de vouloir supprimer l'adresse sélectionnée ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/direcciones/PaneDireccionesController.java:455
+msgid "Para eliminar una Dirección debe seleccionar una"
+msgstr "Pour supprimer une adresse, vous devez la sélectionner"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/direcciones/PaneDireccionesController.java:491
+msgid "Ya existe una dirección con esa descripción"
+msgstr "Une adresse existe déjà sous cette description"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/direcciones/PaneDireccionesController.java:604
+msgid ""
+"No se ha encontrado ningún resultado al realizar la búsqueda del País "
+"indicado"
+msgstr "Aucun résultat n'a été trouvé lors de la recherche du pays indiqué"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/direcciones/PaneDireccionesController.java:608
+msgid "Error al realizar la búsqueda del País indicado"
+msgstr "Erreur lors de la recherche du pays indiqué"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/direcciones/PaneDireccionesController.java:612
+msgid "Se ha producido un error sin controlar"
+msgstr "Une erreur incontrôlée s'est produite"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/resumen/ByLPaneResumenFidelizadoController.java:268
+#, fuzzy, java-printf-format
+msgid "El ticket %s no se ha encontrado"
+msgstr "Le document %s est introuvable"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/resumen/ByLPaneResumenFidelizadoController.java:273
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:207
+#, java-printf-format
+msgid "El documento %s no se ha encontrado"
+msgstr "Le document %s est introuvable"
+
+#: com/comerzzia/bimbaylola/pos/gui/mantenimientos/fidelizados/resumen/ByLPaneResumenFidelizadoController.java:279
+#, fuzzy
+msgid "Ha ocurrido un error al procesar el ticket"
+msgstr "Une erreur s'est produite lors du traitement des numéros de série"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:372
+msgid "Entrega a cuenta"
+msgstr "Acompte"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:375
+#, fuzzy
+msgid "Pagos Profesionales"
+msgstr "Vente professionnel"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:606
+msgid "Medios de pago origen"
+msgstr "Modes de paiement origine"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:714
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:3249
+msgid "Error al crear la botonera para los medios de pago del Ticket Original"
+msgstr ""
+"Erreur lors de la création du clavier pour les modes de paiement du ticket "
+"d'origine"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:912
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:669
+#, fuzzy
+msgid "Error cargando pantalla pagos."
+msgstr ""
+"Erreur lors du chargement de l'écran. Pour plus d'informations, consultez le "
+"fichier journal."
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1145
+msgid ""
+"No se puede utilizar una tarjeta de regalo como medio de devolución. \n"
+"Tome una tarjeta de tipo Abono e inténtelo de nuevo"
+msgstr ""
+"Impossible d'utiliser une carte cadeau comme mode de remboursement. \n"
+"Réessayez avec une carte prépayée"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1151
+msgid "La tarjeta introducida está "
+msgstr "La carte saisie est "
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1156
+msgid "La tarjeta introducida no es del tipo permitido para este medio de pago"
+msgstr ""
+"La carte saisie ne correspond pas au type autorisé pour ce mode de paiement"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1194
+msgid "No se ha encontrado la tarjeta en el sistema"
+msgstr "Carte introuvable dans le système"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1213
+msgid "No puede usarse una tarjeta regalo en la operación"
+msgstr "Impossible d'utiliser une carte cadeau pour l'opération"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1217
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:551
+msgid "No puede usarse más de una tarjeta regalo"
+msgstr "Impossible d'utiliser plus d'une carte cadeau"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1284
+msgid "No se puede realizar la venta. El día de apertura de la caja "
+msgstr "La vente ne peut être réalisée. Le jour d'ouverture de la caisse "
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1304
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:2280
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:2468
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:2637
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:2811
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/marcarVenta/ByLMarcarVentaApartadoController.java:181
+msgid ""
+"No se ha podido realizar la conexión con el TSE, ¿Desea continuar sin TSE?"
+msgstr ""
+"Impossible d'établir la connexion avec le TSE. Voulez-vous continuer sans "
+"TSE ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1398
+msgid "No se puede realizar una venta a 0. "
+msgstr "Vous ne pouvez pas effectuer une vente à 0. "
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1408
+msgid ""
+"Operación sujeta a Taxfree. La operación inicial debe abonarse al completo."
+msgstr "Opération HT. L'opération initiale doit être payée en totalité."
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1416
+msgid "No se ha podido realizar la anulación del voucher de TAXFREE"
+msgstr "Impossible d'annuler le bon HT"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1421
+msgid ""
+"Se ha anulado correctamente el TAXFREE. Téngalo en cuenta para futuras "
+"operaciones."
+msgstr ""
+"Le bon HT a été correctement annulé. Prenez-le en compte pour les futures "
+"opérations."
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1455
+msgid "Los pagos han de cubrir el importe a pagar."
+msgstr "Les paiements doivent couvrir le montant à payer."
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1571
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1578
+#, fuzzy
+msgid "Se deben añadir los datos del cliente que realiza la devolución"
+msgstr ""
+"Vous devez ajouter une ligne du document d'origine pour réaliser le retour."
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1780
+msgid "¿Es correcta la impresión del recibo del pago con tarjeta?"
+msgstr "L'impression du reçu de paiement par carte est-elle correcte ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1840
+msgid "Se ha producido un error al imprimir"
+msgstr "Une erreur s'est produite lors de l'impression"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1892
+msgid "Se perderán los datos de pagos. ¿Desea continuar?"
+msgstr "Les données de paiement seront perdues. Voulez-vous continuer ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1914
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:173
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/marcarVenta/ByLMarcarVentaApartadoController.java:347
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/cajas/apuntes/ByLInsertarApunteController.java:62
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:323
+msgid "La caja a la que estaba conectado se ha cerrado."
+msgstr "La caisse à laquelle vous étiez connecté a fermé."
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1944
+msgid "No hay ninguna forma de pago seleccionada"
+msgstr "Il n'y a aucun mode de paiement sélectionné"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1953
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:363
+msgid ""
+"El medio de pago seleccionado no permite introducir un importe superior al "
+"total del documento"
+msgstr ""
+"Le mode de paiement sélectionné ne permet pas d'introduire un montant "
+"supérieur au total du document"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1966
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:374
+msgid "El importe supera el saldo disponible"
+msgstr "Le montant dépasse le solde disponible"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:1989
+msgid ""
+"Debe indicar el número de tarjeta. Haga click en el botón correspondiente."
+msgstr ""
+"Vous devez indiquer le numéro de carte. Appuyez sur le bouton correspondant."
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:2015
+msgid "Se ha producido un error al procesar el pago con Tarjeta Regalo"
+msgstr ""
+"Une erreur s'est produite lors du traitement du paiement par carte cadeau"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:2094
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:458
+msgid "ATENCIÓN, recuerda que tienes que pasar la tarjeta por el INALÁMBRICO"
+msgstr "ATTENTION, n'oubliez pas de passer la carte sur le lecteur SANS FIL"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:2825
+msgid "Error al salvar el ticket."
+msgstr "Erreur lors de l'enregistrement du ticket."
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:2925
+msgid "La venta es apta para TAXFREE, ¿desea realizar taxfree?"
+msgstr "La vente peut être réalisée HT. Voulez-vous l'appliquer ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:2932
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/detalle/ByLDetalleGestionticketsController.java:150
+msgid "Se ha generado el Voucher pero no se ha podido guardar en BBDD"
+msgstr ""
+"Le bon a été créé, mais il n'a pas pu être enregistré dans la base de données"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:2939
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/detalle/ByLDetalleGestionticketsController.java:145
+msgid "Se ha generado correctamente el taxfree"
+msgstr "Le bon HT a été ajouté correctement"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:3037
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:498
+msgid ""
+"Error en la lectura de la referencia, por favor vuelva a leer la referencia."
+msgstr "Erreur lors de la lecture de la référence, veuillez recommencer."
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:3083
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:3114
+msgid "Se ha producido un error al imprimir la nota informativa"
+msgstr ""
+"Une erreur s'est produite lors de l'impression de la note d'information"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:3146
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1990
+msgid "Inactiva"
+msgstr "Inactive"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:3148
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1992
+msgid "Activa"
+msgstr "Active"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:3150
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1994
+msgid "Desactivada"
+msgstr "Désactivée"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:3152
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1996
+msgid "Consumida"
+msgstr "Consommée"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:3154
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1998
+msgid "Cancelada"
+msgstr "Annulée"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:3473
+#, fuzzy
+msgid "No existe la propiedad del documento  "
+msgstr ""
+"Une erreur s'est produite lors de l'obtention de la propriété du document "
+"actif"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:3479
+msgid "Se deben añadir los datos del cliente a la venta"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/ByLPagosController.java:3632
+#, fuzzy
+msgid ""
+"No se ha podido establecer la conexión con EDICOM. Se volvera a intentar "
+"desde la Central. Gracias"
+msgstr "Connexion impossible avec le serveur."
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteCOController.java:225
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteECController.java:481
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePAController.java:475
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePTController.java:234
+#, fuzzy
+msgid "Error consultando los documentos de identificación de la tienda."
+msgstr "Erreur lors de la consultation de la rubrique"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteCOController.java:531
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteECController.java:312
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePAController.java:306
+#, fuzzy
+msgid "Error en la búsqueda, país no encontrado"
+msgstr "Erreur lors de la recherche du pays indiqué"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteCOController.java:538
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteECController.java:319
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePAController.java:313
+#, fuzzy
+msgid "Error en la búsqueda del país del cliente."
+msgstr "Erreur lors de la recherche du pays indiqué"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteCOController.java:631
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteECController.java:651
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePAController.java:642
+#, fuzzy
+msgid "El documento indicado no es válido."
+msgstr "Le format de la date n'est pas valide."
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteCOController.java:637
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClienteECController.java:657
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePAController.java:648
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePTController.java:644
+msgid ""
+"Ha habido un error al intentar validar el documento, ¿desea guardar el "
+"cliente de todas formas?"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePTController.java:535
+#, fuzzy
+msgid "Error en la bÃºsqueda, paÃ­s no encontrado"
+msgstr "Erreur lors de la recherche du pays indiqué"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePTController.java:542
+#, fuzzy
+msgid "Error en la bÃºsqueda del paÃ­s del cliente."
+msgstr "Erreur lors de la recherche du pays indiqué"
+
+#: com/comerzzia/bimbaylola/pos/gui/pagos/datoscliente/ByLCambiarDatosClientePTController.java:640
+msgid ""
+"El documento indicado no es válido, ¿desea guardar el cliente de todas "
+"formas?"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:185
+msgid "Esta Reserva no se puede cancelar"
+msgstr "Cette réservation ne peut pas être annulée"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:190
+msgid "Se cancelará la Reserva. ¿Está seguro?"
+msgstr "La réservation sera annulée. Voulez-vous continuer ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:265
+msgid "Error al realizar el pago con tarjeta pinpad"
+msgstr "Erreur lors du paiement par carte sur clavier NIP"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:279
+msgid "Ha ocurrido un error en la devolución por tarjeta pinpad"
+msgstr ""
+"Une erreur s'est produite lors du remboursement par carte sur clavier NIP"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:291
+msgid ""
+"Se ha cancelado el proceso de cancelación de reserva mediante STANDALONE."
+msgstr "L'annulation de la réservation par STANDALONE a été annulée."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:316
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:485
+msgid "Error al realizar el grabado del Movimiento de Caja"
+msgstr "Erreur lors de l'enregistrement du mouvement de caisse"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:387
+msgid "La Tarjeta introducida está dada de Baja"
+msgstr "La carte saisie est désactivée"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:394
+msgid "La Tarjeta introducida no es del tipo permitido para este Medio de Pago"
+msgstr ""
+"La carte saisie ne correspond pas au type autorisé pour ce mode de paiement"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:427
+msgid "Error al consultar el contador para el Ticket de Reserva"
+msgstr ""
+"Erreur lors de la consultation du compteur pour le ticket de réservation"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:464
+msgid "Se ha producido un error al realizar la operación con la Tarjeta"
+msgstr "Une erreur s'est produite lors de l'opération par carte"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:534
+msgid "Se ha cancelado la consulta de la Tarjeta"
+msgstr "La consultation de la carte a été annulée"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:548
+msgid "Se ha producido un error al procesar la Tarjeta para la Devolución"
+msgstr ""
+"Une erreur s'est produite lors du traitement de la carte pour le "
+"remboursement"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:610
+msgid "La Reserva no está disponible para su venta"
+msgstr "L'article réservé n'est pas disponible pour la vente"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:618
+msgid "El coste de la Reserva no está no está cubierto"
+msgstr "Le coût de la réservation n'est pas couvert"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:623
+msgid "Se va a proceder a finalizar el apartado. ¿Desea continuar?"
+msgstr "La réservation sera terminée. Voulez-vous continuer ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:660
+msgid "Debe indicar todos los números de serie para continuar"
+msgstr "Vous devez saisir tous les numéros de série pour continuer"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:668
+msgid "Se ha producido un error al procesar los números de serie"
+msgstr "Une erreur s'est produite lors du traitement des numéros de série"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:712
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:761
+msgid "Se ha producido un error al grabar el Movimiento de Caja"
+msgstr ""
+"Une erreur s'est produite lors de l'enregistrement du mouvement de caisse"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:773
+msgid "Se ha producido un error al salvar el Ticket"
+msgstr "Une erreur s'est produite lors de l'enregistrement du ticket"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:781
+msgid "Se ha producido un error al procesar la Venta"
+msgstr "Une erreur s'est produite lors du traitement de la vente"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/ByLApartadosController.java:789
+msgid "Debe seleccionar una Reserva para poder Finalizarla"
+msgstr "Vous devez sélectionner une réservation pour la terminer"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:378
+#, java-format
+msgid "Detalle reserva {0}"
+msgstr "Détail réservation {0}"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:399
+msgid "Nueva reserva"
+msgstr "Nouvelle réservation"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:423
+msgid "Se produjo un error en la carga de lineas de ticket"
+msgstr "Une erreur s'est produite lors du chargement des lignes du ticket"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:524
+msgid ""
+"Se recalcularán los precios, se perderán los anteriores ¿Desea continuar?"
+msgstr ""
+"Les prix seront recalculés, les précédents seront supprimés. Voulez-vous "
+"continuer ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:575
+msgid ""
+"Se produjo error al obtener información del fidelizado. Los precios no se "
+"han actualizado. Inténtelo más tarde o comunique la incidencia"
+msgstr ""
+"Une erreur s'est produite lors de l'obtention des informations du fidélisé. "
+"Les prix n'ont pas été mis à jour. Réessayez plus tard ou signalez l'incident"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:620
+msgid "No se puede crear un apartado vacío"
+msgstr "Impossible de créer une réservation vide"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:664
+msgid "Cambios guardados correctamente"
+msgstr "Modifications enregistrées correctement"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:699
+msgid "Fecha incorrecta. Revise valores"
+msgstr "Date incorrecte, vérifiez les valeurs"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:703
+msgid "La fecha de recogida es obligatoria"
+msgstr "La date de retrait est obligatoire"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:720
+msgid ""
+"No se ha encontrado ningún Fidelizado con los datos introducidos\n"
+"¿Desea realizar el Alta del Cliente?"
+msgstr ""
+"Aucun fidélisé n'a été trouvé avec les données saisies\n"
+"Voulez-vous inscrire le client ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:729
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:750
+msgid "La Tarjeta de Fidelización "
+msgstr "La carte de fidélité "
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:778
+msgid "No es posible editar el cliente en una reserva ya iniciada"
+msgstr "Impossible d'éditer le client dans une réservation déjà commencée"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:871
+msgid ""
+"Debe confirmar o rechazar los cambios para poder cerrar la pantalla de "
+"detalle de apartado"
+msgstr ""
+"Vous devez confirmer ou annuler les modifications pour fermer la fenêtre de "
+"détail de la réservation"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:888
+msgid "La caja a la que estaba conectado se ha cerrado"
+msgstr "La caisse à laquelle vous étiez connecté est clôturée"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:900
+msgid "Debe confirmar o rechazar antes los cambios"
+msgstr "Vous devez d'abord confirmer ou annuler les modifications"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:907
+msgid "No se pueden añadir pagos al apartado"
+msgstr "Impossible d'ajouter des paiements à la réservation"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:950
+msgid "Se produjo un error en la carga del documento de pagos"
+msgstr "Une erreur s'est produite lors du chargement du document de paiements"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:956
+msgid "El importe pendiente de abonar es 0"
+msgstr "Le montant à régler est 0"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:971
+msgid "No se pueden editar datos de un apartado finalizado o cancelado"
+msgstr "Impossible d'éditer les données d'une réservation terminée ou annulée"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:996
+msgid "Debe confirmar antes los cambios"
+msgstr "Vous devez d'abord confirmer les modifications"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:1012
+msgid "No hay artículos disponibles para su venta"
+msgstr "Il n'y a pas d'articles disponibles pour la vente"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:1484
+msgid "Se ha producido un error al guardar el Ticket de Reserva"
+msgstr ""
+"Une erreur s'est produite lors de l'enregistrement du ticket de réservation"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:1577
+msgid "Para insertar artículos debe estar en modo edición."
+msgstr "Pour insérer des articles, vous devez être en mode édition."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:1604
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:1650
+msgid "No están permitidas recargas de tarjeta regalo en apartados."
+msgstr ""
+"Les recharges de carte cadeau ne sont pas autorisées dans les réservations."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/ByLDetalleApartadosController.java:1654
+msgid "No se ha podido insertar la línea"
+msgstr "Impossible d'insérer la ligne"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/marcarVenta/ByLMarcarVentaApartadoController.java:147
+msgid "Debe indicar los números de serie para continuar"
+msgstr "Vous devez indiquer les numéros de série pour continuer"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/marcarVenta/ByLMarcarVentaApartadoController.java:155
+msgid "Ha ocurrido un error al procesar los números de serie"
+msgstr "Une erreur s'est produite lors du traitement des numéros de série"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/marcarVenta/ByLMarcarVentaApartadoController.java:164
+msgid "Debe seleccionar al menos un artículo para la venta"
+msgstr "Vous devez sélectionner au moins un article pour la vente"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/marcarVenta/ByLMarcarVentaApartadoController.java:170
+msgid "El saldo disponible del cliente es inferior al total de la venta"
+msgstr ""
+"Le solde disponible du client est inférieur au montant total de la vente"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/marcarVenta/ByLMarcarVentaApartadoController.java:311
+msgid "Lo sentimos, ha ocurrido un error al imprimir"
+msgstr "Désolé, une erreur est survenue lors de l'impression"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/marcarVenta/ByLMarcarVentaApartadoController.java:322
+msgid "Se ha producido un error al salvar el ticket"
+msgstr "Une erreur s'est produite lors de l'enregistrement du ticket"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/verPagos/ByLVerPagosApartadoController.java:109
+msgid "Error consultando los pagos del apartado"
+msgstr "Erreur lors de la consultation de la rubrique"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/apartados/detalle/verPagos/ByLVerPagosApartadoController.java:140
+msgid "Se produjo un error en la impresión."
+msgstr "Une erreur s'est produite lors de l'impression."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/cajas/apertura/ByLAperturaCajaController.java:108
+msgid "Error recuperando el recuento del último cierre de caja."
+msgstr ""
+"Erreur lors de la récupération du comptage de la dernière clôture de caisse."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/cajas/apertura/ByLAperturaCajaController.java:242
+#: com/comerzzia/bimbaylola/pos/gui/ventas/cajas/cierre/ByLCierreCajaController.java:237
+msgid ""
+"El estado del TSE es erróneo, por favor, reinicie la Impresora y Comerzzia "
+"para poder operar con TSE."
+msgstr ""
+"L'état du TSE est erroné. Veuillez redémarrer l'imprimante et Comerzzia pour "
+"opérer avec le TSE."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/cajas/apertura/ByLAperturaCajaController.java:246
+#: com/comerzzia/bimbaylola/pos/gui/ventas/cajas/cierre/ByLCierreCajaController.java:241
+msgid ""
+"Ha ocurrido un error con el TSE y no se ha podido enviar la operación, "
+"¿Desea continuar?."
+msgstr ""
+"Une erreur s'est produite avec le TSE et l'opération n'a pas pu être "
+"envoyée. Voulez-vous continuer?."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/cajas/apertura/ByLAperturaCajaController.java:279
+#, fuzzy
+msgid "Ha de indicar una fecha de apertura"
+msgstr "Vous devez indiquer une date"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/cajas/apertura/ByLAperturaCajaController.java:282
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/cajas/apertura/ByLAperturaCajaController.java:286
+msgid "El saldo ha de tener un valor positivo válido"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:490
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/devoluciones/ByLIntroduccionArticulosProfesionalController.java:257
+msgid "La tarjeta introducida está dada de baja."
+msgstr "La carte introduite est radiée."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:494
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/devoluciones/ByLIntroduccionArticulosProfesionalController.java:261
+msgid "El número de tarjeta no es válido."
+msgstr "Le numéro de carte n'est pas valide."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:965
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/articulos/ByLDevolucionArticulosController.java:306
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/articulos/ByLDevolucionArticulosController.java:324
+msgid "El artículo "
+msgstr "L'article "
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1073
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1093
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1121
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1400
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:361
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:381
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:416
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:695
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:715
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:751
+msgid "La línea seleccionada no se puede modificar."
+msgstr "La ligne sélectionnée ne peut être modifiée."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1103
+msgid "El usuario no tiene permisos para cambiar de vendedor"
+msgstr "L'utilisateur n'est pas autorisé à modifier le vendeur"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1134
+msgid "La línea no se puede modificar."
+msgstr "Impossible de modifier la ligne."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1145
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/edicion/ByLEdicionArticuloController.java:456
+msgid "No tiene permisos para realizar una devolución"
+msgstr "Vous n'êtes pas autorisé(e) à réaliser un retour"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1200
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/devoluciones/ByLIntroduccionArticulosProfesionalController.java:400
+msgid ""
+"Quedan números de serie por asignar. Por favor, asígnelos antes de seguir."
+msgstr ""
+"Il reste des numéros de série à affecter. Veuillez les affecter avant de "
+"continuer."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1214
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/devoluciones/ByLIntroduccionArticulosProfesionalController.java:411
+msgid ""
+"Debe añadir alguna linea del documento origen para realizar la devolución."
+msgstr ""
+"Vous devez ajouter une ligne du document d'origine pour réaliser le retour."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1262
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/devoluciones/ByLIntroduccionArticulosProfesionalController.java:458
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:1130
+msgid "El ticket no contiene líneas de artículo."
+msgstr "Le ticket ne contient pas de lignes d'article."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1325
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1347
+msgid "No tiene permisos para modificar una línea."
+msgstr "Vous n'êtes pas autorisé(e) à modifier une ligne."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1338
+msgid ""
+"No es posible modificar una línea en una devolución con ticket original."
+msgstr ""
+"Impossible de modifier une ligne dans un retour avec le ticket d'origine."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1410
+msgid "El usuario no tiene permisos para agregar nota +INFO"
+msgstr "L'utilisateur n'est pas autorisé à ajouter une note +INFO"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1431
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/articulos/ByLDevolucionArticulosController.java:362
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/articulos/ByLDevolucionArticulosController.java:370
+msgid ""
+"EL ARTÍCULO SELECCIONADO SE HA VENDIDO CON +INFO. REVISE EL TICKET POR "
+"FAVOR. GRACIAS"
+msgstr ""
+"L'ARTICLE SÉLECTIONNÉ A ÉTÉ VENDU AVEC +INFO. VEUILLEZ VÉRIFIER LE TICKET. "
+"MERCI"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1479
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:2039
+msgid "Ha ocurrido un error al obtener la propiedad del documento activo"
+msgstr ""
+"Une erreur s'est produite lors de l'obtention de la propriété du document "
+"actif"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1524
+msgid "Ha habido un error al introducir la línea"
+msgstr "Une erreur s'est produite lors de l'introduction de la ligne"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1575
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1594
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:406
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1493
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1511
+#, java-format
+msgid "La tarjeta de fidelización {0} no está activa"
+msgstr "La carte de fidélité {0} n'est pas active"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/devoluciones/ByLIntroduccionArticulosController.java:1957
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:504
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1649
+#, fuzzy
+msgid "No hay dispositivo configurado para la firma"
+msgstr "Type de dispositif de signature"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/edicion/ByLEdicionArticuloController.java:391
+msgid ""
+"Esta linea tiene asociados numeros de serie, la cantidad indicada es "
+"inferior a la anterior, los números de serie serán borrados, deberá "
+"indicarlos de nuevo, ¿está seguro?"
+msgstr ""
+"Cette ligne est associée à des numéros de série, la quantité indiquée est "
+"inférieure à la précédente, les numéros de série seront supprimés, vous "
+"devrez les indiquer à nouveau. Voulez-vous continuer ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/edicion/ByLEdicionArticuloController.java:463
+#, java-format
+msgid "La cantidad debe ser menor que {0}"
+msgstr "La quantité doit être inférieure à {0}"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/edicion/ByLEdicionArticuloController.java:468
+msgid "La cantidad debe ser distinta de cero."
+msgstr "La quantité doit être différente de zéro."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/edicion/ByLEdicionArticuloController.java:474
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/edicion/ByLEdicionArticuloController.java:479
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/edicion/ByLEdicionArticuloController.java:486
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/edicion/ByLEdicionArticuloController.java:491
+#, java-format
+msgid "El campo debe ser menor que {0}"
+msgstr "Le champ doit être inférieur à {0}"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/edicion/ByLEdicionArticuloController.java:497
+msgid "El descuento debe ser un valor entre 0 y 100."
+msgstr "La valeur de la remise doit être comprise entre 0 et 100."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/edicion/ByLEdicionArticuloController.java:506
+msgid "¿Desea vender el artículo a precio 0?"
+msgstr "Vous voulez l'article au prix 0 ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/articulos/edicion/ByLEdicionArticuloController.java:513
+msgid "No está permitida la venta a precio 0."
+msgstr "La vente au prix 0 n'est pas autorisée."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/cajas/accionesimpresorafiscal/AccionesImpresoraFiscalController.java:65
+msgid "No existe panel de funciones para la impresora configurada: "
+msgstr "Il n'y a pas de panneau de fonctions pour l'imprimante configurée : "
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/cajas/accionesimpresorafiscal/AccionesImpresoraFiscalController.java:120
+msgid "Se ha producido un error realizando el PrintXReport."
+msgstr "Une erreur s'est produite lors de l'exécution de PrintXReport."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/cajas/cierre/ByLCierreCajaController.java:83
+#: com/comerzzia/bimbaylola/pos/gui/ventas/cajas/cierre/ByLCierreCajaController.java:186
+msgid ""
+"Existen tickets pendientes de confirmar. Antes debería finalizar la "
+"operación."
+msgstr ""
+"Il existe des tickets en attente de confirmation. Vous devriez d'abord "
+"finaliser l'opération."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/cajas/cierre/ByLCierreCajaController.java:100
+msgid ""
+"Para cerrar la caja se deben cerrar todas las pantallas abiertas. ¿Desea "
+"continuar?"
+msgstr ""
+"Pour clôturer la caisse, vous devez fermer toutes les fenêtres ouvertes. "
+"Voulez-vous continuer ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/cajas/cierre/ByLCierreCajaController.java:118
+msgid ""
+"Caja descuadrada con un importe mayor que el permitido. Revise recuento."
+msgstr ""
+"Écart de caisse d'un montant supérieur au montant autorisé. Vérifiez le "
+"comptage."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/cajas/cierre/ByLCierreCajaController.java:123
+msgid ""
+"Se va a cerrar la caja con descuadres mayores al valor permitido, ¿Desea "
+"continuar?"
+msgstr ""
+"La caisse sera clôturée avec un écart supérieur à la valeur autorisée. "
+"Voulez-vous continuer ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/cajas/cierre/ByLCierreCajaController.java:128
+msgid "¿Seguro de realizar el Cierre?"
+msgstr "Êtes-vous sûr(e) de vouloir réaliser la clôture ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/cajas/cierre/ByLCierreCajaController.java:155
+msgid "Caja cerrada con descuadres"
+msgstr "Caisse clôturée avec écarts"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/articulos/ByLDevolucionArticulosController.java:203
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/articulos/ByLDevolucionArticulosController.java:239
+msgid "Debe seleccionar previamente la línea que desea modificar."
+msgstr "Vous devez d'abord sélectionner la ligne à modifier."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:112
+msgid "¿Es un Ticket Regalo?"
+msgstr "Ticket cadeau ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:161
+msgid ""
+"El ticket fue realizando en una tienda con un tratamiento fiscal diferente "
+"al de esta tienda. No se puede realizar esta devolución."
+msgstr ""
+"Le ticket a été créé dans une boutique ayant un traitement fiscal différent "
+"de celui de cette boutique. Vous ne pouvez pas procéder au retour."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:167
+msgid "No es posible la devolución entre estas tiendas"
+msgstr "Le retour n'est pas possible entre ces boutiques"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:172
+msgid "Se ha superado el periodo máximo de devolución."
+msgstr "La date limite de retour est dépassée."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:182
+msgid "No se ha encontrado ningún ticket con esos datos"
+msgstr "Impossible de trouver un ticket correspondant à ces données"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:243
+msgid "No se ha podido iniciar la devolución. Contacte con el responsable."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:264
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:296
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:314
+msgid "Error cargando pantalla. Para mas información consulte el log."
+msgstr ""
+"Erreur lors du chargement de l'écran. Pour plus d'informations, consultez le "
+"fichier journal."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:274
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/ByLDevolucionesController.java:306
+msgid "No tiene permisos para realizar la acción."
+msgstr "Vous n'êtes pas autorisé(e) à réaliser cette action."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/fechaorigen/RequestFechaOrigenController.java:78
+msgid "Debe escoger una fecha con el formato dd/mm/yyyy"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/devoluciones/fechaorigen/RequestFechaOrigenController.java:82
+msgid "La fecha del documento origen no puede ser posterior al día de hoy"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ByLGestionticketsController.java:179
+msgid "No se pudo obtener el ticket con el localizador introducido."
+msgstr "Ticket introuvable avec le localisateur saisi."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ByLGestionticketsController.java:185
+msgid "Se produjo un error procesando el localizador. "
+msgstr "Une erreur s'est produite lors du traitement du localisateur. "
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ByLGestionticketsController.java:239
+msgid "Introduzca una fecha hasta válida."
+msgstr "Introduisez une date jusqu'au valide."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ByLGestionticketsController.java:253
+msgid "Introduzca un importe válido."
+msgstr "Introduisez un montant valide."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/detalle/ByLDetalleGestionticketsController.java:156
+msgid "No se ha podido realizar la generación de taxFree"
+msgstr "Impossible de générer un bon HT"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/detalle/ByLDetalleGestionticketsController.java:315
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/detalle/ByLDetalleGestionticketsController.java:322
+msgid "No es posible visualizar este tipo de documento"
+msgstr "Impossible de visualiser ce type de document"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/detalle/ByLDetalleGestionticketsController.java:350
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ticketRegalo/ByLTicketRegaloController.java:195
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ticketRegalo/ByLTicketRegaloController.java:261
+msgid "Lo sentimos, ha ocurrido un error al imprimir."
+msgstr "Nous sommes désolés, une erreur est survenue lors de l'impression."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/detalle/ByLDetalleGestionticketsController.java:356
+msgid "Error leyendo información de ticket."
+msgstr "Erreur lors de la lecture de l'information du ticket."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/detalle/ByLDetalleGestionticketsController.java:389
+msgid "Error leyendo información de ticket"
+msgstr "Erreur lors de la lecture de l'information du ticket"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ticketRegalo/ByLGestionTicketGui.java:28
+msgid "MULTIPAGO"
+msgstr "MULTIPAIEMENT"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ticketRegalo/ByLTicketRegaloController.java:111
+msgid "Debe seleccionar una de las opciones del panel inferior."
+msgstr "Vous devez sélectionner l'une des opérations du panneau inférieur."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ticketRegalo/ByLTicketRegaloController.java:117
+msgid "Debe escribir una cantidad."
+msgstr "Vous devez saisir une quantité."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ticketRegalo/ByLTicketRegaloController.java:126
+msgid "No puede imprimir 0 copias."
+msgstr "Vous ne pouvez pas imprimer 0 copie."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ticketRegalo/ByLTicketRegaloController.java:268
+msgid ""
+"No existe un formato de ticket regalo para el tipo de documento del ticket "
+"original."
+msgstr ""
+"Il n'existe par de format de ticket cadeau pour le type de document du "
+"ticket original."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ticketRegalo/ByLTicketRegaloController.java:273
+msgid "No hay ninguna línea seleccionada."
+msgstr "Il n'y a aucune ligne sélectionnée."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/gestiontickets/ticketRegalo/ByLTicketRegaloController.java:278
+msgid "No se encontró el documento del ticket regalo."
+msgstr "Document du ticket cadeau introuvable."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/articulos/busqueda/ByLBuscarArticulosProfesionalController.java:226
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/articulos/busqueda/ByLBuscarArticulosProfesionalController.java:229
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/articulos/busqueda/ByLBuscarArticulosProfesionalController.java:238
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/articulos/busqueda/ByLBuscarArticulosProfesionalController.java:241
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/busquedas/ByLBuscarArticulosController.java:209
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/busquedas/ByLBuscarArticulosController.java:212
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/busquedas/ByLBuscarArticulosController.java:221
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/busquedas/ByLBuscarArticulosController.java:224
+msgid "Stocks por "
+msgstr "Stocks par "
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/articulos/busqueda/ByLBuscarArticulosProfesionalController.java:312
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/busquedas/ByLBuscarArticulosController.java:295
+msgid "No se han encontrado resultados"
+msgstr "Aucun résultat n'a été trouvé"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:178
+#, fuzzy
+msgid "Ventas Profesional"
+msgstr "Vente professionnel"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:185
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:196
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:452
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:1117
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:1204
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:464
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:475
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1206
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1427
+msgid "---NUEVO CLIENTE---"
+msgstr "---NOUVEAU CLIENT---"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:390
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:426
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:725
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:761
+msgid "No tiene permisos para modificar una línea"
+msgstr "Vous n'avez pas d'autorisations pour modifier une ligne"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:439
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1193
+msgid "¿Está seguro de querer eliminar todas las líneas del ticket?"
+msgstr "Êtes-vous sûr(e) de vouloir supprimer toutes les lignes du ticket ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:750
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:851
+msgid "Hay tickets aparcados"
+msgstr "Il y a des tickets suspendus"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:754
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:855
+msgid "No hay tickets aparcados"
+msgstr "Il n'y a pas de tickets suspendus"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:1036
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:978
+msgid "Fallo al imprimir ticket."
+msgstr "Échec d'impression de ticket."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:1040
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:982
+msgid "Fallo al imprimir ticket regalo."
+msgstr "Échec d'impression de ticket cadeau."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:1111
+#, fuzzy
+msgid "El ticket ha sido aparcado."
+msgstr "Il y a des tickets suspendus"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/profesional/venta/ByLVentaProfesionalController.java:1177
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1399
+msgid "El importe de recarga debe ser mayor que 0"
+msgstr "Le montant de la recharge doit être supérieur à 0"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/agregarNotaInformativa/ByLAgregarNotaInformativaController.java:105
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/agregarNotaInformativa/ByLAgregarNotaInformativaController.java:123
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/agregarNotaInformativa/ByLAgregarNotaInformativaController.java:189
+msgid "No existe ningún tipo de aviso con el código indicado."
+msgstr "Il n'existe aucun type de notification avec le code indiqué."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/agregarNotaInformativa/ByLAgregarNotaInformativaController.java:234
+msgid "Debe seleccionar un código"
+msgstr "Vous devez sélectionner un code"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/agregarNotaInformativa/ByLAgregarNotaInformativaController.java:237
+msgid "Debe indicar una fecha"
+msgstr "Vous devez indiquer une date"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/agregarNotaInformativa/ByLAgregarNotaInformativaController.java:240
+msgid "Debe escribir un texto"
+msgstr "Vous devez saisir un texte"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/agregarNotaInformativa/ByLAgregarNotaInformativaController.java:249
+msgid "El formato de la fecha no es válido."
+msgstr "Le format de la date n'est pas valide."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/agregarNotaInformativa/tablaNotas/ByLTablaNotasController.java:88
+msgid "Tipo de Aviso"
+msgstr "Type de notification"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/agregarNotaInformativa/tablaNotas/ByLTablaNotasController.java:124
+msgid "Debe seleccionar el tipo de documento correspondiente."
+msgstr "Vous devez sélectionner le type de document correspondant."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:413
+msgid "Tarjeta de fidelización añadida correctamente"
+msgstr "Carte de fidélité ajoutée correctement"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:552
+msgid "No hay caja abierta. Se abrirá automáticamente."
+msgstr "Il n'y a pas de caisse ouverte. Elle s'ouvrira automatiquement."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:556
+msgid "No hay caja abierta. Deberá ir a la gestión de caja para abrirla."
+msgstr ""
+"Il n'y a pas de caisse ouverte. Vous devez aller dans gestion de caisse pour "
+"l'ouvrir."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:588
+#, java-format
+msgid ""
+"No se puede realizar la venta. El día de apertura de la caja {0} no coincide "
+"con el del sistema {1}"
+msgstr ""
+"Impossible de réaliser la vente. Le jour d'ouverture de la caisse {0} ne "
+"correspond pas à celui du système {1}"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1313
+msgid "El cupón se ha añadido correctamente."
+msgstr "Le coupon a bien été ajouté."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1316
+msgid "El artículo se ha añadido correctamente."
+msgstr "L'article a bien été ajouté."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1363
+msgid ""
+"No se puede recargar una tarjeta de abono. Por favor introduzca una tarjeta "
+"de regalo."
+msgstr ""
+"Une carte de paiement ne peut être rechargée. Veuillez introduire une carte-"
+"cadeau."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1367
+msgid ""
+"Para poder realizar la recarga la tarjeta de regalo debe estar Inactiva. La "
+"tarjeta introducida está "
+msgstr ""
+"Pour effectuer le rechargement de la carte-cadeau, elle doit être inactive. "
+"La carte introduite est "
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/ByLFacturacionArticulosController.java:1453
+msgid "La tarjeta está "
+msgstr "La carte est "
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/cambiarVendedor/ByLCambiarVendedorController.java:93
+msgid "No existe el vendedor introducido"
+msgstr "Le vendeur introduit n'existe pas"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/cambiarVendedor/ByLCambiarVendedorController.java:95
+msgid "Ha ocurrido un error al consultar el vendedor"
+msgstr "Une erreur s'est produite lors de la consultation du vendeur"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/cambiarVendedor/ByLCambiarVendedorController.java:98
+msgid "Debe introducir un código de vendedor válido"
+msgstr "Vous devez introduire un code de vendeur valide"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/trazabilidad/TrazabilidadController.java:236
+msgid "La cadena de trazabilidad no coincide con la cadena de la línea origen."
+msgstr "La chaîne de traçabilité ne correspond pas à la chaîne d'origine."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/trazabilidad/TrazabilidadController.java:241
+msgid "Ha ocurrido un error con la impresora fiscal: "
+msgstr "Une erreur s'est produite avec l'imprimante fiscale : "
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/trazabilidad/TrazabilidadController.java:246
+msgid "La cadena de trazabilidad debe ser única."
+msgstr "La chaîne de traçabilité doit être unique."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/trazabilidad/TrazabilidadController.java:251
+msgid ""
+"Imposible insertar la cadena de trazabilidad del artículo, ya están todos "
+"asignados."
+msgstr ""
+"Impossible d'insérer la chaîne de traçabilité de l'article, elles sont "
+"toutes déjà affectées."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/trazabilidad/TrazabilidadController.java:294
+msgid "¿Seguro que quiere cancelar la inserción de cadenas de trazabilidad?"
+msgstr ""
+"Êtes-vous sûr(e) de vouloir annuler l'insertion des chaînes de traçabilité ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/trazabilidad/TrazabilidadController.java:302
+msgid "Hay cadenas de trazabilidad sin asignar"
+msgstr "Il existe des chaînes de traçabilité non affectées"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/trazabilidad/TrazabilidadController.java:339
+msgid ""
+"Las cadenas de trazabilidad asociados a la línea de venta serán borrados, "
+"¿Está seguro?"
+msgstr ""
+"Les chaînes de traçabilité associées à la ligne de vente seront supprimées. "
+"Voulez-vous continuer ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/trazabilidad/TrazabilidadController.java:348
+msgid "La cadena de trazabilidad indicada será borrada, ¿Está seguro?"
+msgstr ""
+"La chaîne de traçabilité indiquée sera supprimée. Voulez-vous continuer ?"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/trazabilidad/TrazabilidadController.java:396
+msgid "El DataMatrix es incorrecto, ¿Desea continuar?"
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/articulos/trazabilidad/TrazabilidadController.java:401
+msgid "El DataMatrix insertado no es correcto y no se ha seguido con la venta."
+msgstr ""
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLFacturaController.java:215
+msgid "Error al establecer el tipo de documento factura."
+msgstr "Erreur lors de l'établissement du type de document facture."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:504
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:927
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:937
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:488
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:841
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:851
+msgid "No se ha podido devolver automáticamente. Debe introducir la tarjeta."
+msgstr ""
+"Le retour automatique n'a pu être effectué. Vous devez introduire la carte."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:770
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:779
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:702
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:708
+msgid "Lo sentimos, ha ocurrido un error en la petición"
+msgstr "Nous sommes désolés, une erreur s'est produite lors de la requête"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:773
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:704
+msgid "No se ha podido conectar con el servidor"
+msgstr "La connexion avec le serveur n'a pu être établie"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:776
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:706
+msgid "El servidor ha tardado demasiado tiempo en responder"
+msgstr "Le serveur a mis trop de temps à répondre"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:1024
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:934
+msgid ""
+"Esta tarjeta regalo no se puede devolver por alguno de estos motivos: \n"
+"\n"
+"  - Ya se han realizado operaciones sobre esta tarjeta regalo. \n"
+"\n"
+"  - La tarjeta regalo está inactiva. \n"
+msgstr ""
+"Cette carte-cadeau ne peut être remboursée pour l'un des motifs suivants : \n"
+"\n"
+"  – Des opérations ont déjà été effectuées sur cette carte-cadeau. \n"
+"\n"
+"  – La carte-cadeau est inactive. \n"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:1027
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:938
+msgid ""
+"Esta tarjeta regalo no se puede devolver por alguno de estos motivos: \n"
+"\n"
+"  - Ya se han realizado operaciones sobre esta tarjeta regalo. \n"
+"\n"
+"  - La tarjeta regalo está inactiva."
+msgstr ""
+"Cette carte-cadeau ne peut être remboursée pour l'un des motifs suivants : \n"
+"\n"
+"  – Des opérations ont déjà été effectuées sur cette carte-cadeau. \n"
+"\n"
+"  – La carte-cadeau est inactive."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:1036
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:948
+msgid "Ha habido un error al procesar la devolución de la tarjeta regalo."
+msgstr ""
+"Une erreur s'est produite lors du traitement du retour dans la carte-cadeau."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:1598
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:1480
+msgid "Ha ocurrido un error al anular los pagos"
+msgstr "Une erreur s'est produite lors de l'annulation des paiements"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:1663
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:1542
+msgid "Ha ocurrido un error al confirmar los pagos con tarjeta de crédito"
+msgstr ""
+"Une erreur s'est produite lors de la confirmation des paiements par carte "
+"bancaire"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:1982
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:1836
+#, java-format
+msgid ""
+"{0}: Quedan disponibles {1} identificadores fiscales disponibles. Contacte "
+"con el Administrador."
+msgstr ""
+"{0}: Restent disponibles {1} identificateurs fiscaux. Contactez "
+"l'administrateur."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:2001
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:1849
+msgid ""
+"No es posible emitir un documento por caducidad en fecha o nº secuencia "
+"asociada."
+msgstr ""
+"Impossible d'émettre un document, date ou nº de séquence associée expirée."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:2003
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:1851
+msgid "No es posible emitir un documento por caducidad en fecha"
+msgstr "Impossible d'émettre un document, date expirée"
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:2006
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:1853
+msgid ""
+"No es posible emitir un documento por caducidad en nº secuencia asociada."
+msgstr "Impossible d'émettre un document, nº de séquence associée expirée."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:2009
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:1855
+msgid ""
+"No es posible emitir un documento por tener el contador un valor inválido."
+msgstr ""
+"Impossible d'émettre un document, la valeur du compteur n'est pas valide."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:2012
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:1857
+msgid ""
+"No es posible emitir un documento por tener uno de los parámetros un valor "
+"inválido. Revise el log."
+msgstr ""
+"Impossible d'émettre un document, la valeur de l'un des paramètres n'est pas "
+"valide. Vérifiez le fichier journal."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:2015
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:1859
+msgid ""
+"No es posible emitir un documento porque hay un salto en la numeración del "
+"contador. Revise la configuración de la vigencia asociada."
+msgstr ""
+"Impossible d'émettre un document, saut dans la numérotation du compteur. "
+"Vérifiez la configuration de la validité associée."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:2064
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:2073
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:1906
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:1915
+msgid "Error procesando el código de barras. Revise configuración."
+msgstr "Erreur lors du traitement du code-barres. Vérifiez la configuration."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:2102
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:1945
+msgid ""
+"No se ha podido pesar el artículo, compruebe la configuración de la balanza."
+msgstr ""
+"Impossible de peser l'article, vérifiez la configuration de la balance."
+
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLTicketManager.java:2318
+#: com/comerzzia/bimbaylola/pos/gui/ventas/tickets/ByLVentaProfesionalManager.java:2154
+msgid "Error creando el ticket de venta."
+msgstr "Erreur lors de la création du ticket de vente."
+
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:194
+msgid "Confirme operación"
+msgstr "Confirmez l'opération"
+
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:211
+msgid "Borrar pago"
+msgstr "Supprimer paiement"
+
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:211
+msgid "Sin pagos para eliminar."
+msgstr "Sans paiements à supprimer."
+
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:307
+msgid "Los pagos han de cubrir el importe a pagar"
+msgstr "Les paiements doivent couvrir le montant à payer"
+
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:333
+msgid "TOTAL:     "
+msgstr "TOTAL :     "
+
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:334
+msgid "PENDIENTE: "
+msgstr "EN ATTENTE : "
+
+#: com/comerzzia/pos/gui/ventas/apartados/detalle/pagos/NuevoPagoApartadoController.java:355
+msgid "No hay ninguna forma de pago seleccionada."
+msgstr "Il n'y a aucun mode de paiement sélectionné."
+
+#, fuzzy
+#~ msgid "Confirmación"
+#~ msgstr "Configuration"
+
+#~ msgid "FORMA PAGO CAMBIO:"
+#~ msgstr "MODE PAIEMENT ÉCHANGE :"

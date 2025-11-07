@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.comerzzia.pos.core.gui.componentes.textField.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-classpath-element C:/Tier1/ExploradorApps/Aplicaciones/JPOS_3_0/jpos/lib/comerzzia-pos-core-3.0-SNAPSHOT.jar?>
+<?scenebuilder-classpath-element C:/Tier1/ExploradorApps/Aplicaciones/JPOS_3_0/jpos/lib?>
+
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="600.0" styleClass="mainFxmlClass, pantalla-detalle" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.comerzzia.bimbaylola.pos.gui.pagos.email.ByLEmailController">
+  <children>
+    <HBox id="HBox" alignment="CENTER" spacing="5.0" style="" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <VBox prefHeight="325.0" prefWidth="600.0" HBox.hgrow="ALWAYS">
+          <children>
+            <AnchorPane prefHeight="47.0" prefWidth="600.0" style="&#10;" styleClass="titulo-ventana" VBox.vgrow="ALWAYS">
+              <children>
+                <Label id="solicitaClienteLb" fx:id="lbSolicitaCliente" alignment="CENTER" layoutX="0.0" layoutY="-1.0" prefHeight="63.0" prefWidth="600.0" text="%Solicita al cliente si desea el documento por correo electrónico">
+                  <font>
+                    <Font size="10.0" />
+                  </font>
+                </Label>
+              </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="20.0" prefWidth="600.0" />
+            <AnchorPane prefHeight="116.0" prefWidth="538.0" VBox.vgrow="NEVER">
+              <children>
+                <HBox alignment="CENTER" prefHeight="99.0" prefWidth="450.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="-10.0">
+                  <children>
+                    <Button fx:id="btImprimir" minHeight="42.0" minWidth="115.0" mnemonicParsing="false" onAction="#accionImprimir" prefHeight="99.00009999999747" prefWidth="138.0" style="" styleClass="btAceptar" text="%Imprimir">
+                      <font>
+                        <Font size="16.0" fx:id="x1" />
+                      </font>
+                    </Button>
+                    <Button fx:id="btCorreo" minHeight="42.0" minWidth="115.0" mnemonicParsing="false" onAction="#accionCorreo" prefHeight="99.0" prefWidth="196.0" styleClass="btAceptar" text="%Correo electrónico">
+                      <font>
+                        <Font size="9.0" />
+                      </font>
+                    </Button>
+                    <Button fx:id="btAmbos" minHeight="42.0" minWidth="115.0" mnemonicParsing="false" onAction="#accionAmbos" prefHeight="96.0" prefWidth="239.0" style="" styleClass="btAceptar" text="%Imprimir y correo electrónico">
+                      <font>
+                        <Font size="8.0" />
+                      </font>
+                    </Button>
+                  </children>
+                </HBox>
+              </children>
+            </AnchorPane>
+          </children>
+        </VBox>
+      </children>
+    </HBox>
+  </children>
+  <stylesheets>
+    <URL value="@../../styles/styles.css" />
+  </stylesheets>
+</AnchorPane>

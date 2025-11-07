@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.impuestos.porcentajes.ByLPorcentajeImpuestoMapper">
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.impuestos.porcentajes.ByLPorcentajeImpuesto">
+    <result column="UID_ACTIVIDAD" jdbcType="VARCHAR" property="uidActividad" />
+    <result column="ID_GRUPO_IMPUESTOS" jdbcType="NUMERIC" property="idGrupoImpuestos" />
+    <result column="VIGENCIA_DESDE" jdbcType="TIMESTAMP" property="vigenciaDesde" />
+    <result column="ID_TRAT_IMPUESTOS" jdbcType="BIGINT" property="idTratImpuestos" />
+    <result column="CODTRATIMP" jdbcType="VARCHAR" property="codtratimp" />
+    <result column="DESTRATIMP" jdbcType="VARCHAR" property="destratimp" />
+    <result column="APLICA_RECARGO" jdbcType="CHAR" property="aplicaRecargo" />
+    <result column="CODIMP" jdbcType="CHAR" property="codimp" />
+    <result column="DESIMP" jdbcType="VARCHAR" property="desimp" />
+    <result column="PORCENTAJE" jdbcType="NUMERIC" property="porcentaje" />
+    <result column="PORCENTAJE_RECARGO" jdbcType="NUMERIC" property="porcentajeRecargo" />
+    <result column="CODIMP_FISCAL" jdbcType="VARCHAR" property="codimpFiscal" />
+    <result column="CODPAIS" jdbcType="VARCHAR" property="codpais" />
+    <result column="PORCENTAJE_RECARGO2" jdbcType="NUMERIC" property="porcentajeRecargo2" />
+    <result column="PORCENTAJE_RECARGO3" jdbcType="NUMERIC" property="porcentajeRecargo3" />
+    <result column="PORCENTAJE_RECARGO4" jdbcType="NUMERIC" property="porcentajeRecargo4" />
+    <result column="PORCENTAJE_RECARGO5" jdbcType="NUMERIC" property="porcentajeRecargo5" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    UID_ACTIVIDAD, ID_GRUPO_IMPUESTOS, VIGENCIA_DESDE, ID_TRAT_IMPUESTOS, CODTRATIMP, 
+    DESTRATIMP, APLICA_RECARGO, CODIMP, DESIMP, PORCENTAJE, PORCENTAJE_RECARGO, CODIMP_FISCAL, 
+    CODPAIS, PORCENTAJE_RECARGO2, PORCENTAJE_RECARGO3, PORCENTAJE_RECARGO4, PORCENTAJE_RECARGO5
+  </sql>
+  <select id="selectByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.impuestos.porcentajes.ByLPorcentajeImpuestoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from D_IMP_PORCENTAJES
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.impuestos.porcentajes.ByLPorcentajeImpuestoExample">
+    delete from D_IMP_PORCENTAJES
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.impuestos.porcentajes.ByLPorcentajeImpuesto">
+    insert into D_IMP_PORCENTAJES (UID_ACTIVIDAD, ID_GRUPO_IMPUESTOS, VIGENCIA_DESDE, 
+      ID_TRAT_IMPUESTOS, CODTRATIMP, DESTRATIMP, 
+      APLICA_RECARGO, CODIMP, DESIMP, 
+      PORCENTAJE, PORCENTAJE_RECARGO, CODIMP_FISCAL, 
+      CODPAIS, PORCENTAJE_RECARGO2, PORCENTAJE_RECARGO3, 
+      PORCENTAJE_RECARGO4, PORCENTAJE_RECARGO5)
+    values (#{uidActividad,jdbcType=VARCHAR}, #{idGrupoImpuestos,jdbcType=NUMERIC}, #{vigenciaDesde,jdbcType=TIMESTAMP}, 
+      #{idTratImpuestos,jdbcType=BIGINT}, #{codtratimp,jdbcType=VARCHAR}, #{destratimp,jdbcType=VARCHAR}, 
+      #{aplicaRecargo,jdbcType=CHAR}, #{codimp,jdbcType=CHAR}, #{desimp,jdbcType=VARCHAR}, 
+      #{porcentaje,jdbcType=NUMERIC}, #{porcentajeRecargo,jdbcType=NUMERIC}, #{codimpFiscal,jdbcType=VARCHAR}, 
+      #{codpais,jdbcType=VARCHAR}, #{porcentajeRecargo2,jdbcType=NUMERIC}, #{porcentajeRecargo3,jdbcType=NUMERIC}, 
+      #{porcentajeRecargo4,jdbcType=NUMERIC}, #{porcentajeRecargo5,jdbcType=NUMERIC})
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.impuestos.porcentajes.ByLPorcentajeImpuesto">
+    insert into D_IMP_PORCENTAJES
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        UID_ACTIVIDAD,
+      </if>
+      <if test="idGrupoImpuestos != null">
+        ID_GRUPO_IMPUESTOS,
+      </if>
+      <if test="vigenciaDesde != null">
+        VIGENCIA_DESDE,
+      </if>
+      <if test="idTratImpuestos != null">
+        ID_TRAT_IMPUESTOS,
+      </if>
+      <if test="codtratimp != null">
+        CODTRATIMP,
+      </if>
+      <if test="destratimp != null">
+        DESTRATIMP,
+      </if>
+      <if test="aplicaRecargo != null">
+        APLICA_RECARGO,
+      </if>
+      <if test="codimp != null">
+        CODIMP,
+      </if>
+      <if test="desimp != null">
+        DESIMP,
+      </if>
+      <if test="porcentaje != null">
+        PORCENTAJE,
+      </if>
+      <if test="porcentajeRecargo != null">
+        PORCENTAJE_RECARGO,
+      </if>
+      <if test="codimpFiscal != null">
+        CODIMP_FISCAL,
+      </if>
+      <if test="codpais != null">
+        CODPAIS,
+      </if>
+      <if test="porcentajeRecargo2 != null">
+        PORCENTAJE_RECARGO2,
+      </if>
+      <if test="porcentajeRecargo3 != null">
+        PORCENTAJE_RECARGO3,
+      </if>
+      <if test="porcentajeRecargo4 != null">
+        PORCENTAJE_RECARGO4,
+      </if>
+      <if test="porcentajeRecargo5 != null">
+        PORCENTAJE_RECARGO5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="idGrupoImpuestos != null">
+        #{idGrupoImpuestos,jdbcType=NUMERIC},
+      </if>
+      <if test="vigenciaDesde != null">
+        #{vigenciaDesde,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idTratImpuestos != null">
+        #{idTratImpuestos,jdbcType=BIGINT},
+      </if>
+      <if test="codtratimp != null">
+        #{codtratimp,jdbcType=VARCHAR},
+      </if>
+      <if test="destratimp != null">
+        #{destratimp,jdbcType=VARCHAR},
+      </if>
+      <if test="aplicaRecargo != null">
+        #{aplicaRecargo,jdbcType=CHAR},
+      </if>
+      <if test="codimp != null">
+        #{codimp,jdbcType=CHAR},
+      </if>
+      <if test="desimp != null">
+        #{desimp,jdbcType=VARCHAR},
+      </if>
+      <if test="porcentaje != null">
+        #{porcentaje,jdbcType=NUMERIC},
+      </if>
+      <if test="porcentajeRecargo != null">
+        #{porcentajeRecargo,jdbcType=NUMERIC},
+      </if>
+      <if test="codimpFiscal != null">
+        #{codimpFiscal,jdbcType=VARCHAR},
+      </if>
+      <if test="codpais != null">
+        #{codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="porcentajeRecargo2 != null">
+        #{porcentajeRecargo2,jdbcType=NUMERIC},
+      </if>
+      <if test="porcentajeRecargo3 != null">
+        #{porcentajeRecargo3,jdbcType=NUMERIC},
+      </if>
+      <if test="porcentajeRecargo4 != null">
+        #{porcentajeRecargo4,jdbcType=NUMERIC},
+      </if>
+      <if test="porcentajeRecargo5 != null">
+        #{porcentajeRecargo5,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.impuestos.porcentajes.ByLPorcentajeImpuestoExample" resultType="java.lang.Long">
+    select count(*) from D_IMP_PORCENTAJES
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update D_IMP_PORCENTAJES
+    <set>
+      <if test="record.uidActividad != null">
+        UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idGrupoImpuestos != null">
+        ID_GRUPO_IMPUESTOS = #{record.idGrupoImpuestos,jdbcType=NUMERIC},
+      </if>
+      <if test="record.vigenciaDesde != null">
+        VIGENCIA_DESDE = #{record.vigenciaDesde,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.idTratImpuestos != null">
+        ID_TRAT_IMPUESTOS = #{record.idTratImpuestos,jdbcType=BIGINT},
+      </if>
+      <if test="record.codtratimp != null">
+        CODTRATIMP = #{record.codtratimp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.destratimp != null">
+        DESTRATIMP = #{record.destratimp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aplicaRecargo != null">
+        APLICA_RECARGO = #{record.aplicaRecargo,jdbcType=CHAR},
+      </if>
+      <if test="record.codimp != null">
+        CODIMP = #{record.codimp,jdbcType=CHAR},
+      </if>
+      <if test="record.desimp != null">
+        DESIMP = #{record.desimp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.porcentaje != null">
+        PORCENTAJE = #{record.porcentaje,jdbcType=NUMERIC},
+      </if>
+      <if test="record.porcentajeRecargo != null">
+        PORCENTAJE_RECARGO = #{record.porcentajeRecargo,jdbcType=NUMERIC},
+      </if>
+      <if test="record.codimpFiscal != null">
+        CODIMP_FISCAL = #{record.codimpFiscal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.codpais != null">
+        CODPAIS = #{record.codpais,jdbcType=VARCHAR},
+      </if>
+      <if test="record.porcentajeRecargo2 != null">
+        PORCENTAJE_RECARGO2 = #{record.porcentajeRecargo2,jdbcType=NUMERIC},
+      </if>
+      <if test="record.porcentajeRecargo3 != null">
+        PORCENTAJE_RECARGO3 = #{record.porcentajeRecargo3,jdbcType=NUMERIC},
+      </if>
+      <if test="record.porcentajeRecargo4 != null">
+        PORCENTAJE_RECARGO4 = #{record.porcentajeRecargo4,jdbcType=NUMERIC},
+      </if>
+      <if test="record.porcentajeRecargo5 != null">
+        PORCENTAJE_RECARGO5 = #{record.porcentajeRecargo5,jdbcType=NUMERIC},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update D_IMP_PORCENTAJES
+    set UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      ID_GRUPO_IMPUESTOS = #{record.idGrupoImpuestos,jdbcType=NUMERIC},
+      VIGENCIA_DESDE = #{record.vigenciaDesde,jdbcType=TIMESTAMP},
+      ID_TRAT_IMPUESTOS = #{record.idTratImpuestos,jdbcType=BIGINT},
+      CODTRATIMP = #{record.codtratimp,jdbcType=VARCHAR},
+      DESTRATIMP = #{record.destratimp,jdbcType=VARCHAR},
+      APLICA_RECARGO = #{record.aplicaRecargo,jdbcType=CHAR},
+      CODIMP = #{record.codimp,jdbcType=CHAR},
+      DESIMP = #{record.desimp,jdbcType=VARCHAR},
+      PORCENTAJE = #{record.porcentaje,jdbcType=NUMERIC},
+      PORCENTAJE_RECARGO = #{record.porcentajeRecargo,jdbcType=NUMERIC},
+      CODIMP_FISCAL = #{record.codimpFiscal,jdbcType=VARCHAR},
+      CODPAIS = #{record.codpais,jdbcType=VARCHAR},
+      PORCENTAJE_RECARGO2 = #{record.porcentajeRecargo2,jdbcType=NUMERIC},
+      PORCENTAJE_RECARGO3 = #{record.porcentajeRecargo3,jdbcType=NUMERIC},
+      PORCENTAJE_RECARGO4 = #{record.porcentajeRecargo4,jdbcType=NUMERIC},
+      PORCENTAJE_RECARGO5 = #{record.porcentajeRecargo5,jdbcType=NUMERIC}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.comerzzia.bimbaylola.pos.persistence.impuestos.porcentajes.ByLPorcentajeImpuestoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from D_IMP_PORCENTAJES
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

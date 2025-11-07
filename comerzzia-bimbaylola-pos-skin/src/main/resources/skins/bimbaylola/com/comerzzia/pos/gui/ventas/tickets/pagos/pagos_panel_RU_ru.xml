@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+
+    ComerZZia 3.0
+
+    Coруright (c) 2008-2015 Comerzzia, S.L.  All Rights Reserved.
+
+    THIS WORK IS  SUBJECT  TO  SPAIN  AND  INTERNATIONAL  COруRIGHT  LAWS  AND
+    TREATIES.   NO  PART  OF  THIS  WORK MAY BE  USED,  PRACTICED,  PERFORMED
+    COPIED, DISTRIBUTED, REVISED, MODIFIED, TRANSLATED,  ABRIDGED, CONDENSED,
+    EXPANDED,  COLLECTED,  COMPILED,  LINKED,  RECAST, TRANSFORMED OR ADAPTED
+    WITHOUT THE PRIOR WRITTEN CONSENT OF COMERZZIA, S.L. ANY USE OR EXPLOITATION
+    OF THIS WORK WITHOUT AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO
+    CRIMINAL AND CIVIL LIABILITY.
+
+    CONSULT THE END USER LICENSE AGREEMENT FOR INFORMATION ON ADDITIONAL
+    RESTRICTIONS.
+
+-->
+<Panel>
+    <LineaBotones>
+    	<Boton>
+			<texto>aceptar (no visible)</texto>
+            <clave>aceptar</clave>
+            <tipo>METODO</tipo>
+			<teclaAccesoRapido>F5</teclaAccesoRapido>
+			<visible>N</visible>
+        </Boton>
+    	<Boton>
+			<texto>abrir cajón (no visible)</texto>
+            <clave>ABRIR CAJON</clave>
+            <tipo>OPERACION</tipo>
+			<teclaAccesoRapido>Ctrl + O</teclaAccesoRapido>
+			<visible>N</visible>
+        </Boton>
+        <Boton>
+			<clave>1</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/ru_1руб.png</rutaImagen>
+        </Boton>  
+        <Boton>
+            <clave>2</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/ru_2руб.png</rutaImagen>
+        </Boton> 		
+        <Boton>
+            <clave>5</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/ru_5руб.png</rutaImagen>
+        </Boton>  
+        <Boton>
+            <clave>10</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/ru_10руб.png</rutaImagen>
+        </Boton>		
+        <Boton>
+            <clave>50</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/ru_50руб.png</rutaImagen>
+        </Boton>
+	
+        <Boton>
+            <clave>100</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/ru_100руб.png</rutaImagen>
+        </Boton>
+	</LineaBotones>
+    <LineaBotones>
+        <Boton>
+            <clave>200</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/ru_200руб.png</rutaImagen>
+        </Boton>  
+        <Boton>
+            <clave>500</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/ru_500руб.png</rutaImagen>
+        </Boton>  
+        <Boton>
+            <clave>1000</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/ru_1000руб.png</rutaImagen>
+        </Boton>
+        <Boton>
+            <clave>2000</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/ru_2000руб.png</rutaImagen>
+        </Boton>
+        <Boton>
+            <clave>5000</clave>
+            <tipo>PAGO</tipo>
+			<rutaImagen>importes/ru_5000руб.png</rutaImagen>
+        </Boton>
+	</LineaBotones>
+</Panel>

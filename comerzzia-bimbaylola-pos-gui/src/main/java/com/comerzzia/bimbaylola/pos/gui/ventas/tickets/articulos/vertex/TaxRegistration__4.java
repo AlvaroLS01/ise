@@ -1,0 +1,147 @@
+
+package com.comerzzia.bimbaylola.pos.gui.ventas.tickets.articulos.vertex;
+
+import java.util.List;
+import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    "hasPhysicalPresenceIndicator",
+    "impositionType",
+    "isoCountryCode",
+    "jurisdictionId",
+    "mainDivision",
+    "nexusOverrides",
+    "physicalLocations",
+    "taxRegistrationNumber",
+    "filingCurrency",
+    "taxRegistrationType"
+})
+@Generated("jsonschema2pojo")
+public class TaxRegistration__4 {
+
+    @JsonProperty("hasPhysicalPresenceIndicator")
+    private Boolean hasPhysicalPresenceIndicator;
+    @JsonProperty("impositionType")
+    private ImpositionType__12 impositionType;
+    @JsonProperty("isoCountryCode")
+    private String isoCountryCode;
+    @JsonProperty("jurisdictionId")
+    private String jurisdictionId;
+    @JsonProperty("mainDivision")
+    private String mainDivision;
+    @JsonProperty("nexusOverrides")
+    private List<NexusOverride__4> nexusOverrides = null;
+    @JsonProperty("physicalLocations")
+    private List<PhysicalLocation__4> physicalLocations = null;
+    @JsonProperty("taxRegistrationNumber")
+    private String taxRegistrationNumber;
+    @JsonProperty("filingCurrency")
+    private FilingCurrency__4 filingCurrency;
+    @JsonProperty("taxRegistrationType")
+    private String taxRegistrationType;
+
+    @JsonProperty("hasPhysicalPresenceIndicator")
+    public Boolean getHasPhysicalPresenceIndicator() {
+        return hasPhysicalPresenceIndicator;
+    }
+
+    @JsonProperty("hasPhysicalPresenceIndicator")
+    public void setHasPhysicalPresenceIndicator(Boolean hasPhysicalPresenceIndicator) {
+        this.hasPhysicalPresenceIndicator = hasPhysicalPresenceIndicator;
+    }
+
+    @JsonProperty("impositionType")
+    public ImpositionType__12 getImpositionType() {
+        return impositionType;
+    }
+
+    @JsonProperty("impositionType")
+    public void setImpositionType(ImpositionType__12 impositionType) {
+        this.impositionType = impositionType;
+    }
+
+    @JsonProperty("isoCountryCode")
+    public String getIsoCountryCode() {
+        return isoCountryCode;
+    }
+
+    @JsonProperty("isoCountryCode")
+    public void setIsoCountryCode(String isoCountryCode) {
+        this.isoCountryCode = isoCountryCode;
+    }
+
+    @JsonProperty("jurisdictionId")
+    public String getJurisdictionId() {
+        return jurisdictionId;
+    }
+
+    @JsonProperty("jurisdictionId")
+    public void setJurisdictionId(String jurisdictionId) {
+        this.jurisdictionId = jurisdictionId;
+    }
+
+    @JsonProperty("mainDivision")
+    public String getMainDivision() {
+        return mainDivision;
+    }
+
+    @JsonProperty("mainDivision")
+    public void setMainDivision(String mainDivision) {
+        this.mainDivision = mainDivision;
+    }
+
+    @JsonProperty("nexusOverrides")
+    public List<NexusOverride__4> getNexusOverrides() {
+        return nexusOverrides;
+    }
+
+    @JsonProperty("nexusOverrides")
+    public void setNexusOverrides(List<NexusOverride__4> nexusOverrides) {
+        this.nexusOverrides = nexusOverrides;
+    }
+
+    @JsonProperty("physicalLocations")
+    public List<PhysicalLocation__4> getPhysicalLocations() {
+        return physicalLocations;
+    }
+
+    @JsonProperty("physicalLocations")
+    public void setPhysicalLocations(List<PhysicalLocation__4> physicalLocations) {
+        this.physicalLocations = physicalLocations;
+    }
+
+    @JsonProperty("taxRegistrationNumber")
+    public String getTaxRegistrationNumber() {
+        return taxRegistrationNumber;
+    }
+
+    @JsonProperty("taxRegistrationNumber")
+    public void setTaxRegistrationNumber(String taxRegistrationNumber) {
+        this.taxRegistrationNumber = taxRegistrationNumber;
+    }
+
+    @JsonProperty("filingCurrency")
+    public FilingCurrency__4 getFilingCurrency() {
+        return filingCurrency;
+    }
+
+    @JsonProperty("filingCurrency")
+    public void setFilingCurrency(FilingCurrency__4 filingCurrency) {
+        this.filingCurrency = filingCurrency;
+    }
+
+    @JsonProperty("taxRegistrationType")
+    public String getTaxRegistrationType() {
+        return taxRegistrationType;
+    }
+
+    @JsonProperty("taxRegistrationType")
+    public void setTaxRegistrationType(String taxRegistrationType) {
+        this.taxRegistrationType = taxRegistrationType;
+    }
+
+}

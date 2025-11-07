@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Panel>
+    <LineaBotones>
+        <Boton>
+            <texto>Factura</texto>
+            <clave>accionFactura</clave>
+            <tipo>METODO</tipo>
+            <rutaImagen>iconos/ticket_gestion.png</rutaImagen>
+            <visible>S</visible>
+        </Boton>
+        <Boton>
+            <texto>Datos cliente</texto>
+            <clave>accionCambiarDatosCliente</clave>
+            <tipo>METODO</tipo>
+            <rutaImagen>iconos/cliente.png</rutaImagen>
+            <visible>N</visible>
+        </Boton>
+        <Boton>
+            <texto>Datos envío</texto>
+            <clave>accionEstablecerDatosEnvio</clave>
+            <tipo>METODO</tipo>
+            <rutaImagen>iconos/cambio-pago.png</rutaImagen>
+            <visible>N</visible>
+        </Boton>
+	</LineaBotones>
+	</Panel>

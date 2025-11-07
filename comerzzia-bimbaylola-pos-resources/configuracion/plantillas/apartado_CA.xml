@@ -1,0 +1,160 @@
+<plantilla>
+    <!-- Este documento se imprime al realizar una nueva entrega a cuenta a un apartado.
+	     Consta de una sola impresión con dos documentos: una copia para tienda y una copia para el cliente-->
+	<documento>	
+		#if(!${salida.equals("pantalla")})
+			<apertura-cajon></apertura-cajon>
+		#end
+		
+		<logo alignLogo="center"></logo>   
+
+		#if (${ticket.getCabecera()})
+			#set( $imprimirDatosFacturacion =  $ticket.getCabecera().getCliente().getDatosFactura())
+			#parse("./plantillas/datos_cabecera.xml")
+		else
+			<linea><texto size="40" align="center">*** Aquest document és còpia ***</texto> </linea>		
+			<linea><texto>=======================================================</texto> </linea>		    
+		#end
+
+		<linea line-size="1"><texto size="40" align="center" style="1">*** Nova  entrega ***</texto> </linea>
+		<linea line-size="4"><texto>=======================================================</texto> </linea>		
+
+		#set ($tamano = ${apartado.getIdApartado().toString().length()})
+		#set ($cbApartado = ${apartado.getIdApartado().toString()})
+		#foreach ($cuenta in [12..$tamano])
+		   #set ($cbApartado = "0" + $cbApartado)
+		#end
+		
+		<linea line-size="4"><texto style="1">Data                Num. Reserva             Venedor </texto> </linea>	
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>	
+		<linea line-size="4">            
+		   <texto size="20" align="left">${fmt.formateaFecha($apartado.getFechaApartado())}</texto>
+		   <texto size="25" align="left">${cbApartado}</texto>
+		   <texto size="13" align="left">${apartado.getUsuario()}</texto>
+		</linea>
+		
+		<linea><texto></texto></linea>
+		<linea line-size="4"><texto align="left" size="58">Nom: ${apartado.getDesCliente()}</texto></linea>
+		#if(${apartado.getTelefono1()})
+			<linea line-size="4"><texto align="left" size="58">Telèfon: ${apartado.getTelefono1()}</texto></linea>
+		#end
+		<linea><texto></texto></linea>		
+		
+		<linea> 
+			<texto size="6" align="left" >TOTAL:</texto>
+			<texto size="34" align="right" >${totales.getTotalAPagarAsString()}</texto> 
+		</linea>
+		<linea> <texto> </texto> </linea>
+
+		## TOTALES    
+		<linea> 
+			<texto size="29" align="right" style="1">TOTAL A PAGAR: </texto>
+			<texto size="11" align="right" style="1">${ticket.getTotales().getTotalAPagarAsString()}</texto> 
+		</linea>
+		#if(${ticket.getTotales().isHayEntregaCuenta()})
+			<linea>
+				<texto size="29" align="right" style="1">ENTREGADO A CUENTA: </texto>
+				<texto size="11" align="right" style="1">${ticket.getTotales().getEntregadoACuentaAsString()}</texto> 
+			</linea>
+		#end
+		<linea>
+			<texto size="29" align="right" style="1">TOTAL ENTREGAT: </texto>
+			<texto size="11" align="right" style="1">${ticket.getTotales().getEntregadoAsString()}</texto> 
+		</linea>
+		<linea> <texto>                              ----------</texto> </linea>
+		<linea>
+			<texto size="29" align="right" style="1">A TORNAR: </texto>
+			<texto size="11" align="right" style="1">${ticket.getTotales().getCambioAsString()}</texto> 
+		</linea>
+		<linea> <texto> </texto> </linea>	
+		#parse("./plantillas/detalle_pagos_CA.xml")		
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>		
+		<linea> <texto> </texto> </linea>		
+		<linea>
+			<texto size="40" align="center">COPIA PARA LA TIENDA</texto>
+		</linea>
+		<linea>
+		</linea>
+		<codbar align="center" tipo-leyenda="2" >${cbApartado}</codbar>			
+		<linea><texto></texto></linea>
+		<linea><texto></texto></linea>
+		<corte></corte>
+		
+		<!-- Copia para el cliente -->
+
+		<logo alignLogo="center"></logo>   
+
+		#parse("./plantillas/datos_cabecera_CA.xml")
+
+		<linea line-size="1"><texto size="40" align="center" style="1">*** Nova  entrega ***</texto> </linea>
+		<linea line-size="4"><texto>=======================================================</texto> </linea>		
+
+		#set ($tamano = ${apartado.getIdApartado().toString().length()})
+		#set ($cbApartado = ${apartado.getIdApartado().toString()})
+		#foreach ($cuenta in [12..$tamano])
+		   #set ($cbApartado = "0" + $cbApartado)
+		#end
+		
+		<linea line-size="4"><texto style="1">Data                Num. Reserva             Venedor</texto> </linea>	
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>	
+		<linea line-size="4">            
+		   <texto size="20" align="left">${fmt.formateaFecha($apartado.getFechaApartado())}</texto>
+		   <texto size="25" align="left">${cbApartado}</texto>
+		   <texto size="13" align="left">${apartado.getUsuario()}</texto>
+		</linea>
+		
+		<linea><texto></texto></linea>
+		<linea line-size="4"><texto align="left" size="58">Nom: ${apartado.getDesCliente()}</texto></linea>
+		#if(${apartado.getTelefono1()})
+			<linea line-size="4"><texto align="left" size="58">Telèfon: ${apartado.getTelefono1()}</texto></linea>
+		#end
+		<linea><texto></texto></linea>		
+		<linea> 
+			<texto size="6" align="left" >TOTAL:</texto>
+			<texto size="34" align="right" >${totales.getTotalAPagarAsString()}</texto> 
+		</linea>
+
+		<linea> <texto> </texto> </linea>
+		## TOTALES    
+		<linea> 
+			<texto size="29" align="right" style="1">TOTAL A PAGAR: </texto>
+			<texto size="11" align="right" style="1">${ticket.getTotales().getTotalAPagarAsString()}</texto> 
+		</linea>
+		#if(${ticket.getTotales().isHayEntregaCuenta()})
+		 <linea>
+			<texto size="29" align="right" style="1">ENTREGADO A CUENTA: </texto>
+			<texto size="11" align="right" style="1">${ticket.getTotales().getEntregadoACuentaAsString()}</texto> 
+		</linea>
+		#end
+		<linea>
+			<texto size="29" align="right" style="1">TOTAL ENTREGAT: </texto>
+			<texto size="11" align="right" style="1">${ticket.getTotales().getEntregadoAsString()}</texto> 
+		</linea>
+		<linea> <texto>                              ----------</texto> </linea>
+		<linea>
+			<texto size="29" align="right" style="1">A TORNAR: </texto>
+			<texto size="11" align="right" style="1">${ticket.getTotales().getCambioAsString()}</texto> 
+		</linea>
+		<linea> <texto> </texto> </linea>	
+		#parse("./plantillas/detalle_pagos_CA.xml")		
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>		
+		<linea> <texto> </texto> </linea>	
+		<codbar align="center" tipo-leyenda="2" >${cbApartado}</codbar>				
+		<linea>
+			<texto size="40" align="center">Gràcies per la vostra visita</texto>
+		</linea>
+		<linea><texto></texto></linea>
+		<linea><texto></texto></linea>
+		<corte></corte>
+		#foreach ($pago in $ticket.getPagos())
+			#if($ticket.esPagoAxis($pago))
+				#parse("./plantillas/detalle_pagos_boletas_axis.xml")
+			#end
+			#if($ticket.esPagoConexflow($pago))
+				_parse("./plantillas/detalle_pagos_boletas_conexflow_CA.xml")
+			#end
+			<corte></corte>
+		#end
+		#parse("./plantillas/detalle_comprobantes_giftcard_CA.xml")
+	</documento>
+</plantilla>

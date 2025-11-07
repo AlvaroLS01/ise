@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjetaMapper">
+  <resultMap id="BaseResultMap" type="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjeta">
+    <id column="UID_ACTIVIDAD" jdbcType="VARCHAR" property="uidActividad" />
+    <id column="UID_DIARIO_CAJA" jdbcType="VARCHAR" property="uidDiarioCaja" />
+    <id column="LINEA" jdbcType="INTEGER" property="linea" />
+    <result column="BASE" jdbcType="DECIMAL" property="base" />
+    <result column="IMPUESTOS" jdbcType="DECIMAL" property="impuestos" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjeta">
+    <result column="RESPUESTA_TARJETA" jdbcType="LONGVARBINARY" property="respuestaTarjeta" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    UID_ACTIVIDAD, UID_DIARIO_CAJA, LINEA, BASE, IMPUESTOS
+  </sql>
+  <sql id="Blob_Column_List">
+    RESPUESTA_TARJETA
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjetaExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from x_caja_det_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjetaExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_caja_det_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjetaKey" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from x_caja_det_tbl
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_DIARIO_CAJA = #{uidDiarioCaja,jdbcType=VARCHAR}
+      and LINEA = #{linea,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjetaKey">
+    delete from x_caja_det_tbl
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_DIARIO_CAJA = #{uidDiarioCaja,jdbcType=VARCHAR}
+      and LINEA = #{linea,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjetaExample">
+    delete from x_caja_det_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjeta">
+    insert into x_caja_det_tbl (UID_ACTIVIDAD, UID_DIARIO_CAJA, LINEA, 
+      BASE, IMPUESTOS, RESPUESTA_TARJETA
+      )
+    values (#{uidActividad,jdbcType=VARCHAR}, #{uidDiarioCaja,jdbcType=VARCHAR}, #{linea,jdbcType=INTEGER}, 
+      #{base,jdbcType=DECIMAL}, #{impuestos,jdbcType=DECIMAL}, #{respuestaTarjeta,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjeta">
+    insert into x_caja_det_tbl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        UID_ACTIVIDAD,
+      </if>
+      <if test="uidDiarioCaja != null">
+        UID_DIARIO_CAJA,
+      </if>
+      <if test="linea != null">
+        LINEA,
+      </if>
+      <if test="base != null">
+        BASE,
+      </if>
+      <if test="impuestos != null">
+        IMPUESTOS,
+      </if>
+      <if test="respuestaTarjeta != null">
+        RESPUESTA_TARJETA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uidActividad != null">
+        #{uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="uidDiarioCaja != null">
+        #{uidDiarioCaja,jdbcType=VARCHAR},
+      </if>
+      <if test="linea != null">
+        #{linea,jdbcType=INTEGER},
+      </if>
+      <if test="base != null">
+        #{base,jdbcType=DECIMAL},
+      </if>
+      <if test="impuestos != null">
+        #{impuestos,jdbcType=DECIMAL},
+      </if>
+      <if test="respuestaTarjeta != null">
+        #{respuestaTarjeta,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjetaExample" resultType="java.lang.Long">
+    select count(*) from x_caja_det_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update x_caja_det_tbl
+    <set>
+      <if test="record.uidActividad != null">
+        UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uidDiarioCaja != null">
+        UID_DIARIO_CAJA = #{record.uidDiarioCaja,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linea != null">
+        LINEA = #{record.linea,jdbcType=INTEGER},
+      </if>
+      <if test="record.base != null">
+        BASE = #{record.base,jdbcType=DECIMAL},
+      </if>
+      <if test="record.impuestos != null">
+        IMPUESTOS = #{record.impuestos,jdbcType=DECIMAL},
+      </if>
+      <if test="record.respuestaTarjeta != null">
+        RESPUESTA_TARJETA = #{record.respuestaTarjeta,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update x_caja_det_tbl
+    set UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      UID_DIARIO_CAJA = #{record.uidDiarioCaja,jdbcType=VARCHAR},
+      LINEA = #{record.linea,jdbcType=INTEGER},
+      BASE = #{record.base,jdbcType=DECIMAL},
+      IMPUESTOS = #{record.impuestos,jdbcType=DECIMAL},
+      RESPUESTA_TARJETA = #{record.respuestaTarjeta,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update x_caja_det_tbl
+    set UID_ACTIVIDAD = #{record.uidActividad,jdbcType=VARCHAR},
+      UID_DIARIO_CAJA = #{record.uidDiarioCaja,jdbcType=VARCHAR},
+      LINEA = #{record.linea,jdbcType=INTEGER},
+      BASE = #{record.base,jdbcType=DECIMAL},
+      IMPUESTOS = #{record.impuestos,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjeta">
+    update x_caja_det_tbl
+    <set>
+      <if test="base != null">
+        BASE = #{base,jdbcType=DECIMAL},
+      </if>
+      <if test="impuestos != null">
+        IMPUESTOS = #{impuestos,jdbcType=DECIMAL},
+      </if>
+      <if test="respuestaTarjeta != null">
+        RESPUESTA_TARJETA = #{respuestaTarjeta,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_DIARIO_CAJA = #{uidDiarioCaja,jdbcType=VARCHAR}
+      and LINEA = #{linea,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjeta">
+    update x_caja_det_tbl
+    set BASE = #{base,jdbcType=DECIMAL},
+      IMPUESTOS = #{impuestos,jdbcType=DECIMAL},
+      RESPUESTA_TARJETA = #{respuestaTarjeta,jdbcType=LONGVARBINARY}
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_DIARIO_CAJA = #{uidDiarioCaja,jdbcType=VARCHAR}
+      and LINEA = #{linea,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjeta">
+    update x_caja_det_tbl
+    set BASE = #{base,jdbcType=DECIMAL},
+      IMPUESTOS = #{impuestos,jdbcType=DECIMAL}
+    where UID_ACTIVIDAD = #{uidActividad,jdbcType=VARCHAR}
+      and UID_DIARIO_CAJA = #{uidDiarioCaja,jdbcType=VARCHAR}
+      and LINEA = #{linea,jdbcType=INTEGER}
+  </update>
+  <select id="selectByExampleWithBLOBsWithRowbounds" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjetaExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from x_caja_det_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleWithRowbounds" parameterType="com.comerzzia.bimbaylola.pos.persistence.movimientostarjeta.CajaMovimientoTarjetaExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from x_caja_det_tbl
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

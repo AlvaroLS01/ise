@@ -1,0 +1,180 @@
+<plantilla>
+	<documento>
+		<!-- Este documento se imprime en la cancelación de un apartado con saldo a favor del cliente -->
+		#if(!${salida.equals("pantalla")})
+			<apertura-cajon></apertura-cajon>
+		#end
+		<logo alignLogo="center"></logo> 
+		#if (${ticket.getCabecera()})		
+			#set( $imprimirDatosFacturacion =  $ticket.getCabecera().getCliente().getDatosFactura())
+			#parse("./plantillas/datos_cabecera_FR.xml")
+		else
+			<linea><texto size="40" align="center">*** Ce document est une copie ***</texto> </linea>		
+			<linea><texto>=======================================================</texto> </linea>		    
+		#end
+
+		#set ($tamano = ${apartado.getIdApartado().toString().length()})
+		#set ($cbApartado = ${apartado.getIdApartado().toString()})
+		#foreach ($cuenta in [12..$tamano])
+		   #set ($cbApartado = "0" + $cbApartado)
+		#end 
+		<linea line-size="4"><texto style="1">Date               Num. Réservation             Vendeur</texto> </linea>	
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>	
+		<linea line-size="4">            
+		   <texto size="20" align="left">${fmt.formateaFecha($apartado.getFechaApartado())}</texto>
+		   <texto size="25" align="left">${cbApartado}</texto>
+		   <texto size="13" align="left">${apartado.getUsuario()}</texto>
+		</linea>
+		
+		<linea><texto></texto></linea>
+		<linea line-size="4"><texto align="left" size="55">Nom: ${apartado.getDesCliente()}</texto></linea>
+		#if(${apartado.getTelefono1()})
+			<linea line-size="4"><texto align="left" size="55">Téléphone: ${apartado.getTelefono1()}</texto></linea>
+		#end
+		<linea><texto></texto></linea>	
+		
+		<linea>
+			<texto size="29" align="right" style="1">À RENDRE: </texto>
+			#if(${pago.getCargoTicket()})
+				<texto size="11" align="right">${importe}</texto>
+			#end
+			#if(${pago.getAbonoTicket()})
+				<texto size="11" align="right">-${pago.getAbonoTicket()}</texto>
+			#end
+		</linea>
+		<linea><texto></texto></linea>			
+		<linea>
+			<texto size="24" align="left">Mode de paiement remboursement:</texto>
+			<texto size="16" align="right">${pago.getDesMedioPago()}</texto>
+		</linea>		
+		<linea line-size="4"><texto>---------------------------------------------------------</texto> </linea>		
+		<linea> <texto> </texto> </linea>		
+		<linea>
+			<texto size="40" align="center">EXEMPLAIRE POUR LA BOUTIQUE</texto>
+		</linea>
+		<linea>
+		</linea>
+		<codbar align="center" tipo-leyenda="2" >${cbApartado}</codbar>			
+		<linea><texto></texto></linea>
+		<linea><texto></texto></linea>
+		<corte></corte>
+		
+		
+		<!--copia para el cliente -->
+
+		<logo alignLogo="center"></logo>   
+
+		#if (${ticket.getCabecera()})		
+			#parse("./plantillas/datos_cabecera_FR.xml")
+		else
+			<linea><texto size="40" align="center">*** Ce document est une copie ***</texto> </linea>		
+			<linea><texto>=======================================================</texto> </linea>		    
+		#end
+	
+
+		#set ($tamano = ${apartado.getIdApartado().toString().length()})
+		#set ($cbApartado = ${apartado.getIdApartado().toString()})
+		#foreach ($cuenta in [12..$tamano])
+		   #set ($cbApartado = "0" + $cbApartado)
+		#end
+		
+		<linea line-size="4"><texto style="1">Date               Num. Réservation             Vendeur</texto> </linea>	
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>	
+		<linea line-size="4">            
+		   <texto size="20" align="left">${fmt.formateaFecha($apartado.getFechaApartado())}</texto>
+		   <texto size="22" align="left">${cbApartado}</texto>
+		   <texto size="13" align="left">${apartado.getUsuario()}</texto>
+		</linea>
+		
+		<linea><texto></texto></linea>
+		<linea line-size="4"><texto align="left" size="55">Nom: ${apartado.getDesCliente()}</texto></linea>
+		#if(${apartado.getTelefono1()})
+			<linea line-size="4"><texto align="left" size="55">Téléphone: ${apartado.getTelefono1()}</texto></linea>
+		#end
+		<linea><texto></texto></linea>	
+		<linea>
+			<texto size="29" align="right" style="1">À RENDRE: </texto>
+			#if(${pago.getCargoTicket()})
+				<texto size="11" align="right">${importe}</texto>
+			#end
+			#if(${pago.getAbonoTicket()})
+				<texto size="11" align="right">-${pago.getAbonoTicket()}</texto>
+			#end
+		</linea>
+		<linea><texto></texto></linea>			
+		<linea>
+			<texto size="24" align="left">Mode de paiement remboursement:</texto>
+			<texto size="16" align="right">${pago.getDesMedioPago()}</texto>
+		</linea>		
+		<linea line-size="4"><texto>-------------------------------------------------------</texto> </linea>		
+		<linea></linea>
+		<codbar align="center" tipo-leyenda="2" >${cbApartado}</codbar>			
+		<linea><texto align="center" size="40">NOUS VOUS REMERCIONS DE VOTRE VISITE</texto></linea>
+		<linea>
+			<texto></texto>
+		</linea>
+		<linea>
+			<texto align="center" size="40">VOUS AVEZ ÉTÉ SERVI(E) PAR..... ${cajero}</texto>
+		</linea>
+		<linea>
+			<texto></texto>
+		</linea>
+		<linea>
+			<texto></texto>
+		</linea>
+		<corte></corte>	
+		
+		<!-- Si selecciona el reembolso en medio de pago VALE -->
+		#if(${importeVale})
+			<linea>
+				<texto>****************************************</texto>
+			</linea>
+			<linea>
+				<texto align="left" size="40">${apartado.getDesCliente()}</texto>
+			</linea>
+			<linea>
+				<texto align="left" size="40">${apartado.getDomicilio()}</texto>
+			</linea>
+			<linea>
+				<texto></texto>
+			</linea>
+			<linea>
+				<texto align="left" size="40">${fecha}</texto>
+			</linea>    
+			<linea>
+				<texto size="40" align="center">RUBRIQUE:${apartado.getIdApartado()}</texto>
+			</linea>
+			<linea>
+				<texto>----------------------------------------</texto>
+			</linea>
+			<linea>
+				<texto align="center" size ="40">ÉMISSION DE BONS</texto>
+			</linea>
+			<linea>
+				<texto></texto>
+			</linea>
+			<linea>
+				<texto align="center" size ="40">Montant: ${importeVale}</texto>
+			</linea>
+			<linea>
+				<texto></texto>
+			</linea>
+			<linea>
+				<texto>----------------------------------------</texto>
+			</linea>
+			<linea>
+				<texto></texto>
+			</linea>
+			<linea>
+				<texto align="center" size ="40">Émis par ${cajero}</texto>
+			</linea>
+			<linea>
+				<texto></texto>
+			</linea>
+			<linea>
+				<texto>****************************************</texto>
+			</linea>
+			<corte></corte>
+		#end
+	</documento>
+</plantilla>
