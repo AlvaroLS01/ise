@@ -27,6 +27,10 @@ public class ByLAdyenCloudService extends AdyenCloudService {
 
         @Override
         public TerminalAPIResponse sendRequest(Client client, String tipoMensaje, TerminalAPIRequest peticion) throws AdyenException {
+                if (client == null || client.getConfig() == null) {
+                        throw new AdyenException(I18N.getTexto("No se ha inicializado el cliente de Adyen para Terminal API"));
+                }
+
                 if (StringUtils.isNotBlank(terminalApiEndpoint)) {
                         client.getConfig().setTerminalApiCloudEndpoint(terminalApiEndpoint);
                 }
