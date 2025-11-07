@@ -1011,9 +1011,14 @@ public class ByLFidelizadoController<V> extends FidelizadoController {
 	public void realizarConsentimientoFirma() {
 		// TODO
 		Map<String, Object> resultado = new HashMap<String, Object>();
-		IFirma dispositivoFirma = ByLDispositivosFirma.getInstance().getDispositivoFirmaActual();
-		// dispositivoFirma =
-		// ByLDispositivos.getInstance().getDispositivoIFirma(dispositivoFirma.getManejador());
+                IFirma dispositivoFirma = ByLDispositivosFirma.getInstance().getDispositivoFirmaActual();
+                if (dispositivoFirma == null) {
+                        String mensajeError = I18N.getTexto("No hay dispositivo configurado para la firma");
+                        log.error("realizarConsentimientoFirma() - " + mensajeError);
+                        throw new DispositivoFirmaException(mensajeError);
+                }
+                // dispositivoFirma =
+                // ByLDispositivos.getInstance().getDispositivoIFirma(dispositivoFirma.getManejador());
 
 		try {
 			resultado = dispositivoFirma.firmar();
